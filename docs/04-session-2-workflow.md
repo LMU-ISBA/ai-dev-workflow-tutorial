@@ -62,7 +62,7 @@ This session covers the complete development workflow: from connecting Claude Co
 
 ## 1. Connect Claude Code to Jira
 
-The Model Context Protocol (MCP) allows Claude Code to interact with external services like Jira. This means Claude can read your Jira issues directly.
+**What is MCP?** The Model Context Protocol (MCP) is a way for AI assistants like Claude Code to connect to external tools and services. Think of it as a "plugin system" that lets Claude Code talk to other applications. In this tutorial, we will use MCP to connect Claude Code to Jira so Claude can read your project tasks directly.
 
 ### 1.1 Add Atlassian MCP Server
 
