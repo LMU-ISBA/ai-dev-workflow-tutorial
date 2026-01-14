@@ -119,7 +119,9 @@ Spec-kit follows a structured process: Constitution → Specification → Plan �
 
 ### 2.1 Initialize Spec-Kit
 
-First, initialize spec-kit in your project:
+First, initialize spec-kit in your project.
+
+**In Cursor's terminal** (not inside Claude Code), run:
 
 ```bash
 specify init . --ai claude
