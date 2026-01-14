@@ -147,8 +147,11 @@ Cursor is an AI-powered code editor based on VS Code. It will feel familiar if y
 Many of the following steps require running commands in the terminal. Here's how to open it:
 
 1. Open Cursor
-2. Press `` Ctrl+` `` (hold Control and press the backtick key, usually located below the Escape key)
-   - **Alternative:** Go to **View** → **Terminal** from the menu bar
+2. Use the keyboard shortcut to open the terminal:
+   - **macOS:** Press `` Control+` `` (hold the **Control** key, not Command, and press the backtick key)
+   - **Windows:** Press `` Ctrl+` `` (hold Ctrl and press the backtick key)
+   - The backtick key `` ` `` is usually located below the Escape key, next to the number 1
+   - **Alternative for both:** Go to **View** → **Terminal** from the menu bar
 3. A terminal panel will appear at the bottom of the Cursor window
 4. This is where you will type commands throughout the tutorial
 
