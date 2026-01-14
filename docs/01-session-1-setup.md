@@ -192,7 +192,7 @@ Many of the following steps require running commands in the terminal. Here's how
 
 **Tip:** You can resize the terminal by dragging the divider between the terminal and the editor area.
 
-**Note:** All commands in the following sections should be run in Cursor's terminal.
+**Note:** Many of the commands in the following sections should be run in Cursor's terminal. If you want to get familiar with the command line first, see [Terminal Basics](02-terminal-basics.md).
 
 ---
 
