@@ -116,6 +116,8 @@ Claude Pro gives you access to Claude Code, the AI assistant you will use throug
 
 ## 2. Install Software
 
+**Note:** All commands in this section should be run in Cursor's terminal. See [Opening the Terminal in Cursor](#opening-the-terminal-in-cursor) below if you need help finding it.
+
 ### 2.1 Install Cursor
 
 Cursor is an AI-powered code editor based on VS Code. It will feel familiar if you have used VS Code before.
@@ -216,7 +218,7 @@ If you see a version number (e.g., `git version 2.39.0`), Git is installed. Skip
 
 **Configure Git (both platforms):**
 
-After installing, configure your identity:
+After installing, configure your identity. In the terminal:
 
 ```bash
 git config --global user.name "Your Name"
