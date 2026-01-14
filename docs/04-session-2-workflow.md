@@ -14,7 +14,9 @@ This session covers the complete development workflow: from connecting Claude Co
   - [2.4 Create the Implementation Plan](#24-create-the-implementation-plan)
   - [2.5 Generate Tasks](#25-generate-tasks)
 - [3. Create Jira Issue](#3-create-jira-issue)
+  - [3.1 Create Issue in Jira](#31-create-issue-in-jira)
 - [4. Create Feature Branch](#4-create-feature-branch)
+  - [4.1 Ask Claude Code to Create Branch](#41-ask-claude-code-to-create-branch)
 - [5. Build the Dashboard with Claude Code](#5-build-the-dashboard-with-claude-code)
   - [5.1 Set Up Python Environment](#51-set-up-python-environment)
   - [5.2 Build the Dashboard](#52-build-the-dashboard)
@@ -340,7 +342,7 @@ Now create a Git branch for your work. This keeps your changes isolated from the
 
 **Steps:**
 
-1. In Claude Code, ask it to create a feature branch:
+1. In Claude Code (run `claude` if not already in a session), ask it to create a feature branch:
    ```
    Create a feature branch for Jira issue ECOM-1 to add a sales dashboard.
    ```
@@ -377,6 +379,8 @@ First, create a virtual environment for your project dependencies.
    I need to install streamlit, pandas, and plotly for a dashboard.
    Create a requirements.txt file as well.
    ```
+
+   **What is requirements.txt?** This file lists all the Python packages your project needs. When someone else downloads your project, they can run `pip install -r requirements.txt` to install all the same packages you used. It's like a recipe that ensures everyone has the same ingredients.
 
 2. Claude will guide you through:
    - Creating the virtual environment
@@ -510,7 +514,7 @@ Now save your work with a Git commit. Claude Code can handle all the git operati
 
 **Steps:**
 
-1. In Claude Code, ask it to commit your changes:
+1. In Claude Code (run `claude` if not already in a session), ask it to commit your changes:
    ```
    Commit my changes for the sales dashboard.
    Make sure venv/ is in .gitignore.
@@ -549,7 +553,7 @@ Now push your changes to GitHub and create a pull request. Claude Code can handl
 
 **Steps:**
 
-1. In Claude Code, ask it to push and create a pull request:
+1. In Claude Code (run `claude` if not already in a session), ask it to push and create a pull request:
    ```
    Push my branch and create a pull request.
    Include "Resolves ECOM-1" in the PR description.
@@ -615,7 +619,7 @@ After merging, update your local main branch.
 
 **Steps:**
 
-1. In Claude Code, ask it to update your local repository:
+1. In Claude Code (run `claude` if not already in a session), ask it to update your local repository:
    ```
    Switch to main and pull the latest changes.
    ```
