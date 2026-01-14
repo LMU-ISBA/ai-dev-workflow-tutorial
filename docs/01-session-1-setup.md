@@ -10,6 +10,7 @@ This session covers account creation, tool installation, and initial configurati
   - [1.3 Subscribe to Claude Pro](#13-subscribe-to-claude-pro)
 - [2. Install Software](#2-install-software)
   - [2.1 Install Cursor](#21-install-cursor)
+  - [Opening the Terminal in Cursor](#opening-the-terminal-in-cursor)
   - [2.2 Install Git](#22-install-git)
   - [2.3 Install Python 3.11+](#23-install-python-311)
   - [2.4 Install uv](#24-install-uv)
@@ -141,13 +142,42 @@ Cursor is an AI-powered code editor based on VS Code. It will feel familiar if y
 
 ---
 
+### Opening the Terminal in Cursor
+
+Many of the following steps require running commands in the terminal. Here's how to open it:
+
+1. Open Cursor
+2. Press `` Ctrl+` `` (hold Control and press the backtick key, usually located below the Escape key)
+   - **Alternative:** Go to **View** → **Terminal** from the menu bar
+3. A terminal panel will appear at the bottom of the Cursor window
+4. This is where you will type commands throughout the tutorial
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Cursor Window                                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  [Your code/files appear here]                              │
+│                                                             │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  Terminal                                              ─ □ x│
+│  $ _                                                        │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Tip:** You can resize the terminal by dragging the divider between the terminal and the editor area.
+
+---
+
 ### 2.2 Install Git
 
 Git is the version control system that tracks changes to your code.
 
 **Check if Git is already installed:**
 
-Open Cursor's terminal (press `` Ctrl+` ``) and type:
+With the terminal open, type:
 
 ```bash
 git --version
