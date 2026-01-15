@@ -429,7 +429,7 @@ Forking creates your own copy of the tutorial repository on GitHub.
 
 **Steps:**
 
-1. Go to the tutorial repository: `https://github.com/[instructor-username]/ai-dev-workflow-tutorial`
+1. Go to the tutorial repository: [github.com/LMU-ISBA/ai-dev-workflow-tutorial](https://github.com/LMU-ISBA/ai-dev-workflow-tutorial)
 2. Click the **Fork** button in the upper right
 3. Select your GitHub account as the destination
 4. Wait for the fork to complete
