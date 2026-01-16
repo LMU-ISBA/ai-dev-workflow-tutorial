@@ -465,7 +465,7 @@ After completing the first issue, save your work and update Jira to show evidenc
 >
 > **What is a push?** A push uploads your commits to GitHub (the cloud). Until you push, your commits only exist on your computer. Pushing ensures your work is backed up and visible to others.
 >
-> **Best practice:** Commit frequently at meaningful moments — like after completing a feature or fixing a bug. This way you never lose much progress, and each commit tells a clear story of what changed.
+> **Best practice:** Commit frequently at meaningful moments — like after implementing a Jira issue, completing a feature, or fixing a bug. This way you never lose much progress, and each commit tells a clear story of what changed.
 
 **Steps:**
 
