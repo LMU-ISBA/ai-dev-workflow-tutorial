@@ -99,7 +99,8 @@ One team member creates the Jira project, then invites the rest of the team.
    2. Select **Access**
    3. Click **Add people**
    4. Enter team members' email addresses (the ones they used for Atlassian)
-   5. Set their role to **Member**
+   5. Also add `gregory.lontok@lmu.edu` (your instructor)
+   6. Set their role to **Member**
 
 - [ ] **Connect Claude Code to your new Jira project**
   - Each team member must connect the Atlassian MCP to the new project
