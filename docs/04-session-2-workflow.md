@@ -441,29 +441,16 @@ Now use Claude Code to build the dashboard. This step will create multiple files
 
 **Test the dashboard:**
 
-In the terminal (not Claude Code), run:
-```bash
-streamlit run app.py
-```
+When the implementation completes successfully, Claude will show a summary with instructions on how to run the app. Follow those instructions to test your dashboard.
 
-(Replace `app.py` with wherever Claude placed the dashboard file)
-
-**What you should see:**
-
-1. In the terminal, Streamlit shows:
-   ```
-   You can now view your Streamlit app in your browser.
-
-   Local URL: http://localhost:8501
-   ```
-
-2. Your browser should open automatically. If it doesn't, open http://localhost:8501 manually.
-
-3. The dashboard should display your KPIs and charts.
+Typically this involves:
+1. Activating the virtual environment
+2. Running `streamlit run app.py` (or similar command)
+3. Opening http://localhost:8501 in your browser
 
 **To stop the dashboard:** Press `Ctrl+C` in the terminal.
 
-**Checkpoint:** The dashboard runs and displays KPIs and charts.
+**Checkpoint:** The dashboard runs and displays your data.
 
 ---
 
