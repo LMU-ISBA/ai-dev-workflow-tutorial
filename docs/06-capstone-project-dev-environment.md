@@ -204,6 +204,12 @@ Follow the same spec-kit workflow you learned in the tutorial:
 │  5. Jira Issues     → Create issues from tasks              │
 │         ↓                                                   │
 │  6. Implement       → Build with /speckit.implement         │
+│         ↓                                                   │
+│  7. Commit & Push   → Save and share your work              │
+│         ↓                                                   │
+│  8. Update Jira     → Add evidence, move to Done            │
+│                                                             │
+│  (Repeat 6-8 for each issue)                                │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -242,7 +248,18 @@ Follow the same spec-kit workflow you learned in the tutorial:
    Implement [ISSUE-KEY] and move it to In Progress in Jira.
    ```
 
-> **Remember:** After completing each issue, commit, push, and update Jira with evidence (implementation summary, commit hash, branch, GitHub link).
+7. **Commit and push** — After completing the implementation:
+   ```
+   Commit my changes for [ISSUE-KEY] and push to GitHub.
+   ```
+
+8. **Update Jira** — Add evidence and mark the issue complete:
+   ```
+   Update [ISSUE-KEY] in Jira with a comment summarizing what was implemented,
+   the commit hash, branch name, and GitHub link. Move it to Done.
+   ```
+
+Repeat steps 6-8 for each issue.
 
 ---
 
