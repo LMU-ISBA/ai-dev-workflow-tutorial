@@ -241,6 +241,10 @@ The specification refines the PRD (Product Requirements Document — the documen
 >
 > This is an example of **context engineering** — the practice of giving AI the right information to get better results. The more relevant context you provide, the more accurate and useful Claude's responses will be.
 
+> **What to include in your prompt:**
+>
+> Use `/speckit.specify` to describe **what** you want to build and **why**. Focus on requirements and user needs, not the tech stack — that comes later in the planning phase.
+
 **Steps:**
 
 1. In Claude Code, run:
