@@ -96,48 +96,41 @@ claude --version
 
 1. Open Cursor and navigate to your tutorial project
 2. Use the existing terminal, or open a new one (**Terminal** → **New Terminal**)
-3. Run the following command:
+3. **If Claude Code is currently running**, type `/exit` to quit first. You need to add the MCP server before starting Claude Code.
+4. Run the following command to add the Atlassian MCP server:
 
    ```bash
    claude mcp add --transport sse atlassian https://mcp.atlassian.com/v1/sse
    ```
 
-   (The `--transport sse` part specifies how Claude communicates with Atlassian's server — you don't need to understand the technical details, just include it as shown.)
+   You'll see a message confirming the server was added to your config.
 
-4. A browser window will open for authentication
-5. Log in with your Atlassian account
-6. Authorize Claude Code to access your Jira workspace
-7. Return to the terminal
+5. Start Claude Code:
+   ```bash
+   claude
+   ```
 
-**Verify the connection:**
+6. Verify the server is registered by typing:
+   ```
+   /mcp
+   ```
+   You should see `atlassian` listed.
 
-```bash
-claude
-```
+7. Test the connection by asking:
+   ```
+   What Jira projects do I have access to?
+   ```
 
-Once in the Claude Code session, type:
+8. A browser window will open for authentication:
+   - Log in with your Atlassian account
+   - Authorize Claude Code to access your Jira workspace
+   - Return to the terminal
 
-```
-/mcp
-```
-
-You should see `atlassian` listed as an available MCP server.
-
-**Test the connection:**
-
-In the Claude Code session, ask:
-
-```
-What Jira projects do I have access to?
-```
-
-Claude should be able to list your ECOM project.
-
-Type `/exit` to leave the Claude Code session for now.
+9. Claude should now list your ECOM project.
 
 **Checkpoint:** Claude Code can see your Jira workspace and ECOM project.
 
-**Note:** You may need to re-authenticate occasionally. If Claude reports it cannot access Jira, run the `claude mcp add` command again.
+**Note:** You may need to re-authenticate occasionally. If Claude reports it cannot access Jira, exit Claude Code and run the `claude mcp add` command again, then restart Claude Code.
 
 ---
 
