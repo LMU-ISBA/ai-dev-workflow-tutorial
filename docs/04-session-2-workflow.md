@@ -550,6 +550,8 @@ Now repeat the cycle for each remaining Jira issue:
 
 3. **Test your changes** — follow Claude's instructions to verify the implementation works.
 
+   > **Review the code:** Take a moment to look at what Claude changed. For this project, most edits will be in `app.py`. Ask Claude to explain anything you don't understand.
+
 4. **Commit, push, and update Jira** (same as section 4.2):
    ```
    Commit my changes for ECOM-2 and push to GitHub.
