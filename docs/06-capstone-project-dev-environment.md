@@ -13,11 +13,12 @@ This guide walks you through setting up your capstone project using the same wor
 3. [Update Your PRD](#3-update-your-prd)
 4. [Spec-Kit Workflow for Capstone](#4-spec-kit-workflow-for-capstone)
 5. [Team Workflow](#5-team-workflow)
-6. [Best Practices for Capstone Success](#6-best-practices-for-capstone-success)
-7. [Common Capstone Patterns](#7-common-capstone-patterns)
-8. [Capstone Resources](#8-capstone-resources)
-9. [Final Reminders](#9-final-reminders)
-10. [Quick Reference Card](#10-quick-reference-card)
+6. [What to Submit](#6-what-to-submit)
+7. [Best Practices for Capstone Success](#7-best-practices-for-capstone-success)
+8. [Common Capstone Patterns](#8-common-capstone-patterns)
+9. [Capstone Resources](#9-capstone-resources)
+10. [Final Reminders](#10-final-reminders)
+11. [Quick Reference Card](#11-quick-reference-card)
 
 ---
 
@@ -313,7 +314,27 @@ When multiple people work on the same codebase, coordination is key:
 
 ---
 
-## 6. Best Practices for Capstone Success
+## 6. What to Submit
+
+Your capstone project will have multiple submission checkpoints throughout the semester. For each checkpoint, submit the following to Brightspace:
+
+1. **GitHub repository link** — Your team's repo URL (e.g., `https://github.com/team/capstone-project`)
+
+2. **Jira board screenshot** — Screenshot of your Jira board showing:
+   - Issues in various states (To Do, In Progress, Done)
+   - Issues assigned to team members
+
+3. **Completed Jira issue screenshot(s)** — For each completed issue, show:
+   - Issue status is "Done"
+   - Comment with implementation summary, commit hash, branch name, and GitHub link
+
+4. **Deployed application link** (when applicable) — Your live application URL
+
+> **Tip:** Keep your Jira board and GitHub repository updated as you work. This makes submission easy — you'll just need to take screenshots of work you've already documented.
+
+---
+
+## 7. Best Practices for Capstone Success
 
 ### Use Branches Consistently
 
@@ -357,7 +378,7 @@ Claude Code is most helpful when you:
 
 ---
 
-## 7. Common Capstone Patterns
+## 8. Common Capstone Patterns
 
 ### Working on a Jira Issue
 
@@ -434,7 +455,7 @@ Claude can read your code and provide specific solutions.
 
 ---
 
-## 8. Capstone Resources
+## 9. Capstone Resources
 
 ### Documentation to Create
 
@@ -478,7 +499,7 @@ Help me deploy my [Flask/React/etc.] app. What are my options?
 
 ---
 
-## 9. Final Reminders
+## 10. Final Reminders
 
 1. **Start with the PRD** — Know what you are building before coding
 
@@ -496,7 +517,7 @@ Help me deploy my [Flask/React/etc.] app. What are my options?
 
 ---
 
-## 10. Quick Reference Card
+## 11. Quick Reference Card
 
 **With Claude Code (recommended):**
 ```
