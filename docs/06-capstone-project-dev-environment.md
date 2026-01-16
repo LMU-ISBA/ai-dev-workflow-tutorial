@@ -131,7 +131,7 @@ One team member creates the Jira project, then invites the rest of the team.
 
 In the tutorial, you used a provided PRD. For your capstone, you'll revise the PRD you submitted last semester.
 
-**Copy your existing PRD** to the `prd/` folder in your repo. This gives Claude Code access to your current requirements.
+**Copy your existing PRD** to the `prd/` folder in your repo. This gives Claude Code access to your current requirements, and you'll pass it to the `/speckit.specify` command later to generate your technical specification.
 
 ### Organize Your Notes
 
