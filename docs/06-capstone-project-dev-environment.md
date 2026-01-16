@@ -322,11 +322,7 @@ When multiple people work on the same codebase, coordination is key:
 
 1. **GitHub repository link** — Your team's repo URL (e.g., `https://github.com/team/capstone-project`). Make sure `lontok` is added as a collaborator.
 
-2. **Jira board screenshot** — Screenshot of your Jira board showing:
-   - Your project name and key
-   - The board columns (To Do, In Progress, Done)
-
-3. **PRD file screenshot** — Screenshot showing your PRD file exists in the `prd/` folder of your repository
+2. **Jira project link** — Your Jira project URL (e.g., `https://yourteam.atlassian.net/jira/software/projects/PROJ/board`). Make sure `gregory.lontok@lmu.edu` is added as a team member.
 
 ---
 
