@@ -38,6 +38,7 @@ Use this checklist when setting up your actual capstone project. Each team membe
 - [ ] **Create a new GitHub repository** for your capstone
   - One team member creates the repo
   - Others are added as collaborators (Settings → Collaborators)
+  - Add `lontok` as a collaborator (your instructor)
   - Choose a clear, descriptive name (e.g., `capstone-inventory-system`)
 
 - [ ] **Initialize the repository** with:
