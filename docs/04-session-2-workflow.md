@@ -26,9 +26,9 @@ This session covers the complete development workflow: from connecting Claude Co
   - [5.2 Deploy to Streamlit Cloud](#52-deploy-to-streamlit-cloud)
   - [5.3 Update Jira with Deployment Evidence](#53-update-jira-with-deployment-evidence)
 - [6. Session 2 Verification](#6-session-2-verification)
-- [The Complete Workflow](#the-complete-workflow)
-- [What to Submit](#what-to-submit)
-- [What's Next](#whats-next)
+- [7. The Complete Workflow](#7-the-complete-workflow)
+- [8. What to Submit](#8-what-to-submit)
+- [9. What's Next](#9-whats-next)
 
 ---
 
@@ -719,7 +719,7 @@ Verify everything is complete:
 
 ---
 
-## The Complete Workflow
+## 7. The Complete Workflow
 
 Congratulations! You have completed the full workflow:
 
@@ -748,7 +748,7 @@ This is the workflow you will use for your capstone project.
 
 ---
 
-## What to Submit
+## 8. What to Submit
 
 Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
 
@@ -767,6 +767,6 @@ Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assig
 
 ---
 
-## What's Next
+## 9. What's Next
 
 Continue to [Capstone Project Dev Environment](06-capstone-project-dev-environment.md) to set up your capstone project.
