@@ -453,7 +453,7 @@ Cloning downloads the repository to your computer. Cursor has a built-in feature
 3. Copy the URL (it looks like `https://github.com/[your-username]/ai-dev-workflow-tutorial.git`)
 4. Open Cursor
 5. Go to **File** → **New Window**
-6. In the new window, click **Clone Repository** (or press `Ctrl+Shift+P` and type "Clone")
+6. In the new window, click **Clone Repo** (or press `Ctrl+Shift+P` and type "Clone")
 7. Paste the repository URL you copied from GitHub
 8. Choose a location to save the project:
    - **Recommended:** Create a `GitHub` folder in your home directory (e.g., `~/GitHub` on macOS or `C:\Users\YourName\GitHub` on Windows) to keep all your GitHub repositories organized in one place
