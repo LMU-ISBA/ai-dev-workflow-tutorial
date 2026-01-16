@@ -499,9 +499,11 @@ After completing the first issue, save your work and update Jira to show evidenc
 3. Update Jira with evidence of completion:
    ```
    Update ECOM-1 in Jira:
-   - Add a comment with the commit hash and GitHub link
+   - Add a comment summarizing what was implemented, the commit hash, branch name, and GitHub link
    - Move the issue to Done
    ```
+
+   This creates a record of your work — helpful for tracking progress and for anyone reviewing the project later.
 
 4. Verify in Jira:
    - Open ECOM-1 in your browser
