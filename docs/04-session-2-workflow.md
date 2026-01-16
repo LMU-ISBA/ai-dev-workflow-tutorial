@@ -156,6 +156,12 @@ specify init . --ai claude
 
 You may see a warning: "Current directory is not empty... Do you want to continue?" — type `y` and press **Enter/Return** to continue. This is expected because you cloned a repository that already has files.
 
+When asked to "Choose script type", use the arrow keys to select:
+- **macOS:** `sh` (POSIX Shell)
+- **Windows:** `ps` (PowerShell)
+
+Then press **Enter/Return** to confirm.
+
 This creates the necessary configuration files for spec-kit to work with Claude Code, including the slash commands you will use in the following steps.
 
 **Checkpoint:** Verify the initialization succeeded:
