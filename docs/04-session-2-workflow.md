@@ -433,6 +433,8 @@ Now use Claude Code to build the dashboard. This step will create multiple files
    Implement ECOM-1 and move it to In Progress in Jira.
    ```
 
+   *Replace `ECOM-1` with the issue Claude recommended in step 1.*
+
 3. Claude will automatically use your tasks file to:
    - Analyze the CSV data structure
    - Create the dashboard code
