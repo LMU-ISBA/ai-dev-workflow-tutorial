@@ -326,6 +326,12 @@ When multiple people work on the same codebase, coordination is key:
 2. **Jira project link** — Your Jira project URL (e.g., `https://yourteam.atlassian.net/jira/software/projects/PROJ/board`).
    Make sure `gregory.lontok@lmu.edu` is added as a team member.
 
+**Your repository must also contain:**
+
+- **Updated PRD** in the `prd/` folder — This is a graded deliverable. To receive credit for the PRD assignment, your updated PRD must be in the repository.
+
+- **Notes directory** with evidence of stakeholder interviews — As described in [Section 3: Update Your PRD](#3-update-your-prd), create a `notes/` folder containing meeting notes, transcripts, or summaries. To receive credit for the Stakeholder assignment, this evidence must be in your repository.
+
 ---
 
 ## 7. Best Practices for Capstone Success
