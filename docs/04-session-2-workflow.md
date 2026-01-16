@@ -301,7 +301,11 @@ The plan outlines how you will build the specification technically.
    - Component structure
    - Data flow
 
-**Checkpoint:** An implementation plan document exists with clear technical direction.
+3. Preview the generated plan:
+   - In Cursor's file explorer, navigate to `specs/001-sales-dashboard/`
+   - Right-click `plan.md` and select **Open Preview**
+
+**Checkpoint:** An implementation plan exists at `specs/001-sales-dashboard/plan.md` with clear technical direction.
 
 ---
 
