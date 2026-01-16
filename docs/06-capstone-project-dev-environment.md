@@ -321,8 +321,7 @@ When multiple people work on the same codebase, coordination is key:
 
 1. Create a feature branch from main
 2. Do your work on the branch
-3. Create a PR when ready
-4. Merge after review
+3. Merge to main when complete
 
 This prevents conflicts and keeps main stable.
 
@@ -345,7 +344,6 @@ This keeps the whole team informed and creates traceability.
 
 - **Daily standups** — What did you do? What will you do? Any blockers?
 - **Slack/Teams** — Quick questions and updates
-- **PR comments** — Technical discussions about code
 
 ### Use Claude Code Effectively
 
@@ -399,7 +397,10 @@ git add .
 git commit -m "PROJ-123: add user dashboard with recent activity"
 git push -u origin feature/PROJ-123-add-user-dashboard
 
-# 5. Create PR on GitHub
+# 5. Merge to main
+git checkout main
+git merge feature/PROJ-123-add-user-dashboard
+git push
 ```
 
 </details>
@@ -464,7 +465,7 @@ Claude can read your code and provide specific solutions.
 | Tool | Purpose |
 |------|---------|
 | **GitHub Projects** | Kanban board integrated with GitHub |
-| **GitHub Actions** | Automated testing on every PR |
+| **GitHub Actions** | Automated testing on every push |
 | **Figma** | UI/UX design and prototyping |
 | **Notion** | Team wiki and documentation |
 
