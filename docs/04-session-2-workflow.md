@@ -170,11 +170,9 @@ This creates the necessary configuration files for spec-kit to work with Claude 
 2. A `.specify/` directory should now exist in your project
 3. A `.claude/commands/` directory should be created with the spec-kit slash commands
 
-To verify, run in the terminal:
-```bash
-ls -la .specify/
-ls -la .claude/commands/
-```
+To verify, either:
+- **In the file explorer:** Expand the `.specify/` and `.claude/commands/` folders in Cursor's left sidebar
+- **In the terminal:** Run `ls -la .specify/` and `ls -la .claude/commands/`
 
 You should see files like `speckit.constitution.md`, `speckit.specify.md`, etc. in the `.claude/commands/` directory.
 
