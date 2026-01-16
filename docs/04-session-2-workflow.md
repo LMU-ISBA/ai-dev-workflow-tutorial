@@ -136,7 +136,7 @@ claude --version
 
 **Checkpoint:** Claude Code can see your Jira workspace and ECOM project.
 
-**Note:** You may need to re-authenticate occasionally. If Claude reports it cannot access Jira, exit Claude Code and run the `claude mcp add` command again, then restart Claude Code.
+**Note:** You may need to re-authenticate occasionally. If Claude reports it cannot access Jira, run `/mcp` to check the Atlassian server status. If it shows authentication is required, use the arrow keys to select `atlassian` and press **Enter/Return** to re-authenticate.
 
 ---
 
