@@ -471,17 +471,21 @@ Now that you have the repository open in Cursor, let's initialize Claude Code so
 
 **Steps:**
 
-1. Open the terminal in Cursor (Terminal → New Terminal)
-2. Start Claude Code:
+1. Close Cursor's AI panels to free up space for the terminal:
+   - Go to **View** → **Appearance** → **Secondary Side Bar** to hide the right panel
+   - This gives you more room to see Claude Code's output
+
+2. Open the terminal in Cursor (Terminal → New Terminal)
+3. Start Claude Code:
    ```bash
    claude
    ```
-3. Once Claude Code starts, run the `/init` command:
+4. Once Claude Code starts, run the `/init` command:
    ```
    /init
    ```
-4. Claude Code will analyze the repository and create a `CLAUDE.md` file
-5. When it's done, preview `CLAUDE.md` with rendered markdown:
+5. Claude Code will analyze the repository and create a `CLAUDE.md` file
+6. When it's done, preview `CLAUDE.md` with rendered markdown:
    - Click on `CLAUDE.md` in the file explorer to open it
    - Right-click the file tab and select **Open Preview**
    - The preview shows the formatted markdown instead of the raw code
