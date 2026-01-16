@@ -217,9 +217,11 @@ The constitution establishes principles and guidelines for your project. It ensu
 
    Select **Yes** to approve the edit. You can also select option 2 to allow all edits for the rest of this session without being asked each time.
 
-5. Review the generated constitution file.
+5. Preview the generated constitution file:
+   - In Cursor's file explorer (left sidebar), navigate to `.specify/memory/constitution.md`
+   - Right-click the file and select **Open Preview** to view the formatted markdown
 
-**Checkpoint:** A constitution file exists in your project (typically in `.specify/` or a `specs/` directory).
+**Checkpoint:** The constitution file exists at `.specify/memory/constitution.md` and contains the principles you specified.
 
 ---
 
