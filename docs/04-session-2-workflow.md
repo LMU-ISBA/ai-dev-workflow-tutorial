@@ -626,44 +626,24 @@ Now push your code to GitHub so it's saved in the cloud and ready for deployment
 
 Now make your dashboard publicly accessible by deploying it to Streamlit Community Cloud.
 
-### 7.1 Sign Up for Streamlit Cloud
+> **Note:** Spec-kit included deployment in your tasks based on the PRD requirements. However, deploying to Streamlit Cloud requires manual steps through their website — Claude Code can't click through web interfaces for you.
 
 **Steps:**
 
-1. Go to [share.streamlit.io](https://share.streamlit.io)
-2. Click **Continue with GitHub**
-3. Authorize Streamlit to access your GitHub account
-4. Complete any onboarding steps
+1. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub
+2. Click **New app**
+3. Select your repository: `[your-username]/ai-dev-workflow-tutorial`
+4. Set the **Main file path** to `app.py` (or wherever your dashboard file is located)
+5. Click **Deploy** and wait 1-2 minutes
 
-**Checkpoint:** You can access the Streamlit Cloud dashboard.
+Once deployed, you'll get a public URL like:
+```
+https://[your-username]-ai-dev-workflow-tutorial-app-xxxxx.streamlit.app
+```
 
----
-
-### 7.2 Deploy Your App
-
-**Steps:**
-
-1. In Streamlit Cloud, click **New app**
-2. Select your repository: `[your-username]/ai-dev-workflow-tutorial`
-3. Set the **Main file path** to `app.py` (or wherever your dashboard file is located)
-4. Click **Deploy**
-
-5. Wait for the deployment to complete (this may take 1-2 minutes)
-
-6. Once deployed, you'll get a public URL like:
-   ```
-   https://[your-username]-ai-dev-workflow-tutorial-app-xxxxx.streamlit.app
-   ```
+Copy this URL and share it! Anyone with the link can view your dashboard.
 
 **Checkpoint:** Your dashboard is live and accessible via the public URL.
-
----
-
-### 7.3 Share Your Dashboard
-
-Copy the public URL and share it! Anyone with the link can view your dashboard.
-
-**Tip:** You can find your deployed apps anytime at [share.streamlit.io](https://share.streamlit.io).
 
 ---
 
