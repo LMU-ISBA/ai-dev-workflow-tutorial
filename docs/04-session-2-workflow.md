@@ -481,6 +481,10 @@ After completing the first issue, save your work and update Jira to show evidenc
 
    > **What is .gitignore?** This file tells Git which files to ignore. The `venv/` folder contains installed packages that can be recreated from `requirements.txt`, so we don't store it in Git.
 
+   You'll see output like: `Commit: abc123 on branch 001-sales-dashboard`
+
+   > **What is a branch?** A branch is a separate copy of your code where you can make changes without affecting the main version. Spec-kit created a feature branch (like `001-sales-dashboard`) so your work stays isolated until it's ready. This is a professional best practice — you never work directly on `main`. Once your feature is complete and tested, you merge it back to `main` (we'll do this in section 4.4).
+
 2. Push to GitHub:
    ```
    Push my changes to GitHub.
