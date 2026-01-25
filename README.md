@@ -114,6 +114,42 @@ This tutorial is designed for two 100-minute sessions. **Read documents in the n
 | [E-Commerce PRD](prd/ecommerce-analytics.md) | Product requirements document |
 | [Sales Data](data/sales-data.csv) | Sample dataset for the dashboard |
 
+## ShopSmart Sales Dashboard
+
+The tutorial builds an interactive sales analytics dashboard with:
+
+- **KPI Cards**: Total Sales (~$650K) and Total Orders (482)
+- **Sales Trend Chart**: Monthly sales over 12 months
+- **Category Breakdown**: Sales by product category (Electronics, Audio, etc.)
+- **Region Breakdown**: Sales by geographic region (North, South, East, West)
+
+### Dashboard Quickstart
+
+```bash
+# 1. Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the dashboard
+streamlit run dashboard/app.py
+```
+
+The dashboard will open at `http://localhost:8501`.
+
+### Dashboard Files
+
+```
+dashboard/
+├── app.py           # Main Streamlit application
+├── config.py        # Configuration constants
+├── data_loader.py   # CSV loading and aggregation functions
+├── kpi_cards.py     # KPI calculation functions
+└── charts.py        # Plotly chart creation functions
+```
+
 ## Prerequisites
 
 No prior experience with Git, Jira, or AI tools is required. You should have:
