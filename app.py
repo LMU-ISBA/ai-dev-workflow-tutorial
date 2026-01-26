@@ -81,5 +81,33 @@ if df is not None:
             value=f"{total_orders:,}"
         )
 
+    # === Sales Trend Section (ECOM-3: T016-T023) ===
+
+    # T016, T017: Create monthly sales aggregation
+    df["month"] = df["date"].dt.to_period("M")
+    monthly_sales = df.groupby("month")["total_amount"].sum().reset_index()
+    monthly_sales["month"] = monthly_sales["month"].dt.to_timestamp()
+
+    # T018-T022: Create Plotly line chart
+    fig_trend = px.line(
+        monthly_sales,
+        x="month",
+        y="total_amount",
+        title="Sales Trend Over Time",
+        labels={"month": "Month", "total_amount": "Sales Amount ($)"}
+    )
+
+    # T019, T020: Configure axes formatting
+    fig_trend.update_xaxes(tickformat="%b %Y")
+    fig_trend.update_yaxes(tickprefix="$", tickformat=",.0f")
+
+    # T021: Interactive tooltips are included by default in Plotly
+    fig_trend.update_traces(
+        hovertemplate="<b>%{x|%B %Y}</b><br>Sales: $%{y:,.2f}<extra></extra>"
+    )
+
+    # T023: Display chart with full container width
+    st.plotly_chart(fig_trend, use_container_width=True)
+
 else:
     st.warning("No data available. Please check the data file.")

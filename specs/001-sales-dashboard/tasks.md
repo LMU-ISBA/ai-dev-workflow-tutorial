@@ -80,14 +80,14 @@ Single-file Streamlit application at repository root:
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Create monthly_sales aggregation using Pandas groupby on date column in app.py
-- [ ] T017 [US2] Convert date to month period for proper time series grouping in app.py
-- [ ] T018 [US2] Create Plotly line chart with px.line() for sales trend in app.py
-- [ ] T019 [US2] Configure X-axis as Month with proper date formatting in app.py
-- [ ] T020 [US2] Configure Y-axis as Sales Amount with currency formatting in app.py
-- [ ] T021 [US2] Add interactive tooltips showing month and exact sales value in app.py
-- [ ] T022 [US2] Add clear chart title "Sales Trend Over Time" in app.py
-- [ ] T023 [US2] Display chart using st.plotly_chart() with use_container_width=True in app.py
+- [x] T016 [US2] Create monthly_sales aggregation using Pandas groupby on date column in app.py
+- [x] T017 [US2] Convert date to month period for proper time series grouping in app.py
+- [x] T018 [US2] Create Plotly line chart with px.line() for sales trend in app.py
+- [x] T019 [US2] Configure X-axis as Month with proper date formatting in app.py
+- [x] T020 [US2] Configure Y-axis as Sales Amount with currency formatting in app.py
+- [x] T021 [US2] Add interactive tooltips showing month and exact sales value in app.py
+- [x] T022 [US2] Add clear chart title "Sales Trend Over Time" in app.py
+- [x] T023 [US2] Display chart using st.plotly_chart() with use_container_width=True in app.py
 
 **Checkpoint**: User Story 2 complete - Line chart displays monthly trends with tooltips
 
