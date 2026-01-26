@@ -61,12 +61,12 @@ Single-file Streamlit application at repository root:
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Calculate total_sales as sum of total_amount column in app.py
-- [ ] T011 [US1] Calculate total_orders as count of order_id column in app.py
-- [ ] T012 [US1] Create KPI display section with st.columns(2) layout in app.py
-- [ ] T013 [US1] Display Total Sales using st.metric() with currency formatting ($X,XXX,XXX.XX) in app.py
-- [ ] T014 [US1] Display Total Orders using st.metric() with number formatting in app.py
-- [ ] T015 [US1] Verify KPI values match expected data (Total Sales ~$650k-$700k, Total Orders 482) in app.py
+- [x] T010 [US1] Calculate total_sales as sum of total_amount column in app.py
+- [x] T011 [US1] Calculate total_orders as count of order_id column in app.py
+- [x] T012 [US1] Create KPI display section with st.columns(2) layout in app.py
+- [x] T013 [US1] Display Total Sales using st.metric() with currency formatting ($X,XXX,XXX.XX) in app.py
+- [x] T014 [US1] Display Total Orders using st.metric() with number formatting in app.py
+- [x] T015 [US1] Verify KPI values match expected data (Total Sales ~$650k-$700k, Total Orders 482) in app.py
 
 **Checkpoint**: User Story 1 complete - KPIs display correctly and match data source calculations
 

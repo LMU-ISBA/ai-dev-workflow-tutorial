@@ -54,8 +54,32 @@ def load_data() -> pd.DataFrame | None:
 # Load the data
 df = load_data()
 
-# Display data status (T009 - temporary verification)
+# Display dashboard content only if data is available
 if df is not None:
-    st.success(f"Data loaded successfully: {df.shape[0]:,} rows, {df.shape[1]} columns")
+    # === KPI Section (ECOM-2: T010-T015) ===
+
+    # T010: Calculate total sales
+    total_sales = df["total_amount"].sum()
+
+    # T011: Calculate total orders
+    total_orders = df["order_id"].count()
+
+    # T012: Create KPI display with two columns
+    kpi_col1, kpi_col2 = st.columns(2)
+
+    # T013: Display Total Sales with currency formatting
+    with kpi_col1:
+        st.metric(
+            label="Total Sales",
+            value=f"${total_sales:,.2f}"
+        )
+
+    # T014: Display Total Orders with number formatting
+    with kpi_col2:
+        st.metric(
+            label="Total Orders",
+            value=f"{total_orders:,}"
+        )
+
 else:
     st.warning("No data available. Please check the data file.")
