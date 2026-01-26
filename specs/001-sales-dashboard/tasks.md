@@ -120,12 +120,12 @@ Single-file Streamlit application at repository root:
 
 ### Implementation for User Story 4
 
-- [ ] T030 [US4] Create region_sales aggregation using Pandas groupby on region column in app.py
-- [ ] T031 [US4] Sort region aggregation by total sales descending in app.py
-- [ ] T032 [US4] Create Plotly horizontal bar chart with px.bar() for region breakdown in app.py
-- [ ] T033 [US4] Configure chart with region on Y-axis and sales on X-axis in app.py
-- [ ] T034 [US4] Add interactive tooltips showing region name and exact sales value in app.py
-- [ ] T035 [US4] Add clear chart title "Sales by Region" in app.py
+- [x] T030 [US4] Create region_sales aggregation using Pandas groupby on region column in app.py
+- [x] T031 [US4] Sort region aggregation by total sales descending in app.py
+- [x] T032 [US4] Create Plotly horizontal bar chart with px.bar() for region breakdown in app.py
+- [x] T033 [US4] Configure chart with region on Y-axis and sales on X-axis in app.py
+- [x] T034 [US4] Add interactive tooltips showing region name and exact sales value in app.py
+- [x] T035 [US4] Add clear chart title "Sales by Region" in app.py
 
 **Checkpoint**: User Story 4 complete - Region bar chart displays with correct sorting and tooltips
 

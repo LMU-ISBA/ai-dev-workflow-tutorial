@@ -137,5 +137,33 @@ if df is not None:
 
     st.plotly_chart(fig_category, use_container_width=True)
 
+    # === Sales by Region Section (ECOM-5: T030-T035) ===
+
+    # T030: Create region sales aggregation
+    region_sales = df.groupby("region")["total_amount"].sum().reset_index()
+
+    # T031: Sort by total sales descending
+    region_sales = region_sales.sort_values("total_amount", ascending=True)
+
+    # T032, T033, T035: Create Plotly horizontal bar chart
+    fig_region = px.bar(
+        region_sales,
+        x="total_amount",
+        y="region",
+        orientation="h",
+        title="Sales by Region",
+        labels={"total_amount": "Sales Amount ($)", "region": "Region"}
+    )
+
+    # T034: Add interactive tooltips
+    fig_region.update_traces(
+        hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>"
+    )
+
+    # Configure axis formatting
+    fig_region.update_xaxes(tickprefix="$", tickformat=",.0f")
+
+    st.plotly_chart(fig_region, use_container_width=True)
+
 else:
     st.warning("No data available. Please check the data file.")
