@@ -109,5 +109,33 @@ if df is not None:
     # T023: Display chart with full container width
     st.plotly_chart(fig_trend, use_container_width=True)
 
+    # === Sales by Category Section (ECOM-4: T024-T029) ===
+
+    # T024: Create category sales aggregation
+    category_sales = df.groupby("category")["total_amount"].sum().reset_index()
+
+    # T025: Sort by total sales descending
+    category_sales = category_sales.sort_values("total_amount", ascending=True)
+
+    # T026, T027, T029: Create Plotly horizontal bar chart
+    fig_category = px.bar(
+        category_sales,
+        x="total_amount",
+        y="category",
+        orientation="h",
+        title="Sales by Product Category",
+        labels={"total_amount": "Sales Amount ($)", "category": "Category"}
+    )
+
+    # T028: Add interactive tooltips
+    fig_category.update_traces(
+        hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>"
+    )
+
+    # Configure axis formatting
+    fig_category.update_xaxes(tickprefix="$", tickformat=",.0f")
+
+    st.plotly_chart(fig_category, use_container_width=True)
+
 else:
     st.warning("No data available. Please check the data file.")

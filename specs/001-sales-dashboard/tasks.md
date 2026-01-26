@@ -101,12 +101,12 @@ Single-file Streamlit application at repository root:
 
 ### Implementation for User Story 3
 
-- [ ] T024 [US3] Create category_sales aggregation using Pandas groupby on category column in app.py
-- [ ] T025 [US3] Sort category aggregation by total sales descending in app.py
-- [ ] T026 [US3] Create Plotly horizontal bar chart with px.bar() for category breakdown in app.py
-- [ ] T027 [US3] Configure chart with category on Y-axis and sales on X-axis in app.py
-- [ ] T028 [US3] Add interactive tooltips showing category name and exact sales value in app.py
-- [ ] T029 [US3] Add clear chart title "Sales by Product Category" in app.py
+- [x] T024 [US3] Create category_sales aggregation using Pandas groupby on category column in app.py
+- [x] T025 [US3] Sort category aggregation by total sales descending in app.py
+- [x] T026 [US3] Create Plotly horizontal bar chart with px.bar() for category breakdown in app.py
+- [x] T027 [US3] Configure chart with category on Y-axis and sales on X-axis in app.py
+- [x] T028 [US3] Add interactive tooltips showing category name and exact sales value in app.py
+- [x] T029 [US3] Add clear chart title "Sales by Product Category" in app.py
 
 **Checkpoint**: User Story 3 complete - Category bar chart displays with correct sorting and tooltips
 
