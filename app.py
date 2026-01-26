@@ -54,9 +54,14 @@ def load_data() -> pd.DataFrame | None:
 # Load the data
 df = load_data()
 
+# T038: Consistent color scheme for all charts
+COLOR_SCHEME = "#1f77b4"  # Plotly default blue
+
 # Display dashboard content only if data is available
 if df is not None:
     # === KPI Section (ECOM-2: T010-T015) ===
+    # T039: Section header
+    st.subheader("Key Performance Indicators")
 
     # T010: Calculate total sales
     total_sales = df["total_amount"].sum()
@@ -81,14 +86,18 @@ if df is not None:
             value=f"{total_orders:,}"
         )
 
+    # T039: Section divider
+    st.divider()
+
     # === Sales Trend Section (ECOM-3: T016-T023) ===
+    st.subheader("Sales Trends")
 
     # T016, T017: Create monthly sales aggregation
     df["month"] = df["date"].dt.to_period("M")
     monthly_sales = df.groupby("month")["total_amount"].sum().reset_index()
     monthly_sales["month"] = monthly_sales["month"].dt.to_timestamp()
 
-    # T018-T022: Create Plotly line chart
+    # T018-T022: Create Plotly line chart with consistent color
     fig_trend = px.line(
         monthly_sales,
         x="month",
@@ -101,69 +110,82 @@ if df is not None:
     fig_trend.update_xaxes(tickformat="%b %Y")
     fig_trend.update_yaxes(tickprefix="$", tickformat=",.0f")
 
-    # T021: Interactive tooltips are included by default in Plotly
+    # T021: Interactive tooltips
     fig_trend.update_traces(
-        hovertemplate="<b>%{x|%B %Y}</b><br>Sales: $%{y:,.2f}<extra></extra>"
+        hovertemplate="<b>%{x|%B %Y}</b><br>Sales: $%{y:,.2f}<extra></extra>",
+        line_color=COLOR_SCHEME
     )
 
     # T023: Display chart with full container width
     st.plotly_chart(fig_trend, use_container_width=True)
 
-    # === Sales by Category Section (ECOM-4: T024-T029) ===
+    # T039: Section divider
+    st.divider()
 
-    # T024: Create category sales aggregation
-    category_sales = df.groupby("category")["total_amount"].sum().reset_index()
+    # === Sales Breakdown Section (ECOM-4, ECOM-5) ===
+    st.subheader("Sales Breakdown")
 
-    # T025: Sort by total sales descending
-    category_sales = category_sales.sort_values("total_amount", ascending=True)
+    # T037: Arrange Category and Region charts side-by-side
+    chart_col1, chart_col2 = st.columns(2)
 
-    # T026, T027, T029: Create Plotly horizontal bar chart
-    fig_category = px.bar(
-        category_sales,
-        x="total_amount",
-        y="category",
-        orientation="h",
-        title="Sales by Product Category",
-        labels={"total_amount": "Sales Amount ($)", "category": "Category"}
-    )
+    # === Sales by Category (ECOM-4: T024-T029) ===
+    with chart_col1:
+        # T024: Create category sales aggregation
+        category_sales = df.groupby("category")["total_amount"].sum().reset_index()
 
-    # T028: Add interactive tooltips
-    fig_category.update_traces(
-        hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>"
-    )
+        # T025: Sort by total sales descending
+        category_sales = category_sales.sort_values("total_amount", ascending=True)
 
-    # Configure axis formatting
-    fig_category.update_xaxes(tickprefix="$", tickformat=",.0f")
+        # T026, T027, T029: Create Plotly horizontal bar chart with consistent color
+        fig_category = px.bar(
+            category_sales,
+            x="total_amount",
+            y="category",
+            orientation="h",
+            title="Sales by Product Category",
+            labels={"total_amount": "Sales Amount ($)", "category": "Category"}
+        )
 
-    st.plotly_chart(fig_category, use_container_width=True)
+        # T028: Add interactive tooltips
+        fig_category.update_traces(
+            hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>",
+            marker_color=COLOR_SCHEME
+        )
 
-    # === Sales by Region Section (ECOM-5: T030-T035) ===
+        # Configure axis formatting
+        fig_category.update_xaxes(tickprefix="$", tickformat=",.0f")
 
-    # T030: Create region sales aggregation
-    region_sales = df.groupby("region")["total_amount"].sum().reset_index()
+        st.plotly_chart(fig_category, use_container_width=True)
 
-    # T031: Sort by total sales descending
-    region_sales = region_sales.sort_values("total_amount", ascending=True)
+    # === Sales by Region (ECOM-5: T030-T035) ===
+    with chart_col2:
+        # T030: Create region sales aggregation
+        region_sales = df.groupby("region")["total_amount"].sum().reset_index()
 
-    # T032, T033, T035: Create Plotly horizontal bar chart
-    fig_region = px.bar(
-        region_sales,
-        x="total_amount",
-        y="region",
-        orientation="h",
-        title="Sales by Region",
-        labels={"total_amount": "Sales Amount ($)", "region": "Region"}
-    )
+        # T031: Sort by total sales descending
+        region_sales = region_sales.sort_values("total_amount", ascending=True)
 
-    # T034: Add interactive tooltips
-    fig_region.update_traces(
-        hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>"
-    )
+        # T032, T033, T035: Create Plotly horizontal bar chart with consistent color
+        fig_region = px.bar(
+            region_sales,
+            x="total_amount",
+            y="region",
+            orientation="h",
+            title="Sales by Region",
+            labels={"total_amount": "Sales Amount ($)", "region": "Region"}
+        )
 
-    # Configure axis formatting
-    fig_region.update_xaxes(tickprefix="$", tickformat=",.0f")
+        # T034: Add interactive tooltips
+        fig_region.update_traces(
+            hovertemplate="<b>%{y}</b><br>Sales: $%{x:,.2f}<extra></extra>",
+            marker_color=COLOR_SCHEME
+        )
 
-    st.plotly_chart(fig_region, use_container_width=True)
+        # Configure axis formatting
+        fig_region.update_xaxes(tickprefix="$", tickformat=",.0f")
+
+        st.plotly_chart(fig_region, use_container_width=True)
 
 else:
+    # T040: Edge case - empty data shows appropriate message
     st.warning("No data available. Please check the data file.")

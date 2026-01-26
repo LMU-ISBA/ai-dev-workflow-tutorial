@@ -135,12 +135,12 @@ Single-file Streamlit application at repository root:
 
 **Purpose**: Professional styling, layout refinement, and deployment preparation
 
-- [ ] T036 Add dashboard main title "ShopSmart Sales Dashboard" using st.title() in app.py
-- [ ] T037 Arrange Category and Region charts side-by-side using st.columns(2) in app.py
-- [ ] T038 Add consistent color scheme across all Plotly charts in app.py
-- [ ] T039 Add section headers/dividers between KPIs, trend chart, and breakdown charts in app.py
-- [ ] T040 Verify all edge cases: empty data shows appropriate messages in app.py
-- [ ] T041 Update README.md with setup instructions and feature description in README.md
+- [x] T036 Add dashboard main title "ShopSmart Sales Dashboard" using st.title() in app.py
+- [x] T037 Arrange Category and Region charts side-by-side using st.columns(2) in app.py
+- [x] T038 Add consistent color scheme across all Plotly charts in app.py
+- [x] T039 Add section headers/dividers between KPIs, trend chart, and breakdown charts in app.py
+- [x] T040 Verify all edge cases: empty data shows appropriate messages in app.py
+- [x] T041 Update README.md with setup instructions and feature description in README.md
 - [ ] T042 Run quickstart.md verification checklist manually
 - [ ] T043 Deploy to Streamlit Community Cloud and verify public URL access
 
