@@ -1,0 +1,61 @@
+"""
+ShopSmart Sales Dashboard
+
+An interactive analytics dashboard for e-commerce sales data.
+"""
+
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+from pathlib import Path
+
+
+# Page configuration
+st.set_page_config(
+    page_title="ShopSmart Sales Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
+
+# Main title
+st.title("ShopSmart Sales Dashboard")
+
+
+# Data loading function with caching for performance (T005, T006, T007, T008)
+@st.cache_data
+def load_data() -> pd.DataFrame | None:
+    """
+    Load sales data from CSV file.
+
+    Returns:
+        DataFrame with sales data, or None if loading fails.
+    """
+    data_path = Path("data/sales-data.csv")
+
+    try:
+        # Load CSV with date parsing
+        df = pd.read_csv(data_path, parse_dates=["date"])
+
+        # Validate: check if DataFrame is empty
+        if df.empty:
+            return None
+
+        return df
+
+    except FileNotFoundError:
+        st.error(f"Data file not found: {data_path}")
+        st.info("Please ensure 'data/sales-data.csv' exists in the project directory.")
+        return None
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
+        return None
+
+
+# Load the data
+df = load_data()
+
+# Display data status (T009 - temporary verification)
+if df is not None:
+    st.success(f"Data loaded successfully: {df.shape[0]:,} rows, {df.shape[1]} columns")
+else:
+    st.warning("No data available. Please check the data file.")
