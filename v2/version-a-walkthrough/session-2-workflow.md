@@ -64,7 +64,15 @@ This integration matters because it creates **traceability** -- the ability to l
    claude
    ```
 
-4. **Verify the server is registered.** Inside Claude Code, run:
+4. **Set the output style to explanatory.** Inside Claude Code, run:
+
+   ```
+   /output-style explanatory
+   ```
+
+   By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it is doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you are still learning the workflow.
+
+5. **Verify the server is registered.** Inside Claude Code, run:
 
    ```
    /mcp
@@ -72,11 +80,11 @@ This integration matters because it creates **traceability** -- the ability to l
 
    You should see `atlassian` in the list of MCP servers. It will likely show that authentication is required.
 
-5. **Authenticate.** Use the **arrow keys** to select `atlassian`, then press **Enter**. A browser window will open.
+6. **Authenticate.** Use the **arrow keys** to select `atlassian`, then press **Enter**. A browser window will open.
 
-6. **Complete browser authentication.** Log in with your Atlassian account (the same one with your ECOM project), authorize Claude Code to access your workspace, and return to the terminal.
+7. **Complete browser authentication.** Log in with your Atlassian account (the same one with your ECOM project), authorize Claude Code to access your workspace, and return to the terminal.
 
-7. **Test the connection.** Ask Claude:
+8. **Test the connection.** Ask Claude:
 
    ```
    What Jira projects do I have access to?

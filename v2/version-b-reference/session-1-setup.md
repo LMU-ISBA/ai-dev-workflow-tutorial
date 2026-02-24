@@ -14,15 +14,15 @@ Tools:     Cursor, Git, Python 3.11+, uv, spec-kit, Claude Code
 Repo:      Fork and clone the tutorial repository, initialize Claude Code
 ```
 
-**See the finished product:** Before diving in, take a look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the exact workflow you are about to learn. By the end of this tutorial, you will have built and deployed your own version.
+**See the finished product:** Before you start, look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you are about to learn. By the end of this tutorial, you will have built and deployed your own version.
 
 ---
 
 ## Why This Setup Matters
 
-Setting up your own development environment is one of the most underrated skills in technology. It signals initiative, problem-solving ability, and self-sufficiency -- qualities that employers and teammates notice immediately. Many people can write code in an environment someone else prepared for them. Far fewer can configure the environment themselves, debug installation issues, and get a full toolchain working from scratch. That ability is high signal -- it tells your team and your employer that you can own a problem end to end.
+Setting up your own development environment is a skill most people skip. They wait for someone else to do it for them. When you can configure a toolchain yourself, debug installation problems, and get everything running from scratch, teammates and managers notice. It tells them you can own a problem from start to finish.
 
-Beyond the signal, a well-configured environment is crucial for project success. Every technology company --- from two-person startups to Fortune 500 enterprises --- uses some variation of the workflow you are about to configure. The tools differ slightly from team to team, but the pattern is universal:
+A well-configured environment also saves you time. Every technology company uses some variation of the workflow you are about to configure. The tools differ slightly from team to team, but the pattern is the same:
 
 ```
 Requirements  -->  Code  -->  Test  -->  Deploy  -->  Monitor
@@ -30,11 +30,11 @@ Requirements  -->  Code  -->  Test  -->  Deploy  -->  Monitor
 
 Someone defines what needs to be built. Developers write code to meet those requirements. The code is tracked, reviewed, and deployed so users can access it. This cycle repeats continuously.
 
-You are setting up the exact same pipeline, end to end, in a single session. By the time you finish today, you will have a professional development environment that mirrors what you would find on your first day at a technology company, a consulting firm, or a data science team. This is also the environment you will use for your capstone project, so getting it right now saves you time later.
+You are setting up that same pipeline, end to end, in a single session. When you finish today, you will have a development environment that looks like what you would find on your first day at a technology job. This is also the environment you will use for your capstone project, so getting it right now saves you time later.
 
 ### Your Competitive Advantage
 
-Professionals who can **build and deploy** their own work are rare and highly valued. Most analysts can create a model in a notebook. Far fewer can turn that model into a live dashboard, track the work in a project management system, and push the code to a shared repository. That gap is your opportunity -- in your capstone project, in job interviews, and on the job.
+Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity -- in your capstone and in job interviews.
 
 ### What You Will Be Able to Do After This Session
 
@@ -52,7 +52,7 @@ Professionals who can **build and deploy** their own work are rare and highly va
 | Hours debugging with print statements | AI analyzes errors and suggests fixes |
 | Write boilerplate code manually | AI generates scaffolding; you focus on business logic |
 | Learn frameworks by reading documentation | AI teaches you as you build |
-| Work alone, limited by your own knowledge | AI as a knowledgeable partner available at all times |
+| Work alone, limited by your own knowledge | AI as a second perspective when you get stuck |
 
 The AI-assisted approach does not replace understanding. It accelerates it. You still need to know what you are building and why. The AI handles much of the how.
 
@@ -84,9 +84,9 @@ The following diagram shows every tool you will install today and how they conne
 - **GitHub** stores your code in the cloud so it is safe, shareable, and versioned.
 - **Git** is the version control engine that tracks every change you make.
 - **Jira** manages tasks and requirements so you always know what to work on and why.
-- **Cursor** is your code editor --- the application where you write and organize files.
+- **Cursor** is your code editor, where you write and organize files.
 - **Claude Code** is an AI assistant that runs in your terminal, reads your project, and helps you build.
-- **spec-kit** turns requirements into structured plans before you write a single line of code.
+- **spec-kit** turns requirements into structured plans before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you will build in Session 2.
 
 ---
@@ -95,7 +95,7 @@ The following diagram shows every tool you will install today and how they conne
 
 ### 1.1 GitHub Account
 
-> **Why GitHub?** GitHub hosts over 100 million developers and is the standard platform for storing and collaborating on code. In your career, you will use it to share analysis code with teammates, collaborate on data pipelines, contribute to open-source projects, and showcase your portfolio. Recruiters and hiring managers actively review GitHub profiles when evaluating candidates.
+> **Why GitHub?** GitHub hosts over 100 million developers and is the standard platform for storing and collaborating on code. In your career, you will use it to share code, collaborate on projects, and build a public portfolio. Recruiters check GitHub profiles.
 
 **Steps:**
 
@@ -108,13 +108,13 @@ The following diagram shows every tool you will install today and how they conne
 
 > **Checkpoint:** You can log into github.com and see your dashboard.
 
-> **Pro Tip:** Your GitHub profile becomes a living portfolio. The projects you build in this tutorial, in your capstone, and on your own will all be visible. A clean, active GitHub profile with well-documented projects signals to employers that you can build, not just analyze. Choose your username carefully --- you will use it for years.
+> **Pro Tip:** Your GitHub profile is a portfolio. The projects you build -- in this tutorial, in your capstone, on your own -- are all visible. A GitHub profile with well-documented projects shows employers you can build, not just analyze. Choose your username carefully. You will use it for years.
 
 ---
 
 ### 1.2 Atlassian (Jira) Account and Project
 
-> **Why Jira?** Over 65,000 companies use Jira to track work. Whether you go into data analytics, consulting, product management, software engineering, or launch your own venture, you will almost certainly encounter Jira or a similar tool. Understanding project management software now gives you immediate credibility in professional settings, helps you coordinate your capstone team, and lets you work effectively on any team from day one.
+> **Why Jira?** Over 65,000 companies use Jira to track work. Whatever role you end up in -- analytics, consulting, product management, engineering -- you will almost certainly encounter Jira or something like it. Learning project management software now helps you coordinate your capstone team and work effectively on any team after graduation.
 
 **Steps:**
 
@@ -141,13 +141,13 @@ The following diagram shows every tool you will install today and how they conne
 
 > **Checkpoint:** You can access your ECOM project at `yourname.atlassian.net` and see the Scrum board with To Do, In Progress, and Done columns.
 
-> **Key Concept: Traceability** --- Every piece of code you write in this tutorial will trace back to a Jira issue. When you commit code, you will include the issue key (like `ECOM-1`) in the commit message. This means anyone --- a teammate, a manager, your advisor, your future self --- can find out *why* code exists, *when* it was added, and *what requirement* it fulfills. This is not academic overhead. This is how professional teams operate, and it is one of the first things interviewers ask about when they evaluate your experience with collaborative workflows. In your capstone, traceability means your team can always answer "why did we build this?" and your advisor can follow your progress without asking for status updates.
+> **Key Concept: Traceability** --- Every piece of code you write in this tutorial will trace back to a Jira issue. When you commit code, you will include the issue key (like `ECOM-1`) in the commit message. This means anyone --- a teammate, a manager, your advisor, your future self --- can find out *why* code exists, *when* it was added, and *what requirement* it fulfills. Professional teams operate this way, and interviewers ask about it when evaluating collaborative experience. In your capstone, traceability means your team can always answer "why did we build this?" and your advisor can follow your progress without asking for status updates.
 
 ---
 
 ### 1.3 Claude Pro Subscription
 
-> **Why Claude Pro?** Claude Code, the AI command-line assistant you will use throughout this tutorial, requires an active Claude Pro (or Max) subscription. The free tier of Claude does not provide access to Claude Code. Think of Claude Pro as your access pass to having an AI development partner in your terminal.
+> **Why Claude Pro?** Claude Code, the AI command-line assistant you will use throughout this tutorial, requires an active Claude Pro (or Max) subscription. The free tier of Claude does not provide access to Claude Code. You need Pro to use the terminal-based AI assistant in this tutorial.
 
 **Steps:**
 
@@ -167,9 +167,9 @@ The following diagram shows every tool you will install today and how they conne
 
 ### Understanding Your Terminal
 
-Before installing any tools, you need to understand the terminal --- the interface where you will run installation commands, interact with Git, and launch Claude Code.
+Before installing any tools, you need to understand the terminal, the interface where you will run installation commands, interact with Git, and launch Claude Code.
 
-> **What is a terminal?** A terminal (also called a command line or CLI) is a text-based interface where you type commands instead of clicking buttons. Every professional developer uses a terminal daily. It might feel unfamiliar at first, but by the end of this tutorial, you will be comfortable with the essential commands. You do not need to memorize everything --- Claude Code itself runs in the terminal and can help you with commands when you need it.
+> **What is a terminal?** A terminal (also called a command line or CLI) is a text-based interface where you type commands instead of clicking buttons. Professional developers use a terminal daily. It might feel unfamiliar at first, but by the end of this tutorial, you will be comfortable with the essential commands. You do not need to memorize everything -- Claude Code itself runs in the terminal and can help you with commands when you need it.
 
 **Opening the terminal in Cursor:**
 
@@ -198,7 +198,7 @@ You can resize the terminal by dragging the divider between it and the editor ar
 - **`pwd`** (print working directory) shows you where you are in the file system. Think of it as "where am I right now?"
 - **`ls`** (list) shows the files and folders in your current directory. On Windows, use `dir` instead.
 - **`cd foldername`** (change directory) moves you into a folder. `cd ..` moves you up one level.
-- **Tab completion** is your best friend. Start typing a file or folder name, then press Tab --- the terminal will autocomplete it. This saves time and prevents typos.
+- **Tab completion** is your best friend. Start typing a file or folder name, then press Tab. The terminal will autocomplete it. This saves time and prevents typos.
 - **Ctrl+C** stops a running command. If something seems stuck or you made a mistake, press Ctrl+C to cancel.
 - **Arrow keys**: Press the up arrow to recall previous commands. This is faster than retyping them.
 
@@ -210,7 +210,7 @@ You will see reminders about this throughout the installation steps. If a tool d
 
 ### 2.1 Cursor
 
-> **What is Cursor?** Cursor is an AI-powered code editor built on the same foundation as Visual Studio Code (VS Code), the most popular code editor in the world. If you have used VS Code before, Cursor will feel immediately familiar. If you have not, think of it as a sophisticated text editor designed for writing code, with built-in AI capabilities and an integrated terminal. We use Cursor over plain VS Code because it has native Claude Code integration and AI features designed for the kind of workflow you are learning.
+> **What is Cursor?** Cursor is an AI-powered code editor built on Visual Studio Code (VS Code). If you have used VS Code before, Cursor will feel familiar. If you have not, it is a text editor designed for writing code, with built-in AI capabilities and an integrated terminal. We use Cursor over plain VS Code because it has native Claude Code integration and AI features designed for this workflow.
 
 **Download and install:**
 
@@ -242,7 +242,7 @@ You will see reminders about this throughout the installation steps. If a tool d
 
 ### 2.2 Git
 
-> **What is Git?** Git is **version control** software --- it tracks every change to your files over time. Instead of ending up with `report_v2_final_REAL.xlsx`, Git maintains a clean history of what changed, when it changed, who changed it, and why. It is the foundation of all modern software development and data engineering. Every company you will work at uses Git or something built on top of it.
+> **What is Git?** Git is **version control** software -- it tracks every change to your files over time. Instead of ending up with `report_v2_final_REAL.xlsx`, Git maintains a clean history of what changed, when, who changed it, and why. It is standard in software development and data engineering. Every company you will work at uses Git or something built on top of it.
 
 ```
 Without Git:                    With Git:
@@ -254,7 +254,7 @@ essay_REAL_final.docx           git log shows:
 essay_final_v2_FINAL.docx        v1 --> v2 --> v3 --> current
 ```
 
-With Git, you have one file. The entire history lives inside a hidden `.git` folder. You can go back to any previous version at any time. This is not just convenient --- it is essential when multiple people work on the same codebase, which is the norm in professional settings.
+With Git, you have one file. The entire history lives inside a hidden `.git` folder. You can go back to any previous version at any time. This becomes essential when multiple people work on the same codebase, which is the norm in professional settings.
 
 **Check if Git is already installed:**
 
@@ -290,7 +290,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-> **Why use your GitHub email?** When you make commits, Git stamps them with the name and email you configure here. If you use the same email as your GitHub account, GitHub can link your commits to your profile. This means your contributions show up on your GitHub activity graph and your profile page --- visible to recruiters and collaborators. Use a mismatched email and your commits will appear as if they came from a stranger.
+> **Why use your GitHub email?** When you make commits, Git stamps them with the name and email you configure here. If you use the same email as your GitHub account, GitHub can link your commits to your profile. This means your contributions show up on your GitHub activity graph and your profile page, visible to recruiters and collaborators. Use a mismatched email and your commits will appear as if they came from a stranger.
 
 > **Checkpoint:** `git --version` shows a version number (2.x.x or higher). `git config --list` shows your name and email.
 
@@ -330,7 +330,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 4. Open a **new terminal** (Terminal --> New Terminal).
 5. Verify: `python --version`
 
-> **macOS note --- `python` vs. `python3`:** macOS ships with an older system Python (sometimes Python 2.x) accessible via the `python` command. The installer from python.org places the new version at `python3` to avoid conflicting with the system version. On macOS, always use `python3` unless you have specifically configured otherwise.
+> **macOS note: `python` vs. `python3`.** macOS ships with an older system Python (sometimes Python 2.x) accessible via the `python` command. The installer from python.org places the new version at `python3` to avoid conflicting with the system version. On macOS, always use `python3` unless you have specifically configured otherwise.
 
 > **Checkpoint:** `python3 --version` (macOS) or `python --version` (Windows) shows Python 3.11 or higher.
 
@@ -338,7 +338,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ### 2.4 uv
 
-> **What is uv?** If you have used `pip` to install Python packages before (e.g., `pip install pandas`), uv does the same thing -- but significantly faster and more reliably. Built by Astral, uv resolves dependencies in seconds instead of minutes, avoids common version conflicts that plague pip, and manages virtual environments cleanly. It is rapidly becoming the standard Python package manager in the industry. spec-kit (which you install next) requires uv, but you will likely want to use uv for all your Python projects going forward, including your capstone.
+> **What is uv?** If you have used `pip` to install Python packages before (e.g., `pip install pandas`), uv does the same thing, but faster and with fewer dependency conflicts. Built by Astral, uv resolves dependencies in seconds instead of minutes and manages virtual environments cleanly. It is gaining wide adoption as a pip replacement. spec-kit (which you install next) requires uv, but you will likely want to use uv for all your Python projects going forward, including your capstone.
 
 **macOS:**
 
@@ -360,7 +360,7 @@ After installation on either platform, open a **new terminal** (Terminal --> New
 
 ### 2.5 spec-kit
 
-> **What is spec-kit?** spec-kit is GitHub's toolkit for **spec-driven development** --- the practice of turning requirements into structured plans before writing any code. Instead of jumping straight into coding and hoping for the best, spec-kit guides you through creating a constitution (project principles), a specification (what to build), a plan (how to build it), and tasks (individual work items). This disciplined approach is how experienced engineers avoid building the wrong thing.
+> **What is spec-kit?** spec-kit is GitHub's toolkit for **spec-driven development** -- the practice of turning requirements into structured plans before writing any code. Instead of jumping straight into coding and hoping for the best, spec-kit guides you through creating a constitution (project principles), a specification (what to build), a plan (how to build it), and tasks (individual work items). This is how experienced engineers avoid building the wrong thing.
 
 **Install:**
 
@@ -370,7 +370,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 This command tells uv to install the `specify-cli` tool from spec-kit's GitHub repository. It may take a minute to download and install all dependencies.
 
-> **A preview of what is coming:** In Session 2, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard --- all before writing a single line of application code. This structured approach might feel like extra work at first, but it dramatically reduces wasted effort and produces better results. AI amplifies both good planning and bad planning --- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
+> **A preview of what is coming:** In Session 2, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard -- all before writing application code. This might feel like extra work at first, but it reduces wasted effort. AI amplifies both good planning and bad planning -- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
 
 > **Checkpoint:** `specify --help` displays help information and available commands.
 
@@ -378,9 +378,9 @@ This command tells uv to install the `specify-cli` tool from spec-kit's GitHub r
 
 ### 2.6 Claude Code
 
-> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and connect to external tools like Jira through MCP (Model Context Protocol) servers. Think of it as an AI colleague sitting next to you who can see your entire project, understand its structure, and make changes alongside you. This is fundamentally different from copying code out of a chat window --- Claude Code works within your development environment, just like you do.
+> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and connect to external tools like Jira through MCP (Model Context Protocol) servers. It is an AI assistant that can see your entire project and make changes alongside you. This is different from copying code out of a chat window -- Claude Code works inside your development environment.
 
-**Step 1 --- Install Claude Code:**
+**Step 1: Install Claude Code**
 
 Claude Code has a native installer that handles everything automatically, including background updates.
 
@@ -398,7 +398,7 @@ irm https://claude.ai/install.ps1 | iex
 
 After installation, open a **new terminal** (Terminal --> New Terminal) so the PATH updates take effect.
 
-**Step 2 --- Authenticate:**
+**Step 2: Authenticate**
 
 1. In the terminal, type `claude` and press Enter.
 2. You will be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.3).
@@ -406,7 +406,7 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 4. Return to the terminal. You should see Claude Code's interactive prompt.
 5. Type `/exit` to quit for now. You will use Claude Code extensively starting in Section 3.3.
 
-> **If authentication fails:** Run `claude logout`, then run `claude` again. Make sure your browser allows popup windows --- the authentication flow opens a new browser tab. If you are using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
+> **If authentication fails:** Run `claude logout`, then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you are using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
 
 > **Checkpoint:** Running `claude` starts an interactive session. Type `/exit` to quit.
 
@@ -434,7 +434,7 @@ Before you do anything, it helps to understand the two-step process you are abou
 - **Fork** = your personal copy of the repository, hosted on GitHub under your account. You have full control over your fork. Changes you make to your fork do not affect the instructor's original repository.
 - **Clone** = downloading your fork from GitHub to your computer so you can work on files locally. This is where you actually edit code.
 
-The flow is: you edit files on your computer (local), then **push** changes up to your fork on GitHub. Your fork is your own space --- you cannot accidentally break the instructor's repository.
+The flow is: you edit files on your computer (local), then **push** changes up to your fork on GitHub. Your fork is your own space. You cannot accidentally break the instructor's repository.
 
 > **Why not just clone the instructor's repository directly?** If you cloned the original without forking first, you would not have permission to push your changes back to GitHub. Forking gives you your own copy with full write access.
 
@@ -479,7 +479,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 With the repository open in Cursor, you will now initialize Claude Code so it understands the project structure and can assist you effectively.
 
-> **Why initialize?** Claude Code works best when it understands your project's context --- what files exist, how they are organized, what the project is about. The `/init` command tells Claude Code to scan the repository and create a `CLAUDE.md` file that captures this understanding. Think of it as introducing Claude to the codebase before asking it to help.
+> **Why initialize?** Claude Code works best when it understands your project's context -- what files exist, how they are organized, what the project is about. The `/init` command tells Claude Code to scan the repository and create a `CLAUDE.md` file that captures this understanding. You are introducing Claude to the codebase so it can help effectively.
 
 **Steps:**
 
@@ -499,13 +499,13 @@ With the repository open in Cursor, you will now initialize Claude Code so it un
    /init
    ```
 
-5. Watch as Claude Code reads files, analyzes the project structure, and generates a `CLAUDE.md` file. This takes a moment --- Claude Code is examining the repository's files, directories, configuration, and documentation to build a comprehensive understanding of the project.
+5. Watch as Claude Code reads files, analyzes the project structure, and generates a `CLAUDE.md` file. This takes a moment. Claude Code is examining the repository's files, directories, and configuration.
 
 6. When it finishes, find `CLAUDE.md` in the file explorer sidebar (left side of Cursor). Click on it to open it. Right-click the file tab and select **Open Preview** to see the rendered markdown.
 
-7. **Read through `CLAUDE.md`.** It describes what the project is about, the repository structure, and conventions for working with it. This file serves as Claude Code's "memory" of your project --- every time you start a new Claude Code session in this repository, it reads `CLAUDE.md` first to re-establish context.
+7. **Read through `CLAUDE.md`.** It describes what the project is about, the repository structure, and conventions for working with it. This file is Claude Code's "memory" of your project. Every time you start a new Claude Code session in this repository, it reads `CLAUDE.md` first to re-establish context.
 
-> **What is CLAUDE.md?** It is a markdown file that serves as a project briefing document for Claude Code. It typically contains: what the project does, how the repository is organized, key technical decisions, and any conventions or constraints that Claude should follow. You can edit it to add your own notes or instructions. Claude Code reads it automatically at the start of every session.
+> **What is CLAUDE.md?** It is a markdown file that briefs Claude Code on your project. It typically contains: what the project does, how the repository is organized, key technical decisions, and any conventions Claude should follow. You can edit it to add your own notes or instructions. Claude Code reads it automatically at the start of every session.
 
 > **Checkpoint:** `CLAUDE.md` exists in your repository root, and you have read its contents.
 
@@ -569,7 +569,7 @@ If any command fails with "command not found," open a new terminal and try again
 
 ### Understanding What You Have Built
 
-Take a moment to appreciate what you have just configured. You now have a professional development environment that mirrors what you would find at any technology company:
+Here is what you have just configured:
 
 ```
 +---------------------------------------------------------------+
@@ -765,15 +765,15 @@ Session 1 is complete. You have:
 - Forked and cloned the tutorial repository (your working copy of the project)
 - Initialized Claude Code so it understands your project (AI context)
 
-Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables and coordinating with your team, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. This is not a tutorial-only environment -- it is the foundation you will use for the rest of your coursework and career.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. You will use this same environment for your capstone and beyond.
 
 In **Session 2**, you will put everything together:
 
 1. **Connect Claude Code to Jira** via the Atlassian MCP server, so your AI assistant can create and manage issues directly.
-2. **Plan with spec-kit** --- create a constitution, specification, plan, and tasks for your dashboard.
+2. **Plan with spec-kit** -- create a constitution, specification, plan, and tasks for your dashboard.
 3. **Build a Streamlit dashboard** with Claude Code's help, working from the structured plan.
 4. **Commit, push, and deploy** your dashboard so it is live and shareable on the internet.
 
-Everything you set up today is the foundation that makes Session 2 possible. The tools are ready. Next time, you build.
+The tools are ready. Next, you build.
 
 Continue to [**Session 2: Build & Deploy**](session-2-workflow.md).

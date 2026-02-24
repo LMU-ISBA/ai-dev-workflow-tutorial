@@ -8,7 +8,7 @@
 
 ## What You Will Accomplish
 
-By the end of this session, you will have taken a product requirements document through a complete professional development workflow and produced a live, publicly accessible analytics dashboard. Specifically, you will have:
+By the end of this session, you will have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you will have:
 
 - Connected Claude Code to Jira using the Model Context Protocol (MCP)
 - Generated spec-kit artifacts: constitution, specification, plan, and tasks
@@ -60,7 +60,7 @@ This is the workflow used at technology companies worldwide. Today you will expe
 
 Each box in this diagram is a distinct stage you will complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
 
-> **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong visual layout. Spec-driven development means you specify what you want, plan how to build it, then execute with precision. The discipline of writing specifications before code separates amateur development from professional work. This is the difference between "I built something" and "I solved the right problem." In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
+> **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong layout. Spec-driven development means you specify what you want, plan how to build it, then execute against that plan. Writing specifications before code is what professional teams do. This is the difference between "I built something" and "I solved the right problem." In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
 
 ---
 
@@ -70,7 +70,7 @@ Each box in this diagram is a distinct stage you will complete today. The left-t
 
 Before you run any commands, it helps to understand what you are setting up and why.
 
-> **What is MCP?** Think of MCP as a "plugin system" for Claude Code. Just as your phone connects to apps through APIs, Claude Code connects to external services through MCP. Each MCP server gives Claude Code a new capability. Today, you will add the Atlassian MCP server, which lets Claude Code communicate directly with Jira -- reading your tasks, creating issues, and updating progress, all without leaving the terminal.
+> **What is MCP?** MCP is a plugin system for Claude Code. Just as your phone connects to apps through APIs, Claude Code connects to external services through MCP. Each MCP server gives Claude Code a new capability. Today, you will add the Atlassian MCP server, which lets Claude Code communicate directly with Jira -- reading your tasks, creating issues, and updating progress, all without leaving the terminal.
 
 Here is what the connection looks like:
 
@@ -88,9 +88,9 @@ Here is what the connection looks like:
 └──────────────┘              └──────────────┘
 ```
 
-Without MCP, you would need to manually switch between Claude Code and the Jira web interface. With MCP, Claude Code handles both coding and project management in a single workflow. This is how professional development teams reduce context-switching overhead.
+Without MCP, you would need to manually switch between Claude Code and the Jira web interface. With MCP, Claude Code handles both coding and project management in a single workflow.
 
-> **Why This Matters:** In professional settings, developers rarely work with code alone. They track work in project management tools, update stakeholders, and maintain traceability between requirements and implementation. MCP lets you practice this integrated workflow from the start.
+> **Why This Matters:** In professional settings, developers track work in project management tools and maintain traceability between requirements and code. MCP lets you practice this integrated workflow from the start.
 
 ### Steps
 
@@ -116,7 +116,15 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
    claude
    ```
 
-4. **Verify the server is registered.** Inside Claude Code, run:
+4. **Set the output style to explanatory.** Inside Claude Code, run:
+
+   ```
+   /output-style explanatory
+   ```
+
+   By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it is doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you are still learning the workflow.
+
+5. **Verify the server is registered.** Inside Claude Code, run:
 
    ```
    /mcp
@@ -124,11 +132,11 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
 
    You should see `atlassian` in the list of MCP servers. It will likely show that authentication is required -- this is expected.
 
-5. **Authenticate with Atlassian.** In the `/mcp` output, use the **arrow keys** to select `atlassian`, then press **Enter**.
+6. **Authenticate with Atlassian.** In the `/mcp` output, use the **arrow keys** to select `atlassian`, then press **Enter**.
 
-6. **Complete browser authentication.** A browser window opens. Log in with your Atlassian account (the one you created in Session 1), authorize Claude Code, and return to the terminal. You may see a "You can close this tab" message in the browser -- this means authentication succeeded.
+7. **Complete browser authentication.** A browser window opens. Log in with your Atlassian account (the one you created in Session 1), authorize Claude Code, and return to the terminal. You may see a "You can close this tab" message in the browser -- this means authentication succeeded.
 
-7. **Test the connection.** Ask Claude a question about your Jira instance:
+8. **Test the connection.** Ask Claude a question about your Jira instance:
 
    ```
    What Jira projects do I have access to?
@@ -146,7 +154,7 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
 
 ### Understanding Spec-Driven Development
 
-This section is the intellectual core of the entire tutorial. Every step that follows -- coding, committing, deploying -- flows from the specifications you create here.
+The rest of the tutorial flows from what you create here. Every step that follows -- coding, committing, deploying -- depends on the specifications you write in this section.
 
 > **The Problem with "Just Code It":** When you ask an AI to build something without clear specifications, you get something that might work but probably is not what you wanted. The AI fills in gaps with assumptions, and each assumption is a potential mismatch with your intent. With a complex deliverable like an analytics dashboard, even small mismatches compound: the wrong chart type, unexpected data aggregation, a layout that does not serve the audience.
 
@@ -167,7 +175,7 @@ Here is what each stage does:
 | **Tasks** | Breaks work into actionable items | A contractor's punch list |
 | **Implementation** | Writes the actual code | Building the structure |
 
-Each stage narrows the space of possible outcomes. By the time you reach implementation, Claude knows exactly what to build, how to build it, and in what order. The result is faster, more accurate, and more aligned with your original intent.
+Each stage narrows the space of possible outcomes. By the time you reach implementation, Claude knows what to build, how to build it, and in what order. The result is more likely to match what you actually wanted.
 
 > **Pro Tip:** This pipeline mirrors how analytics projects work in industry. Before you build a predictive model, you define the business question (constitution), specify the success metrics (specification), choose your methodology (plan), and break the work into phases (tasks). The same discipline applies to software.
 
@@ -203,7 +211,7 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 ### 2.2 Create the Constitution
 
-> **What is a Constitution?** Think of it as your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
+> **What is a Constitution?** It is your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
 
 1. Start Claude Code if it is not already running:
 
@@ -240,7 +248,7 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 ### 2.3 Create the Specification
 
-> **What is a Specification?** The specification is where your PRD (Product Requirements Document) gets transformed into detailed, actionable requirements. Your PRD says "we want a sales dashboard with KPIs and charts." The specification says exactly what those KPIs are, how the charts should behave, what the data structure looks like, and what constitutes success. The specification eliminates the ambiguity that the PRD intentionally leaves open.
+> **What is a Specification?** The specification turns your PRD (Product Requirements Document) into detailed, actionable requirements. Your PRD says "we want a sales dashboard with KPIs and charts." The specification says exactly what those KPIs are, how the charts should behave, what the data structure looks like, and what constitutes success. The specification eliminates the ambiguity that the PRD intentionally leaves open.
 
 Before running this command, you need to understand an important Claude Code feature.
 
@@ -248,7 +256,7 @@ Before running this command, you need to understand an important Claude Code fea
 >
 > For example, `@prd/ecommerce-analytics.md` tells Claude: "read this entire PRD and use it as the basis for your work." Without the `@`, Claude would not know your specific requirements and would have to guess or ask.
 >
-> This is one of the most important skills in working with AI tools: the quality of your output depends directly on the quality and relevance of the context you provide. More relevant context produces more accurate results.
+> The quality of AI output depends on the context you provide. Better context, better results.
 
 1. Run the specification command. Claude will read the PRD and generate a detailed specification:
 
@@ -260,7 +268,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 3. Note that spec-kit may automatically create a **feature branch** (e.g., `001-sales-dashboard`).
 
-   > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. Think of it like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you are satisfied.
+   > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. It is like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you are satisfied.
    >
    > ```
    > main:    A --- B --- C  (stable, untouched)
@@ -276,7 +284,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 ### 2.4 Create the Implementation Plan
 
-> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. Think of it as the equivalent of a methodology section in research -- before you analyze data, you define your approach, choose your methods, and outline your procedure. The same discipline applies to software. In your capstone, planning before coding will save your team from costly mid-project pivots.
+> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It is the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
 1. Run the plan command with your technology preferences:
 
@@ -299,7 +307,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 ### 2.5 Generate Tasks
 
-> **From Plan to Tasks:** Breaking work into specific, actionable tasks is a fundamental project management skill. In agile development, each task should be:
+> **From Plan to Tasks:** Breaking work into specific, actionable tasks is a core project management skill. In agile development, each task should be:
 > - **Independent** -- completable on its own without waiting for other tasks
 > - **Verifiable** -- you can confirm it is done by testing or inspecting the output
 > - **Small enough** -- achievable in a single focused work session
@@ -326,7 +334,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 **Checkpoint:** `specs/[feature-name]/tasks.md` exists with numbered implementation steps.
 
-> **Pro Tip:** Take a moment to look at the four documents you just created: constitution, specification, plan, and tasks. Notice how each one builds on the previous. The constitution set principles. The specification used those principles to detail requirements. The plan used the specification to choose an approach. The tasks used the plan to define concrete steps. This progressive refinement is the core of spec-driven development, and it is what makes AI-assisted coding reliable rather than unpredictable.
+> **Pro Tip:** Take a moment to look at the four documents you just created: constitution, specification, plan, and tasks. Notice how each one builds on the previous. The constitution set principles. The specification used those principles to detail requirements. The plan used the specification to choose an approach. The tasks used the plan to define concrete steps. This step-by-step refinement is what makes AI-assisted coding predictable instead of chaotic.
 
 ---
 
@@ -336,7 +344,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task from your tasks.md becomes a Jira issue, giving you visibility into progress and creating traceability between requirements and implementation.
 
-> **Why This Matters:** In professional teams, every piece of work is tracked. When a manager asks "what is the status of the dashboard?" or a stakeholder asks "why was this chart implemented this way?", you can trace the answer through Jira. Each issue links to a requirement (from the spec), a code change (commit), and a result (deployed feature). This traceability is not bureaucracy -- it is how teams build software reliably at scale.
+> **Why This Matters:** In professional teams, every piece of work is tracked. When a manager asks "what is the status of the dashboard?" or a stakeholder asks "why was this chart implemented this way?", you can trace the answer through Jira. Each issue links to a requirement (from the spec), a code change (commit), and a result (deployed feature). This traceability is how teams build software without losing track of why changes were made.
 
 ```
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
@@ -384,7 +392,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 
 **Checkpoint:** Multiple issues are visible in the Jira backlog, each with descriptions matching spec-kit tasks.
 
-> **Pro Tip:** Open a few issues and read their descriptions. Notice how the progression from PRD to spec-kit to Jira creates increasingly specific, actionable items. The PRD said "display Total Sales"; the spec-kit task might say "create KPI scorecards using Streamlit metric components with formatted currency values"; the Jira issue captures this as a trackable work item. This is the refinement pipeline in action.
+> **Pro Tip:** Open a few issues and read their descriptions. Notice how the progression from PRD to spec-kit to Jira creates increasingly specific, actionable items. The PRD said "display Total Sales"; the spec-kit task might say "create KPI scorecards using Streamlit metric components with formatted currency values"; the Jira issue captures this as a trackable work item. This is the refinement process in practice.
 
 ---
 
@@ -402,7 +410,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 > ```
 > produces a web page with a title and a formatted metric card. No HTML needed.
 >
-> Streamlit is not the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it has a unique advantage for capstone projects: it uses pure Python, integrates with Pandas and Plotly, deploys for free, and requires no web development knowledge. You can use the same data manipulation skills you learned in your coursework.
+> Streamlit is not the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it works well for capstone projects: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You can use the same data manipulation skills you learned in your coursework.
 
 ### Claude Code Editing Modes
 
@@ -438,7 +446,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    Replace `ECOM-1` with whichever issue Claude recommended.
 
-   > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you will see Claude creating files, writing functions, and making decisions. This is a valuable learning opportunity. Notice which libraries Claude imports, how it structures the code, and how it handles data loading and visualization.
+   > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you will see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
 3. Ask Claude to explain what it created:
 
@@ -467,7 +475,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 ### 4.2 Commit, Push, and Update Jira
 
-Now you will save your work using Git and create a traceable link between your code and the Jira issue. This three-step process -- commit, push, update -- is the heartbeat of professional development.
+Now you will save your work using Git and create a traceable link between your code and the Jira issue. This three-step process -- commit, push, update -- is the basic rhythm of professional development.
 
 #### Understanding Git's Workflow
 
@@ -498,7 +506,7 @@ Git tracks your code changes through a series of stages. Understanding these sta
 Here is what each stage means:
 
 - **Working directory** -- the files on your computer as you edit them. Changes here are not yet tracked by Git.
-- **Staging area** -- a holding zone for changes you intend to include in your next commit. The `git add` command moves changes here. Think of it as placing items in a box before sealing it.
+- **Staging area** -- a holding zone for changes you intend to include in your next commit. The `git add` command moves changes here. This is like placing items in a box before sealing it.
 - **Local repository** -- your project's history of saved snapshots. The `git commit` command creates a new snapshot from everything in the staging area. Each snapshot is permanent and can be revisited.
 - **Remote (GitHub)** -- the cloud copy of your repository. The `git push` command uploads your local commits to GitHub, making them visible to others and serving as a backup.
 
@@ -594,7 +602,7 @@ Replace `ECOM-2` with the current issue key. Repeat for ECOM-3, ECOM-4, and so o
 
 > **Skip the deployment issue for now.** You cannot deploy until your code is merged to `main`, which happens in the next step. Leave the deployment issue in "To Do" status.
 
-> **Pro Tip:** Watch Claude's output as it implements each issue. You will see files being created, imports being added, functions being written, and edge cases being handled. This is one of the best ways to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. These patterns transfer directly to your capstone project.
+> **Pro Tip:** Watch Claude's output as it implements each issue. You will see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
 After working through all implementation issues, test the complete dashboard one final time:
 
@@ -655,7 +663,7 @@ Your feature branch contains all the implementation work. Now you will bring tho
 
 ### Why Deployment Matters
 
-> **Why This Matters:** Building something that only runs on your laptop does not deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. This skill -- going from analysis to a shared, accessible output -- is what makes you stand out after graduation. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
+> **Why This Matters:** Building something that only runs on your laptop does not deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. Going from analysis to a shared, accessible output is a skill most graduates lack. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
 
 Deployment is the final stage of the professional workflow. It transforms your local project into a publicly accessible application.
 
@@ -752,17 +760,17 @@ PRD [done] -> spec-kit [done] -> Jira [done] -> Code [done] -> Commit [done] -> 
 
 In this session, you practiced five professional skills:
 
-1. **Spec-driven development methodology** -- You did not just code; you specified, planned, broke down tasks, and then implemented. This discipline produces better results with AI tools and translates directly to any technical project.
+1. **Spec-driven development** -- You specified, planned, broke down tasks, then implemented. This discipline works with any technical project, not just this tutorial.
 
-2. **AI-assisted coding with Claude Code** -- You used AI not as a magic box but as a tool guided by clear specifications. You saw how context engineering (the `@` symbol, MCP connections, slash commands) makes AI assistance more precise and reliable.
+2. **AI-assisted coding** -- You used Claude Code as a tool guided by clear specifications. You saw how context engineering (the `@` symbol, MCP connections, slash commands) makes AI assistance more precise.
 
-3. **Project management with Jira** -- Every piece of work was tracked from creation to completion, with evidence linking requirements to code changes. This is standard practice in any technology organization.
+3. **Project management with Jira** -- Every piece of work was tracked from creation to completion, with evidence linking requirements to code changes.
 
-4. **Version control with Git and GitHub** -- You created feature branches, committed with meaningful messages, pushed to a remote repository, and merged completed work. These are daily operations for every professional developer.
+4. **Version control with Git and GitHub** -- You created feature branches, committed with meaningful messages, pushed to a remote, and merged completed work.
 
-5. **Deployment to production** -- You made your work accessible to the world, transforming a local script into a live application with a shareable URL.
+5. **Deployment** -- You turned a local script into a live application with a shareable URL.
 
-> **For Your Career:** This workflow scales. Whether you are building a data pipeline, an analytics dashboard, a machine learning model, or a business intelligence report, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built, but the process you followed to build it -- and that process awareness is what hiring managers look for in candidates who can contribute from day one.
+> **For Your Career:** This workflow scales. Whether you are building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it -- and that process awareness matters to hiring managers.
 
 ---
 
