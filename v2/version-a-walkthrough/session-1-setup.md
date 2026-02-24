@@ -16,6 +16,8 @@ By the end of this session you will have every account created, every tool insta
 
 **See the finished product:** Before you start, take a look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard -- by the end of this tutorial, you will have built and deployed your own version.
 
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you already have Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, ask your instructor.
+
 ### Why This Matters
 
 Setting up your own development environment is one of the most underrated skills in technology. It signals initiative, problem-solving ability, and self-sufficiency -- qualities that employers and teammates notice immediately. Many people can write code in an environment someone else prepared for them. Far fewer can configure the environment themselves, debug installation issues, and get a full toolchain working from scratch. That ability is high signal.
@@ -77,7 +79,7 @@ Claude Pro gives you access to Claude Code, the AI coding assistant you will use
 2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
 3. Enter your payment information and complete the subscription ($20/month).
 
-**Note:** You only need the Pro subscription for one month to complete this tutorial. If you encounter usage limits, you can upgrade to Claude Max ($100/month) for higher limits. Most students find Pro sufficient.
+**Note:** You only need the Pro subscription for one month to complete this tutorial. If you encounter usage limits, you can upgrade to Claude Max ($100/month) for higher limits. Most students find Pro sufficient. You can cancel your subscription after completing the tutorial, but it is highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you are working.
 
 **If the subscription cost is a concern,** contact your instructor via Teams.
 

@@ -16,25 +16,19 @@ A hands-on tutorial for establishing a complete, end-to-end, AI-assisted workflo
 
 ### The Industry Has Changed
 
-Building with technology in 2026 looks fundamentally different than it did just two years ago. AI assistants have moved from novelty to necessity. Companies expect new hires to work effectively with AI tools, and those who can are dramatically more productive.
+Building with technology in 2026 looks different than it did two years ago. AI assistants have become standard tools. Companies expect new hires to work effectively with them, and those who can get more done.
 
-**This is not about becoming a software engineer — it's about being able to build solutions with technology and data.**
+**This is not about becoming a software engineer -- it is about being able to build solutions with technology and data.**
 
-Whether you become a business analyst, data scientist, product manager, consultant, or entrepreneur, you will need to:
+Whatever role you end up in -- business analyst, data scientist, product manager, consultant, or founder -- you will need to:
 - Build dashboards and data applications
 - Automate workflows and processes
 - Create prototypes to test ideas
 - Collaborate with technical teams using shared tools
 
-Professionals who use AI assistants effectively:
-- Build solutions faster while maintaining quality
-- Spend less time on technical details and more on business problems
-- Debug issues more efficiently with AI-powered analysis
-- Learn new technologies faster with AI as a teaching partner
-
 ### Professional Workflows Create Professional Results
 
-Every successful team building technology solutions follows a structured workflow. This isn't bureaucracy — it's how teams coordinate, maintain quality, and move quickly without breaking things.
+Every team building technology solutions follows a structured workflow. This is how teams coordinate, maintain quality, and move quickly without breaking things.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -52,21 +46,21 @@ Every successful team building technology solutions follows a structured workflo
 └─────────────────────────────────────────────────────────────┘
 ```
 
-The workflow you learn in this tutorial is used at companies from startups to Fortune 500:
+The workflow you learn in this tutorial is used across the industry:
 - **GitHub** for version control (used by 100M+ developers and teams)
 - **Jira** for task tracking (used by 65K+ companies)
 - **Streamlit Community Cloud** for deployment (free hosting for data apps)
 
 ### Your Competitive Advantage
 
-By completing this tutorial, you will have skills that set you apart:
+By completing this tutorial, you will have:
 
-1. **AI-Assisted Building**: Using Claude Code as a thinking and implementation partner
-2. **Spec-Driven Development**: Turning requirements into working solutions systematically
-3. **Full Traceability**: Connecting every deliverable to a business requirement
+1. **AI-Assisted Building**: Experience using Claude Code as a development partner
+2. **Spec-Driven Development**: A systematic process for turning requirements into working solutions
+3. **Full Traceability**: The habit of connecting every deliverable to a business requirement
 4. **Industry Tooling**: Hands-on experience with the tools companies actually use
 
-These are not "student skills" — these are professional skills that will set you apart in interviews and on the job, regardless of your specific role.
+These are professional skills that apply in interviews and on the job, regardless of your specific role.
 
 ---
 
@@ -138,9 +132,9 @@ No prior experience with Git, Jira, or AI tools is required. You should have:
 |------|---------|------------------|
 | **GitHub** | Version control and collaboration | Used by 100M+ professionals worldwide |
 | **Jira** | Project and task management | Used by 65,000+ companies |
-| **Cursor** | AI-powered code editor | Leading AI-native IDE |
-| **Claude Code** | AI assistant (CLI) | State-of-the-art AI for building |
-| **spec-kit** | Spec-driven development toolkit | Modern requirements-to-solution workflow |
+| **Cursor** | AI-powered code editor | VS Code-based editor with AI integration |
+| **Claude Code** | AI assistant (CLI) | Terminal-based AI for building and debugging |
+| **spec-kit** | Spec-driven development toolkit | Requirements-to-solution workflow |
 
 ## Quick Start
 
@@ -163,9 +157,10 @@ This tutorial uses consistent naming conventions:
 
 ## Getting Help
 
+If you get stuck, try to solve it yourself first. Google the error message, use AI tools to help diagnose the issue, or ask Claude Code directly -- it can troubleshoot most problems. If none of that works:
+
 - **During class**: Ask your instructor
 - **Outside class**: Post in the Teams channel
-- **Technical issues**: Ask Claude Code for help — it can diagnose and fix most problems
 
 ## License
 

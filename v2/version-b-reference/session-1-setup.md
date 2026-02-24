@@ -16,6 +16,8 @@ Repo:      Fork and clone the tutorial repository, initialize Claude Code
 
 **See the finished product:** Before you start, look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you are about to learn. By the end of this tutorial, you will have built and deployed your own version.
 
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you already have Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, ask your instructor.
+
 ---
 
 ## Why This Setup Matters
@@ -155,7 +157,7 @@ The following diagram shows every tool you will install today and how they conne
 2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
 3. Enter payment information and complete the subscription ($20/month).
 
-**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed.
+**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it is highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you are working.
 
 **If the subscription cost is a concern,** contact your instructor via Teams. We want to make sure this does not prevent anyone from completing the tutorial.
 
