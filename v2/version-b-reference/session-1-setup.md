@@ -14,11 +14,15 @@ Tools:     Cursor, Git, Python 3.11+, uv, spec-kit, Claude Code
 Repo:      Fork and clone the tutorial repository, initialize Claude Code
 ```
 
+**See the finished product:** Before diving in, take a look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the exact workflow you are about to learn. By the end of this tutorial, you will have built and deployed your own version.
+
 ---
 
 ## Why This Setup Matters
 
-Every technology company --- from two-person startups to Fortune 500 enterprises --- uses some variation of the workflow you are about to configure. The tools differ slightly from team to team, but the pattern is universal:
+Setting up your own development environment is one of the most underrated skills in technology. It signals initiative, problem-solving ability, and self-sufficiency -- qualities that employers and teammates notice immediately. Many people can write code in an environment someone else prepared for them. Far fewer can configure the environment themselves, debug installation issues, and get a full toolchain working from scratch. That ability is high signal -- it tells your team and your employer that you can own a problem end to end.
+
+Beyond the signal, a well-configured environment is crucial for project success. Every technology company --- from two-person startups to Fortune 500 enterprises --- uses some variation of the workflow you are about to configure. The tools differ slightly from team to team, but the pattern is universal:
 
 ```
 Requirements  -->  Code  -->  Test  -->  Deploy  -->  Monitor
@@ -26,11 +30,11 @@ Requirements  -->  Code  -->  Test  -->  Deploy  -->  Monitor
 
 Someone defines what needs to be built. Developers write code to meet those requirements. The code is tracked, reviewed, and deployed so users can access it. This cycle repeats continuously.
 
-You are setting up the exact same pipeline, end to end, in a single session. By the time you finish today, you will have a professional development environment that mirrors what you would find on your first day at a technology company, a consulting firm, or a data science team.
+You are setting up the exact same pipeline, end to end, in a single session. By the time you finish today, you will have a professional development environment that mirrors what you would find on your first day at a technology company, a consulting firm, or a data science team. This is also the environment you will use for your capstone project, so getting it right now saves you time later.
 
-### The MSBA Advantage
+### Your Competitive Advantage
 
-Analytics professionals who can **build and deploy** their own work are rare and highly valued. Most business analysts can create a model in a notebook. Far fewer can turn that model into a live dashboard, track the work in a project management system, and push the code to a shared repository. That gap is your opportunity.
+Professionals who can **build and deploy** their own work are rare and highly valued. Most analysts can create a model in a notebook. Far fewer can turn that model into a live dashboard, track the work in a project management system, and push the code to a shared repository. That gap is your opportunity -- in your capstone project, in job interviews, and on the job.
 
 ### What You Will Be Able to Do After This Session
 
@@ -91,7 +95,7 @@ The following diagram shows every tool you will install today and how they conne
 
 ### 1.1 GitHub Account
 
-> **Why GitHub?** GitHub hosts over 100 million developers and is the standard platform for storing and collaborating on code. In your analytics career, you will use it to share analysis code with teammates, collaborate on data pipelines, contribute to open-source projects, and showcase your portfolio. Recruiters and hiring managers actively review GitHub profiles when evaluating candidates.
+> **Why GitHub?** GitHub hosts over 100 million developers and is the standard platform for storing and collaborating on code. In your career, you will use it to share analysis code with teammates, collaborate on data pipelines, contribute to open-source projects, and showcase your portfolio. Recruiters and hiring managers actively review GitHub profiles when evaluating candidates.
 
 **Steps:**
 
@@ -104,13 +108,13 @@ The following diagram shows every tool you will install today and how they conne
 
 > **Checkpoint:** You can log into github.com and see your dashboard.
 
-> **Pro Tip for MSBA Students:** Your GitHub profile becomes a living portfolio. The projects you build in this tutorial, in your capstone, and on your own will all be visible. A clean, active GitHub profile with well-documented projects signals to employers that you can build, not just analyze. Choose your username carefully --- you will use it for years.
+> **Pro Tip:** Your GitHub profile becomes a living portfolio. The projects you build in this tutorial, in your capstone, and on your own will all be visible. A clean, active GitHub profile with well-documented projects signals to employers that you can build, not just analyze. Choose your username carefully --- you will use it for years.
 
 ---
 
 ### 1.2 Atlassian (Jira) Account and Project
 
-> **Why Jira?** Over 65,000 companies use Jira to track work. Whether you become a data analyst at a bank, a consultant at Deloitte, a product manager at a tech company, or launch your own venture, you will almost certainly encounter Jira or a similar tool. Understanding project management software now gives you immediate credibility in professional settings and helps you work effectively on teams from day one.
+> **Why Jira?** Over 65,000 companies use Jira to track work. Whether you go into data analytics, consulting, product management, software engineering, or launch your own venture, you will almost certainly encounter Jira or a similar tool. Understanding project management software now gives you immediate credibility in professional settings, helps you coordinate your capstone team, and lets you work effectively on any team from day one.
 
 **Steps:**
 
@@ -137,7 +141,7 @@ The following diagram shows every tool you will install today and how they conne
 
 > **Checkpoint:** You can access your ECOM project at `yourname.atlassian.net` and see the Scrum board with To Do, In Progress, and Done columns.
 
-> **Key Concept: Traceability** --- Every piece of code you write in this tutorial will trace back to a Jira issue. When you commit code, you will include the issue key (like `ECOM-1`) in the commit message. This means anyone --- a teammate, a manager, your future self --- can find out *why* code exists, *when* it was added, and *what requirement* it fulfills. This is not academic overhead. This is how professional teams operate, and it is one of the first things interviewers ask about when they evaluate your experience with collaborative workflows.
+> **Key Concept: Traceability** --- Every piece of code you write in this tutorial will trace back to a Jira issue. When you commit code, you will include the issue key (like `ECOM-1`) in the commit message. This means anyone --- a teammate, a manager, your advisor, your future self --- can find out *why* code exists, *when* it was added, and *what requirement* it fulfills. This is not academic overhead. This is how professional teams operate, and it is one of the first things interviewers ask about when they evaluate your experience with collaborative workflows. In your capstone, traceability means your team can always answer "why did we build this?" and your advisor can follow your progress without asking for status updates.
 
 ---
 
@@ -151,7 +155,9 @@ The following diagram shows every tool you will install today and how they conne
 2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
 3. Enter payment information and complete the subscription ($20/month).
 
-**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed.
+**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed.
+
+**If the subscription cost is a concern,** contact your instructor via Teams. We want to make sure this does not prevent anyone from completing the tutorial.
 
 > **Checkpoint:** A Pro badge is visible on claude.ai when you are logged in.
 
@@ -292,7 +298,7 @@ git config --global user.email "your.email@example.com"
 
 ### 2.3 Python 3.11+
 
-> **Why Python?** Python is the dominant language in data science and analytics. Pandas, scikit-learn, TensorFlow, Streamlit --- the tools you use and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you will build in Session 2.
+> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit --- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you will build in Session 2.
 
 **Check your current version:**
 
@@ -332,7 +338,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ### 2.4 uv
 
-> **What is uv?** uv is a fast Python package manager built by Astral. It replaces the traditional `pip` for installing Python packages and managing project dependencies. spec-kit (which you install next) requires uv. Think of it as a modernized, faster version of pip.
+> **What is uv?** If you have used `pip` to install Python packages before (e.g., `pip install pandas`), uv does the same thing -- but significantly faster and more reliably. Built by Astral, uv resolves dependencies in seconds instead of minutes, avoids common version conflicts that plague pip, and manages virtual environments cleanly. It is rapidly becoming the standard Python package manager in the industry. spec-kit (which you install next) requires uv, but you will likely want to use uv for all your Python projects going forward, including your capstone.
 
 **macOS:**
 
@@ -364,7 +370,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 This command tells uv to install the `specify-cli` tool from spec-kit's GitHub repository. It may take a minute to download and install all dependencies.
 
-> **A preview of what is coming:** In Session 2, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard --- all before writing a single line of application code. This structured approach might feel like extra work at first, but it dramatically reduces wasted effort and produces better results. AI amplifies both good planning and bad planning --- spec-kit ensures you amplify the good kind.
+> **A preview of what is coming:** In Session 2, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard --- all before writing a single line of application code. This structured approach might feel like extra work at first, but it dramatically reduces wasted effort and produces better results. AI amplifies both good planning and bad planning --- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
 
 > **Checkpoint:** `specify --help` displays help information and available commands.
 
@@ -465,7 +471,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 > **If you cannot see the file explorer sidebar:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
 
-> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see folders like `data/`, `docs/`, `msba/`, and `prd/`, along with a `README.md` file.
+> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see folders like `data/`, `v1/`, `v2/`, and `prd/`, along with a `README.md` file.
 
 ---
 
@@ -551,7 +557,7 @@ If any command fails with "command not found," open a new terminal and try again
 
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
 - [ ] Repo cloned locally and open in Cursor
-- [ ] Files visible in Cursor's file explorer (you should see `data/`, `docs/`, `msba/`, `prd/`, and `README.md`)
+- [ ] Files visible in Cursor's file explorer (you should see `data/`, `v1/`, `v2/`, `prd/`, and `README.md`)
 - [ ] `CLAUDE.md` exists in the repository root and you have read it
 
 ### Jira
@@ -759,6 +765,8 @@ Session 1 is complete. You have:
 - Forked and cloned the tutorial repository (your working copy of the project)
 - Initialized Claude Code so it understands your project (AI context)
 
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables and coordinating with your team, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. This is not a tutorial-only environment -- it is the foundation you will use for the rest of your coursework and career.
+
 In **Session 2**, you will put everything together:
 
 1. **Connect Claude Code to Jira** via the Atlassian MCP server, so your AI assistant can create and manage issues directly.
@@ -767,3 +775,5 @@ In **Session 2**, you will put everything together:
 4. **Commit, push, and deploy** your dashboard so it is live and shareable on the internet.
 
 Everything you set up today is the foundation that makes Session 2 possible. The tools are ready. Next time, you build.
+
+Continue to [**Session 2: Build & Deploy**](session-2-workflow.md).

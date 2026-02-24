@@ -14,13 +14,23 @@ Repo:      Fork and clone the tutorial repository, initialize Claude Code
 
 By the end of this session you will have every account created, every tool installed and verified, and the tutorial repository open in your editor with Claude Code initialized. Nothing from Session 2 onward depends on anything other than completing these steps.
 
+**See the finished product:** Before you start, take a look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard -- by the end of this tutorial, you will have built and deployed your own version.
+
+### Why This Matters
+
+Setting up your own development environment is one of the most underrated skills in technology. It signals initiative, problem-solving ability, and self-sufficiency -- qualities that employers and teammates notice immediately. Many people can write code in an environment someone else prepared for them. Far fewer can configure the environment themselves, debug installation issues, and get a full toolchain working from scratch. That ability is high signal.
+
+Beyond the signal, a well-configured environment is crucial for project success. Every technology company -- from two-person startups to Fortune 500 enterprises -- uses some variation of the workflow you are about to configure. The tools may differ, but the pattern is the same: track requirements, write code, version it, and deploy.
+
+You are setting up the same pipeline, end to end, in a single session. These are not just tutorial tools -- they are the same ones you will use in your capstone project and on day one of any analytics, consulting, or engineering role after graduation.
+
 ---
 
 ## 1. Create Accounts (~20 min)
 
 ### 1.1 GitHub Account
 
-GitHub is the industry-standard platform for hosting code and collaborating with version control. Your work throughout this tutorial will live in a GitHub repository.
+GitHub is the industry-standard platform for hosting code and collaborating with version control. Your work throughout this tutorial will live in a GitHub repository. Your GitHub profile also doubles as a portfolio -- the projects you build here and in your capstone will be visible to employers.
 
 1. Go to [github.com](https://github.com) and click **Sign up**.
 2. Choose a sign-up method: **Continue with Google**, **Continue with Apple**, or fill out the form manually with your email, a password, and a username.
@@ -35,7 +45,7 @@ GitHub is the industry-standard platform for hosting code and collaborating with
 
 ### 1.2 Atlassian (Jira) Account and Project
 
-Jira is the most widely used project management tool in technology teams. It tracks tasks, bugs, and features using boards and workflows. During signup, you will also create the project used throughout this tutorial.
+Jira is the most widely used project management tool in technology teams. It tracks tasks, bugs, and features using boards and workflows. Whether you end up in analytics, consulting, product management, or engineering, you will almost certainly encounter Jira or a similar tool. During signup, you will also create the project used throughout this tutorial.
 
 1. Go to [atlassian.com](https://www.atlassian.com) and click **Get started**.
 2. Sign up with your email, or use **Google**, **Microsoft**, **Apple**, or **Slack**.
@@ -61,13 +71,15 @@ Jira is the most widely used project management tool in technology teams. It tra
 
 ### 1.3 Claude Pro Subscription
 
-Claude Pro gives you access to Claude Code, the AI coding assistant you will use throughout this tutorial. Claude Code runs in your terminal and can read your codebase, write code, run commands, and interact with external tools.
+Claude Pro gives you access to Claude Code, the AI coding assistant you will use throughout this tutorial. Claude Code runs in your terminal and can read your codebase, write code, run commands, and interact with external tools. AI-assisted development is rapidly becoming standard practice -- learning to work effectively with AI tools now gives you a significant advantage in your capstone and career.
 
 1. Go to [claude.ai](https://claude.ai) and sign up using Google or email.
 2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
 3. Enter your payment information and complete the subscription ($20/month).
 
-**Note:** If you encounter usage limits during the tutorial, you can upgrade to Claude Max ($100/month) for higher limits. Most students find Pro sufficient for the sessions covered here.
+**Note:** You only need the Pro subscription for one month to complete this tutorial. If you encounter usage limits, you can upgrade to Claude Max ($100/month) for higher limits. Most students find Pro sufficient.
+
+**If the subscription cost is a concern,** contact your instructor via Teams.
 
 > **Checkpoint:** A Pro badge is visible on claude.ai when you are logged in.
 
@@ -144,7 +156,7 @@ You can resize the terminal by dragging the divider between it and the editor ar
 
 ### 2.2 Git
 
-Git is the **version control system** that tracks every change to your code. It lets you save snapshots of your work (called **commits**), create parallel lines of development (called **branches**), and collaborate with others. You will use Git commands throughout Session 2.
+Git is the **version control system** that tracks every change to your code. It lets you save snapshots of your work (called **commits**), create parallel lines of development (called **branches**), and collaborate with others. In your capstone, Git will let your team work on the same codebase simultaneously without overwriting each other's work. You will use Git commands throughout Session 2.
 
 **Check if Git is already installed:**
 
@@ -231,7 +243,7 @@ If you see Python 3.11 or higher (e.g., `Python 3.12.5`), you are set. Skip to t
 
 ### 2.4 uv
 
-**uv** is a fast Python package and project manager. It is required to install spec-kit in the next step.
+**uv** is a fast Python package and project manager. If you have used `pip` before (e.g., `pip install pandas`), uv does the same thing but faster and with fewer dependency conflicts. It is required to install spec-kit in the next step, but it is also the recommended tool for managing Python packages in general -- you may want to use it for your capstone project as well.
 
 **macOS:**
 
@@ -259,7 +271,7 @@ uv --version
 
 ### 2.5 spec-kit
 
-**spec-kit** is GitHub's toolkit for spec-driven development. It helps you generate structured specifications from product requirements, which Claude Code can then use to build software.
+**spec-kit** is GitHub's toolkit for spec-driven development. It helps you generate structured specifications from product requirements, which Claude Code can then use to build software. Planning before coding is what separates professional development from ad-hoc scripting -- spec-kit makes that discipline concrete.
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
@@ -345,7 +357,7 @@ This section introduces two Git concepts you will use immediately:
 
 > **If you cannot see the file explorer sidebar:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar, or go to **View** --> **Appearance** --> **Primary Side Bar**.
 
-> **Checkpoint:** Tutorial files (including folders like `data/`, `docs/`, `msba/`, `prd/`, and a `README.md`) are visible in Cursor's file explorer on the left.
+> **Checkpoint:** Tutorial files (including folders like `data/`, `v1/`, `v2/`, `prd/`, and a `README.md`) are visible in Cursor's file explorer on the left.
 
 ---
 
@@ -413,7 +425,7 @@ claude --version
 
 - [ ] Tutorial repo forked to your GitHub account
 - [ ] Repo cloned locally and open in Cursor
-- [ ] Files visible in Cursor's file explorer (data/, docs/, msba/, prd/, README.md)
+- [ ] Files visible in Cursor's file explorer (data/, v1/, v2/, prd/, README.md)
 - [ ] `CLAUDE.md` file exists in the repository root and you have read it
 
 ### Jira
@@ -440,6 +452,8 @@ claude --version
 
 ## What's Next
 
-Session 1 is complete. All accounts are created, all tools are installed and verified, and your repository is ready.
+Session 1 is complete. All accounts are created, all tools are installed and verified, and your repository is ready. You now have the same professional development environment used by analytics teams, consulting firms, and technology companies.
 
-Next session: **Session 2** -- connect Claude Code to Jira, use spec-kit to generate a specification and plan, build a Streamlit dashboard with AI assistance, and deploy it live.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. The workflow you learn here is the workflow you will use there.
+
+Next: [**Session 2: Build & Deploy**](session-2-workflow.md) -- connect Claude Code to Jira, use spec-kit to generate a specification and plan, build a Streamlit dashboard with AI assistance, and deploy it live.

@@ -12,6 +12,6 @@ A thorough guide that explains the "why" behind every step. Ideal for self-paced
 - Read through before class for maximum preparation, or follow along during class
 - "Why This Matters" callouts explain professional relevance of each step
 - "Key Concept" callouts define important ideas with visual diagrams
-- "Pro Tip" callouts offer MSBA-specific career advice
+- "Pro Tip" callouts offer career and capstone advice
 - Troubleshooting sections explain root causes, not just fixes
 - A glossary at the end of Session 2 provides quick reference for all key terms

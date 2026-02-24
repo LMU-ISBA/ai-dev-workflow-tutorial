@@ -44,6 +44,8 @@ All four commands should produce output without errors. If any command fails, re
 
 **MCP (Model Context Protocol)** is a standard that lets Claude Code connect to external tools and services. Think of it as a plugin system -- once connected, Claude can read from and write to those tools directly. In this section, you will connect Claude Code to Jira so it can create issues, update statuses, and add comments without leaving the terminal.
 
+This integration matters because it creates **traceability** -- the ability to link every code change back to the requirement that prompted it. In your capstone and in professional settings, stakeholders and teammates need to understand not just what was built, but why. Traceability is how you answer that question.
+
 ### Steps
 
 1. **Exit Claude Code if running.** If you are currently in a Claude Code session, type `/exit` to quit. The MCP server must be added before starting a new session.
@@ -95,6 +97,8 @@ All four commands should produce output without errors. If any command fails, re
 ## 2. Spec-Kit Workflow (~25 min)
 
 **spec-kit** is GitHub's tool for spec-driven development. It creates a structured plan before any code is written, following a four-step sequence: Constitution, Specification, Plan, and Tasks. This approach prevents building the wrong thing -- which is especially important when working with AI, since AI can build the wrong thing very fast if given vague instructions.
+
+This is the same discipline you will use in your capstone: start with requirements, create a plan, then execute. The difference between a mediocre project and an outstanding one is often the quality of the planning, not the quality of the code.
 
 ### 2.1 Initialize Spec-Kit
 
@@ -542,17 +546,21 @@ You have now completed the full development lifecycle:
 PRD --> spec-kit --> Jira --> Code --> Commit --> Push --> Deploy --> Live
 ```
 
-This is the workflow used by professional development teams and the same workflow you will use for your capstone project. The tools and sequence transfer directly:
+This is the workflow used by professional development teams. The tools and sequence transfer directly to your capstone project and beyond:
 
-1. **Start with requirements** (PRD) so you know what to build
-2. **Plan before building** (spec-kit) so the AI builds the right thing
-3. **Track your work** (Jira) so progress is visible and accountable
-4. **Build with AI assistance** (Claude Code) so you can focus on decisions, not syntax
-5. **Save and share your code** (Git and GitHub) so your work is backed up and collaborative
-6. **Deploy for your audience** (Streamlit Cloud) so stakeholders can access your work
+1. **Start with requirements** (PRD) so you know what to build -- in your capstone, this is your project proposal
+2. **Plan before building** (spec-kit) so the AI builds the right thing -- this prevents wasted weeks
+3. **Track your work** (Jira) so progress is visible and accountable -- your team and advisor can see status at any time
+4. **Build with AI assistance** (Claude Code) so you can focus on decisions, not syntax -- you direct the what and why, AI handles the how
+5. **Save and share your code** (Git and GitHub) so your work is backed up and collaborative -- no more emailing zip files between teammates
+6. **Deploy for your audience** (Streamlit Cloud) so stakeholders can access your work -- a live URL is more impressive than a screenshot in a slide deck
+
+### After Graduation
+
+This workflow does not expire. Whether you join a consulting firm, a data analytics team, a technology company, or start your own venture, the pattern is the same: requirements, planning, tracking, building, deploying. The specific tools may vary (Jira might be Asana, Streamlit might be Tableau), but the discipline and the thinking are identical. Interviewers consistently ask about your process, not just your output -- and now you have a process to describe.
 
 ---
 
 ## What's Next
 
-Continue to [Capstone Project Dev Environment](../../docs/06-capstone-project-dev-environment.md) to set up your capstone project development environment.
+Continue to [Capstone Project Dev Environment](../../v1/06-capstone-project-dev-environment.md) to set up your capstone project development environment.

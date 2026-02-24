@@ -70,6 +70,8 @@ These are not "student skills" — these are professional skills that will set y
 
 ---
 
+**See what you will build:** [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/) -- a live, deployed analytics dashboard built using this workflow.
+
 ## What You Will Learn
 
 By the end of this tutorial, you will be able to:
@@ -79,33 +81,41 @@ By the end of this tutorial, you will be able to:
 - Maintain full traceability: Jira issue → commit → push → deploy
 - Apply spec-driven development using GitHub's spec-kit
 
-## Tutorial Structure
+## Tutorial Versions
 
-This tutorial is designed for two 100-minute sessions. **Read documents in the numbered order shown.**
+This tutorial has two versions. Your instructor will tell you which one to follow.
 
-### Session 1: Setup & Foundation
+### Version 2 (Current) -- Two-Format Tutorial
+
+The latest version, available in two formats that cover the same material. Both are designed for two 100-minute sessions.
+
+| Format | Best For | Start Here |
+|--------|----------|------------|
+| [**Version A: Streamlined Walkthrough**](v2/version-a-walkthrough/) | In-class use, step-by-step follow-along | [Session 1](v2/version-a-walkthrough/session-1-setup.md) |
+| [**Version B: Comprehensive Guide**](v2/version-b-reference/) | Self-paced learning, pre-reading, reference | [Session 1](v2/version-b-reference/session-1-setup.md) |
+
+See the [Version 2 README](v2/README.md) for details on the differences between formats.
+
+### Version 1 (Original) -- Multi-Document Tutorial
+
+The original tutorial, organized as a series of focused documents. Designed for two 100-minute sessions.
 
 | Order | Document | Description |
 |:-----:|----------|-------------|
-| 1 | [Overview](docs/00-overview.md) | Tutorial objectives and what you'll build |
-| 2 | [Session 1: Setup](docs/01-session-1-setup.md) | Account creation and tool installation |
-| — | [Terminal Basics](docs/02-terminal-basics.md) | *Reference:* Read if unfamiliar with command line |
-| — | [Git Concepts](docs/03-git-concepts.md) | *Reference:* Read if unfamiliar with version control |
+| 1 | [Overview](v1/00-overview.md) | Tutorial objectives and what you'll build |
+| 2 | [Session 1: Setup](v1/01-session-1-setup.md) | Account creation and tool installation |
+| — | [Terminal Basics](v1/02-terminal-basics.md) | *Reference:* Read if unfamiliar with command line |
+| — | [Git Concepts](v1/03-git-concepts.md) | *Reference:* Read if unfamiliar with version control |
+| 3 | [Session 2: Workflow](v1/04-session-2-workflow.md) | Complete development workflow |
 
-### Session 2: Spec-Driven Workflow
-
-| Order | Document | Description |
-|:-----:|----------|-------------|
-| 3 | [Session 2: Workflow](docs/04-session-2-workflow.md) | Complete development workflow |
-
-### Reference Materials
+**Reference Materials:**
 
 | Document | Description |
 |----------|-------------|
-| [Troubleshooting](docs/05-troubleshooting.md) | Common issues and solutions |
-| [Capstone Project Dev Environment](docs/06-capstone-project-dev-environment.md) | Setting up your capstone project |
-| [FAQ](docs/07-faq.md) | Frequently asked questions |
-| [Glossary](docs/08-glossary.md) | Key terms and definitions |
+| [Troubleshooting](v1/05-troubleshooting.md) | Common issues and solutions |
+| [Capstone Project Dev Environment](v1/06-capstone-project-dev-environment.md) | Setting up your capstone project |
+| [FAQ](v1/07-faq.md) | Frequently asked questions |
+| [Glossary](v1/08-glossary.md) | Key terms and definitions |
 
 ## Project Materials
 
@@ -135,8 +145,11 @@ No prior experience with Git, Jira, or AI tools is required. You should have:
 ## Quick Start
 
 1. Fork this repository to your GitHub account
-2. Follow [Session 1: Setup](docs/01-session-1-setup.md) to configure your environment
-3. Continue with [Session 2: Workflow](docs/04-session-2-workflow.md) to build the dashboard
+2. Follow the Session 1 setup guide for your assigned version:
+   - **Version 2A:** [Session 1](v2/version-a-walkthrough/session-1-setup.md)
+   - **Version 2B:** [Session 1](v2/version-b-reference/session-1-setup.md)
+   - **Version 1:** [Session 1](v1/01-session-1-setup.md)
+3. Continue with Session 2 to build and deploy the dashboard
 
 ## Naming Conventions
 

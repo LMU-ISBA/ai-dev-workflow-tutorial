@@ -60,7 +60,7 @@ This is the workflow used at technology companies worldwide. Today you will expe
 
 Each box in this diagram is a distinct stage you will complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
 
-> **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong visual layout. Spec-driven development means you specify what you want, plan how to build it, then execute with precision. The discipline of writing specifications before code separates amateur development from professional work. In your MSBA career, this is the difference between "I built something" and "I solved the right problem."
+> **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong visual layout. Spec-driven development means you specify what you want, plan how to build it, then execute with precision. The discipline of writing specifications before code separates amateur development from professional work. This is the difference between "I built something" and "I solved the right problem." In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
 
 ---
 
@@ -276,7 +276,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 ### 2.4 Create the Implementation Plan
 
-> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. For MSBA students, this is the equivalent of your analysis methodology section -- before you analyze data, you define your approach, choose your statistical methods, and outline your procedure. The same discipline applies here.
+> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. Think of it as the equivalent of a methodology section in research -- before you analyze data, you define your approach, choose your methods, and outline your procedure. The same discipline applies to software. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
 1. Run the plan command with your technology preferences:
 
@@ -402,7 +402,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 > ```
 > produces a web page with a title and a formatted metric card. No HTML needed.
 >
-> Streamlit is not the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it has a unique advantage for MSBA students: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You will use the same data manipulation skills you learned in your analytics courses.
+> Streamlit is not the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it has a unique advantage for capstone projects: it uses pure Python, integrates with Pandas and Plotly, deploys for free, and requires no web development knowledge. You can use the same data manipulation skills you learned in your coursework.
 
 ### Claude Code Editing Modes
 
@@ -655,7 +655,7 @@ Your feature branch contains all the implementation work. Now you will bring tho
 
 ### Why Deployment Matters
 
-> **Why This Matters:** Building something that only runs on your laptop does not deliver value. Deployment makes your work accessible to stakeholders -- a manager can open a URL and see your dashboard without installing Python or cloning a repository. In your MSBA career, this skill -- going from analysis to a shared, accessible output -- is what makes you stand out. Many analysts can build charts in a Jupyter notebook; fewer can deploy an interactive dashboard that stakeholders actually use.
+> **Why This Matters:** Building something that only runs on your laptop does not deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. This skill -- going from analysis to a shared, accessible output -- is what makes you stand out after graduation. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
 
 Deployment is the final stage of the professional workflow. It transforms your local project into a publicly accessible application.
 
@@ -762,7 +762,7 @@ In this session, you practiced five professional skills:
 
 5. **Deployment to production** -- You made your work accessible to the world, transforming a local script into a live application with a shareable URL.
 
-> **For Your Career:** This workflow scales. Whether you are building a data pipeline, an analytics dashboard, a machine learning model, or a business intelligence report, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built, but the process you followed to build it -- and that process awareness is what hiring managers look for in MSBA graduates.
+> **For Your Career:** This workflow scales. Whether you are building a data pipeline, an analytics dashboard, a machine learning model, or a business intelligence report, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built, but the process you followed to build it -- and that process awareness is what hiring managers look for in candidates who can contribute from day one.
 
 ---
 
@@ -1089,4 +1089,4 @@ Quick-reference table of key terms used in this document.
 
 ## What's Next
 
-Continue to [Capstone Project Dev Environment](../../docs/06-capstone-project-dev-environment.md) to set up your capstone project using the same workflow you practiced today.
+Continue to [Capstone Project Dev Environment](../../v1/06-capstone-project-dev-environment.md) to set up your capstone project using the same workflow you practiced today.

@@ -1,6 +1,6 @@
-# MSBA Tutorial: AI-Assisted Development Workflow
+# AI-Assisted Development Workflow Tutorial
 
-Two versions of the AI-assisted development workflow tutorial, tailored for MSBA (Master of Science in Business Analytics) graduate students.
+Two versions of the AI-assisted development workflow tutorial, designed for capstone students.
 
 Both versions teach the same complete workflow — from requirements to a deployed Streamlit dashboard — using the same tools (GitHub, Jira, Cursor, Claude Code, spec-kit). They differ in depth and format.
 
@@ -19,7 +19,7 @@ A focused, action-oriented guide. Every section is numbered steps with checkpoin
 
 **Best for:** Self-paced learning, pre-reading before class, reference after class
 
-A thorough guide that explains the "why" behind every step. Includes concept explanations, professional context, visual diagrams, and pro tips for MSBA students. Ideal for students who want to understand the tools deeply, not just use them.
+A thorough guide that explains the "why" behind every step. Includes concept explanations, professional context, capstone connections, visual diagrams, and career-relevant pro tips. Ideal for students who want to understand the tools deeply, not just use them.
 
 | File | Content | Time |
 |------|---------|------|
