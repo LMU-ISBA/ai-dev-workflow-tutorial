@@ -42,7 +42,7 @@ All four commands should produce output without errors. If any command fails, re
 
 ## 1. Connect Claude Code to Jira (~10 min)
 
-**MCP (Model Context Protocol)** is a standard that lets Claude Code connect to external tools and services. Think of it as a plugin system -- once connected, Claude can read from and write to those tools directly. In this section, you will connect Claude Code to Jira so it can create issues, update statuses, and add comments without leaving the terminal.
+**MCP (Model Context Protocol)** is a standard that lets Claude Code connect to external tools and services. It is a plugin system -- once connected, Claude can read from and write to those tools directly. In this section, you will connect Claude Code to Jira so it can create issues, update statuses, and add comments without leaving the terminal.
 
 This integration matters because it creates **traceability** -- the ability to link every code change back to the requirement that prompted it. In your capstone and in professional settings, stakeholders and teammates need to understand not just what was built, but why. Traceability is how you answer that question.
 
@@ -106,7 +106,7 @@ This integration matters because it creates **traceability** -- the ability to l
 
 **spec-kit** is GitHub's tool for spec-driven development. It creates a structured plan before any code is written, following a four-step sequence: Constitution, Specification, Plan, and Tasks. This approach prevents building the wrong thing -- which is especially important when working with AI, since AI can build the wrong thing very fast if given vague instructions.
 
-This is the same discipline you will use in your capstone: start with requirements, create a plan, then execute. The difference between a mediocre project and an outstanding one is often the quality of the planning, not the quality of the code.
+This is the same discipline you will use in your capstone: start with requirements, create a plan, then execute. Good planning saves more time than good coding.
 
 ### 2.1 Initialize Spec-Kit
 
@@ -197,7 +197,7 @@ The plan translates the specification into a technical approach: which technolog
    Create an implementation plan. Use Python with Streamlit, Pandas for data handling, Plotly for interactive charts. Clean code organization.
    ```
 
-   By specifying the technology stack here, you guide Claude toward the tools you want rather than letting it choose arbitrarily. This is an important part of working effectively with AI -- giving clear direction on technical decisions while letting the AI handle implementation details.
+   By specifying the technology stack here, you guide Claude toward the tools you want rather than letting it choose arbitrarily. Giving clear direction on technical decisions while letting the AI handle implementation details produces better results than leaving every choice to the AI.
 
 2. **Review the plan.** Open `specs/[feature-name]/plan.md` in Cursor's file explorer. The plan should cover architecture decisions, component structure, data flow, and technology choices.
 
@@ -402,7 +402,7 @@ Replace `ECOM-2` with your actual issue key. Repeat this entire cycle for ECOM-3
 
 > **Skip the deployment issue for now.** If you have a Jira issue for deployment, leave it open. You cannot deploy until your code is merged to the `main` branch, which happens in the next step.
 
-> **Tip:** Watch Claude's terminal output as it works. You will see files being created, commands being run, and problems being solved in real time. If Claude encounters an error, observe how it diagnoses and fixes the issue. This is one of the most valuable learning opportunities in the tutorial.
+> **Tip:** Watch Claude's terminal output as it works. You will see files being created, commands being run, and problems being solved in real time. If Claude encounters an error, observe how it diagnoses and fixes the issue. Watching how Claude diagnoses and fixes errors teaches you more than reading about it.
 
 > **Want to see the dashboard yourself while building?** Ask Claude: `How do I run the dashboard in my own browser?` You can run the dashboard at any point to see your progress.
 
@@ -565,7 +565,7 @@ This is the workflow used by professional development teams. The tools and seque
 
 ### After Graduation
 
-This workflow does not expire. Whether you join a consulting firm, a data analytics team, a technology company, or start your own venture, the pattern is the same: requirements, planning, tracking, building, deploying. The specific tools may vary (Jira might be Asana, Streamlit might be Tableau), but the discipline and the thinking are identical. Interviewers consistently ask about your process, not just your output -- and now you have a process to describe.
+This workflow does not expire. Whether you join a consulting firm, a data analytics team, a technology company, or start your own venture, the pattern is the same: requirements, planning, tracking, building, deploying. The specific tools may vary (Jira might be Asana, Streamlit might be Tableau), but the discipline and the thinking are identical. Interviewers ask about your process, and now you have one to describe.
 
 ---
 

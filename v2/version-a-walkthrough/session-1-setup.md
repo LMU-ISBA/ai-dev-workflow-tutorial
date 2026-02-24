@@ -20,11 +20,11 @@ By the end of this session you will have every account created, every tool insta
 
 ### Why This Matters
 
-Setting up your own development environment is one of the most underrated skills in technology. It signals initiative, problem-solving ability, and self-sufficiency -- qualities that employers and teammates notice immediately. Many people can write code in an environment someone else prepared for them. Far fewer can configure the environment themselves, debug installation issues, and get a full toolchain working from scratch. That ability is high signal.
+Most people skip this step. They write code in an environment someone else prepared for them and never learn how the toolchain fits together. If you can set up your own environment and debug installation issues, you will stand out -- on your capstone team, in interviews, and on the job.
 
-Beyond the signal, a well-configured environment is crucial for project success. Every technology company -- from two-person startups to Fortune 500 enterprises -- uses some variation of the workflow you are about to configure. The tools may differ, but the pattern is the same: track requirements, write code, version it, and deploy.
+Every technology company uses some variation of the workflow you are about to configure. The tools may differ, but the pattern is the same: track requirements, write code, version it, and deploy.
 
-You are setting up the same pipeline, end to end, in a single session. These are not just tutorial tools -- they are the same ones you will use in your capstone project and on day one of any analytics, consulting, or engineering role after graduation.
+You are setting up the same pipeline, end to end, in a single session. These are the same tools you will use in your capstone project and in analytics, consulting, or engineering roles after graduation.
 
 ---
 
@@ -73,7 +73,7 @@ Jira is the most widely used project management tool in technology teams. It tra
 
 ### 1.3 Claude Pro Subscription
 
-Claude Pro gives you access to Claude Code, the AI coding assistant you will use throughout this tutorial. Claude Code runs in your terminal and can read your codebase, write code, run commands, and interact with external tools. AI-assisted development is rapidly becoming standard practice -- learning to work effectively with AI tools now gives you a significant advantage in your capstone and career.
+Claude Pro gives you access to Claude Code, the AI coding assistant you will use throughout this tutorial. Claude Code runs in your terminal and can read your codebase, write code, run commands, and interact with external tools. AI-assisted development is becoming standard practice, and learning to work with these tools now will help you in your capstone and career.
 
 1. Go to [claude.ai](https://claude.ai) and sign up using Google or email.
 2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
@@ -273,7 +273,7 @@ uv --version
 
 ### 2.5 spec-kit
 
-**spec-kit** is GitHub's toolkit for spec-driven development. It helps you generate structured specifications from product requirements, which Claude Code can then use to build software. Planning before coding is what separates professional development from ad-hoc scripting -- spec-kit makes that discipline concrete.
+**spec-kit** is GitHub's toolkit for spec-driven development. It helps you generate structured specifications from product requirements, which Claude Code can then use to build software. It helps you plan before you code, which saves time and reduces rework.
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
@@ -454,7 +454,7 @@ claude --version
 
 ## What's Next
 
-Session 1 is complete. All accounts are created, all tools are installed and verified, and your repository is ready. You now have the same professional development environment used by analytics teams, consulting firms, and technology companies.
+Session 1 is complete. All accounts are created, all tools are installed and verified, and your repository is ready.
 
 Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. The workflow you learn here is the workflow you will use there.
 
