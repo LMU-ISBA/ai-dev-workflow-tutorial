@@ -374,35 +374,28 @@ This command tells uv to install the `specify-cli` tool from spec-kit's GitHub r
 
 > **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and connect to external tools like Jira through MCP (Model Context Protocol) servers. Think of it as an AI colleague sitting next to you who can see your entire project, understand its structure, and make changes alongside you. This is fundamentally different from copying code out of a chat window --- Claude Code works within your development environment, just like you do.
 
-Claude Code requires Node.js (a JavaScript runtime) to run. Most developers already have it installed, but let us verify.
+**Step 1 --- Install Claude Code:**
 
-**Step 1 --- Verify Node.js is installed:**
+Claude Code has a native installer that handles everything automatically, including background updates.
 
-```bash
-npm --version
-```
-
-If you see a version number (for example, `10.2.4`), skip to Step 2.
-
-**If `npm` is not found**, install Node.js first:
-
-1. Go to [nodejs.org](https://nodejs.org) and download the **LTS** (Long Term Support) version. LTS is the stable, recommended version.
-2. Run the installer and follow the prompts. Accept all defaults.
-3. Open a **new terminal** (Terminal --> New Terminal).
-4. Verify: `npm --version`
-
-**Step 2 --- Install Claude Code:**
+**macOS:**
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-The `-g` flag means "install globally" so that the `claude` command is available from any directory, not just this one project.
+**Windows (PowerShell):**
 
-**Step 3 --- Authenticate:**
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+After installation, open a **new terminal** (Terminal --> New Terminal) so the PATH updates take effect.
+
+**Step 2 --- Authenticate:**
 
 1. In the terminal, type `claude` and press Enter.
-2. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.3).
+2. You will be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.3).
 3. Authorize Claude Code to access your account.
 4. Return to the terminal. You should see Claude Code's interactive prompt.
 5. Type `/exit` to quit for now. You will use Claude Code extensively starting in Section 3.3.
@@ -704,21 +697,23 @@ Python 3.8.10
 
 ---
 
-### 6. npm not found (needed for Claude Code)
+### 6. Claude Code install fails or `claude` not found
 
 **What you see:**
 ```
-npm: command not found
+claude: command not found
 ```
+or the install script produces an error.
 
-**Why it happens:** Node.js is not installed. Claude Code is a Node.js application and requires npm (Node Package Manager), which comes bundled with Node.js.
+**Why it happens:** The installer could not complete (network issue, permissions), or the terminal has not loaded the updated PATH after installation.
 
 **How to fix it:**
-1. Go to [nodejs.org](https://nodejs.org) and download the **LTS** version.
-2. Run the installer and follow the prompts.
-3. Open a **new terminal** in Cursor.
-4. Verify with `npm --version`.
-5. Then install Claude Code: `npm install -g @anthropic-ai/claude-code`
+1. Open a **new terminal** in Cursor (Terminal --> New Terminal). This is the fix most of the time.
+2. If that does not work, try running the installer again:
+   - **macOS:** `curl -fsSL https://claude.ai/install.sh | bash`
+   - **Windows (PowerShell):** `irm https://claude.ai/install.ps1 | iex`
+3. If you are behind a corporate firewall or VPN, try disconnecting temporarily and re-running the installer.
+4. After reinstalling, open another new terminal and try `claude --version`.
 
 ---
 

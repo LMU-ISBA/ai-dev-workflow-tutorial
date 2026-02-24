@@ -281,35 +281,28 @@ You should see a help message listing available commands and options.
 
 ### 2.6 Claude Code
 
-Claude Code is the AI command-line assistant you will use throughout the tutorial. Unlike the Claude web interface at claude.ai, Claude Code runs directly in your terminal, can read and write files in your project, execute shell commands, and integrate with external tools like Jira. It requires Node.js to run.
+Claude Code is the AI command-line assistant you will use throughout the tutorial. Unlike the Claude web interface at claude.ai, Claude Code runs directly in your terminal, can read and write files in your project, execute shell commands, and integrate with external tools like Jira.
 
-**Step 1 -- Verify Node.js is installed:**
+**Step 1 -- Install Claude Code:**
 
-```bash
-npm --version
-```
-
-If you see a version number (e.g., `10.2.0`), Node.js is installed. Skip to Step 2.
-
-**If `npm` is not found**, install Node.js first:
-
-1. Go to [nodejs.org](https://nodejs.org) and download the **LTS** (Long Term Support) version.
-2. Run the installer and follow the prompts (accept defaults).
-3. Open a **new terminal** (Terminal --> New Terminal).
-4. Verify: `npm --version`
-
-**Step 2 -- Install Claude Code:**
+**macOS:**
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-The `-g` flag installs Claude Code globally so it is available from any directory.
+**Windows (PowerShell):**
 
-**Step 3 -- Authenticate:**
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+After installation, open a **new terminal** (Terminal --> New Terminal).
+
+**Step 2 -- Authenticate:**
 
 1. Run `claude` in the terminal.
-2. A browser window opens automatically. Log in with your Claude account (the one with the Pro subscription).
+2. You will be prompted to log in. A browser window opens automatically. Log in with your Claude account (the one with the Pro subscription).
 3. Authorize Claude Code to access your account.
 4. Return to the terminal. You should see the Claude Code interactive prompt.
 
