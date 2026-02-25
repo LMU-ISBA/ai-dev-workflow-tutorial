@@ -219,7 +219,7 @@ Each stage narrows the space of possible outcomes. By the time you reach impleme
 
 Before you start generating specs, take a few minutes to read the product requirements document you'll be building from:
 
-Open `prd/ecommerce-analytics.md` in Cursor and skim it. You don't need to memorize anything -- just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
+Open the [PRD](../prd/ecommerce-analytics.md) and skim it. You can read it in your browser or open `prd/ecommerce-analytics.md` in Cursor. You don't need to memorize anything -- just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
 
 This matters because spec-kit is about to ask you questions about your project. You'll make better choices if you already know what you're building.
 
