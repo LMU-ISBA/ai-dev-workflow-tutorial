@@ -37,13 +37,13 @@
 | 0:15–0:30 | **Live MCP demo** — everyone watches the Jira connection, then does it themselves |
 | 0:30–3:00 | **Build at your own pace** — work through the guide below; ask questions as you go |
 
-> **Did not finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Zoom chat if you get stuck.
+> **Didn't finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Teams General channel if you get stuck.
 
 ---
 
-## What You Will Accomplish
+## What You'll Accomplish
 
-By the end of this workshop, you will have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you will have:
+By the end of this workshop, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
 
 - Connected Claude Code to Jira using the Model Context Protocol (MCP)
 - Generated spec-kit artifacts: constitution, specification, plan, and tasks
@@ -79,7 +79,7 @@ If any command fails, return to the [pre-work setup guide](pre-work-setup.md) an
 
 ## The Professional Workflow
 
-This is the workflow used at technology companies worldwide. Today you will experience the entire cycle, from specification to deployment.
+This is the workflow used at technology companies worldwide. Today you'll experience the entire cycle, from specification to deployment.
 
 ```
 ┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
@@ -93,7 +93,7 @@ This is the workflow used at technology companies worldwide. Today you will expe
 └─────────┘    └──────────┘    └─────────┘    └────────┘
 ```
 
-Each box in this diagram is a distinct stage you will complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
+Each box in this diagram is a distinct stage you'll complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
 
 > **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong layout. Spec-driven development means you specify what you want, plan how to build it, then execute against that plan. Writing specifications before code is what professional teams do. This is the difference between "I built something" and "I solved the right problem." In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
 
@@ -103,9 +103,9 @@ Each box in this diagram is a distinct stage you will complete today. The left-t
 
 ### Understanding MCP (Model Context Protocol)
 
-Before you run any commands, it helps to understand what you are setting up and why.
+Before you run any commands, it helps to understand what you're setting up and why.
 
-> **What is MCP?** MCP is a plugin system for Claude Code. Just as your phone connects to apps through APIs, Claude Code connects to external services through MCP. Each MCP server gives Claude Code a new capability. Today, you will add the Atlassian MCP server, which lets Claude Code communicate directly with Jira -- reading your tasks, creating issues, and updating progress, all without leaving the terminal.
+> **What is MCP?** MCP is a plugin system for Claude Code. Just as your phone connects to apps through APIs, Claude Code connects to external services through MCP. Each MCP server gives Claude Code a new capability. Today, you'll add the Atlassian MCP server, which lets Claude Code communicate directly with Jira -- reading your tasks, creating issues, and updating progress, all without leaving the terminal.
 
 Here is what the connection looks like:
 
@@ -123,19 +123,19 @@ Here is what the connection looks like:
 └──────────────┘              └──────────────┘
 ```
 
-Without MCP, you would need to manually switch between Claude Code and the Jira web interface. With MCP, Claude Code handles both coding and project management in a single workflow.
+Without MCP, you'd need to manually switch between Claude Code and the Jira web interface. With MCP, Claude Code handles both coding and project management in a single workflow.
 
 > **Why This Matters:** In professional settings, developers track work in project management tools and maintain traceability between requirements and code. MCP lets you practice this integrated workflow from the start.
 
 ### Steps
 
-1. **Exit Claude Code if it is running.** The MCP server must be added before starting a new session.
+1. **Exit Claude Code if it's running.** The MCP server must be added before starting a new session.
 
    ```
    /exit
    ```
 
-   If Claude Code is not running, skip this step.
+   If Claude Code isn't running, skip this step.
 
 2. **Add the Atlassian MCP server.** Run this in Cursor's terminal (not inside Claude Code):
 
@@ -157,7 +157,7 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
    /output-style explanatory
    ```
 
-   By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it is doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you are still learning the workflow.
+   By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it's doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you're still learning the workflow.
 
 5. **Verify the server is registered.** Inside Claude Code, run:
 
@@ -165,7 +165,7 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
    /mcp
    ```
 
-   You should see `atlassian` in the list of MCP servers. It will likely show that authentication is required -- this is expected.
+   You should see `atlassian` in the list of MCP servers. It'll likely show that authentication is required -- this is expected.
 
 6. **Authenticate with Atlassian.** In the `/mcp` output, use the **arrow keys** to select `atlassian`, then press **Enter**.
 
@@ -191,7 +191,7 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
 
 The rest of the tutorial flows from what you create here. Every step that follows -- coding, committing, deploying -- depends on the specifications you write in this section.
 
-> **The Problem with "Just Code It":** When you ask an AI to build something without clear specifications, you get something that might work but probably is not what you wanted. The AI fills in gaps with assumptions, and each assumption is a potential mismatch with your intent. With a complex deliverable like an analytics dashboard, even small mismatches compound: the wrong chart type, unexpected data aggregation, a layout that does not serve the audience.
+> **The Problem with "Just Code It":** When you ask an AI to build something without clear specifications, you get something that might work but probably isn't what you wanted. The AI fills in gaps with assumptions, and each assumption is a potential mismatch with your intent. With a complex deliverable like an analytics dashboard, even small mismatches compound: the wrong chart type, unexpected data aggregation, a layout that doesn't serve the audience.
 
 Spec-kit solves this by creating a structured pipeline that progressively narrows ambiguity:
 
@@ -246,9 +246,9 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 ### 2.2 Create the Constitution
 
-> **What is a Constitution?** It is your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
+> **What is a Constitution?** It's your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
 
-1. Start Claude Code if it is not already running:
+1. Start Claude Code if it's not already running:
 
    ```bash
    claude
@@ -263,11 +263,11 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
    Ask me one question at a time about this project. Propose numbered options I can choose from. After 3-5 questions, generate the constitution.
    ```
 
-3. Claude will ask you a series of questions about your project's principles and priorities -- things like code style, visualization approach, and development practices. Pick the options that make sense to you. There are no wrong answers here; the point is that you are making deliberate choices about how the project should be built, rather than letting the AI decide for you.
+3. Claude will ask you a series of questions about your project's principles and priorities -- things like code style, visualization approach, and development practices. Pick the options that make sense to you. There are no wrong answers here; the point is that you're making deliberate choices about how the project should be built, rather than letting the AI decide for you.
 
-4. After the Q&A, Claude generates a constitution document and asks permission to create the file. You will see a permission prompt.
+4. After the Q&A, Claude generates a constitution document and asks permission to create the file. You'll see a permission prompt.
 
-   > **Key Concept: The Permission Prompt.** Claude Code asks before modifying your files. You have several options:
+   > **Key Concept: The Permission Prompt.** Claude Code asks before modifying your files. You've got several options:
    > - **Yes** -- approve this one change
    > - **Yes, allow all edits during this session** -- approve all future edits without asking (useful when you trust the workflow)
    > - **No** -- reject the change
@@ -286,7 +286,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 > **Key Concept: The `@` Symbol (Context Engineering).** When you type `@` followed by a file path in Claude Code, it includes that file's entire content in your message. This is called **context engineering** -- giving AI the right information to produce better results.
 >
-> For example, `@prd/ecommerce-analytics.md` tells Claude: "read this entire PRD and use it as the basis for your work." Without the `@`, Claude would not know your specific requirements and would have to guess or ask.
+> For example, `@prd/ecommerce-analytics.md` tells Claude: "read this entire PRD and use it as the basis for your work." Without the `@`, Claude wouldn't know your specific requirements and would have to guess or ask.
 >
 > The quality of AI output depends on the context you provide. Better context, better results.
 
@@ -304,7 +304,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 4. Note that spec-kit may automatically create a **feature branch** (e.g., `001-sales-dashboard`).
 
-   > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. It is like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you are satisfied.
+   > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. It's like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you're satisfied.
    >
    > ```
    > main:    A --- B --- C  (stable, untouched)
@@ -312,7 +312,7 @@ Before running this command, you need to understand an important Claude Code fea
    > feature:        D --- E --- F  (your work in progress)
    > ```
    >
-   > Your `main` branch stays clean and stable while you work on the feature branch. This is standard practice in professional development -- it protects the production version of your code from incomplete changes. Spec-kit creates the branch automatically so you do not have to think about it.
+   > Your `main` branch stays clean and stable while you work on the feature branch. This is standard practice in professional development -- it protects the production version of your code from incomplete changes. Spec-kit creates the branch automatically so you don't have to think about it.
 
 5. Preview the specification in Cursor's file explorer.
 
@@ -320,7 +320,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 ### 2.4 Create the Implementation Plan
 
-> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It is the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
+> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It's the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
 1. Run the plan command:
 
@@ -342,7 +342,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 > **From Plan to Tasks:** Breaking work into specific, actionable tasks is a core project management skill. In agile development, each task should be:
 > - **Independent** -- completable on its own without waiting for other tasks
-> - **Verifiable** -- you can confirm it is done by testing or inspecting the output
+> - **Verifiable** -- you can confirm it's done by testing or inspecting the output
 > - **Small enough** -- achievable in a single focused work session
 >
 > This is the same principle behind any well-structured analytics project: break a large deliverable into manageable pieces, then execute them systematically.
@@ -405,7 +405,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 
    Replace `001-sales-dashboard` with your actual feature folder name if it differs.
 
-   > **How does Claude know to use Jira?** When you mention "Jira" or "ECOM project," Claude recognizes that it needs the Atlassian MCP server and uses it automatically. You do not need to activate MCP manually -- Claude selects the right tool based on your request. This is part of why MCP is powerful: it extends Claude's capabilities transparently.
+   > **How does Claude know to use Jira?** When you mention "Jira" or "ECOM project," Claude recognizes that it needs the Atlassian MCP server and uses it automatically. You don't need to activate MCP manually -- Claude selects the right tool based on your request. This is part of why MCP is powerful: it extends Claude's capabilities transparently.
 
 2. Claude reads the tasks file, formulates an appropriate Jira issue, uses the Atlassian MCP to create it, and returns the details including the issue key (e.g., ECOM-1).
 
@@ -437,7 +437,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 
 ### Understanding Streamlit
 
-> **What is Streamlit?** Streamlit is a Python library that transforms Python scripts into interactive web applications. Instead of writing HTML, CSS, and JavaScript -- the traditional technologies for building web pages -- you write Python and Streamlit handles the web interface automatically. It is especially popular in data science and business analytics because it lets analysts create dashboards quickly using the language they already know.
+> **What is Streamlit?** Streamlit is a Python library that transforms Python scripts into interactive web applications. Instead of writing HTML, CSS, and JavaScript -- the traditional technologies for building web pages -- you write Python and Streamlit handles the web interface automatically. It's especially popular in data science and business analytics because it lets analysts create dashboards quickly using the language they already know.
 >
 > For example, this Python code:
 > ```python
@@ -447,7 +447,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 > ```
 > produces a web page with a title and a formatted metric card. No HTML needed.
 >
-> Streamlit is not the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it works well for capstone projects: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You can use the same data manipulation skills you learned in your coursework.
+> Streamlit isn't the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it works well for capstone projects: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You can use the same data manipulation skills you learned in your coursework.
 
 ### Claude Code Editing Modes
 
@@ -461,7 +461,7 @@ Before you start building, understand how Claude Code interacts with your files.
 
 Press **Shift+Tab** to cycle between modes. The current mode is displayed in the Claude Code interface.
 
-> **Recommendation for this session:** Switch to **Auto-accept** mode for the build phase. You have already defined detailed specifications, and Claude will follow them. Auto-accept lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it will just take longer.
+> **Recommendation for this workshop:** Switch to **Auto-accept** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Auto-accept lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
 
 ### 4.1 Implement the First Issue
 
@@ -483,7 +483,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    Replace `ECOM-1` with whichever issue Claude recommended.
 
-   > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you will see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
+   > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
 3. Ask Claude to explain what it created:
 
@@ -502,7 +502,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
    streamlit run app.py
    ```
 
-   > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment** -- an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You will see `(venv)` at the beginning of your terminal prompt when the environment is active.
+   > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment** -- an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
 
 5. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which issue you implemented first.
 
@@ -512,7 +512,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 ### 4.2 Commit, Push, and Update Jira
 
-Now you will save your work using Git and create a traceable link between your code and the Jira issue. This three-step process -- commit, push, update -- is the basic rhythm of professional development.
+Now you'll save your work using Git and create a traceable link between your code and the Jira issue. This three-step process -- commit, push, update -- is the basic rhythm of professional development.
 
 #### Understanding Git's Workflow
 
@@ -542,7 +542,7 @@ Git tracks your code changes through a series of stages. Understanding these sta
 
 Here is what each stage means:
 
-- **Working directory** -- the files on your computer as you edit them. Changes here are not yet tracked by Git.
+- **Working directory** -- the files on your computer as you edit them. Changes here aren't yet tracked by Git.
 - **Staging area** -- a holding zone for changes you intend to include in your next commit. The `git add` command moves changes here. This is like placing items in a box before sealing it.
 - **Local repository** -- your project's history of saved snapshots. The `git commit` command creates a new snapshot from everything in the staging area. Each snapshot is permanent and can be revisited.
 - **Remote (GitHub)** -- the cloud copy of your repository. The `git push` command uploads your local commits to GitHub, making them visible to others and serving as a backup.
@@ -558,7 +558,7 @@ Here is what each stage means:
 
 #### Steps
 
-1. **Commit your changes.** Ask Claude to create a commit with the Jira key in the message. Also ensure the virtual environment directory is not tracked:
+1. **Commit your changes.** Ask Claude to create a commit with the Jira key in the message. Also ensure the virtual environment directory isn't tracked:
 
    ```
    Commit my changes for ECOM-1. Make sure venv/ is in .gitignore.
@@ -566,9 +566,9 @@ Here is what each stage means:
 
    Claude will add `venv/` to `.gitignore` (if not already there), stage your changes, and create a commit with a message like "ECOM-1: Set up project structure and dependencies."
 
-   > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository -- they are large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
+   > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository -- they're large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
 
-   > **What is a commit hash?** After committing, Git produces a unique identifier called a **commit hash** -- a string like `05a9ada`. This hash is a fingerprint: no two commits in the history of your repository will ever have the same hash. You will include this hash in Jira so anyone can find exactly which code change fulfilled a specific requirement.
+   > **What is a commit hash?** After committing, Git produces a unique identifier called a **commit hash** -- a string like `05a9ada`. This hash is a fingerprint: no two commits in the history of your repository will ever have the same hash. You'll include this hash in Jira so anyone can find exactly which code change fulfilled a specific requirement.
 
 2. **Push to GitHub.** Upload your local commit to the remote repository:
 
@@ -590,7 +590,7 @@ Here is what each stage means:
    - Status is "Done"
    - A comment exists with the implementation summary, commit hash, branch name, and a GitHub link
 
-> **If Claude cannot access Jira:** Run `/mcp`, select `atlassian`, and press Enter to re-authenticate. Then retry the update command.
+> **If Claude can't access Jira:** Run `/mcp`, select `atlassian`, and press Enter to re-authenticate. Then retry the update command.
 
 **Checkpoint:** Code is on GitHub. ECOM-1 shows "Done" in Jira with a detailed evidence comment.
 
@@ -637,9 +637,9 @@ Update ECOM-2 in Jira with implementation summary, commit hash, branch name, and
 
 Replace `ECOM-2` with the current issue key. Repeat for ECOM-3, ECOM-4, and so on.
 
-> **Skip the deployment issue for now.** You cannot deploy until your code is merged to `main`, which happens in the next step. Leave the deployment issue in "To Do" status.
+> **Skip the deployment issue for now.** You can't deploy until your code is merged to `main`, which happens in the next step. Leave the deployment issue in "To Do" status.
 
-> **Pro Tip:** Watch Claude's output as it implements each issue. You will see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
+> **Pro Tip:** Watch Claude's output as it implements each issue. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
 After working through all implementation issues, test the complete dashboard one final time:
 
@@ -654,7 +654,7 @@ Open `http://localhost:8501` and verify that all components are present: KPI sco
 
 ### 4.4 Merge to Main
 
-Your feature branch contains all the implementation work. Now you will bring those changes into the `main` branch, making them the official version of the code.
+Your feature branch contains all the implementation work. Now you'll bring those changes into the `main` branch, making them the official version of the code.
 
 > **Key Concept: Merging.**
 >
@@ -666,7 +666,7 @@ Your feature branch contains all the implementation work. Now you will bring tho
 >
 > Your feature branch diverged from `main` at point C. You then made commits E, F, and G on the feature branch. Merging creates a new commit (D) on `main` that incorporates all the changes from the feature branch. After the merge, `main` contains everything: the original code plus all your dashboard work.
 >
-> This is why feature branches are valuable -- they let you develop freely without risking the stable `main` branch. When you are confident your work is complete, you merge once and know that `main` stays reliable.
+> This is why feature branches are valuable -- they let you develop freely without risking the stable `main` branch. When you're confident your work is complete, you merge once and know that `main` stays reliable.
 
 1. **Confirm your current branch:**
 
@@ -700,7 +700,7 @@ Your feature branch contains all the implementation work. Now you will bring tho
 
 ### Why Deployment Matters
 
-> **Why This Matters:** Building something that only runs on your laptop does not deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. Going from analysis to a shared, accessible output is a skill most graduates lack. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
+> **Why This Matters:** Building something that only runs on your laptop doesn't deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. Going from analysis to a shared, accessible output is a skill most graduates lack. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
 
 Deployment is the final stage of the professional workflow. It transforms your local project into a publicly accessible application.
 
@@ -744,7 +744,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
    Open this URL and verify that your dashboard looks and functions the same as it did locally.
 
-> **If deployment fails:** The most common cause is a missing or incorrect `requirements.txt`. Check that the file exists in your repository's `main` branch on GitHub and lists all required packages (streamlit, pandas, plotly, etc.). If it is missing, ask Claude to create one, commit, push, and redeploy.
+> **If deployment fails:** The most common cause is a missing or incorrect `requirements.txt`. Check that the file exists in your repository's `main` branch on GitHub and lists all required packages (streamlit, pandas, plotly, etc.). If it's missing, ask Claude to create one, commit, push, and redeploy.
 
 ### 5.2 Update Jira
 
@@ -795,7 +795,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 PRD [done] -> spec-kit [done] -> Jira [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
 ```
 
-In this session, you practiced five professional skills:
+In this workshop, you practiced five professional skills:
 
 1. **Spec-driven development** -- You specified, planned, broke down tasks, then implemented. This discipline works with any technical project, not just this tutorial.
 
@@ -807,13 +807,13 @@ In this session, you practiced five professional skills:
 
 5. **Deployment** -- You turned a local script into a live application with a shareable URL.
 
-> **For Your Career:** This workflow scales. Whether you are building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it -- and that process awareness matters to hiring managers.
+> **For Your Career:** This workflow scales. Whether you're building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it -- and that process awareness matters to hiring managers.
 
 ---
 
 ## What to Submit
 
-**Due: January 25** -- Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
+**Due: March 16, 2026 at 11:59 PM** -- Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
 
 1. **GitHub repository link** -- your public repo URL (e.g., `https://github.com/yourusername/ai-dev-workflow-tutorial`)
 
@@ -823,7 +823,7 @@ In this session, you practiced five professional skills:
    - Issue status is "Done"
    - Comment with implementation summary, commit hash, branch name, and GitHub link
 
-   If the full issue does not fit in one screenshot, submit multiple screenshots named `jira-01.png`, `jira-02.png`, etc.
+   If the full issue doesn't fit in one screenshot, submit multiple screenshots named `jira-01.png`, `jira-02.png`, etc.
 
 Make sure your PRD and notes directories are included in your repository.
 
@@ -831,19 +831,19 @@ Make sure your PRD and notes directories are included in your repository.
 
 ## Comprehensive Troubleshooting
 
-This section covers the most common issues students encounter. For each problem, you will find three parts: what you see (the symptom), why it happens (the root cause), and how to fix it (the solution).
+This section covers the most common issues people encounter. For each problem, you'll find three parts: what you see (the symptom), why it happens (the root cause), and how to fix it (the solution).
 
 ---
 
 ### MCP Connection Issues
 
-**What you see:** Claude says it cannot access Jira, or `/mcp` does not show the `atlassian` server.
+**What you see:** Claude says it can't access Jira, or `/mcp` doesn't show the `atlassian` server.
 
-**Why it happens:** The MCP server either was not added correctly, or the authentication token has expired. Authentication tokens are temporary by design -- Atlassian issues short-lived tokens for security, which means they expire during long sessions.
+**Why it happens:** The MCP server either wasn't added correctly, or the authentication token has expired. Authentication tokens are temporary by design -- Atlassian issues short-lived tokens for security, which means they expire during long sessions.
 
 **How to fix it:**
 
-If the server is not listed in `/mcp`:
+If the server isn't listed in `/mcp`:
 
 1. Exit Claude Code: `/exit`
 2. Re-add the server:
@@ -864,9 +864,9 @@ If the server is listed but authentication has expired:
 
 ### Spec-Kit Slash Commands Not Working
 
-**What you see:** Typing `/speckit.constitution` or `/speckit.specify` does nothing, or Claude does not recognize the command.
+**What you see:** Typing `/speckit.constitution` or `/speckit.specify` does nothing, or Claude doesn't recognize the command.
 
-**Why it happens:** Spec-kit was not initialized in this project, or the initialization did not complete successfully. The slash commands are stored as files in `.claude/commands/`, and Claude Code reads them at startup.
+**Why it happens:** Spec-kit wasn't initialized in this project, or the initialization didn't complete successfully. The slash commands are stored as files in `.claude/commands/`, and Claude Code reads them at startup.
 
 **How to fix it:**
 
@@ -883,7 +883,7 @@ If the server is listed but authentication has expired:
 4. Restart Claude Code: `claude`
 5. Try the slash command again
 
-If slash commands still do not work, you can use natural language instead. Rather than `/speckit.constitution`, tell Claude directly:
+If slash commands still don't work, you can use natural language instead. Rather than `/speckit.constitution`, tell Claude directly:
 
 ```
 Create a spec-kit constitution for this e-commerce analytics project (Streamlit dashboard for sales data). Save it to .specify/memory/constitution.md.
@@ -898,13 +898,13 @@ Claude will produce equivalent results without the slash command.
 
 **What you see:** Running `streamlit run app.py` produces `ModuleNotFoundError: No module named 'streamlit'` (or 'pandas' or 'plotly').
 
-**Why it happens:** Python cannot find the required package because either (a) the virtual environment is not activated, or (b) the package was never installed. The virtual environment is an isolated Python installation; packages installed inside it are not visible outside it, and vice versa.
+**Why it happens:** Python can't find the required package because either (a) the virtual environment isn't activated, or (b) the package was never installed. The virtual environment is an isolated Python installation; packages installed inside it aren't visible outside it, and vice versa.
 
 **How to fix it:**
 
 1. Check if your virtual environment is active. Look for `(venv)` at the beginning of your terminal prompt.
 
-2. If it is not active, activate it:
+2. If it's not active, activate it:
    ```bash
    source venv/bin/activate       # macOS
    # or: venv\Scripts\activate    # Windows
@@ -959,7 +959,7 @@ Then retry: `streamlit run app.py`
 
 **What you see:** The dashboard loads but shows no charts, displays "NaN" values, or throws a data-related error.
 
-**Why it happens:** The CSV file path in your code does not match the actual file location, or the data file has an unexpected structure. This commonly occurs when the code uses a relative path that resolves differently depending on where you run the command.
+**Why it happens:** The CSV file path in your code doesn't match the actual file location, or the data file has an unexpected structure. This commonly occurs when the code uses a relative path that resolves differently depending on where you run the command.
 
 **How to fix it:**
 
@@ -984,11 +984,11 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### Cannot Push -- Permission Denied
+### Can't Push -- Permission Denied
 
 **What you see:** `git push` fails with `Permission denied` or `remote: Permission to LMU-ISBA/ai-dev-workflow-tutorial.git denied`.
 
-**Why it happens:** Your local repository is pointed at the original repository rather than your fork. You can pull from the original but cannot push to it -- you can only push to your own fork.
+**Why it happens:** Your local repository is pointed at the original repository rather than your fork. You can pull from the original but can't push to it -- you can only push to your own fork.
 
 **How to fix it:**
 
@@ -1017,7 +1017,7 @@ Then retry: `streamlit run app.py`
 
 **What you see:** When merging the feature branch into main, Git reports "merge conflict" and stops.
 
-**Why it happens:** Both branches modified the same part of the same file, and Git cannot automatically determine which version to keep. This is uncommon in this tutorial (since you are the only developer), but can happen if you made manual changes to `main` during the session.
+**Why it happens:** Both branches modified the same part of the same file, and Git can't automatically determine which version to keep. This is uncommon in this tutorial (since you're the only developer), but can happen if you made manual changes to `main` during the workshop.
 
 **How to fix it:**
 
@@ -1040,7 +1040,7 @@ Then retry: `streamlit run app.py`
 
 **What you see:** Git commands fail with `fatal: not a git repository (or any of the parent directories)`.
 
-**Why it happens:** Your terminal is in a directory that is not inside your project. Git commands only work when you are inside a directory that has been initialized with Git (contains a `.git` folder).
+**Why it happens:** Your terminal is in a directory that isn't inside your project. Git commands only work when you're inside a directory that has been initialized with Git (contains a `.git` folder).
 
 **How to fix it:**
 
@@ -1056,7 +1056,7 @@ Then retry: `streamlit run app.py`
    ```
    Adjust the path to wherever you cloned the repository.
 
-3. Verify you are in the right place:
+3. Verify you're in the right place:
    ```bash
    ls .git
    ```
@@ -1080,9 +1080,9 @@ Then retry: `streamlit run app.py`
    # Try: "Create the KPI scorecards section of app.py"
    ```
 
-3. **Use plan mode.** Press Shift+Tab to switch to plan mode. Claude explains what it will do without making changes, using fewer tokens. Review the plan, then ask Claude to execute it.
+3. **Use plan mode.** Press Shift+Tab to switch to plan mode. Claude explains what it'll do without making changes, using fewer tokens. Review the plan, then ask Claude to execute it.
 
-4. **Upgrade if needed.** If you consistently hit limits, Claude Max ($100/month) provides higher usage caps. Most students find Pro sufficient for the tutorial sessions.
+4. **Upgrade if needed.** If you consistently hit limits, Claude Max ($100/month) provides higher usage caps. Most people find Pro sufficient for the tutorial sessions.
 
 ---
 
@@ -1090,7 +1090,7 @@ Then retry: `streamlit run app.py`
 
 **What you see:** Running `specify init . --ai claude` produces `command not found` or `specify is not recognized`.
 
-**Why it happens:** Spec-kit was not installed, or it was installed but the terminal cannot find it because the PATH has not been updated.
+**Why it happens:** Spec-kit wasn't installed, or it was installed but the terminal can't find it because the PATH hasn't been updated.
 
 **How to fix it:**
 
@@ -1103,7 +1103,7 @@ Then retry: `streamlit run app.py`
 
 3. Open another new terminal and retry: `specify --help`
 
-4. If `uv` itself is not found, return to the [pre-work setup guide](pre-work-setup.md) and install `uv` first.
+4. If `uv` itself isn't found, return to the [pre-work setup guide](pre-work-setup.md) and install `uv` first.
 
 ---
 
@@ -1134,4 +1134,4 @@ Quick-reference table of key terms used in this document.
 
 ## What's Next
 
-Continue to [Capstone Project Dev Environment](../../v1/06-capstone-project-dev-environment.md) to set up your capstone project using the same workflow you practiced today.
+You now have a complete professional workflow you can apply to your capstone project and beyond.
