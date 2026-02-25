@@ -11,11 +11,12 @@
 - [Workshop Agenda](#workshop-agenda)
 - [Section 1: Connect Claude Code to Jira (~10 min)](#section-1-connect-claude-code-to-jira-10-min)
 - [Section 2: Spec-Kit Workflow (~25 min)](#section-2-spec-kit-workflow-25-min)
-  - [2.1 Initialize Spec-Kit](#21-initialize-spec-kit)
-  - [2.2 Create the Constitution](#22-create-the-constitution)
-  - [2.3 Create the Specification](#23-create-the-specification)
-  - [2.4 Create the Implementation Plan](#24-create-the-implementation-plan)
-  - [2.5 Generate Tasks](#25-generate-tasks)
+  - [2.1 Read the PRD](#21-read-the-prd)
+  - [2.2 Initialize Spec-Kit](#22-initialize-spec-kit)
+  - [2.3 Create the Constitution](#23-create-the-constitution)
+  - [2.4 Create the Specification](#24-create-the-specification)
+  - [2.5 Create the Implementation Plan](#25-create-the-implementation-plan)
+  - [2.6 Generate Tasks](#26-generate-tasks)
 - [Section 3: Create Jira Issues (~10 min)](#section-3-create-jira-issues-10-min)
 - [Section 4: Build the Dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
   - [4.1 Implement the First Issue](#41-implement-the-first-issue)
@@ -214,7 +215,17 @@ Each stage narrows the space of possible outcomes. By the time you reach impleme
 
 > **Pro Tip:** This pipeline mirrors how analytics projects work in industry. Before you build a predictive model, you define the business question (constitution), specify the success metrics (specification), choose your methodology (plan), and break the work into phases (tasks). The same discipline applies to software.
 
-### 2.1 Initialize Spec-Kit
+### 2.1 Read the PRD
+
+Before you start generating specs, take a few minutes to read the product requirements document you'll be building from:
+
+Open `prd/ecommerce-analytics.md` in Cursor and skim it. You don't need to memorize anything -- just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
+
+This matters because spec-kit is about to ask you questions about your project. You'll make better choices if you already know what you're building.
+
+**Checkpoint:** You've read through the PRD and have a general sense of the project scope.
+
+### 2.2 Initialize Spec-Kit
 
 Spec-kit needs to set up its configuration files and slash commands before you can use it. This is a one-time initialization step for each project.
 
@@ -244,7 +255,7 @@ ls .claude/commands/
 
 You should see configuration files in `.specify/` and several `speckit.*` command files in `.claude/commands/`.
 
-### 2.2 Create the Constitution
+### 2.3 Create the Constitution
 
 > **What is a Constitution?** It's your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
 
@@ -265,6 +276,8 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 3. Claude will ask you a series of questions about your project's principles and priorities -- things like code style, visualization approach, and development practices. Pick the options that make sense to you. There are no wrong answers here; the point is that you're making deliberate choices about how the project should be built, rather than letting the AI decide for you.
 
+   You're not limited to the numbered options. If you have your own preference or want to add context, just type it out. The multiple choice is there to keep things moving, but Claude can work with whatever you give it.
+
 4. After the Q&A, Claude generates a constitution document and asks permission to create the file. You'll see a permission prompt.
 
    > **Key Concept: The Permission Prompt.** Claude Code asks before modifying your files. You've got several options:
@@ -278,7 +291,7 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 **Checkpoint:** `.specify/memory/constitution.md` exists and contains the principles you specified.
 
-### 2.3 Create the Specification
+### 2.4 Create the Specification
 
 > **What is a Specification?** The specification turns your PRD (Product Requirements Document) into detailed, actionable requirements. Your PRD says "we want a sales dashboard with KPIs and charts." The specification says exactly what those KPIs are, how the charts should behave, what the data structure looks like, and what constitutes success. The specification eliminates the ambiguity that the PRD intentionally leaves open.
 
@@ -318,7 +331,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 **Checkpoint:** `specs/[feature-name]/spec.md` exists. The exact folder name depends on what spec-kit generates (commonly something like `001-sales-dashboard`).
 
-### 2.4 Create the Implementation Plan
+### 2.5 Create the Implementation Plan
 
 > **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It's the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
@@ -338,7 +351,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 **Checkpoint:** `specs/[feature-name]/plan.md` exists with technical direction including technology choices and architecture.
 
-### 2.5 Generate Tasks
+### 2.6 Generate Tasks
 
 > **From Plan to Tasks:** Breaking work into specific, actionable tasks is a core project management skill. In agile development, each task should be:
 > - **Independent** -- completable on its own without waiting for other tasks
