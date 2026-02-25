@@ -3,10 +3,36 @@
 Learn a professional development workflow by building and deploying a real project: an e-commerce sales dashboard.
 
 ```
-PRD  →  spec-kit  →  Jira  →  Code  →  Commit  →  Push  →  Deploy  →  Live!
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
+│   PRD   │ -> │ spec-kit │ -> │  Jira   │ -> │  Code  │
+│(written)│    │(Claude)  │    │(tracking)│    │(Claude)│
+└─────────┘    └──────────┘    └─────────┘    └────────┘
+                                                  │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ Commit │
+│(public) │    │(Streamlit)│   │(GitHub) │    │(Git)   │
+└─────────┘    └──────────┘    └─────────┘    └────────┘
 ```
 
 See the finished product: https://sales-dashboard-greg-lontok.streamlit.app/
+
+## Why this matters
+
+Building with technology in 2026 looks different than it did two years ago. AI assistants have moved from experimental to essential, and companies are looking for people who can work with them effectively.
+
+This isn't about becoming a software engineer. It's about being able to build solutions with technology and data -- dashboards, automated workflows, prototypes -- regardless of your specific role.
+
+| Traditional approach | AI-assisted approach |
+|---------------------|---------------------|
+| Search Google, copy from Stack Overflow | Ask Claude Code to explain and implement |
+| Hours debugging with print statements | AI analyzes errors and suggests fixes |
+| Write boilerplate code manually | AI generates scaffolding; you focus on business logic |
+| Learn frameworks by reading documentation | AI teaches you as you build |
+| Work alone, limited by your own knowledge | AI as a second perspective when you get stuck |
+
+## What you'll build
+
+A Streamlit dashboard with KPI scorecards, a sales trend chart, and breakdowns by category and region. The dashboard itself is straightforward -- the point is the workflow you use to build it: writing a spec, tracking work in Jira, building with an AI assistant, committing with Git, and deploying so anyone can access it.
 
 ## How it works
 
@@ -27,8 +53,8 @@ You'll set up the same tools that development teams use, then build a dashboard 
 
 Async pre-work + a 3-hour live workshop.
 
-1. Start with [Pre-work: Setup](v2/pre-work-setup.md) — accounts, tools, repo setup (60-90 min on your own)
-2. Then [Workshop: Build & Deploy](v2/workshop-build-deploy.md) — plan, build, and deploy the dashboard (~3 hours, live)
+1. Start with [Pre-work: Setup](v2/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
+2. Then [Workshop: Build & Deploy](v2/workshop-build-deploy.md) -- plan, build, and deploy the dashboard (~3 hours, live)
 
 ### Version 1 (original)
 
@@ -38,8 +64,8 @@ The original multi-document tutorial, designed for two 100-minute sessions.
 |:-----:|----------|-------------|
 | 1 | [Overview](v1/00-overview.md) | What you'll build |
 | 2 | [Session 1: Setup](v1/01-session-1-setup.md) | Accounts and tools |
-| — | [Terminal Basics](v1/02-terminal-basics.md) | Reference if you're new to the command line |
-| — | [Git Concepts](v1/03-git-concepts.md) | Reference if you're new to version control |
+| -- | [Terminal Basics](v1/02-terminal-basics.md) | Reference if you're new to the command line |
+| -- | [Git Concepts](v1/03-git-concepts.md) | Reference if you're new to version control |
 | 3 | [Session 2: Workflow](v1/04-session-2-workflow.md) | The full development workflow |
 
 Reference materials: [Troubleshooting](v1/05-troubleshooting.md) · [Capstone Setup](v1/06-capstone-project-dev-environment.md) · [FAQ](v1/07-faq.md) · [Glossary](v1/08-glossary.md)
@@ -59,7 +85,7 @@ Reference materials: [Troubleshooting](v1/05-troubleshooting.md) · [Capstone Se
 
 ## Getting help
 
-Try to solve it yourself first. Google the error message, or if you have Claude Code installed, ask it. If you're still stuck, post in the Teams channel.
+Try to solve it yourself first. Google the error message, or if you have Claude Code installed, ask it. If you're still stuck, post in the Teams General channel.
 
 ## License
 
