@@ -6,43 +6,43 @@
 
 ---
 
-## Table of Contents
+## Table of contents
 
-- [Workshop Agenda](#workshop-agenda)
+- [Workshop agenda](#workshop-agenda)
 - [Section 1: Connect Claude Code to Jira (~10 min)](#section-1-connect-claude-code-to-jira-10-min)
-- [Section 2: Spec-Kit Workflow (~25 min)](#section-2-spec-kit-workflow-25-min)
+- [Section 2: Spec-Kit workflow (~25 min)](#section-2-spec-kit-workflow-25-min)
   - [2.1 Read the PRD](#21-read-the-prd)
   - [2.2 Initialize Spec-Kit](#22-initialize-spec-kit)
-  - [2.3 Create the Constitution](#23-create-the-constitution)
-  - [2.4 Create the Specification](#24-create-the-specification)
-  - [2.5 Create the Implementation Plan](#25-create-the-implementation-plan)
-  - [2.6 Generate Tasks](#26-generate-tasks)
-- [Section 3: Create Jira Issues (~10 min)](#section-3-create-jira-issues-10-min)
-- [Section 4: Build the Dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
-  - [4.1 Implement the First Issue](#41-implement-the-first-issue)
-  - [4.2 Commit, Push, and Update Jira](#42-commit-push-and-update-jira)
-  - [4.3 Complete Remaining Issues](#43-complete-remaining-issues)
-  - [4.4 Merge to Main](#44-merge-to-main)
+  - [2.3 Create the constitution](#23-create-the-constitution)
+  - [2.4 Create the specification](#24-create-the-specification)
+  - [2.5 Create the implementation plan](#25-create-the-implementation-plan)
+  - [2.6 Generate tasks](#26-generate-tasks)
+- [Section 3: Create Jira issues (~10 min)](#section-3-create-jira-issues-10-min)
+- [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
+  - [4.1 Implement the first issue](#41-implement-the-first-issue)
+  - [4.2 Commit, push, and update Jira](#42-commit-push-and-update-jira)
+  - [4.3 Complete remaining issues](#43-complete-remaining-issues)
+  - [4.4 Merge to main](#44-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
-- [Section 6: Final Verification Checklist](#section-6-final-verification-checklist)
-- [Comprehensive Troubleshooting](#comprehensive-troubleshooting)
+- [Section 6: Final verification checklist](#section-6-final-verification-checklist)
+- [Comprehensive troubleshooting](#comprehensive-troubleshooting)
 - [Glossary](#glossary)
 
 ---
 
-## Workshop Agenda
+## Workshop agenda
 
 | Time | Activity |
 |------|----------|
-| 0:00–0:15 | **Setup check + triage** — verify pre-work, troubleshoot stragglers |
-| 0:15–0:30 | **Live MCP demo** — everyone watches the Jira connection, then does it themselves |
-| 0:30–3:00 | **Build at your own pace** — work through the guide below; ask questions as you go |
+| 0:00–0:15 | **Setup check + triage** -- verify pre-work, troubleshoot stragglers |
+| 0:15–0:30 | **Live MCP demo** -- everyone watches the Jira connection, then does it themselves |
+| 0:30–3:00 | **Build at your own pace** -- work through the guide below; ask questions as you go |
 
-> **Didn't finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Teams General channel if you get stuck.
+> **Didn't finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first -- most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Teams General channel if you get stuck.
 
 ---
 
-## What You'll Accomplish
+## What you'll accomplish
 
 By the end of this workshop, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
 
@@ -55,7 +55,7 @@ By the end of this workshop, you'll have taken a product requirements document t
 
 ---
 
-## Prerequisites Check
+## Prerequisites check
 
 Before starting, verify your pre-work setup is complete. Run each command in Cursor's terminal:
 
@@ -74,11 +74,11 @@ claude --version
 # Expected: version number displayed
 ```
 
-If any command fails, return to the [pre-work setup guide](pre-work-setup.md) and resolve the issue before proceeding. Every tool must be working before you continue.
+If any command fails, return to the [pre-work setup guide](pre-work-setup.md) and resolve the issue before proceeding. Make sure everything's working before you continue.
 
 ---
 
-## The Professional Workflow
+## The professional workflow
 
 This is the workflow used at technology companies worldwide. Today you'll experience the entire cycle, from specification to deployment.
 
@@ -186,9 +186,9 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
 ---
 
-## Section 2: Spec-Kit Workflow (~25 min)
+## Section 2: Spec-Kit workflow (~25 min)
 
-### Understanding Spec-Driven Development
+### Understanding spec-driven development
 
 The rest of the tutorial flows from what you create here. Every step that follows -- coding, committing, deploying -- depends on the specifications you write in this section.
 
@@ -255,7 +255,7 @@ ls .claude/commands/
 
 You should see configuration files in `.specify/` and several `speckit.*` command files in `.claude/commands/`.
 
-### 2.3 Create the Constitution
+### 2.3 Create the constitution
 
 > **What is a Constitution?** It's your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
 
@@ -291,7 +291,7 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 **Checkpoint:** `.specify/memory/constitution.md` exists and contains the principles you specified.
 
-### 2.4 Create the Specification
+### 2.4 Create the specification
 
 > **What is a Specification?** The specification turns your PRD (Product Requirements Document) into detailed, actionable requirements. Your PRD says "we want a sales dashboard with KPIs and charts." The specification says exactly what those KPIs are, how the charts should behave, what the data structure looks like, and what constitutes success. The specification eliminates the ambiguity that the PRD intentionally leaves open.
 
@@ -331,7 +331,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 **Checkpoint:** `specs/[feature-name]/spec.md` exists. The exact folder name depends on what spec-kit generates (commonly something like `001-sales-dashboard`).
 
-### 2.5 Create the Implementation Plan
+### 2.5 Create the implementation plan
 
 > **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It's the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
@@ -351,7 +351,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 **Checkpoint:** `specs/[feature-name]/plan.md` exists with technical direction including technology choices and architecture.
 
-### 2.6 Generate Tasks
+### 2.6 Generate tasks
 
 > **From Plan to Tasks:** Breaking work into specific, actionable tasks is a core project management skill. In agile development, each task should be:
 > - **Independent** -- completable on its own without waiting for other tasks
@@ -388,9 +388,9 @@ Before running this command, you need to understand an important Claude Code fea
 
 ---
 
-## Section 3: Create Jira Issues (~10 min)
+## Section 3: Create Jira issues (~10 min)
 
-### Connecting Planning to Tracking
+### Connecting planning to tracking
 
 Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task from your tasks.md becomes a Jira issue, giving you visibility into progress and creating traceability between requirements and implementation.
 
@@ -446,7 +446,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 
 ---
 
-## Section 4: Build the Dashboard (~35 min)
+## Section 4: Build the dashboard (~35 min)
 
 ### Understanding Streamlit
 
@@ -462,7 +462,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 >
 > Streamlit isn't the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it works well for capstone projects: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You can use the same data manipulation skills you learned in your coursework.
 
-### Claude Code Editing Modes
+### Claude Code editing modes
 
 Before you start building, understand how Claude Code interacts with your files. Claude Code has three editing modes that control how it handles file changes:
 
@@ -476,7 +476,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 > **Recommendation for this workshop:** Switch to **Auto-accept** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Auto-accept lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
 
-### 4.1 Implement the First Issue
+### 4.1 Implement the first issue
 
 1. Ask Claude which issue to start with. Claude considers dependencies and suggests a logical starting point:
 
@@ -523,11 +523,11 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 **Checkpoint:** The dashboard runs locally at `http://localhost:8501` without errors.
 
-### 4.2 Commit, Push, and Update Jira
+### 4.2 Commit, push, and update Jira
 
 Now you'll save your work using Git and create a traceable link between your code and the Jira issue. This three-step process -- commit, push, update -- is the basic rhythm of professional development.
 
-#### Understanding Git's Workflow
+#### Understanding Git's workflow
 
 Git tracks your code changes through a series of stages. Understanding these stages prevents confusion about where your changes "live" at any point:
 
@@ -607,7 +607,7 @@ Here is what each stage means:
 
 **Checkpoint:** Code is on GitHub. ECOM-1 shows "Done" in Jira with a detailed evidence comment.
 
-### 4.3 Complete Remaining Issues
+### 4.3 Complete remaining issues
 
 Now repeat the implementation cycle for each remaining Jira issue. Skip the deployment issue -- that comes in Section 5.
 
@@ -665,7 +665,7 @@ Open `http://localhost:8501` and verify that all components are present: KPI sco
 
 **Checkpoint:** All implementation issues are marked "Done" in Jira with evidence comments. Only the deployment issue remains open.
 
-### 4.4 Merge to Main
+### 4.4 Merge to main
 
 Your feature branch contains all the implementation work. Now you'll bring those changes into the `main` branch, making them the official version of the code.
 
@@ -711,7 +711,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
 ## Section 5: Deploy (~15 min)
 
-### Why Deployment Matters
+### Why deployment matters
 
 > **Why This Matters:** Building something that only runs on your laptop doesn't deliver value. Deployment makes your work accessible to stakeholders -- a manager, a client, or your capstone advisor can open a URL and see your dashboard without installing Python or cloning a repository. Going from analysis to a shared, accessible output is a skill most graduates lack. Many people can build charts in a Jupyter notebook; far fewer can deploy an interactive dashboard that stakeholders actually use.
 
@@ -771,7 +771,7 @@ Update the deployment Jira issue: add the live Streamlit URL as a comment. Move 
 
 ---
 
-## Section 6: Final Verification Checklist
+## Section 6: Final verification checklist
 
 Before submitting, walk through every item below. Each category corresponds to a section of this guide.
 
@@ -794,7 +794,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 - [ ] Runs locally with KPIs, line chart, and bar charts
 - [ ] Deployed and publicly accessible on Streamlit Cloud
 
-### Version Control
+### Version control
 
 - [ ] Commits include Jira issue keys in messages
 - [ ] Feature branch merged to main
@@ -802,7 +802,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 
 ---
 
-## The Complete Workflow -- What You Accomplished
+## The complete workflow -- what you accomplished
 
 ```
 PRD [done] -> spec-kit [done] -> Jira [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
@@ -824,7 +824,7 @@ In this workshop, you practiced five professional skills:
 
 ---
 
-## What to Submit
+## What to submit
 
 **Due: March 16, 2026 at 11:59 PM** -- Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
 
@@ -838,17 +838,17 @@ In this workshop, you practiced five professional skills:
 
    If the full issue doesn't fit in one screenshot, submit multiple screenshots named `jira-01.png`, `jira-02.png`, etc.
 
-Make sure your PRD and notes directories are included in your repository.
+Make sure your `prd/`, `specs/`, and `.specify/` directories are included in your repository.
 
 ---
 
-## Comprehensive Troubleshooting
+## Comprehensive troubleshooting
 
 This section covers the most common issues people encounter. For each problem, you'll find three parts: what you see (the symptom), why it happens (the root cause), and how to fix it (the solution).
 
 ---
 
-### MCP Connection Issues
+### MCP connection issues
 
 **What you see:** Claude says it can't access Jira, or `/mcp` doesn't show the `atlassian` server.
 
@@ -875,7 +875,7 @@ If the server is listed but authentication has expired:
 
 ---
 
-### Spec-Kit Slash Commands Not Working
+### Spec-Kit slash commands not working
 
 **What you see:** Typing `/speckit.constitution` or `/speckit.specify` does nothing, or Claude doesn't recognize the command.
 
@@ -936,7 +936,7 @@ Claude will produce equivalent results without the slash command.
 
 ---
 
-### Port 8501 Already in Use
+### Port 8501 already in use
 
 **What you see:** Streamlit reports `Port 8501 is already in use` when you try to run the app.
 
@@ -968,7 +968,7 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### Dashboard Shows No Data or Errors on Load
+### Dashboard shows no data or errors on load
 
 **What you see:** The dashboard loads but shows no charts, displays "NaN" values, or throws a data-related error.
 
@@ -997,7 +997,7 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### Can't Push -- Permission Denied
+### Can't push -- permission denied
 
 **What you see:** `git push` fails with `Permission denied` or `remote: Permission to LMU-ISBA/ai-dev-workflow-tutorial.git denied`.
 
@@ -1026,7 +1026,7 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### Git Merge Conflicts
+### Git merge conflicts
 
 **What you see:** When merging the feature branch into main, Git reports "merge conflict" and stops.
 
@@ -1049,7 +1049,7 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### "Not a Git Repository" Error
+### "Not a git repository" error
 
 **What you see:** Git commands fail with `fatal: not a git repository (or any of the parent directories)`.
 
@@ -1077,7 +1077,7 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### Claude Code Rate Limits
+### Claude Code rate limits
 
 **What you see:** Claude Code responds with a rate limit message or becomes slow to respond.
 
@@ -1145,6 +1145,6 @@ Quick-reference table of key terms used in this document.
 
 ---
 
-## What's Next
+## What's next
 
-You now have a complete professional workflow you can apply to your capstone project and beyond.
+You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle -- specify, plan, track, build, deploy -- works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.

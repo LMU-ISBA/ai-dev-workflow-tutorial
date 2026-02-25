@@ -1,4 +1,4 @@
-# Pre-Work: Setup & Foundation
+# Pre-work: Setup & foundation
 
 **Get your tools set up before the workshop**
 
@@ -6,29 +6,29 @@ Estimated time: 60–90 minutes (complete before the workshop)
 
 ---
 
-## Table of Contents
+## Table of contents
 
-- [Section 1: Create Accounts (~20 min)](#section-1-create-accounts-20-min)
-  - [1.1 GitHub Account](#11-github-account)
-  - [1.2 Atlassian (Jira) Account and Project](#12-atlassian-jira-account-and-project)
-  - [1.3 Claude Pro Subscription](#13-claude-pro-subscription)
-- [Section 2: Install Tools (~40 min)](#section-2-install-tools-40-min)
+- [Section 1: Create accounts (~20 min)](#section-1-create-accounts-20-min)
+  - [1.1 GitHub account](#11-github-account)
+  - [1.2 Atlassian (Jira) account and project](#12-atlassian-jira-account-and-project)
+  - [1.3 Claude Pro subscription](#13-claude-pro-subscription)
+- [Section 2: Install tools (~40 min)](#section-2-install-tools-40-min)
   - [2.1 Cursor](#21-cursor)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
   - [2.4 uv](#24-uv)
   - [2.5 spec-kit](#25-spec-kit)
   - [2.6 Claude Code](#26-claude-code)
-- [Section 3: Fork and Clone the Repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
-  - [3.1 Fork the Repository](#31-fork-the-repository)
-  - [3.2 Clone Your Fork](#32-clone-your-fork)
+- [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
+  - [3.1 Fork the repository](#31-fork-the-repository)
+  - [3.2 Clone your fork](#32-clone-your-fork)
   - [3.3 Initialize Claude Code](#33-initialize-claude-code)
-- [Section 4: Final Verification (~10 min)](#section-4-final-verification-10-min)
-- [Troubleshooting Reference](#troubleshooting-reference)
+- [Section 4: Final verification (~10 min)](#section-4-final-verification-10-min)
+- [Troubleshooting reference](#troubleshooting-reference)
 
 ---
 
-## What You'll Set Up
+## What you'll set up
 
 ```
 Accounts:  GitHub, Atlassian (Jira), Claude Pro
@@ -38,11 +38,11 @@ Repo:      Fork and clone the tutorial repository, initialize Claude Code
 
 **See the finished product:** Before you start, look at what you'll build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end of the workshop, you'll have built and deployed your own version.
 
-> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams channel and someone will help you before the workshop.
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help you before the workshop.
 
 ---
 
-## Why This Setup Matters
+## Why this setup matters
 
 Setting up your own development environment is a skill most people skip. They wait for someone else to do it for them. When you can configure a toolchain yourself, debug installation problems, and get everything running from scratch, teammates and managers notice. It tells them you can own a problem from start to finish.
 
@@ -56,11 +56,11 @@ Someone defines what needs to be built. Developers write code to meet those requ
 
 You're setting up that same pipeline, end to end. When you finish, you'll have a development environment that looks like what you'd find on your first day at a technology job. This is also the environment you'll use for your capstone project, so getting it right now saves you time later.
 
-### Your Competitive Advantage
+### Your competitive advantage
 
 Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity -- in your capstone and in job interviews.
 
-### What You'll Be Able to Do After This Pre-Work
+### What you'll be able to do after this pre-work
 
 - Manage code with version control (Git and GitHub)
 - Track work using industry-standard project management (Jira)
@@ -68,7 +68,7 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 - Plan before you build (spec-kit)
 - Edit code in a modern, AI-aware editor (Cursor)
 
-### Traditional vs. AI-Assisted Development
+### Traditional vs. AI-assisted development
 
 | Traditional Approach | AI-Assisted Approach |
 |---------------------|---------------------|
@@ -82,7 +82,7 @@ The AI-assisted approach doesn't replace understanding. It accelerates it. You s
 
 ---
 
-## The Complete Toolchain
+## The complete toolchain
 
 The following diagram shows every tool you'll install and how they connect. Refer back to this as you work through each section.
 
@@ -115,9 +115,9 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ---
 
-## Section 1: Create Accounts (~20 min)
+## Section 1: Create accounts (~20 min)
 
-### 1.1 GitHub Account
+### 1.1 GitHub account
 
 > **Why GitHub?** GitHub hosts over 100 million developers and is the standard platform for storing and collaborating on code. In your career, you'll use it to share code, collaborate on projects, and build a public portfolio. Recruiters check GitHub profiles.
 
@@ -136,7 +136,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ---
 
-### 1.2 Atlassian (Jira) Account and Project
+### 1.2 Atlassian (Jira) account and project
 
 > **Why Jira?** Over 65,000 companies use Jira to track work. Whatever role you end up in -- analytics, consulting, product management, engineering -- you'll almost certainly encounter Jira or something like it. Learning project management software now helps you coordinate your capstone team and work effectively on any team after graduation.
 
@@ -169,7 +169,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ---
 
-### 1.3 Claude Pro Subscription
+### 1.3 Claude Pro subscription
 
 > **Why Claude Pro?** Claude Code, the AI command-line assistant you'll use throughout this tutorial, requires an active Claude Pro (or Max) subscription. The free tier of Claude doesn't provide access to Claude Code. You need Pro to use the terminal-based AI assistant in this tutorial.
 
@@ -187,9 +187,9 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ---
 
-## Section 2: Install Tools (~40 min)
+## Section 2: Install tools (~40 min)
 
-### Understanding Your Terminal
+### Understanding your terminal
 
 Before installing any tools, you need to understand the terminal, the interface where you'll run installation commands, interact with Git, and launch Claude Code.
 
@@ -436,9 +436,9 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 
 ---
 
-## Section 3: Fork and Clone the Repository (~15 min)
+## Section 3: Fork and clone the repository (~15 min)
 
-### Understanding Forks and Clones
+### Understanding forks and clones
 
 Before you do anything, it helps to understand the two-step process you're about to follow and why it works this way.
 
@@ -464,7 +464,7 @@ The flow is: you edit files on your computer (local), then **push** changes up t
 
 ---
 
-### 3.1 Fork the Repository
+### 3.1 Fork the repository
 
 1. Go to [github.com/LMU-ISBA/ai-dev-workflow-tutorial](https://github.com/LMU-ISBA/ai-dev-workflow-tutorial).
 2. Click the **Fork** button in the upper-right corner of the page.
@@ -476,7 +476,7 @@ The flow is: you edit files on your computer (local), then **push** changes up t
 
 ---
 
-### 3.2 Clone Your Fork
+### 3.2 Clone your fork
 
 Cloning downloads the repository to your computer so you can work on it locally.
 
@@ -535,7 +535,7 @@ With the repository open in Cursor, you'll now initialize Claude Code so it unde
 
 ---
 
-## Section 4: Final Verification (~10 min)
+## Section 4: Final verification (~10 min)
 
 Before calling your pre-work complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
 
@@ -591,7 +591,7 @@ If any command fails with "command not found," open a new terminal and try again
 
 ---
 
-### Understanding What You've Built
+### Understanding what you've built
 
 Here's what you've just configured:
 
@@ -623,13 +623,13 @@ Here's what you've just configured:
 
 These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, Jira tracks tasks, Cursor is where you write code, Claude Code helps you build, and spec-kit ensures you plan before you build. During the workshop, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
 
-> **Before the workshop:** If anything above isn't working, post in the Teams channel now. It's much easier to resolve setup issues asynchronously than during the live session.
+> **Before the workshop:** If anything above isn't working, post in the Teams General channel now. It's much easier to resolve setup issues asynchronously than during the live session.
 
 ---
 
-## Troubleshooting Reference
+## Troubleshooting reference
 
-This section covers the most common issues students encounter during setup. For each problem, you'll find what you see (the symptom), why it happens (the cause), and how to fix it (the solution).
+This section covers the most common issues people encounter during setup. For each problem, you'll find what you see (the symptom), why it happens (the cause), and how to fix it (the solution).
 
 ---
 
@@ -769,7 +769,7 @@ specify: command not found
 
 ---
 
-### General Debugging Approach
+### General debugging approach
 
 When something goes wrong, follow this systematic approach:
 
@@ -778,11 +778,11 @@ When something goes wrong, follow this systematic approach:
 3. **Check the basics:** Are you in the right directory? Is the tool installed? Did you restart after installing?
 4. **Ask Claude Code.** Once Claude Code is working, it can diagnose most issues. Describe what you were trying to do and paste the error message.
 5. **Search online.** Copy the exact error message into a search engine. Someone has almost certainly encountered it before.
-6. **Ask for help.** Post in the Teams channel with: what you were trying to do, the exact error message (copy and paste, don't paraphrase), and what you've already tried.
+6. **Ask for help.** Post in the Teams General channel with: what you were trying to do, the exact error message (copy and paste, don't paraphrase), and what you've already tried.
 
 ---
 
-## What's Next
+## What's next
 
 Your pre-work is complete. You've:
 
