@@ -6,8 +6,8 @@ A comprehensive guide to the AI-assisted development workflow, designed for two 
 
 | File | Content | Time |
 |------|---------|------|
-| [session-1-setup.md](version-b-reference/session-1-setup.md) | Accounts, tools, repo setup + concepts | ~100 min |
-| [session-2-workflow.md](version-b-reference/session-2-workflow.md) | Spec-kit, Jira, build, deploy + concepts | ~100 min |
+| [session-1-setup.md](session-1-setup.md) | Accounts, tools, repo setup + concepts | ~100 min |
+| [session-2-workflow.md](session-2-workflow.md) | Spec-kit, Jira, build, deploy + concepts | ~100 min |
 
 ## How to Use
 

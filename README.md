@@ -85,8 +85,8 @@ The latest version, designed for two 100-minute sessions. Explains the "why" beh
 
 | Session | Content | Start Here |
 |---------|---------|------------|
-| Session 1: Setup | Accounts, tools, repo setup | [session-1-setup.md](v2/version-b-reference/session-1-setup.md) |
-| Session 2: Build & Deploy | Spec-kit, Jira, build, deploy | [session-2-workflow.md](v2/version-b-reference/session-2-workflow.md) |
+| Session 1: Setup | Accounts, tools, repo setup | [session-1-setup.md](v2/session-1-setup.md) |
+| Session 2: Build & Deploy | Spec-kit, Jira, build, deploy | [session-2-workflow.md](v2/session-2-workflow.md) |
 
 ### Version 1 (Original) -- Multi-Document Tutorial
 
@@ -138,7 +138,7 @@ No prior experience with Git, Jira, or AI tools is required. You should have:
 
 1. Fork this repository to your GitHub account
 2. Follow the Session 1 setup guide for your assigned version:
-   - **Version 2:** [Session 1](v2/version-b-reference/session-1-setup.md)
+   - **Version 2:** [Session 1](v2/session-1-setup.md)
    - **Version 1:** [Session 1](v1/01-session-1-setup.md)
 3. Continue with Session 2 to build and deploy the dashboard
 
