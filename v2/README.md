@@ -1,17 +1,18 @@
 # AI-Assisted Development Workflow Tutorial (Version 2)
 
-A comprehensive guide to the AI-assisted development workflow, designed for two 100-minute sessions.
+Async pre-work + live workshop format. Students complete setup on their own during the week, then build and deploy together in a 3-hour session.
 
 ## Files
 
 | File | Content | Time |
 |------|---------|------|
-| [session-1-setup.md](session-1-setup.md) | Accounts, tools, repo setup + concepts | ~100 min |
-| [session-2-workflow.md](session-2-workflow.md) | Spec-kit, Jira, build, deploy + concepts | ~100 min |
+| [pre-work-setup.md](pre-work-setup.md) | Accounts, tools, repo setup + concepts | 60–90 min (async, before workshop) |
+| [workshop-build-deploy.md](workshop-build-deploy.md) | Spec-kit, Jira, build, deploy + concepts | ~3 hours (live workshop) |
 
 ## How to Use
 
-- Read through before class for maximum preparation, or follow along during class
+- Complete the **pre-work** before the workshop — it walks you through accounts, tools, and repo setup
+- Bring your completed setup to the **workshop**, where you will build and deploy the dashboard together
 - "Why This Matters" callouts explain professional relevance of each step
 - "Key Concept" callouts define important ideas with visual diagrams
 - "Pro Tip" callouts offer career and capstone advice
@@ -19,7 +20,7 @@ A comprehensive guide to the AI-assisted development workflow, designed for two 
 
 ## What Students Build
 
-Both sessions guide students through building and deploying an **E-Commerce Sales Dashboard** using Streamlit, with:
+The pre-work and workshop guide students through building and deploying an **E-Commerce Sales Dashboard** using Streamlit, with:
 
 - 2 KPI scorecards (Total Sales, Total Orders)
 - 1 line chart (sales trend over time)

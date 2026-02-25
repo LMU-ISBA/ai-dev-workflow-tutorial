@@ -1,14 +1,26 @@
-# Session 2: Build & Deploy
+# Workshop: Build & Deploy
 
 **From requirements to a live dashboard using spec-driven development.**
 
-**Estimated time:** 100 minutes
+**Format:** 3-hour Zoom/in-person workshop
+
+---
+
+## Workshop Agenda
+
+| Time | Activity |
+|------|----------|
+| 0:00–0:15 | **Setup check + triage** — verify pre-work, troubleshoot stragglers |
+| 0:15–0:30 | **Live MCP demo** — everyone watches the Jira connection, then does it themselves |
+| 0:30–3:00 | **Build at your own pace** — work through the guide below; ask questions as you go |
+
+> **Did not finish the pre-work?** Sit next to someone who did. Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop.
 
 ---
 
 ## What You Will Accomplish
 
-By the end of this session, you will have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you will have:
+By the end of this workshop, you will have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you will have:
 
 - Connected Claude Code to Jira using the Model Context Protocol (MCP)
 - Generated spec-kit artifacts: constitution, specification, plan, and tasks
@@ -21,7 +33,7 @@ By the end of this session, you will have taken a product requirements document 
 
 ## Prerequisites Check
 
-Before starting, verify your Session 1 setup is complete. Run each command in Cursor's terminal:
+Before starting, verify your pre-work setup is complete. Run each command in Cursor's terminal:
 
 ```bash
 git --version
@@ -38,7 +50,7 @@ claude --version
 # Expected: version number displayed
 ```
 
-If any command fails, return to the Session 1 guide and resolve the issue before proceeding. Every tool must be working before you continue.
+If any command fails, return to the [pre-work setup guide](pre-work-setup.md) and resolve the issue before proceeding. Every tool must be working before you continue.
 
 ---
 
@@ -134,7 +146,7 @@ Without MCP, you would need to manually switch between Claude Code and the Jira 
 
 6. **Authenticate with Atlassian.** In the `/mcp` output, use the **arrow keys** to select `atlassian`, then press **Enter**.
 
-7. **Complete browser authentication.** A browser window opens. Log in with your Atlassian account (the one you created in Session 1), authorize Claude Code, and return to the terminal. You may see a "You can close this tab" message in the browser -- this means authentication succeeded.
+7. **Complete browser authentication.** A browser window opens. Log in with your Atlassian account (the one you created during the pre-work), authorize Claude Code, and return to the terminal. You may see a "You can close this tab" message in the browser -- this means authentication succeeded.
 
 8. **Test the connection.** Ask Claude a question about your Jira instance:
 
@@ -197,7 +209,7 @@ This command does three things:
 
 When prompted:
 
-- **"Directory not empty" warning** -- Type `y` and press Enter. This is expected because your project already has files from Session 1.
+- **"Directory not empty" warning** -- Type `y` and press Enter. This is expected because your project already has files from the pre-work.
 - **Script type** -- Choose `sh` (macOS) or `ps` (Windows). This determines the shell script format for any generated automation scripts.
 
 **Checkpoint:** Both directories exist. Verify with:
@@ -1066,7 +1078,7 @@ Then retry: `streamlit run app.py`
 
 3. Open another new terminal and retry: `specify --help`
 
-4. If `uv` itself is not found, return to Session 1 and install `uv` first.
+4. If `uv` itself is not found, return to the [pre-work setup guide](pre-work-setup.md) and install `uv` first.
 
 ---
 

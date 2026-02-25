@@ -81,12 +81,12 @@ This tutorial has two versions. Version 2 is current; Version 1 is the original.
 
 ### Version 2 (Current)
 
-The latest version, designed for two 100-minute sessions. Explains the "why" behind every step, with concept foundations, troubleshooting, and career context.
+The latest version, designed as async pre-work + a 3-hour live workshop. Explains the "why" behind every step, with concept foundations, troubleshooting, and career context.
 
-| Session | Content | Start Here |
-|---------|---------|------------|
-| Session 1: Setup | Accounts, tools, repo setup | [session-1-setup.md](v2/session-1-setup.md) |
-| Session 2: Build & Deploy | Spec-kit, Jira, build, deploy | [session-2-workflow.md](v2/session-2-workflow.md) |
+| Guide | Content | Start Here |
+|-------|---------|------------|
+| Pre-Work: Setup | Accounts, tools, repo setup (async, 60–90 min) | [pre-work-setup.md](v2/pre-work-setup.md) |
+| Workshop: Build & Deploy | Spec-kit, Jira, build, deploy (live, ~3 hours) | [workshop-build-deploy.md](v2/workshop-build-deploy.md) |
 
 ### Version 1 (Original) -- Multi-Document Tutorial
 
@@ -137,10 +137,10 @@ No prior experience with Git, Jira, or AI tools is required. You should have:
 ## Quick Start
 
 1. Fork this repository to your GitHub account
-2. Follow the Session 1 setup guide for your assigned version:
-   - **Version 2:** [Session 1](v2/session-1-setup.md)
+2. Follow the setup guide for your assigned version:
+   - **Version 2:** [Pre-Work: Setup](v2/pre-work-setup.md)
    - **Version 1:** [Session 1](v1/01-session-1-setup.md)
-3. Continue with Session 2 to build and deploy the dashboard
+3. Continue with the workshop/Session 2 to build and deploy the dashboard
 
 ## Naming Conventions
 

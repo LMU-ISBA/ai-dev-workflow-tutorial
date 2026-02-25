@@ -1,8 +1,8 @@
-# Session 1: Setup & Foundation
+# Pre-Work: Setup & Foundation
 
-**Understanding and configuring your professional development environment**
+**Understanding and configuring your professional development environment — complete before the workshop**
 
-Estimated time: 100 minutes
+Estimated time: 60–90 minutes (complete before the workshop)
 
 ---
 
@@ -14,9 +14,9 @@ Tools:     Cursor, Git, Python 3.11+, uv, spec-kit, Claude Code
 Repo:      Fork and clone the tutorial repository, initialize Claude Code
 ```
 
-**See the finished product:** Before you start, look at what you will build by the end of Session 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you are about to learn. By the end of this tutorial, you will have built and deployed your own version.
+**See the finished product:** Before you start, look at what you will build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you are about to learn. By the end of the workshop, you will have built and deployed your own version.
 
-> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you already have Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, ask your instructor.
+> **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you already have Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams channel and someone will help you before the workshop.
 
 ---
 
@@ -32,13 +32,13 @@ Requirements  -->  Code  -->  Test  -->  Deploy  -->  Monitor
 
 Someone defines what needs to be built. Developers write code to meet those requirements. The code is tracked, reviewed, and deployed so users can access it. This cycle repeats continuously.
 
-You are setting up that same pipeline, end to end, in a single session. When you finish today, you will have a development environment that looks like what you would find on your first day at a technology job. This is also the environment you will use for your capstone project, so getting it right now saves you time later.
+You are setting up that same pipeline, end to end. When you finish, you will have a development environment that looks like what you would find on your first day at a technology job. This is also the environment you will use for your capstone project, so getting it right now saves you time later.
 
 ### Your Competitive Advantage
 
 Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity -- in your capstone and in job interviews.
 
-### What You Will Be Able to Do After This Session
+### What You Will Be Able to Do After This Pre-Work
 
 - Manage code with version control (Git and GitHub)
 - Track work using industry-standard project management (Jira)
@@ -62,7 +62,7 @@ The AI-assisted approach does not replace understanding. It accelerates it. You 
 
 ## The Complete Toolchain
 
-The following diagram shows every tool you will install today and how they connect. Refer back to this as you work through each section.
+The following diagram shows every tool you will install and how they connect. Refer back to this as you work through each section.
 
 ```
 +-------------------------------------------------------------+
@@ -89,7 +89,7 @@ The following diagram shows every tool you will install today and how they conne
 - **Cursor** is your code editor, where you write and organize files.
 - **Claude Code** is an AI assistant that runs in your terminal, reads your project, and helps you build.
 - **spec-kit** turns requirements into structured plans before you start coding.
-- **Python + Streamlit** is the technology stack for the dashboard you will build in Session 2.
+- **Python + Streamlit** is the technology stack for the dashboard you will build during the workshop.
 
 ---
 
@@ -300,7 +300,7 @@ git config --global user.email "your.email@example.com"
 
 ### 2.3 Python 3.11+
 
-> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit --- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you will build in Session 2.
+> **Why Python?** Python is the dominant language in data science, analytics, and AI. Pandas, scikit-learn, TensorFlow, Streamlit --- the tools you use in your coursework and will use in your career are all Python-based. You need Python 3.11 or higher installed so you can run the dashboard application you will build during the workshop.
 
 **Check your current version:**
 
@@ -372,7 +372,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 This command tells uv to install the `specify-cli` tool from spec-kit's GitHub repository. It may take a minute to download and install all dependencies.
 
-> **A preview of what is coming:** In Session 2, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard -- all before writing application code. This might feel like extra work at first, but it reduces wasted effort. AI amplifies both good planning and bad planning -- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
+> **A preview of what is coming:** During the workshop, you will use spec-kit to create a constitution, specification, plan, and tasks for your dashboard -- all before writing application code. This might feel like extra work at first, but it reduces wasted effort. AI amplifies both good planning and bad planning -- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
 
 > **Checkpoint:** `specify --help` displays help information and available commands.
 
@@ -515,7 +515,7 @@ With the repository open in Cursor, you will now initialize Claude Code so it un
 
 ## Section 4: Final Verification (~10 min)
 
-Before calling Session 1 complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
+Before calling your pre-work complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
 
 ### Accounts
 
@@ -599,7 +599,9 @@ Here is what you have just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, Jira tracks tasks, Cursor is where you write code, Claude Code helps you build, and spec-kit ensures you plan before you build. In Session 2, you will see all of these tools work together as you plan, build, and deploy a live dashboard.
+These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, Jira tracks tasks, Cursor is where you write code, Claude Code helps you build, and spec-kit ensures you plan before you build. During the workshop, you will see all of these tools work together as you plan, build, and deploy a live dashboard.
+
+> **Before the workshop:** If anything above is not working, post in the Teams channel now. It is much easier to resolve setup issues asynchronously than during the live session.
 
 ---
 
@@ -760,7 +762,7 @@ When something goes wrong, follow this systematic approach:
 
 ## What's Next
 
-Session 1 is complete. You have:
+Your pre-work is complete. You have:
 
 - Created accounts on GitHub, Jira, and Claude (the cloud services that power professional workflows)
 - Installed six tools: Cursor, Git, Python, uv, spec-kit, and Claude Code (the local tools that make up your development environment)
@@ -769,7 +771,7 @@ Session 1 is complete. You have:
 
 Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. You will use this same environment for your capstone and beyond.
 
-In **Session 2**, you will put everything together:
+**Bring your completed setup to the workshop.** During the workshop, you will put everything together:
 
 1. **Connect Claude Code to Jira** via the Atlassian MCP server, so your AI assistant can create and manage issues directly.
 2. **Plan with spec-kit** -- create a constitution, specification, plan, and tasks for your dashboard.
@@ -778,4 +780,4 @@ In **Session 2**, you will put everything together:
 
 The tools are ready. Next, you build.
 
-Continue to [**Session 2: Build & Deploy**](session-2-workflow.md).
+Continue to [**Workshop: Build & Deploy**](workshop-build-deploy.md).
