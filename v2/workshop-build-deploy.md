@@ -217,6 +217,8 @@ Each stage narrows the space of possible outcomes. By the time you reach impleme
 
 ### 2.1 Read the PRD
 
+> **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the intended users, the features, and what success looks like. In professional settings, a PRD is written before any code -- it's how teams align on what to build so they don't waste time building the wrong thing. Whenever you start a new project or a major feature, writing a PRD first is a best practice, even if it's short. For your capstone, writing a PRD before you start coding will save your team from scope confusion later.
+
 Before you start generating specs, take a few minutes to read the product requirements document you'll be building from:
 
 Open the [PRD](../prd/ecommerce-analytics.md) and skim it. You can read it in your browser or open `prd/ecommerce-analytics.md` in Cursor. You don't need to memorize anything -- just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
