@@ -1,36 +1,26 @@
-# AI-Assisted Development Workflow Tutorial (Version 2)
+# AI-Assisted Development Workflow Tutorial
 
-Async pre-work + live workshop format. Students complete setup on their own during the week, then build and deploy together in a 3-hour session.
+This tutorial teaches you a professional development workflow by having you build and deploy a real project: an e-commerce sales dashboard.
 
-## Files
+You'll work through it in two parts:
 
-| File | Content | Time |
-|------|---------|------|
-| [pre-work-setup.md](pre-work-setup.md) | Accounts, tools, repo setup + concepts | 60–90 min (async, before workshop) |
-| [workshop-build-deploy.md](workshop-build-deploy.md) | Spec-kit, Jira, build, deploy + concepts | ~3 hours (live workshop) |
+| Part | What you do | Time |
+|------|-------------|------|
+| [Pre-work](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 60–90 min on your own, before the workshop |
+| [Workshop](workshop-build-deploy.md) | Plan with spec-kit, build with Claude Code, deploy live | ~3 hours, live on Zoom |
 
-## How to Use
+## What you'll build
 
-- Complete the **pre-work** before the workshop — it walks you through accounts, tools, and repo setup
-- Bring your completed setup to the **workshop**, where you will build and deploy the dashboard together
-- "Why This Matters" callouts explain professional relevance of each step
-- "Key Concept" callouts define important ideas with visual diagrams
-- "Pro Tip" callouts offer career and capstone advice
-- Troubleshooting sections explain root causes, not just fixes
+A Streamlit dashboard with KPI scorecards, a sales trend chart, and breakdowns by category and region. You can see the finished version here: https://sales-dashboard-greg-lontok.streamlit.app/
 
-## What Students Build
+The dashboard itself is straightforward. The point is the workflow you use to build it: writing a spec, tracking work in Jira, building with an AI assistant, committing with Git, and deploying so anyone can access it.
 
-The pre-work and workshop guide students through building and deploying an **E-Commerce Sales Dashboard** using Streamlit, with:
+## What you need
 
-- 2 KPI scorecards (Total Sales, Total Orders)
-- 1 line chart (sales trend over time)
-- 2 bar charts (sales by category, sales by region)
+- Basic Python knowledge (if you've used pandas or written a few scripts, you're fine)
+- A computer running macOS or Windows
+- No prior experience with Git, Jira, or AI coding tools
 
-The dashboard is the vehicle. The real learning is the **professional workflow**: PRD, spec-kit, Jira, Git, Claude Code, and deployment.
+## Where to start
 
-## Prerequisites
-
-- Basic Python knowledge
-- A computer (macOS or Windows)
-- Willingness to create accounts and install tools
-- No prior experience with Git, Jira, or AI coding tools required
+Open [pre-work-setup.md](pre-work-setup.md) and work through it before the workshop.
