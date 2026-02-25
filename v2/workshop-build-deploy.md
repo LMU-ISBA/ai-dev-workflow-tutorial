@@ -2,7 +2,7 @@
 
 **From requirements to a live dashboard using spec-driven development.**
 
-**Format:** 3-hour Zoom/in-person workshop
+**Format:** 3-hour Zoom workshop
 
 ---
 
@@ -14,7 +14,7 @@
 | 0:15–0:30 | **Live MCP demo** — everyone watches the Jira connection, then does it themselves |
 | 0:30–3:00 | **Build at your own pace** — work through the guide below; ask questions as you go |
 
-> **Did not finish the pre-work?** Sit next to someone who did. Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop.
+> **Did not finish the pre-work?** Work through the [pre-work setup guide](pre-work-setup.md) first — most people finish it in under an hour. You can catch up and still complete the build during the workshop. Ask in the Zoom chat if you get stuck.
 
 ---
 
@@ -963,7 +963,7 @@ Then retry: `streamlit run app.py`
 
 **What you see:** `git push` fails with `Permission denied` or `remote: Permission to LMU-ISBA/ai-dev-workflow-tutorial.git denied`.
 
-**Why it happens:** Your local repository is pointed at the original (instructor's) repository rather than your fork. You can pull from the original but cannot push to it -- you can only push to your own fork.
+**Why it happens:** Your local repository is pointed at the original repository rather than your fork. You can pull from the original but cannot push to it -- you can only push to your own fork.
 
 **How to fix it:**
 

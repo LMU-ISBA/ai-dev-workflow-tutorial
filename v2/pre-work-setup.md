@@ -159,7 +159,7 @@ The following diagram shows every tool you will install and how they connect. Re
 
 **A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it is highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you are working.
 
-**If the subscription cost is a concern,** contact your instructor via Teams. We want to make sure this does not prevent anyone from completing the tutorial.
+**If the subscription cost is a concern,** message me on Teams. I don't want that to be a blocker for anyone.
 
 > **Checkpoint:** A Pro badge is visible on claude.ai when you are logged in.
 
@@ -422,7 +422,7 @@ Before you do anything, it helps to understand the two-step process you are abou
 
 ```
 +------------------+     Fork      +------------------+
-|  Instructor's    |  ---------->  |   Your Fork      |
+|  Original        |  ---------->  |   Your Fork      |
 |  Repo (GitHub)   |               |   (GitHub)       |
 +------------------+               +--------+---------+
                                             | Clone
@@ -433,12 +433,12 @@ Before you do anything, it helps to understand the two-step process you are abou
                                    +------------------+
 ```
 
-- **Fork** = your personal copy of the repository, hosted on GitHub under your account. You have full control over your fork. Changes you make to your fork do not affect the instructor's original repository.
+- **Fork** = your personal copy of the repository, hosted on GitHub under your account. You have full control over your fork. Changes you make to your fork do not affect the original repository.
 - **Clone** = downloading your fork from GitHub to your computer so you can work on files locally. This is where you actually edit code.
 
-The flow is: you edit files on your computer (local), then **push** changes up to your fork on GitHub. Your fork is your own space. You cannot accidentally break the instructor's repository.
+The flow is: you edit files on your computer (local), then **push** changes up to your fork on GitHub. Your fork is your own space. You cannot accidentally break the original repository.
 
-> **Why not just clone the instructor's repository directly?** If you cloned the original without forking first, you would not have permission to push your changes back to GitHub. Forking gives you your own copy with full write access.
+> **Why not just clone the original repository directly?** If you cloned the original without forking first, you would not have permission to push your changes back to GitHub. Forking gives you your own copy with full write access.
 
 ---
 
@@ -687,9 +687,9 @@ Python 3.8.10
 
 ---
 
-### 5. Cloned the wrong repository (instructor's repo instead of your fork)
+### 5. Cloned the wrong repository (original repo instead of your fork)
 
-**What you see:** When you try to push changes later, you get a "Permission denied" error. Or `git remote -v` shows the instructor's repository URL instead of yours.
+**What you see:** When you try to push changes later, you get a "Permission denied" error. Or `git remote -v` shows the original repository URL instead of yours.
 
 **Why it happens:** You cloned the original repository at `LMU-ISBA/ai-dev-workflow-tutorial` instead of your fork at `[your-username]/ai-dev-workflow-tutorial`.
 
@@ -756,7 +756,7 @@ When something goes wrong, follow this systematic approach:
 3. **Check the basics:** Are you in the right directory? Is the tool installed? Did you restart after installing?
 4. **Ask Claude Code.** Once Claude Code is working, it can diagnose most issues. Describe what you were trying to do and paste the error message.
 5. **Search online.** Copy the exact error message into a search engine. Someone has almost certainly encountered it before.
-6. **Ask for help.** Post in the class Teams channel with: what you were trying to do, the exact error message (copy and paste, do not paraphrase), and what you have already tried.
+6. **Ask for help.** Post in the Teams channel with: what you were trying to do, the exact error message (copy and paste, do not paraphrase), and what you have already tried.
 
 ---
 
