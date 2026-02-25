@@ -6,6 +6,28 @@ Estimated time: 60–90 minutes (complete before the workshop)
 
 ---
 
+## Table of Contents
+
+- [Section 1: Create Accounts (~20 min)](#section-1-create-accounts-20-min)
+  - [1.1 GitHub Account](#11-github-account)
+  - [1.2 Atlassian (Jira) Account and Project](#12-atlassian-jira-account-and-project)
+  - [1.3 Claude Pro Subscription](#13-claude-pro-subscription)
+- [Section 2: Install Tools (~40 min)](#section-2-install-tools-40-min)
+  - [2.1 Cursor](#21-cursor)
+  - [2.2 Git](#22-git)
+  - [2.3 Python 3.11+](#23-python-311)
+  - [2.4 uv](#24-uv)
+  - [2.5 spec-kit](#25-spec-kit)
+  - [2.6 Claude Code](#26-claude-code)
+- [Section 3: Fork and Clone the Repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
+  - [3.1 Fork the Repository](#31-fork-the-repository)
+  - [3.2 Clone Your Fork](#32-clone-your-fork)
+  - [3.3 Initialize Claude Code](#33-initialize-claude-code)
+- [Section 4: Final Verification (~10 min)](#section-4-final-verification-10-min)
+- [Troubleshooting Reference](#troubleshooting-reference)
+
+---
+
 ## What You Will Set Up
 
 ```

@@ -6,6 +6,29 @@
 
 ---
 
+## Table of Contents
+
+- [Workshop Agenda](#workshop-agenda)
+- [Section 1: Connect Claude Code to Jira (~10 min)](#section-1-connect-claude-code-to-jira-10-min)
+- [Section 2: Spec-Kit Workflow (~25 min)](#section-2-spec-kit-workflow-25-min)
+  - [2.1 Initialize Spec-Kit](#21-initialize-spec-kit)
+  - [2.2 Create the Constitution](#22-create-the-constitution)
+  - [2.3 Create the Specification](#23-create-the-specification)
+  - [2.4 Create the Implementation Plan](#24-create-the-implementation-plan)
+  - [2.5 Generate Tasks](#25-generate-tasks)
+- [Section 3: Create Jira Issues (~10 min)](#section-3-create-jira-issues-10-min)
+- [Section 4: Build the Dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
+  - [4.1 Implement the First Issue](#41-implement-the-first-issue)
+  - [4.2 Commit, Push, and Update Jira](#42-commit-push-and-update-jira)
+  - [4.3 Complete Remaining Issues](#43-complete-remaining-issues)
+  - [4.4 Merge to Main](#44-merge-to-main)
+- [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
+- [Section 6: Final Verification Checklist](#section-6-final-verification-checklist)
+- [Comprehensive Troubleshooting](#comprehensive-troubleshooting)
+- [Glossary](#glossary)
+
+---
+
 ## Workshop Agenda
 
 | Time | Activity |
