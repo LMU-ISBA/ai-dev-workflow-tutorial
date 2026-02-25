@@ -130,7 +130,7 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
 ### Steps
 
-1. **Exit Claude Code if it's running.** The MCP server must be added before starting a new session.
+1. **Exit Claude Code if it's running.** The MCP server must be added before starting a new session. In Claude Code, type:
 
    ```
    /exit
@@ -146,13 +146,13 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
    This command registers the Atlassian server with Claude Code. The `--transport sse` flag tells Claude Code to communicate using Server-Sent Events, which is the protocol Atlassian's server uses. You only need to run this command once -- it persists across sessions.
 
-3. **Start Claude Code:**
+3. **Start Claude Code.** In Cursor's terminal, run:
 
    ```bash
    claude
    ```
 
-4. **Set the output style to explanatory.** Inside Claude Code, run:
+4. **Set the output style to explanatory.** Inside Claude Code, type:
 
    ```
    /output-style explanatory
@@ -160,7 +160,7 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
    By default, Claude Code keeps its responses short. Setting the style to "explanatory" tells Claude to explain what it's doing and why, which helps you learn from its work instead of just receiving code. This is especially useful while you're still learning the workflow.
 
-5. **Verify the server is registered.** Inside Claude Code, run:
+5. **Verify the server is registered.** Inside Claude Code, type:
 
    ```
    /mcp
@@ -172,7 +172,7 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
 7. **Complete browser authentication.** A browser window opens. Log in with your Atlassian account (the one you created during the pre-work), authorize Claude Code, and return to the terminal. You may see a "You can close this tab" message in the browser -- this means authentication succeeded.
 
-8. **Test the connection.** Ask Claude a question about your Jira instance:
+8. **Test the connection.** In Claude Code, ask:
 
    ```
    What Jira projects do I have access to?
@@ -248,7 +248,7 @@ When prompted:
 - **"Directory not empty" warning** -- Type `y` and press Enter. This is expected because your project already has files from the pre-work.
 - **Script type** -- Choose `sh` (macOS) or `ps` (Windows). This determines the shell script format for any generated automation scripts.
 
-**Checkpoint:** Both directories exist. Verify with:
+**Checkpoint:** Both directories exist. Verify in Cursor's terminal:
 
 ```bash
 ls .specify/
@@ -261,13 +261,13 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
 
 > **What is a Constitution?** It's your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
 
-1. Start Claude Code if it's not already running:
+1. Start Claude Code if it's not already running. In Cursor's terminal:
 
    ```bash
    claude
    ```
 
-2. Run the constitution slash command. Type the following as a single message (the slash command and the instructions together):
+2. In Claude Code, type the following as a single message (the slash command and the instructions together):
 
    ```
    /speckit.constitution
@@ -305,7 +305,7 @@ Before running this command, you need to understand an important Claude Code fea
 >
 > The quality of AI output depends on the context you provide. Better context, better results.
 
-1. Run the specification command with the PRD as context:
+1. In Claude Code, run the specification command with the PRD as context:
 
    ```
    /speckit.specify @prd/ecommerce-analytics.md
@@ -337,7 +337,7 @@ Before running this command, you need to understand an important Claude Code fea
 
 > **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It's the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
-1. Run the plan command:
+1. In Claude Code, run the plan command:
 
    ```
    /speckit.plan
@@ -362,7 +362,7 @@ Before running this command, you need to understand an important Claude Code fea
 >
 > This is the same principle behind any well-structured analytics project: break a large deliverable into manageable pieces, then execute them systematically.
 
-1. Run the tasks command:
+1. In Claude Code, run the tasks command:
 
    ```
    /speckit.tasks
@@ -430,7 +430,7 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 
 ### 3.2 Create Remaining Issues
 
-1. Ask Claude to create issues for the remaining tasks:
+1. In Claude Code, ask Claude to create issues for the remaining tasks:
 
    ```
    Create Jira issues in the ECOM project for the remaining tasks in @specs/001-sales-dashboard/tasks.md
@@ -480,7 +480,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
 ### 4.1 Implement the first issue
 
-1. Ask Claude which issue to start with. Claude considers dependencies and suggests a logical starting point:
+1. In Claude Code, ask which issue to start with. Claude considers dependencies and suggests a logical starting point:
 
    ```
    Which Jira issue should we implement first?
@@ -488,7 +488,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    Claude typically recommends starting with the environment setup or app structure issue, since other issues depend on it.
 
-2. Implement the issue using the spec-kit implement command:
+2. In Claude Code, implement the issue using the spec-kit implement command:
 
    ```
    /speckit.implement
@@ -500,7 +500,7 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
-3. Ask Claude to explain what it created:
+3. In Claude Code, ask Claude to explain what it created:
 
    ```
    What files did you create? Explain what each one does.
@@ -508,13 +508,21 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    Understanding the file structure helps you learn from the AI's work rather than treating it as a black box.
 
-4. Test the dashboard. First, activate your Python virtual environment and install dependencies, then run the app:
+4. Test the dashboard. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you.
+
+   **Option A -- run it yourself** in Cursor's terminal:
 
    ```bash
    source venv/bin/activate       # macOS
    # or: venv\Scripts\activate    # Windows
 
    streamlit run app.py
+   ```
+
+   **Option B -- ask Claude Code:**
+
+   ```
+   Activate my virtual environment and run the Streamlit app so I can test it.
    ```
 
    > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment** -- an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
@@ -573,7 +581,7 @@ Here is what each stage means:
 
 #### Steps
 
-1. **Commit your changes.** Ask Claude to create a commit with the Jira key in the message. Also ensure the virtual environment directory isn't tracked:
+1. **Commit your changes.** In Claude Code, ask Claude to create a commit with the Jira key in the message. Also ensure the virtual environment directory isn't tracked:
 
    ```
    Commit my changes for ECOM-1. Make sure venv/ is in .gitignore.
@@ -585,7 +593,7 @@ Here is what each stage means:
 
    > **What is a commit hash?** After committing, Git produces a unique identifier called a **commit hash** -- a string like `05a9ada`. This hash is a fingerprint: no two commits in the history of your repository will ever have the same hash. You'll include this hash in Jira so anyone can find exactly which code change fulfilled a specific requirement.
 
-2. **Push to GitHub.** Upload your local commit to the remote repository:
+2. **Push to GitHub.** In Claude Code, upload your local commit to the remote repository:
 
    ```
    Push my changes to GitHub.
@@ -593,7 +601,7 @@ Here is what each stage means:
 
    If this is your first push on the feature branch, Claude may need to set the upstream tracking branch. It handles this automatically.
 
-3. **Update Jira with evidence.** Close the loop by recording what you did in Jira:
+3. **Update Jira with evidence.** In Claude Code, close the loop by recording what you did:
 
    ```
    Update ECOM-1 in Jira: add a comment with implementation summary, commit hash, branch name, and GitHub link. Move to Done.
@@ -634,7 +642,7 @@ Push to GitHub
 Update Jira with evidence --> Move to Done
 ```
 
-Here is the pattern for each issue:
+Here is the pattern for each issue. In Claude Code:
 
 ```
 /speckit.implement
@@ -642,7 +650,7 @@ Here is the pattern for each issue:
 Implement ECOM-2 and move it to In Progress in Jira.
 ```
 
-After implementation and testing:
+After implementation and testing, in Claude Code:
 
 ```
 Commit my changes for ECOM-2 and push to GitHub.
@@ -656,11 +664,19 @@ Replace `ECOM-2` with the current issue key. Repeat for ECOM-3, ECOM-4, and so o
 
 > **Pro Tip:** Watch Claude's output as it implements each issue. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
-After working through all implementation issues, test the complete dashboard one final time:
+After working through all implementation issues, test the complete dashboard one final time. You can run these yourself or ask Claude Code:
+
+**Option A -- run it yourself** in Cursor's terminal:
 
 ```bash
 source venv/bin/activate       # macOS, if not already active
 streamlit run app.py
+```
+
+**Option B -- ask Claude Code:**
+
+```
+Activate my virtual environment and run the Streamlit app so I can test the complete dashboard.
 ```
 
 Open `http://localhost:8501` and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
@@ -683,7 +699,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
 >
 > This is why feature branches are valuable -- they let you develop freely without risking the stable `main` branch. When you're confident your work is complete, you merge once and know that `main` stays reliable.
 
-1. **Confirm your current branch:**
+1. **Confirm your current branch.** In Claude Code:
 
    ```
    Which git branch am I on?
@@ -691,7 +707,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    You should be on your feature branch (e.g., `001-sales-dashboard`).
 
-2. **Merge into main:**
+2. **Merge into main.** In Claude Code:
 
    ```
    Merge my current feature branch into main
@@ -699,7 +715,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    Claude switches to `main`, merges the feature branch, and reports the result.
 
-3. **Push main to GitHub:**
+3. **Push main to GitHub.** In Claude Code:
 
    ```
    Push main to GitHub
@@ -763,7 +779,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
 ### 5.2 Update Jira
 
-Complete the final Jira issue by recording the deployment:
+Complete the final Jira issue by recording the deployment. In Claude Code:
 
 ```
 Update the deployment Jira issue: add the live Streamlit URL as a comment. Move to Done.
