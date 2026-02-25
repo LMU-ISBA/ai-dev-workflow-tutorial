@@ -18,7 +18,7 @@ You'll set up the same tools that development teams use, then build a dashboard 
 | Jira | Tracks tasks and requirements |
 | Cursor | Code editor (VS Code-based, with AI features) |
 | Claude Code | AI assistant that runs in your terminal |
-| spec-kit | Turns requirements into a structured plan |
+| [spec-kit](https://github.com/github/spec-kit) | Turns requirements into a structured plan |
 | Python + Streamlit | What you build the dashboard with |
 
 ## Getting started

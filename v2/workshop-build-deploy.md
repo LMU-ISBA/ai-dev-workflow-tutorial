@@ -236,16 +236,13 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
    ```
    /speckit.constitution
 
-   Create a constitution for our e-commerce analytics project.
-   The project will build a Streamlit dashboard for sales data visualization.
-   Key principles should include:
-   - Simple, readable code
-   - User-friendly interactive visualizations
-   - Following Python best practices
-   - Use Python virtual environment for dependency isolation
+   We're building an e-commerce analytics project -- a Streamlit dashboard for sales data visualization.
+   Ask me one question at a time about this project. Propose numbered options I can choose from. After 3-5 questions, generate the constitution.
    ```
 
-3. Claude generates a constitution document and asks permission to create the file. You will see a permission prompt.
+3. Claude will ask you a series of questions about your project's principles and priorities -- things like code style, visualization approach, and development practices. Pick the options that make sense to you. There are no wrong answers here; the point is that you are making deliberate choices about how the project should be built, rather than letting the AI decide for you.
+
+4. After the Q&A, Claude generates a constitution document and asks permission to create the file. You will see a permission prompt.
 
    > **Key Concept: The Permission Prompt.** Claude Code asks before modifying your files. You have several options:
    > - **Yes** -- approve this one change
@@ -254,7 +251,7 @@ You should see configuration files in `.specify/` and several `speckit.*` comman
    >
    > For this tutorial, either "Yes" or "Yes, allow all" works. If you want to review each change Claude makes (a good learning practice), choose "Yes" each time. If you want to move faster, choose "Yes, allow all."
 
-4. Preview the constitution. In Cursor's file explorer, navigate to `.specify/memory/constitution.md`. Right-click the file and select **Open Preview** to see the formatted version. Read through it -- these principles will shape every decision Claude makes during implementation.
+5. Preview the constitution. In Cursor's file explorer, navigate to `.specify/memory/constitution.md`. Right-click the file and select **Open Preview** to see the formatted version. Read through it -- these principles will shape every decision Claude makes during implementation.
 
 **Checkpoint:** `.specify/memory/constitution.md` exists and contains the principles you specified.
 
@@ -270,15 +267,19 @@ Before running this command, you need to understand an important Claude Code fea
 >
 > The quality of AI output depends on the context you provide. Better context, better results.
 
-1. Run the specification command. Claude will read the PRD and generate a detailed specification:
+1. Run the specification command with the PRD as context:
 
    ```
    /speckit.specify @prd/ecommerce-analytics.md
+
+   Ask me one question at a time about the requirements. Propose numbered options I can choose from. After 3-5 questions, generate the specification.
    ```
 
-2. Claude analyzes the PRD and creates a comprehensive specification. This typically takes 30-60 seconds as Claude processes the requirements and generates detailed feature descriptions.
+2. Claude reads the PRD and asks you questions about how to interpret the requirements -- things like what KPIs matter most, how interactive the charts should be, and what the data model should look like. Pick the options that fit your vision for the dashboard.
 
-3. Note that spec-kit may automatically create a **feature branch** (e.g., `001-sales-dashboard`).
+3. After the Q&A, Claude generates a detailed specification. This typically takes 30-60 seconds.
+
+4. Note that spec-kit may automatically create a **feature branch** (e.g., `001-sales-dashboard`).
 
    > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. It is like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you are satisfied.
    >
@@ -290,7 +291,7 @@ Before running this command, you need to understand an important Claude Code fea
    >
    > Your `main` branch stays clean and stable while you work on the feature branch. This is standard practice in professional development -- it protects the production version of your code from incomplete changes. Spec-kit creates the branch automatically so you do not have to think about it.
 
-4. Preview the specification in Cursor's file explorer.
+5. Preview the specification in Cursor's file explorer.
 
 **Checkpoint:** `specs/[feature-name]/spec.md` exists. The exact folder name depends on what spec-kit generates (commonly something like `001-sales-dashboard`).
 
@@ -298,22 +299,19 @@ Before running this command, you need to understand an important Claude Code fea
 
 > **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It is the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
 
-1. Run the plan command with your technology preferences:
+1. Run the plan command:
 
    ```
    /speckit.plan
 
-   Create an implementation plan for the sales dashboard specification.
-   Consider:
-   - Python with Streamlit for the web app
-   - Pandas for data handling
-   - Plotly for interactive charts
-   - Clean code organization
+   Ask me one question at a time about technology choices and architecture. Propose numbered options I can choose from. After 3-5 questions, generate the plan.
    ```
 
-2. Claude reads the specification and constitution, then generates a plan that respects both the requirements and the principles you established.
+2. Claude reads the specification and constitution, then asks about your preferences -- things like which charting library to use, how to organize the code, and how to handle data loading. The options will be grounded in what makes sense for this project, so pick what appeals to you.
 
-3. Preview the plan in Cursor's file explorer.
+3. After the Q&A, Claude generates a plan that respects both the requirements and the principles you established.
+
+4. Preview the plan in Cursor's file explorer.
 
 **Checkpoint:** `specs/[feature-name]/plan.md` exists with technical direction including technology choices and architecture.
 
@@ -330,9 +328,13 @@ Before running this command, you need to understand an important Claude Code fea
 
    ```
    /speckit.tasks
+
+   Ask me one question at a time about how to break this work down. Propose numbered options I can choose from. After 3-5 questions, generate the tasks.
    ```
 
-2. Review the output. You should see tasks such as:
+2. Claude asks about your preferences for task granularity and ordering -- things like how to split up the dashboard components and what to tackle first. This is a lightweight version of sprint planning.
+
+3. Review the output. You should see tasks such as:
    - Set up Python virtual environment and dependencies
    - Create main Streamlit app structure
    - Implement KPI scorecards
@@ -342,7 +344,7 @@ Before running this command, you need to understand an important Claude Code fea
 
    The exact task names may vary, but the overall scope should cover environment setup, each major dashboard component, and deployment.
 
-3. Preview the tasks file in Cursor's file explorer.
+4. Preview the tasks file in Cursor's file explorer.
 
 **Checkpoint:** `specs/[feature-name]/tasks.md` exists with numbered implementation steps.
 
@@ -861,8 +863,8 @@ If the server is listed but authentication has expired:
 If slash commands still do not work, you can use natural language instead. Rather than `/speckit.constitution`, tell Claude directly:
 
 ```
-Create a spec-kit constitution for this project. Save it to .specify/memory/constitution.md.
-The principles should be: simple readable code, user-friendly visualizations, Python best practices, use virtual environment.
+Create a spec-kit constitution for this e-commerce analytics project (Streamlit dashboard for sales data). Save it to .specify/memory/constitution.md.
+Ask me one question at a time about this project. Propose numbered options I can choose from. After 3-5 questions, generate the constitution.
 ```
 
 Claude will produce equivalent results without the slash command.

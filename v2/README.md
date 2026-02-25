@@ -7,7 +7,7 @@ You'll work through it in two parts:
 | Part | What you do | Time |
 |------|-------------|------|
 | [Pre-work](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 60–90 min on your own, before the workshop |
-| [Workshop](workshop-build-deploy.md) | Plan with spec-kit, build with Claude Code, deploy live | ~3 hours, live on Zoom |
+| [Workshop](workshop-build-deploy.md) | Plan with [spec-kit](https://github.com/github/spec-kit), build with Claude Code, deploy live | ~3 hours, live on Zoom |
 
 ## What you'll build
 

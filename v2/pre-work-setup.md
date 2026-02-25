@@ -318,7 +318,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **macOS install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3.12.x installer.
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page).
 2. Open the `.pkg` file and follow the installation wizard.
 3. On the final screen, click **Install Certificates** if that option appears. This installs SSL certificates Python needs to make secure web requests.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -326,7 +326,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **Windows install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3.12.x installer.
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page).
 2. Run the installer. **Critical: Check the box "Add Python to PATH"** at the bottom of the first screen. If you miss this step, Windows will not know where to find Python when you type `python` in the terminal.
 3. Click **Install Now** and complete installation.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -362,7 +362,7 @@ After installation on either platform, open a **new terminal** (Terminal --> New
 
 ### 2.5 spec-kit
 
-> **What is spec-kit?** spec-kit is GitHub's toolkit for **spec-driven development** -- the practice of turning requirements into structured plans before writing any code. Instead of jumping straight into coding and hoping for the best, spec-kit guides you through creating a constitution (project principles), a specification (what to build), a plan (how to build it), and tasks (individual work items). This is how experienced engineers avoid building the wrong thing.
+> **What is spec-kit?** [spec-kit](https://github.com/github/spec-kit) is GitHub's toolkit for **spec-driven development** -- the practice of turning requirements into structured plans before writing any code. Instead of jumping straight into coding and hoping for the best, spec-kit guides you through creating a constitution (project principles), a specification (what to build), a plan (how to build it), and tasks (individual work items). This is how experienced engineers avoid building the wrong thing.
 
 **Install:**
 
