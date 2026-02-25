@@ -77,18 +77,16 @@ By the end of this tutorial, you will be able to:
 
 ## Tutorial Versions
 
-This tutorial has two versions. Your instructor will tell you which one to follow.
+This tutorial has two versions. Version 2 is current; Version 1 is the original.
 
-### Version 2 (Current) -- Two-Format Tutorial
+### Version 2 (Current)
 
-The latest version, available in two formats that cover the same material. Both are designed for two 100-minute sessions.
+The latest version, designed for two 100-minute sessions. Explains the "why" behind every step, with concept foundations, troubleshooting, and career context.
 
-| Format | Best For | Start Here |
-|--------|----------|------------|
-| [**Version A: Streamlined Walkthrough**](v2/version-a-walkthrough/) | In-class use, step-by-step follow-along | [Session 1](v2/version-a-walkthrough/session-1-setup.md) |
-| [**Version B: Comprehensive Guide**](v2/version-b-reference/) | Self-paced learning, pre-reading, reference | [Session 1](v2/version-b-reference/session-1-setup.md) |
-
-See the [Version 2 README](v2/README.md) for details on the differences between formats.
+| Session | Content | Start Here |
+|---------|---------|------------|
+| Session 1: Setup | Accounts, tools, repo setup | [session-1-setup.md](v2/version-b-reference/session-1-setup.md) |
+| Session 2: Build & Deploy | Spec-kit, Jira, build, deploy | [session-2-workflow.md](v2/version-b-reference/session-2-workflow.md) |
 
 ### Version 1 (Original) -- Multi-Document Tutorial
 
@@ -140,8 +138,7 @@ No prior experience with Git, Jira, or AI tools is required. You should have:
 
 1. Fork this repository to your GitHub account
 2. Follow the Session 1 setup guide for your assigned version:
-   - **Version 2A:** [Session 1](v2/version-a-walkthrough/session-1-setup.md)
-   - **Version 2B:** [Session 1](v2/version-b-reference/session-1-setup.md)
+   - **Version 2:** [Session 1](v2/version-b-reference/session-1-setup.md)
    - **Version 1:** [Session 1](v1/01-session-1-setup.md)
 3. Continue with Session 2 to build and deploy the dashboard
 
