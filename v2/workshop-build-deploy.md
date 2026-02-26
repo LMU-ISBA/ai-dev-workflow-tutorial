@@ -753,7 +753,14 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
 2. Click **Continue to sign-in** on the landing page, then click **Continue with GitHub** and authorize Streamlit to access your repositories.
 
-3. Click **Create app** (or **New app**).
+   > **First-time sign-in:** If this is your first time using Streamlit Cloud, the process involves a few extra steps after clicking "Continue with GitHub":
+   > - You'll authorize Streamlit on GitHub (email-only permissions), then **verify your email** by entering a 6-digit code sent to your email address.
+   > - After verification, you'll authorize Streamlit a second time with broader GitHub permissions (repository access, webhooks).
+   > - Finally, you'll fill out a short account setup form (name, functional area — choose **Student**, development stage, and country). Click **Continue** to finish.
+   >
+   > On subsequent sign-ins, you'll skip straight to the dashboard.
+
+3. Click **Create app** in the top-right corner, then select **Deploy a public app from GitHub** on the next page.
 
 4. Configure the deployment:
 
@@ -762,12 +769,11 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
    | **Repository** | `[your-username]/ai-dev-workflow-tutorial` |
    | **Branch** | `main` |
    | **Main file path** | `app.py` (or wherever your Streamlit entry point is) |
+   | **App URL** (optional) | A custom slug like `sales-dashboard-yourname` — this determines the first part of your public URL |
 
-5. Optionally, expand **Advanced settings** and set a custom URL slug, such as `sales-dashboard-yourname`. This determines the first part of your public URL.
+5. Click **Deploy** and wait 1-2 minutes. Streamlit Cloud installs your dependencies (from `requirements.txt`), runs your app, and makes it available at a public URL.
 
-6. Click **Deploy** and wait 1-2 minutes. Streamlit Cloud installs your dependencies (from `requirements.txt`), runs your app, and makes it available at a public URL.
-
-7. When deployment completes, you receive a URL like:
+6. When deployment completes, you receive a URL like:
 
    ```
    https://sales-dashboard-yourname.streamlit.app
