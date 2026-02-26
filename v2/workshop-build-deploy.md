@@ -751,7 +751,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
 1. Go to [share.streamlit.io](https://share.streamlit.io) in your browser.
 
-2. Click **Sign in with GitHub** and authorize Streamlit to access your repositories.
+2. Click **Continue to sign-in** on the landing page, then click **Continue with GitHub** and authorize Streamlit to access your repositories.
 
 3. Click **Create app** (or **New app**).
 
@@ -1113,7 +1113,7 @@ Then retry: `streamlit run app.py`
 
 3. **Use plan mode.** Press Shift+Tab to switch to plan mode. Claude explains what it'll do without making changes, using fewer tokens. Review the plan, then ask Claude to execute it.
 
-4. **Upgrade if needed.** If you consistently hit limits, Claude Max ($100/month) provides higher usage caps. Most people find Pro sufficient for the tutorial sessions.
+4. **Upgrade if needed.** If you consistently hit limits, Claude Max (from $100/month) provides higher usage caps. Most people find Pro sufficient for the tutorial sessions.
 
 ---
 
