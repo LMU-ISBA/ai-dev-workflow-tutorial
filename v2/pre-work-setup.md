@@ -40,6 +40,8 @@ Repo:      Fork and clone the tutorial repository, initialize Claude Code
 
 > **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help you before the workshop.
 
+> **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. This is normal -- the core steps stay the same even when the UI changes. If something doesn't match exactly, read the screen, figure out the equivalent step, and keep going. That adaptability is itself a professional skill.
+
 ---
 
 ## Why this setup matters
