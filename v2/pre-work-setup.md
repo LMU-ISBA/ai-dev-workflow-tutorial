@@ -36,7 +36,7 @@ Tools:     Cursor, Git, Python 3.11+, uv, spec-kit, Claude Code
 Repo:      Fork and clone the tutorial repository, initialize Claude Code
 ```
 
-**See the finished product:** Before you start, look at what you'll build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end of the workshop, you'll have built and deployed your own version.
+**See the finished product:** Before you start, look at what you'll build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end of the workshop, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up -- it takes about 30 seconds.)
 
 > **If you get stuck:** Try to solve the problem yourself first. Google the error message, use AI tools to help diagnose the issue, or if you've already got Claude Code set up, just ask it -- it can troubleshoot most installation and configuration problems. If none of that works, post in the Teams General channel and someone will help you before the workshop.
 
@@ -124,9 +124,9 @@ The following diagram shows every tool you'll install and how they connect. Refe
 **Steps:**
 
 1. Go to [github.com](https://github.com) and click **Sign up**.
-2. Choose a sign-up method: **Continue with Google**, **Continue with Apple**, or fill out the form manually with your email, a password, and a username.
-3. If signing up manually, check your email for a verification code and enter it when prompted.
-4. Complete any remaining onboarding prompts.
+2. Choose a sign-up method: **Continue with Google**, **Continue with Apple**, or fill out the form manually with your email, a password, a username, and your country/region.
+3. If signing up manually, check your email for a verification code and enter it when prompted. You may be asked to sign in again with your new credentials after verifying.
+4. Complete any onboarding prompts if they appear (you may go directly to the dashboard).
 
 **Username guidance:** Your GitHub username becomes part of your public profile URL (`github.com/your-username`). Choose something professional -- your name or a clean variation of it. Avoid numbers that look like birth years, inside jokes, or anything you wouldn't put on a resume. Letters, numbers, and single hyphens are the only characters allowed.
 
@@ -143,11 +143,11 @@ The following diagram shows every tool you'll install and how they connect. Refe
 **Steps:**
 
 1. Go to [atlassian.com](https://www.atlassian.com) and click **Get started**.
-2. Sign up with your email, or use **Google**, **Microsoft**, **Apple**, or **Slack**.
-3. When asked about your role, select **Student** or **Developer**.
-4. When asked what to use, select **Jira Software**.
+2. Enter your email, or use **Google**, **Microsoft**, **Apple**, or **Slack**.
+3. Check your email for a verification code and enter it when prompted.
+4. On the "Add your account details" page, enter your full name and create a password.
 5. Name your site. This becomes `yourname.atlassian.net` -- the URL where you'll access Jira.
-6. During onboarding, Jira walks you through creating your first project. Use these settings:
+6. Jira walks you through creating your first project. Use these settings:
 
 | Question | Answer | Why |
 |----------|--------|-----|
@@ -157,13 +157,13 @@ The following diagram shows every tool you'll install and how they connect. Refe
 | What types of work do you need? | **Task** | Simple, clean work item type for this tutorial |
 | How do you track work? | **To Do, In Progress, Done** | The simplest effective workflow -- three clear states |
 
-7. After the project is created, verify the project **Key** is `ECOM`. The key is the prefix that appears on every issue (for example, `ECOM-1`, `ECOM-2`). If Jira assigned a different key (such as `ECO` or `ECA`):
+7. After the project is created, verify the project **Key** is `ECOM`. The key is the prefix that appears on every issue (for example, `ECOM-1`, `ECOM-2`). Jira generates the key from the project name, so it may default to something like `SCRUM`, `ECO`, or `ECA` depending on when you changed the name. If the key isn't `ECOM`:
    - Click the gear icon or go to **Project settings**.
    - Navigate to **Details**.
    - Change the **Key** field to `ECOM`.
    - Save your changes.
 
-> **Checkpoint:** You can access your ECOM project at `yourname.atlassian.net` and see the Scrum board with To Do, In Progress, and Done columns.
+> **Checkpoint:** You can access your ECOM project at `yourname.atlassian.net` and see the Scrum board with To Do, In Progress, and Done columns. (You may see a Quickstart panel overlaying the board -- you can dismiss it.)
 
 > **Key Concept: Traceability** -- Every piece of code you write in this tutorial will trace back to a Jira issue. When you commit code, you'll include the issue key (like `ECOM-1`) in the commit message. This means anyone -- a teammate, a manager, your advisor, your future self -- can find out *why* code exists, *when* it was added, and *what requirement* it fulfills. Professional teams operate this way, and interviewers ask about it when evaluating collaborative experience. In your capstone, traceability means your team can always answer "why did we build this?" and your advisor can follow your progress without asking for status updates.
 
@@ -176,10 +176,10 @@ The following diagram shows every tool you'll install and how they connect. Refe
 **Steps:**
 
 1. Go to [claude.ai](https://claude.ai) and sign up using Google or email.
-2. Once logged in, go to your profile or settings and select **Upgrade to Pro**.
-3. Enter payment information and complete the subscription ($20/month).
+2. On the pricing page, click **Try Claude** under the **Pro** plan.
+3. Enter payment information and complete the subscription ($17/month with annual billing, or $20/month billed monthly).
 
-**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max ($100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it's highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you're working.
+**A note about Pro vs. Max:** Most students find Claude Pro sufficient for this tutorial and their coursework. You only need the Pro subscription for one month to complete this tutorial. If you hit usage limits during intensive work sessions, Claude Max (from $100/month) provides higher limits. You can always upgrade later if needed. You can cancel your subscription after completing the tutorial, but it's highly recommended that you resubscribe when you start your capstone project -- Claude Code is just as useful there. You can also apply what you learn here to other classes or your job if you're working.
 
 **If the subscription cost is a concern,** message me on Teams. I don't want that to be a blocker for anyone.
 
@@ -340,7 +340,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **macOS install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page).
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option -- ignore it and use the standard installer.
 2. Open the `.pkg` file and follow the installation wizard.
 3. On the final screen, click **Install Certificates** if that option appears. This installs SSL certificates Python needs to make secure web requests.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -348,7 +348,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **Windows install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page).
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option -- ignore it and use the standard installer.
 2. Run the installer. **Critical: Check the box "Add Python to PATH"** at the bottom of the first screen. If you miss this step, Windows won't know where to find Python when you type `python` in the terminal.
 3. Click **Install Now** and complete installation.
 4. Open a **new terminal** (Terminal --> New Terminal).
