@@ -105,8 +105,8 @@
 
 **Purpose**: Deploy to Streamlit Community Cloud and validate end-to-end
 
-- [ ] T017 Deploy app to Streamlit Community Cloud — go to share.streamlit.io, connect repo `001-ecommerce-dashboard` branch (or `main` after merge), set main file to `app.py`, click Deploy; confirm build succeeds without errors
-- [ ] T018 Run post-deploy validation checklist from `specs/001-ecommerce-dashboard/quickstart.md` against the live public URL — verify all Overview, Sales Trend, Breakdowns, file-watch, and error-handling items pass in the deployed environment
+- [x] T017 Deploy app to Streamlit Community Cloud — go to share.streamlit.io, connect repo `001-ecommerce-dashboard` branch (or `main` after merge), set main file to `app.py`, click Deploy; confirm build succeeds without errors
+- [x] T018 Run post-deploy validation checklist from `specs/001-ecommerce-dashboard/quickstart.md` against the live public URL — verify all Overview, Sales Trend, Breakdowns, file-watch, and error-handling items pass in the deployed environment
 
 ---
 
