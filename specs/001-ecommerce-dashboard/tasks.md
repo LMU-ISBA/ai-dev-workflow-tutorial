@@ -35,8 +35,8 @@
 
 **⚠️ CRITICAL**: No page work can begin until this phase is complete
 
-- [ ] T004 [P] Implement `src/loader.py` — define `load_data(path: str, mtime: float) -> pd.DataFrame` decorated with `@st.cache_data`; read CSV with `pd.read_csv(path, parse_dates=["date"])`; validate required columns (`date`, `order_id`, `product`, `category`, `region`, `quantity`, `unit_price`, `total_amount`); raise `FileNotFoundError` if file missing; raise `ValueError` with actionable message if columns absent or `total_amount` non-numeric
-- [ ] T005 [P] Implement `src/transforms.py` — define four functions per `contracts/module-contracts.md`: `compute_kpis(df)` returning `{total_sales, total_orders}`; `compute_time_series(df, granularity)` returning period+sales DataFrame sorted ascending; `compute_category_sales(df)` returning category+sales DataFrame sorted descending; `compute_region_sales(df)` returning region+sales DataFrame sorted descending
+- [x] T004 [P] Implement `src/loader.py` — define `load_data(path: str, mtime: float) -> pd.DataFrame` decorated with `@st.cache_data`; read CSV with `pd.read_csv(path, parse_dates=["date"])`; validate required columns (`date`, `order_id`, `product`, `category`, `region`, `quantity`, `unit_price`, `total_amount`); raise `FileNotFoundError` if file missing; raise `ValueError` with actionable message if columns absent or `total_amount` non-numeric
+- [x] T005 [P] Implement `src/transforms.py` — define four functions per `contracts/module-contracts.md`: `compute_kpis(df)` returning `{total_sales, total_orders}`; `compute_time_series(df, granularity)` returning period+sales DataFrame sorted ascending; `compute_category_sales(df)` returning category+sales DataFrame sorted descending; `compute_region_sales(df)` returning region+sales DataFrame sorted descending
 
 **Checkpoint**: `src/loader.py` and `src/transforms.py` exist and are importable — all story phases can now begin
 
