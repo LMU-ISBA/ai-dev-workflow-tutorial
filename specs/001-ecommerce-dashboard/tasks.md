@@ -89,13 +89,13 @@
 
 ### Implementation for User Story 3
 
-- [ ] T013 [US3] Scaffold `pages/3_Breakdowns.py` — call `os.path.getmtime` and `load_data` with the same inline `try/except` error pattern as previous pages
-- [ ] T014 [US3] Implement Sales by Category chart in `pages/3_Breakdowns.py` — call `compute_category_sales(df)`; render with `plotly.express.bar(cat_df, x="category", y="sales", title="Sales by Category")`; display via `st.plotly_chart(fig, use_container_width=True)`
-- [ ] T015 [US3] Implement Sales by Region chart in `pages/3_Breakdowns.py` — call `compute_region_sales(df)`; render with `plotly.express.bar(reg_df, x="region", y="sales", title="Sales by Region")`; display via `st.plotly_chart(fig, use_container_width=True)`
+- [x] T013 [US3] Scaffold `pages/3_Breakdowns.py` — call `os.path.getmtime` and `load_data` with the same inline `try/except` error pattern as previous pages
+- [x] T014 [US3] Implement Sales by Category chart in `pages/3_Breakdowns.py` — call `compute_category_sales(df)`; render with `plotly.express.bar(cat_df, x="category", y="sales", title="Sales by Category")`; display via `st.plotly_chart(fig, use_container_width=True)`
+- [x] T015 [US3] Implement Sales by Region chart in `pages/3_Breakdowns.py` — call `compute_region_sales(df)`; render with `plotly.express.bar(reg_df, x="region", y="sales", title="Sales by Region")`; display via `st.plotly_chart(fig, use_container_width=True)`
 
 ### Tests for User Story 3 (after implementation)
 
-- [ ] T016 [P] [US3] Write unit tests for `compute_category_sales()` and `compute_region_sales()` in `tests/unit/test_transforms.py` — test output sorted descending, all input categories/regions present in output, correct sales totals per group
+- [x] T016 [P] [US3] Write unit tests for `compute_category_sales()` and `compute_region_sales()` in `tests/unit/test_transforms.py` — test output sorted descending, all input categories/regions present in output, correct sales totals per group
 
 **Checkpoint**: All three user stories independently functional — `pytest tests/unit/` passes
 
