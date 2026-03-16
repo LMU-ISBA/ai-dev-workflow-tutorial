@@ -70,12 +70,12 @@
 
 ### Implementation for User Story 2
 
-- [ ] T010 [US2] Scaffold `pages/2_Sales_Trend.py` — call `os.path.getmtime` and `load_data` with the same inline `try/except` error pattern as `pages/1_Overview.py`
-- [ ] T011 [US2] Add granularity toggle and line chart in `pages/2_Sales_Trend.py` — render `st.radio("Granularity", ["Monthly", "Daily"], index=0)` to capture user selection; map selection to `"monthly"` or `"daily"`; call `compute_time_series(df, granularity)`; render with `plotly.express.line(ts_df, x="period", y="sales", title="Sales Trend")`; display via `st.plotly_chart(fig, use_container_width=True)`
+- [x] T010 [US2] Scaffold `pages/2_Sales_Trend.py` — call `os.path.getmtime` and `load_data` with the same inline `try/except` error pattern as `pages/1_Overview.py`
+- [x] T011 [US2] Add granularity toggle and line chart in `pages/2_Sales_Trend.py` — render `st.radio("Granularity", ["Monthly", "Daily"], index=0)` to capture user selection; map selection to `"monthly"` or `"daily"`; call `compute_time_series(df, granularity)`; render with `plotly.express.line(ts_df, x="period", y="sales", title="Sales Trend")`; display via `st.plotly_chart(fig, use_container_width=True)`
 
 ### Tests for User Story 2 (after implementation)
 
-- [ ] T012 [P] [US2] Write unit tests for `compute_time_series()` in `tests/unit/test_transforms.py` — test daily grouping produces one row per day, monthly grouping produces one row per month, output sorted ascending by period, raises `ValueError` for invalid granularity
+- [x] T012 [P] [US2] Write unit tests for `compute_time_series()` in `tests/unit/test_transforms.py` — test daily grouping produces one row per day, monthly grouping produces one row per month, output sorted ascending by period, raises `ValueError` for invalid granularity
 
 **Checkpoint**: User Stories 1 AND 2 both work independently — `pytest tests/unit/` passes
 
