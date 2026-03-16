@@ -50,13 +50,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T006 [US1] Scaffold `pages/1_Overview.py` — call `os.path.getmtime("data/sales-data.csv")` and `load_data("data/sales-data.csv", mtime=mtime)` inside a `try/except (FileNotFoundError, ValueError)`; on error call `st.error(str(e))` then `st.stop()`
-- [ ] T007 [US1] Display KPI metrics in `pages/1_Overview.py` — call `compute_kpis(df)`; render Total Sales with `st.metric("Total Sales", f"${kpis['total_sales']:,.0f}")` and Total Orders with `st.metric("Total Orders", f"{kpis['total_orders']:,}")` in a two-column layout via `st.columns(2)`
+- [x] T006 [US1] Scaffold `pages/1_Overview.py` — call `os.path.getmtime("data/sales-data.csv")` and `load_data("data/sales-data.csv", mtime=mtime)` inside a `try/except (FileNotFoundError, ValueError)`; on error call `st.error(str(e))` then `st.stop()`
+- [x] T007 [US1] Display KPI metrics in `pages/1_Overview.py` — call `compute_kpis(df)`; render Total Sales with `st.metric("Total Sales", f"${kpis['total_sales']:,.0f}")` and Total Orders with `st.metric("Total Orders", f"{kpis['total_orders']:,}")` in a two-column layout via `st.columns(2)`
 
 ### Tests for User Story 1 (after implementation)
 
-- [ ] T008 [P] [US1] Write unit tests for `compute_kpis()` in `tests/unit/test_transforms.py` — test correct sum of `total_amount`, correct row count, empty DataFrame returns zeros
-- [ ] T009 [P] [US1] Write unit tests for `load_data()` in `tests/unit/test_loader.py` — test `FileNotFoundError` on missing path, `ValueError` on missing columns, `ValueError` on non-numeric `total_amount`, successful load returns correct dtypes
+- [x] T008 [P] [US1] Write unit tests for `compute_kpis()` in `tests/unit/test_transforms.py` — test correct sum of `total_amount`, correct row count, empty DataFrame returns zeros
+- [x] T009 [P] [US1] Write unit tests for `load_data()` in `tests/unit/test_loader.py` — test `FileNotFoundError` on missing path, `ValueError` on missing columns, `ValueError` on non-numeric `total_amount`, successful load returns correct dtypes
 
 **Checkpoint**: User Story 1 fully functional and testable independently — run `pytest tests/unit/` to confirm
 
