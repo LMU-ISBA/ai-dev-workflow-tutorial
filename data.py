@@ -42,3 +42,17 @@ def load_data() -> pd.DataFrame:
         )
 
     return df
+
+
+def get_kpis(df: pd.DataFrame) -> dict:
+    """Compute top-level KPI values from the cleaned DataFrame.
+
+    Returns:
+        dict with keys:
+            total_sales (float): Sum of all total_amount values.
+            total_orders (int): Count of transaction rows.
+    """
+    return {
+        "total_sales": float(df["total_amount"].sum()),
+        "total_orders": int(len(df)),
+    }
