@@ -44,6 +44,26 @@ def load_data() -> pd.DataFrame:
     return df
 
 
+def get_monthly_trend(df: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate total_amount by calendar month.
+
+    Returns:
+        DataFrame with columns ["month" (str, "YYYY-MM"), "sales" (float)],
+        12 rows sorted ascending. Months with no transactions are zero-filled.
+    """
+    df = df.copy()
+    df["month"] = df["date"].dt.to_period("M").astype(str)
+    monthly = df.groupby("month", as_index=False)["total_amount"].sum()
+    monthly = monthly.rename(columns={"total_amount": "sales"})
+
+    # Ensure all 12 months of 2024 are present
+    all_months = [f"2024-{m:02d}" for m in range(1, 13)]
+    full = pd.DataFrame({"month": all_months})
+    monthly = full.merge(monthly, on="month", how="left").fillna(0)
+    monthly["sales"] = monthly["sales"].astype(float)
+    return monthly.sort_values("month").reset_index(drop=True)
+
+
 def get_kpis(df: pd.DataFrame) -> dict:
     """Compute top-level KPI values from the cleaned DataFrame.
 
