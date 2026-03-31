@@ -64,7 +64,7 @@ any story work begins.
 cards with 12 labeled monthly points; hover over any point to verify tooltip shows exact value.
 
 - [x] T006 [US2] Add `get_monthly_trend(df)` to `data.py`: aggregates `total_amount` by calendar month (YYYY-MM), returns a DataFrame with columns `["month", "sales"]` sorted ascending, all 12 months present
-- [ ] T007 [US2] Add monthly trend line chart to `app.py` below KPI cards: full-width `st.plotly_chart` using `plotly.express.line`, x-axis labeled "Month", y-axis labeled "Sales ($)", chart title "Sales Trend"
+- [x] T007 [US2] Add monthly trend line chart to `app.py` below KPI cards: full-width `st.plotly_chart` using `plotly.express.line`, x-axis labeled "Month", y-axis labeled "Sales ($)", chart title "Sales Trend"
 
 **Checkpoint**: US1 + US2 both independently functional.
 
