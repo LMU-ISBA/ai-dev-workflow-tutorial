@@ -50,7 +50,7 @@ any story work begins.
 ~$650K–$700K total sales and 482 total orders with no other interaction required.
 
 - [x] T004 [US1] Add `get_kpis(df)` to `data.py`: returns `{"total_sales": float, "total_orders": int}` computed from the loaded DataFrame
-- [ ] T005 [US1] Add KPI scorecard layout to `app.py`: two `st.columns(2)` with `st.metric()` cards — "Total Sales" (currency-formatted, e.g. `$672,345`) and "Total Orders" (integer with comma separator)
+- [x] T005 [US1] Add KPI scorecard layout to `app.py`: two `st.columns(2)` with `st.metric()` cards — "Total Sales" (currency-formatted, e.g. `$672,345`) and "Total Orders" (integer with comma separator)
 
 **Checkpoint**: US1 fully functional. An executive can see both KPIs at a glance. ✅ MVP.
 
