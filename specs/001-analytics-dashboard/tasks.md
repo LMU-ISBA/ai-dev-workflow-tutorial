@@ -91,7 +91,7 @@ descending; hovering any bar shows exact sales value.
 **Purpose**: Final validation and deployment.
 
 - [x] T010 Run through every item in `specs/001-analytics-dashboard/quickstart.md` validation checklist; fix any discrepancies between displayed values and expected values from `data/sales-data.csv`
-- [ ] T011 [P] Add `@st.cache_data` to any remaining uncached data calls in `app.py` if present; verify dashboard loads within 5 seconds (SC-001)
+- [x] T011 [P] Add `@st.cache_data` to any remaining uncached data calls in `app.py` if present; verify dashboard loads within 5 seconds (SC-001)
 - [ ] T012 Deploy to Streamlit Community Cloud: push branch to GitHub, merge to `main`, connect repo in Streamlit Cloud dashboard, set main file to `app.py`, verify public URL is accessible with no login required (SC-005)
 
 ---
