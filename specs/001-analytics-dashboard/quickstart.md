@@ -41,7 +41,7 @@ Run through these checks after the app loads:
 
 | Metric         | Expected                        |
 |----------------|---------------------------------|
-| Total Sales    | ~$650,000–$700,000              |
+| Total Sales    | ~$116,500                       |
 | Total Orders   | 482                             |
 | Top Category   | Electronics or Audio            |
 | Regions shown  | North, South, East, West        |
