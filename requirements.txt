@@ -1,0 +1,6 @@
+# ShopSmart Sales Dashboard Dependencies
+# Use minimum versions for compatibility with newer Python versions
+
+streamlit>=1.29.0
+pandas>=2.1.0
+plotly>=5.18.0
