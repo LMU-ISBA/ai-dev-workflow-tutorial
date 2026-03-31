@@ -64,6 +64,40 @@ def get_monthly_trend(df: pd.DataFrame) -> pd.DataFrame:
     return monthly.sort_values("month").reset_index(drop=True)
 
 
+KNOWN_CATEGORIES = ["Electronics", "Accessories", "Audio", "Wearables", "Smart Home"]
+KNOWN_REGIONS = ["North", "South", "East", "West"]
+
+
+def get_category_breakdown(df: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate total_amount by product category.
+
+    Returns:
+        DataFrame with columns ["category", "sales"], all 5 known categories
+        present, sorted descending by sales.
+    """
+    breakdown = df.groupby("category", as_index=False)["total_amount"].sum()
+    breakdown = breakdown.rename(columns={"total_amount": "sales"})
+    full = pd.DataFrame({"category": KNOWN_CATEGORIES})
+    breakdown = full.merge(breakdown, on="category", how="left").fillna(0)
+    breakdown["sales"] = breakdown["sales"].astype(float)
+    return breakdown.sort_values("sales", ascending=False).reset_index(drop=True)
+
+
+def get_region_breakdown(df: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate total_amount by geographic region.
+
+    Returns:
+        DataFrame with columns ["region", "sales"], all 4 known regions
+        present, sorted descending by sales.
+    """
+    breakdown = df.groupby("region", as_index=False)["total_amount"].sum()
+    breakdown = breakdown.rename(columns={"total_amount": "sales"})
+    full = pd.DataFrame({"region": KNOWN_REGIONS})
+    breakdown = full.merge(breakdown, on="region", how="left").fillna(0)
+    breakdown["sales"] = breakdown["sales"].astype(float)
+    return breakdown.sort_values("sales", ascending=False).reset_index(drop=True)
+
+
 def get_kpis(df: pd.DataFrame) -> dict:
     """Compute top-level KPI values from the cleaned DataFrame.
 
