@@ -80,7 +80,7 @@ side; category chart has 5 bars sorted descending; region chart has 4 bars sorte
 descending; hovering any bar shows exact sales value.
 
 - [x] T008 [P] [US3] Add `get_category_breakdown(df)` and `get_region_breakdown(df)` to `data.py`: each aggregates `total_amount` by its dimension, returns a DataFrame with columns `["category"/"region", "sales"]` sorted descending by sales, all known values present
-- [ ] T009 [US3] Add side-by-side bar charts to `app.py` below the trend chart: `st.columns(2)` — left column: `plotly.express.bar` of category breakdown (title "Sales by Category"); right column: `plotly.express.bar` of region breakdown (title "Sales by Region"); both use `use_container_width=True`
+- [x] T009 [US3] Add side-by-side bar charts to `app.py` below the trend chart: `st.columns(2)` — left column: `plotly.express.bar` of category breakdown (title "Sales by Category"); right column: `plotly.express.bar` of region breakdown (title "Sales by Region"); both use `use_container_width=True`
 
 **Checkpoint**: All three user stories functional end-to-end.
 
