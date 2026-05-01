@@ -558,19 +558,17 @@ python --version         # Windows
 Expected output: `Python 3.11.x` or higher (3.12.x, 3.13.x are all fine)
 
 ```bash
-uv --version
-```
-Expected output: `uv 0.x.x` or higher
-
-```bash
-specify --help
-```
-Expected output: spec-kit help text showing available commands
-
-```bash
 claude --version
 ```
 Expected output: a version number
+
+### Superpowers plugin
+
+Start a Claude Code session:
+```bash
+claude
+```
+Expected output: the session banner shows `You have superpowers` near the top, which means the Superpowers plugin loaded. Type `/exit` to close the session.
 
 If any command fails with "command not found," open a new terminal and try again. If it still fails, refer to the Troubleshooting Reference at the end of this document.
 
@@ -606,9 +604,8 @@ Here's what you've just configured:
 |    Cursor ............. AI-powered code editor                  |
 |    Git ................ Version control                         |
 |    Python 3.11+ ....... Programming language                   |
-|    uv ................. Package manager                         |
-|    spec-kit ........... Spec-driven planning                   |
 |    Claude Code ........ AI terminal assistant                   |
+|    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |                                                                |
 |  Your Repository:                                              |
 |    Fork on GitHub ..... Your remote copy                       |
@@ -618,7 +615,7 @@ Here's what you've just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, Jira tracks tasks, Cursor is where you write code, Claude Code helps you build, and spec-kit ensures you plan before you build. During the workshop, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
+These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, Jira tracks tasks, Cursor is where you write code, Claude Code helps you build, and the Superpowers plugin's skills help Claude plan before you build. During the workshop, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
 
 > **Before the workshop:** If anything above isn't working, post in the Teams General channel now. It's much easier to resolve setup issues asynchronously than during the live session.
 
