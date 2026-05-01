@@ -729,17 +729,15 @@ Update the deployment Jira issue: add the live Streamlit URL as a comment. Move 
 
 Before submitting, walk through every item below. Each category corresponds to a section of this guide.
 
-### MCP and Spec-Kit
+### MCP and Superpowers
 
 - [ ] Atlassian MCP connected and functional
-- [ ] Constitution created (`.specify/memory/constitution.md`)
-- [ ] Specification created (`specs/[feature-name]/spec.md`)
-- [ ] Implementation plan created (`specs/[feature-name]/plan.md`)
-- [ ] Tasks generated (`specs/[feature-name]/tasks.md`)
+- [ ] Design document created (`docs/superpowers/specs/<file>.md`)
+- [ ] Implementation plan created (`docs/superpowers/plans/<file>.md`)
 
 ### Jira
 
-- [ ] Issues created from spec-kit tasks (ECOM-1, ECOM-2, etc.)
+- [ ] Issues created from plan tasks (ECOM-1, ECOM-2, etc.)
 - [ ] All issues marked "Done"
 - [ ] Each issue has a comment with: implementation summary, commit hash, branch name, GitHub link
 
@@ -759,7 +757,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 ## The complete workflow -- what you accomplished
 
 ```
-PRD [done] -> spec-kit [done] -> Jira [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
+PRD [done] -> brainstorming [done] -> writing-plans [done] -> Jira [done] -> Code [done] -> Commit [done] -> Push [done] -> Deploy [done] -> Live! [done]
 ```
 
 In this workshop, you practiced five professional skills:
@@ -792,7 +790,7 @@ In this workshop, you practiced five professional skills:
 
    If the full issue doesn't fit in one screenshot, submit multiple screenshots named `jira-01.png`, `jira-02.png`, etc.
 
-Make sure your `prd/`, `specs/`, and `.specify/` directories are included in your repository.
+Make sure your `prd/` and `docs/superpowers/` directories are included in your repository.
 
 ---
 
