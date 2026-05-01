@@ -17,7 +17,7 @@ Estimated time: 60–90 minutes (complete before the workshop)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
   - [2.4 uv](#24-uv)
-  - [2.5 spec-kit](#25-spec-kit)
+  - [2.5 Superpowers plugin](#25-superpowers-plugin)
   - [2.6 Claude Code](#26-claude-code)
 - [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
   - [3.1 Fork the repository](#31-fork-the-repository)
@@ -32,7 +32,7 @@ Estimated time: 60–90 minutes (complete before the workshop)
 
 ```
 Accounts:  GitHub, Atlassian (Jira), Claude Pro
-Tools:     Cursor, Git, Python 3.11+, uv, spec-kit, Claude Code
+Tools:     Cursor, Git, Python 3.11+, Claude Code, Superpowers plugin
 Repo:      Fork and clone the tutorial repository, initialize Claude Code
 ```
 
@@ -67,7 +67,7 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 - Manage code with version control (Git and GitHub)
 - Track work using industry-standard project management (Jira)
 - Use AI to accelerate building (Claude Code)
-- Plan before you build (spec-kit)
+- Plan before you build (Superpowers' brainstorming and writing-plans skills)
 - Edit code in a modern, AI-aware editor (Cursor)
 
 ### Traditional vs. AI-assisted development
@@ -99,7 +99,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 |  Jira (project mgmt)   <-->  Cursor (code editor)           |
 |       ^                           ^                          |
 |       |                           |                          |
-|  Claude Code (AI assistant)  <-->  spec-kit (planning)       |
+| Claude Code (AI assistant) <--> Superpowers (planning skills) |
 |       ^                                                      |
 |       |                                                      |
 |  Python + Streamlit (your application)                       |
@@ -112,7 +112,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 - **Jira** manages tasks and requirements so you always know what to work on and why.
 - **Cursor** is your code editor, where you write and organize files.
 - **Claude Code** is an AI assistant that runs in your terminal, reads your project, and helps you build.
-- **spec-kit** turns requirements into structured plans before you start coding.
+- **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you'll build during the workshop.
 
 ---
