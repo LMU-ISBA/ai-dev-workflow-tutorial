@@ -3,15 +3,15 @@
 Learn a professional development workflow by building and deploying a real project: an e-commerce sales dashboard.
 
 ```
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│   PRD   │ -> │ spec-kit │ -> │  Jira   │ -> │  Code  │
-│(written)│    │(Claude)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────┘    └─────────┘    └────────┘
-                                                  │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ Commit │
-│(public) │    │(Streamlit)│   │(GitHub) │    │(Git)   │
-└─────────┘    └──────────┘    └─────────┘    └────────┘
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐    ┌────────┐
+│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │  Jira   │ -> │  Code  │
+│(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └─────────┘    └────────┘
+                                                                            │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
+└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
 ```
 
 See the finished product: https://sales-dashboard-greg-lontok.streamlit.app/
@@ -44,12 +44,19 @@ You'll set up the same tools that development teams use, then build a dashboard 
 | Jira | Tracks tasks and requirements |
 | Cursor | Code editor (VS Code-based, with AI features) |
 | Claude Code | AI assistant that runs in your terminal |
-| [spec-kit](https://github.com/github/spec-kit) | Turns requirements into a structured plan |
+| [Superpowers](https://github.com/obra/superpowers) | A Claude Code plugin whose skills turn requirements into bite-sized plans |
 | Python + Streamlit | What you build the dashboard with |
 
 ## Getting started
 
-### Version 2 (current)
+### Version 3 (current)
+
+Async pre-work + a 3-hour live workshop, using the Superpowers Claude Code plugin for skill-driven planning.
+
+1. Start with [Pre-work: Setup](v3/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
+2. Then [Workshop: Build & Deploy](v3/workshop-build-deploy.md) -- design, plan, build, and deploy the dashboard (~3 hours, live)
+
+### Version 2 (previous)
 
 Async pre-work + a 3-hour live workshop.
 
