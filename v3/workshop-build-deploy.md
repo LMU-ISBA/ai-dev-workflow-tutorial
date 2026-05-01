@@ -418,15 +418,15 @@ Press **Shift+Tab** to cycle between modes. The current mode is displayed in the
 
    Claude typically recommends starting with the environment setup or app structure issue, since other issues depend on it.
 
-2. In Claude Code, implement the issue using the spec-kit implement command:
+2. In Claude Code, ask Claude to start implementing the first issue:
 
    ```
-   /speckit.implement
-
-   Implement ECOM-1 and move it to In Progress in Jira.
+   Let's start implementing ECOM-1.
    ```
 
-   Replace `ECOM-1` with whichever issue Claude recommended.
+   Replace `ECOM-1` with whichever issue Claude recommended. Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Using executing-plans to...` in the output. The skill reads the plan, picks up the first task, and starts working.
+
+   > **What you'll see during a TDD task:** For tasks flagged as test-driven (typically data-transformation tasks like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit with a message referencing your Jira issue. For non-TDD tasks (chart rendering, page layout), it'll skip straight to implementation and commit. Watch the test output: seeing red turn green is one of the more satisfying parts of the workshop.
 
    > **What happens during implementation:** Claude reads the Jira issue description, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
@@ -557,7 +557,7 @@ The cycle for each issue is:
 Ask which issue is next
         |
         v
-/speckit.implement with issue key --> Move to In Progress
+"Let's implement ECOM-N" --> Claude auto-invokes executing-plans --> Move to In Progress
         |
         v
 Test the dashboard (streamlit run app.py)
@@ -575,10 +575,10 @@ Update Jira with evidence --> Move to Done
 Here is the pattern for each issue. In Claude Code:
 
 ```
-/speckit.implement
-
-Implement ECOM-2 and move it to In Progress in Jira.
+Let's implement ECOM-2.
 ```
+
+Claude auto-invokes `executing-plans` and moves the issue to In Progress.
 
 After implementation and testing, in Claude Code:
 
