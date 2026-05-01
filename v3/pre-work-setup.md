@@ -16,8 +16,8 @@ Estimated time: 60–90 minutes (complete before the workshop)
   - [2.1 Cursor](#21-cursor)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
+  - [2.4 Claude Code](#24-claude-code)
   - [2.5 Superpowers plugin](#25-superpowers-plugin)
-  - [2.6 Claude Code](#26-claude-code)
 - [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
   - [3.1 Fork the repository](#31-fork-the-repository)
   - [3.2 Clone your fork](#32-clone-your-fork)
@@ -363,41 +363,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ---
 
-### 2.5 Superpowers plugin
-
-> **What is Superpowers?** [Superpowers](https://github.com/obra/superpowers) is a Claude Code plugin that gives Claude a library of skills. A skill is a small piece of expertise Claude pulls in when your prompt matches it. Three skills you'll use today: `brainstorming` (asks clarifying questions and produces a design document), `writing-plans` (turns a design into a bite-sized implementation plan), and `executing-plans` (works through the plan task by task with frequent commits). The skills auto-invoke based on what you ask Claude to do, so you don't have to memorize commands.
-
-#### Skills primer
-
-Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
-
-You'll only ever type one slash command for the entire tutorial: the install command below. Everything else flows from natural-language prompts.
-
-#### Install the plugin
-
-1. Start Claude Code from any directory:
-
-   ```bash
-   claude
-   ```
-
-2. Inside Claude Code, run:
-
-   ```
-   /plugin install superpowers@claude-plugins-official
-   ```
-
-3. Wait for the install to complete (~30 seconds). Claude Code will confirm `Superpowers installed`.
-
-4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
-
-5. When Claude Code starts, look for the line `You have superpowers` near the top of the session output. That line confirms the plugin loaded and the `using-superpowers` skill is active.
-
-> **Checkpoint:** Starting Claude Code shows `You have superpowers` in the session output.
-
----
-
-### 2.6 Claude Code
+### 2.4 Claude Code
 
 > **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and connect to external tools like Jira through MCP (Model Context Protocol) servers. It's an AI assistant that can see your entire project and make changes alongside you. This is different from copying code out of a chat window -- Claude Code works inside your development environment.
 
@@ -430,6 +396,40 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 > **If authentication fails:** Run `claude logout`, then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
 
 > **Checkpoint:** Running `claude` starts an interactive session. Type `/exit` to quit.
+
+---
+
+### 2.5 Superpowers plugin
+
+> **What is Superpowers?** [Superpowers](https://github.com/obra/superpowers) is a Claude Code plugin that gives Claude a library of skills. A skill is a small piece of expertise Claude pulls in when your prompt matches it. Three skills you'll use today: `brainstorming` (asks clarifying questions and produces a design document), `writing-plans` (turns a design into a bite-sized implementation plan), and `executing-plans` (works through the plan task by task with frequent commits). The skills auto-invoke based on what you ask Claude to do, so you don't have to memorize commands.
+
+#### Skills primer
+
+Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude reads each skill's description at session start and matches your prompt against those descriptions to decide which skill to load. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
+
+You'll only ever type one slash command for the entire tutorial: the install command below. Everything else flows from natural-language prompts.
+
+#### Install the plugin
+
+1. Open your terminal in Cursor (Terminal --> New Terminal) and run `claude` from any directory:
+
+   ```bash
+   claude
+   ```
+
+2. Inside Claude Code, run:
+
+   ```
+   /plugin install superpowers@claude-plugins-official
+   ```
+
+3. Wait for the install to complete (~30 seconds). Claude Code will confirm `Superpowers installed`.
+
+4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
+
+5. When Claude Code starts, look for the line `You have superpowers` near the top of the session output. That line confirms the plugin loaded and the `using-superpowers` skill is active.
+
+> **Checkpoint:** Starting Claude Code shows `You have superpowers` in the session output.
 
 ---
 
