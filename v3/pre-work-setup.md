@@ -745,7 +745,7 @@ or the install script produces an error.
 
 ### 7. Superpowers plugin not loaded
 
-**What you see:** Starting Claude Code does not show `You have superpowers` in the banner, and prompts that should pull in skills (like "Help me design...") don't trigger any skill announcements.
+**What you see:** Starting Claude Code does not show `You have superpowers` in the banner, and prompts that should auto-invoke skills (like "Help me design...") don't trigger any skill announcements.
 
 **Why it happens:** The plugin install may not have finished, the SessionStart hook may not be firing, or your Claude Code version may be too old to support plugins.
 
