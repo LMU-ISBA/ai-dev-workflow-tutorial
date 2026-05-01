@@ -323,16 +323,17 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 ### Connecting planning to tracking
 
-Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task from your tasks.md becomes a Jira issue, giving you visibility into progress and creating traceability between requirements and implementation.
+Now you bridge two worlds: Superpowers (planning) and Jira (tracking). Each task from your implementation plan becomes a Jira issue, giving you visibility into progress and creating traceability between requirements and implementation.
 
 > **Why This Matters:** In professional teams, every piece of work is tracked. When a manager asks "what is the status of the dashboard?" or a stakeholder asks "why was this chart implemented this way?", you can trace the answer through Jira. Each issue links to a requirement (from the spec), a code change (commit), and a result (deployed feature). This traceability is how teams build software without losing track of why changes were made.
 
 ```
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  tasks.md    │ --> │  Jira Issues │ --> │  Code        │
-│  (spec-kit)  │     │  (ECOM-1,    │     │  (commits    │
-│              │     │   ECOM-2...) │     │   reference  │
-│  Source of   │     │  Track       │     │   issue keys)│
+│  plan.md     │ --> │  Jira Issues │ --> │  Code        │
+│  (writing-   │     │  (ECOM-1,    │     │  (commits    │
+│   plans)     │     │   ECOM-2...) │     │   reference  │
+│              │     │              │     │   issue keys)│
+│  Source of   │     │  Track       │     │              │
 │  truth for   │     │  progress    │     │              │
 │  what to     │     │  and status  │     │              │
 │  build       │     │              │     │              │
@@ -344,16 +345,16 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 1. In Claude Code, ask Claude to create the first Jira issue based on your tasks:
 
    ```
-   Based on the tasks in @specs/001-sales-dashboard/tasks.md, what should be the first Jira issue? Create it in the ECOM project.
+   Based on the tasks in the implementation plan at @docs/superpowers/plans/<plan-file>.md, what should be the first Jira issue? Create it in the ECOM project.
    ```
 
-   Replace `001-sales-dashboard` with your actual feature folder name if it differs.
+   Replace `<plan-file>` with the actual filename. To find it quickly, run `ls -t docs/superpowers/plans/ | head -1` in your terminal.
 
    > **How does Claude know to use Jira?** When you mention "Jira" or "ECOM project," Claude recognizes that it needs the Atlassian MCP server and uses it automatically. You don't need to activate MCP manually -- Claude selects the right tool based on your request. This is part of why MCP is powerful: it extends Claude's capabilities transparently.
 
-2. Claude reads the tasks file, formulates an appropriate Jira issue, uses the Atlassian MCP to create it, and returns the details including the issue key (e.g., ECOM-1).
+2. Claude reads the plan, formulates an appropriate Jira issue, uses the Atlassian MCP to create it, and returns the details including the issue key (e.g., ECOM-1).
 
-3. Verify in Jira: open your browser, navigate to your ECOM project backlog, and confirm the issue exists. Click into it and read the description -- it should match the corresponding task from spec-kit.
+3. Verify in Jira: open your browser, navigate to your ECOM project backlog, and confirm the issue exists. Click into it and read the description, which should match the corresponding task from your plan.
 
 **Checkpoint:** ECOM-1 is visible in your Jira backlog with a detailed description.
 
@@ -362,18 +363,18 @@ Now you bridge two worlds: spec-kit (planning) and Jira (tracking). Each task fr
 1. In Claude Code, ask Claude to create issues for the remaining tasks:
 
    ```
-   Create Jira issues in the ECOM project for the remaining tasks in @specs/001-sales-dashboard/tasks.md
+   Create Jira issues in the ECOM project for the remaining tasks in @docs/superpowers/plans/<plan-file>.md
    ```
 
-   Replace the folder name if yours differs.
+   Replace `<plan-file>` with the actual filename if needed.
 
 2. Claude creates multiple issues. This may take a minute as it processes each task and communicates with Jira.
 
-3. Verify in Jira: refresh the backlog to see all new issues (ECOM-2, ECOM-3, etc.). Each should have a description derived from spec-kit tasks.
+3. Verify in Jira: refresh the backlog to see all new issues (ECOM-2, ECOM-3, etc.). Each should have a description derived from the plan tasks.
 
-**Checkpoint:** Multiple issues are visible in the Jira backlog, each with descriptions matching spec-kit tasks.
+**Checkpoint:** Multiple issues are visible in the Jira backlog, each with descriptions matching the plan tasks.
 
-> **Pro Tip:** Open a few issues and read their descriptions. Notice how the progression from PRD to spec-kit to Jira creates increasingly specific, actionable items. The PRD said "display Total Sales"; the spec-kit task might say "create KPI scorecards using Streamlit metric components with formatted currency values"; the Jira issue captures this as a trackable work item. This is the refinement process in practice.
+> **Pro Tip:** Open a few issues and read their descriptions. Notice how the progression from PRD to brainstorming to writing-plans to Jira creates increasingly specific, actionable items. The PRD said "display Total Sales"; the plan task might say "create KPI scorecards using Streamlit metric components with formatted currency values"; the Jira issue captures this as a trackable work item. This is the refinement process in practice.
 
 ---
 
