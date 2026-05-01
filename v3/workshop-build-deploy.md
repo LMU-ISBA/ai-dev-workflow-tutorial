@@ -10,13 +10,11 @@
 
 - [Workshop agenda](#workshop-agenda)
 - [Section 1: Connect Claude Code to Jira (~10 min)](#section-1-connect-claude-code-to-jira-10-min)
-- [Section 2: Spec-Kit workflow (~25 min)](#section-2-spec-kit-workflow-25-min)
-  - [2.1 Read the PRD](#21-read-the-prd)
-  - [2.2 Initialize Spec-Kit](#22-initialize-spec-kit)
-  - [2.3 Create the constitution](#23-create-the-constitution)
-  - [2.4 Create the specification](#24-create-the-specification)
-  - [2.5 Create the implementation plan](#25-create-the-implementation-plan)
-  - [2.6 Generate tasks](#26-generate-tasks)
+- [Section 2: Brainstorm and plan (~30 min)](#section-2-brainstorm-and-plan-30-min)
+  - [2.1 Create v3/CLAUDE.md](#21-create-v3claudemd)
+  - [2.2 Create the feature branch](#22-create-the-feature-branch)
+  - [2.3 Read the PRD](#23-read-the-prd)
+  - [2.4 Brainstorm and plan with one prompt](#24-brainstorm-and-plan-with-one-prompt)
 - [Section 3: Create Jira issues (~10 min)](#section-3-create-jira-issues-10-min)
 - [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
   - [4.1 Implement the first issue](#41-implement-the-first-issue)
@@ -47,7 +45,7 @@
 By the end of this workshop, you'll have taken a product requirements document through a full development workflow and produced a live analytics dashboard. Specifically, you'll have:
 
 - Connected Claude Code to Jira using the Model Context Protocol (MCP)
-- Generated spec-kit artifacts: constitution, specification, plan, and tasks
+- Generated Superpowers artifacts: a design document and an implementation plan
 - Created and tracked Jira issues through their full lifecycle
 - Built a working Streamlit dashboard with AI-assisted coding
 - Committed and pushed code to GitHub with traceability to Jira
@@ -85,20 +83,20 @@ If any command fails, return to the [pre-work setup guide](pre-work-setup.md) an
 This is the workflow used at technology companies worldwide. Today you'll experience the entire cycle, from specification to deployment.
 
 ```
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│   PRD   │ -> │ spec-kit │ -> │  Jira   │ -> │  Code  │
-│(written)│    │(Claude)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────┘    └─────────┘    └────────┘
-                                                  │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ Commit │
-│(public) │    │(Streamlit)│   │(GitHub) │    │(Git)   │
-└─────────┘    └──────────┘    └─────────┘    └────────┘
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐    ┌────────┐
+│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │  Jira   │ -> │  Code  │
+│(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └─────────┘    └────────┘
+                                                                            │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
+└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
 ```
 
 Each box in this diagram is a distinct stage you'll complete today. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
 
-> **Why spec-driven development?** You could ask Claude "build me a dashboard" directly. But without clear specifications, Claude makes assumptions -- and AI can build the wrong thing very fast. A vague prompt might produce a dashboard with the wrong charts, the wrong data structure, or the wrong layout. Spec-driven development means you specify what you want, plan how to build it, then execute against that plan. Writing specifications before code is what professional teams do. This is the difference between "I built something" and "I solved the right problem." In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
+> **Why skill-driven development?** You could ask Claude "build me a dashboard" directly. But without a clear plan, Claude makes assumptions, and AI can build the wrong thing very fast. Superpowers' skills give the work structure: brainstorming explores what to build, writing-plans turns the design into a bite-sized plan, and executing-plans implements one task at a time. Letting the skills run their process is what makes AI-assisted coding predictable instead of chaotic. In your capstone, this discipline will be the difference between a project that drifts and one that delivers.
 
 ---
 
