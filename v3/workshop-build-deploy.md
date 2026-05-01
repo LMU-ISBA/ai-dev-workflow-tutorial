@@ -1038,6 +1038,22 @@ Then retry: `streamlit run app.py`
 
 ---
 
+## Other Superpowers skills you'll meet later
+
+You'll encounter these in larger projects beyond this tutorial. We didn't formally use them in v3 either because they're more advanced than this workshop needs, or because we explicitly overrode them in CLAUDE.md.
+
+| Skill | What it does | Why we skipped it here |
+|-------|--------------|------------------------|
+| `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We overrode this in CLAUDE.md to keep the workshop on a single working directory |
+| `dispatching-parallel-agents` | Splits independent tasks across multiple agents that work in parallel | Overkill for a single-project tutorial |
+| `subagent-driven-development` | Executes plans by dispatching a fresh subagent per task, with review checkpoints between | A more advanced execution model than executing-plans; same outcome, more moving parts |
+| `writing-skills` | Helps you author your own Superpowers skills | Meta. For skill authors, not skill consumers |
+| `systematic-debugging` | Walks through a structured debugging process when something breaks | Triggers automatically if your build hits an unexpected error |
+
+If you want to dig deeper, browse the Superpowers skill library: https://github.com/obra/superpowers-skills
+
+---
+
 ## Glossary
 
 Quick-reference table of key terms used in this document.
