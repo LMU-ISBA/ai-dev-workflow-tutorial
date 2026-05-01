@@ -7,7 +7,7 @@ You'll work through it in two parts:
 | Part | What you do | Time |
 |------|-------------|------|
 | [Pre-work](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 60–90 min on your own, before the workshop |
-| [Workshop](workshop-build-deploy.md) | Plan with [spec-kit](https://github.com/github/spec-kit), build with Claude Code, deploy live | ~3 hours, live on Zoom |
+| [Workshop](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers), build with Claude Code, deploy live | ~3 hours, live on Zoom |
 
 ## Why this matters
 
@@ -59,30 +59,31 @@ The dashboard itself is straightforward. The point is the workflow you use to bu
 Every technology company uses a variation of this workflow. You'll experience the entire cycle:
 
 ```
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│   PRD   │ -> │ spec-kit │ -> │  Jira   │ -> │  Code  │
-│(written)│    │(Claude)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────┘    └─────────┘    └────────┘
-                                                  │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ Commit │
-│(public) │    │(Streamlit)│   │(GitHub) │    │(Git)   │
-└─────────┘    └──────────┘    └─────────┘    └────────┘
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐    ┌────────┐
+│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │  Jira   │ -> │  Code  │
+│(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
+└─────────┘    └──────────────┘    └──────────────┘    └─────────┘    └────────┘
+                                                                            │
+┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
+│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
+└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
 ```
 
 1. **PRD** -- Start with a written specification of what to build
-2. **spec-kit** -- Refine requirements into a constitution, specification, plan, and tasks
-3. **Jira** -- Create trackable issues from the plan
-4. **Code** -- Build the feature with Claude Code
-5. **Commit** -- Save your changes with a meaningful message linked to the Jira issue
-6. **Push** -- Upload your code to GitHub
-7. **Deploy** -- Make your dashboard publicly accessible
+2. **brainstorming** -- A Superpowers skill that asks clarifying questions and produces a design document
+3. **writing-plans** -- A Superpowers skill that turns the design into a bite-sized implementation plan
+4. **Jira** -- Create trackable issues from the plan
+5. **Code** -- Build the feature with Claude Code
+6. **Commit** -- Save your changes with a meaningful message linked to the Jira issue
+7. **Push** -- Upload your code to GitHub
+8. **Deploy** -- Make your dashboard publicly accessible
 
 ## Key concepts
 
 **Traceability.** Every piece of code traces back to a requirement. When you commit, you include the Jira issue key (like ECOM-1) in the message. Anyone can follow the chain from requirement to code to deployed feature.
 
-**Spec-driven development.** Instead of jumping straight to code, you specify what you want, plan how to build it, break the work into tasks, then implement. This prevents the most common failure mode: building the wrong thing fast.
+**Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task. This prevents the most common failure mode: building the wrong thing fast.
 
 **AI as a partner.** Claude Code isn't just a code generator. It helps you understand requirements, plan your approach, write code, debug issues, and learn concepts as you work. You provide direction and judgment; it provides speed and technical knowledge.
 
