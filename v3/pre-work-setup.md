@@ -631,9 +631,9 @@ This section covers the most common issues people encounter during setup. For ea
 
 **What you see:**
 ```
-zsh: command not found: uv
+zsh: command not found: claude
 bash: git: command not found
-'specify' is not recognized as an internal or external command
+'python' is not recognized as an internal or external command
 ```
 
 **Why it happens:** Your terminal session loaded the system PATH before the tool was installed. The PATH is a list of directories the terminal searches when you type a command. Installing a tool adds its location to the PATH, but terminals that were already open don't automatically refresh their copy of the PATH.
@@ -743,23 +743,18 @@ or the install script produces an error.
 
 ---
 
-### 7. spec-kit / specify command not found
+### 7. Superpowers plugin not loaded
 
-**What you see:**
-```
-specify: command not found
-```
+**What you see:** Starting Claude Code does not show `You have superpowers` in the banner, and prompts that should pull in skills (like "Help me design...") don't trigger any skill announcements.
 
-**Why it happens:** Either spec-kit didn't install correctly, or the installation directory isn't in your PATH.
+**Why it happens:** The plugin install may not have finished, the SessionStart hook may not be firing, or your Claude Code version may be too old to support plugins.
 
 **How to fix it:**
-1. Open a new terminal first (the most common fix).
-2. If that doesn't work, reinstall:
-   ```bash
-   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-   ```
-3. Watch the output for error messages. If uv itself isn't found, install uv first (Section 2.4).
-4. After reinstalling, open another new terminal and try `specify --help` again.
+1. Confirm your Claude Code version. Run `claude --version` in your terminal. You need a build that supports plugins (anything from late 2025 onward).
+2. List installed plugins. Inside Claude Code, run `/plugin list`. You should see `superpowers` in the list.
+3. If the plugin is missing, reinstall it: `/plugin install superpowers@claude-plugins-official`
+4. Exit Claude Code with `/exit` and start a fresh session. The hook only fires when a session starts.
+5. If `You have superpowers` still doesn't appear, run `/plugin list` once more. If the plugin shows up but the hook never fires, you likely have a version mismatch. Update Claude Code with `claude update`.
 
 ---
 
