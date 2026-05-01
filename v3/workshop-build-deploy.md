@@ -1,6 +1,6 @@
 # Workshop: Build & Deploy
 
-**From requirements to a live dashboard using spec-driven development.**
+**From requirements to a live dashboard using skill-driven development.**
 
 **Format:** 3-hour Zoom workshop
 
@@ -186,207 +186,136 @@ Without MCP, you'd need to manually switch between Claude Code and the Jira web 
 
 ---
 
-## Section 2: Spec-Kit workflow (~25 min)
+## Section 2: Brainstorm and plan (~30 min)
 
-### Understanding spec-driven development
+### Understanding skill-driven development
 
-The rest of the tutorial flows from what you create here. Every step that follows -- coding, committing, deploying -- depends on the specifications you write in this section.
+The rest of the tutorial flows from what you create here. Every step that follows (coding, committing, deploying) depends on the design and plan you produce in this section.
 
-> **The Problem with "Just Code It":** When you ask an AI to build something without clear specifications, you get something that might work but probably isn't what you wanted. The AI fills in gaps with assumptions, and each assumption is a potential mismatch with your intent. With a complex deliverable like an analytics dashboard, even small mismatches compound: the wrong chart type, unexpected data aggregation, a layout that doesn't serve the audience.
+> **The problem with "just code it":** When you ask an AI to build something without a clear design, you get something that might work but probably isn't what you wanted. The AI fills in gaps with assumptions, and each assumption is a potential mismatch with your intent. With a deliverable like an analytics dashboard, even small mismatches compound: the wrong chart type, unexpected aggregation, a layout that doesn't serve the audience.
 
-Spec-kit solves this by creating a structured pipeline that progressively narrows ambiguity:
+Superpowers solves this by chaining three skills:
 
 ```
-Constitution -> Specification -> Plan -> Tasks -> Implementation
-(principles)    (what to build)   (how)   (steps)   (code)
+brainstorming -> writing-plans -> executing-plans
+(design doc)    (impl plan)      (code, tested, committed)
 ```
 
-Here is what each stage does:
+Each skill narrows the space of possible outcomes. By the time executing-plans runs, Claude knows what to build, how to build it, and in what order. The result is more likely to match what you actually wanted.
 
-| Stage | Purpose | Analogy |
-|-------|---------|---------|
-| **Constitution** | Defines project principles and standards | A company's core values |
-| **Specification** | Details exactly what to build | An architect's blueprint |
-| **Plan** | Describes the technical approach | A construction schedule |
-| **Tasks** | Breaks work into actionable items | A contractor's punch list |
-| **Implementation** | Writes the actual code | Building the structure |
+### 2.1 Create v3/CLAUDE.md
 
-Each stage narrows the space of possible outcomes. By the time you reach implementation, Claude knows what to build, how to build it, and in what order. The result is more likely to match what you actually wanted.
+> **What is CLAUDE.md?** It's a file Claude Code reads at the start of every session. It's where you put project-specific guidance: code style, workflow conventions, things you want Claude to remember without you having to repeat them every time. For this project, CLAUDE.md tells Claude two things: skip the worktree setup that brainstorming usually does, and stick to the simple, readable code style that matches the rest of the tutorial.
 
-> **Pro Tip:** This pipeline mirrors how analytics projects work in industry. Before you build a predictive model, you define the business question (constitution), specify the success metrics (specification), choose your methodology (plan), and break the work into phases (tasks). The same discipline applies to software.
+> **Heads up about `/init`:** Claude Code has an `/init` slash command that auto-generates a CLAUDE.md by scanning your codebase. We're not using it. We want a small, focused file rather than a generated one. Don't run `/init` for this project. If you do run it by accident and it overwrites your CLAUDE.md, recover with `git checkout v3/CLAUDE.md`.
 
-### 2.1 Read the PRD
+1. In Cursor, create a new file at `v3/CLAUDE.md`.
 
-> **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the intended users, the features, and what success looks like. In professional settings, a PRD is written before any code -- it's how teams align on what to build so they don't waste time building the wrong thing. Whenever you start a new project or a major feature, writing a PRD first is a best practice, even if it's short. For your capstone, writing a PRD before you start coding will save your team from scope confusion later.
+2. Paste in the following content:
 
-Before you start generating specs, take a few minutes to read the product requirements document you'll be building from:
+   ```markdown
+   # Project guidance for Claude
 
-Open the [PRD](../prd/ecommerce-analytics.md) and skim it. You can read it in your browser or open `prd/ecommerce-analytics.md` in Cursor. You don't need to memorize anything -- just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
+   This is an educational tutorial project: an e-commerce Streamlit dashboard
+   built by MSBA students learning AI-assisted development.
 
-This matters because spec-kit is about to ask you questions about your project. You'll make better choices if you already know what you're building.
+   ## Workflow conventions
+   - Work on a feature branch on the main checkout. Do **not** create a git worktree
+     for this project, even if the brainstorming skill suggests one.
 
-**Checkpoint:** You've read through the PRD and have a general sense of the project scope.
+   ## Code style
+   - Python 3.11+; idiomatic pandas; Streamlit components straight from the docs.
+   - Plain readable code over clever code. Students need to understand it.
+   ```
 
-### 2.2 Initialize Spec-Kit
+3. Save the file.
 
-Spec-kit needs to set up its configuration files and slash commands before you can use it. This is a one-time initialization step for each project.
+**Checkpoint:** `v3/CLAUDE.md` exists and contains the worktree override.
 
-Run this in Cursor's terminal (**not** inside Claude Code):
+### 2.2 Create the feature branch
+
+In Cursor's terminal:
 
 ```bash
-specify init . --ai claude
+git checkout -b feature/sales-dashboard
 ```
 
-This command does three things:
+Your `main` branch stays clean and stable while you work on the feature branch. Same pattern professional development teams use.
 
-- Creates a `.specify/` directory containing spec-kit's configuration
-- Creates a `.claude/commands/` directory containing slash commands that Claude Code recognizes (like `/speckit.constitution`, `/speckit.specify`, etc.)
-- Sets Claude as the AI backend for spec-kit operations
+**Checkpoint:** `git branch --show-current` returns `feature/sales-dashboard`.
 
-When prompted:
+### 2.3 Read the PRD
 
-- **"Directory not empty" warning** -- Type `y` and press Enter. This is expected because your project already has files from the pre-work.
-- **Script type** -- Choose `sh` (macOS) or `ps` (Windows). This determines the shell script format for any generated automation scripts.
+> **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the intended users, the features, and what success looks like. In professional settings, a PRD is written before any code, and writing one before you start coding will save your team from scope confusion later.
 
-**Checkpoint:** Both directories exist. Verify in Cursor's terminal:
+Open the [PRD](../prd/ecommerce-analytics.md) and skim it. You can read it in your browser or open `prd/ecommerce-analytics.md` in Cursor. You don't need to memorize anything; just get a feel for what the dashboard should do, what data you're working with, and what the expected deliverables are.
 
-```bash
-ls .specify/
-ls .claude/commands/
-```
+This matters because brainstorming is about to ask you questions. You'll make better choices if you already know what you're building.
 
-You should see configuration files in `.specify/` and several `speckit.*` command files in `.claude/commands/`.
+**Checkpoint:** You've skimmed the PRD and have a general sense of the project scope.
 
-### 2.3 Create the constitution
+### 2.4 Brainstorm and plan with one prompt
 
-> **What is a Constitution?** It's your project's "code of conduct." It defines principles that guide every development decision Claude makes. When Claude encounters ambiguity later -- for example, choosing between a simple bar chart and a complex interactive visualization -- it refers back to these principles. A constitution that says "simple, readable code" will produce different results than one that says "maximum visual sophistication."
+This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan. You'll see Claude announce each skill switch in the output.
 
-1. Start Claude Code if it's not already running. In Cursor's terminal:
+1. Start Claude Code from your project directory:
 
    ```bash
    claude
    ```
 
-2. In Claude Code, type the following as a single message (the slash command and the instructions together):
+   Confirm `You have superpowers` appears in the banner. If it doesn't, see the troubleshooting section.
+
+2. Send Claude this prompt:
 
    ```
-   /speckit.constitution
-
-   We're building an e-commerce analytics project -- a Streamlit dashboard for sales data visualization.
-   Ask me one question at a time about this project. Propose numbered options I can choose from. After 3-5 questions, generate the constitution.
+   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md.
    ```
 
-3. Claude will ask you a series of questions about your project's principles and priorities -- things like code style, visualization approach, and development practices. Pick the options that make sense to you. There are no wrong answers here; the point is that you're making deliberate choices about how the project should be built, rather than letting the AI decide for you.
+3. Watch what happens:
 
-   You're not limited to the numbered options. If you have your own preference or want to add context, just type it out. The multiple choice is there to keep things moving, but Claude can work with whatever you give it.
+   a. Claude announces `Using brainstorming to design and plan...` (or similar).
 
-4. After the Q&A, Claude generates a constitution document and asks permission to create the file. You'll see a permission prompt.
+   b. Brainstorming asks you 3-5 clarifying questions, one at a time. Topics include things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision. You can answer with the numbered choices or type your own preference.
 
-   > **Key Concept: The Permission Prompt.** Claude Code asks before modifying your files. You've got several options:
-   > - **Yes** -- approve this one change
-   > - **Yes, allow all edits during this session** -- approve all future edits without asking (useful when you trust the workflow)
-   > - **No** -- reject the change
-   >
-   > For this tutorial, either "Yes" or "Yes, allow all" works. If you want to review each change Claude makes (a good learning practice), choose "Yes" each time. If you want to move faster, choose "Yes, allow all."
+   c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
 
-5. Preview the constitution. In Cursor's file explorer, navigate to `.specify/memory/constitution.md`. Right-click the file and select **Open Preview** to see the formatted version. Read through it -- these principles will shape every decision Claude makes during implementation.
+   d. Brainstorming would normally create a git worktree at this point. Because of `v3/CLAUDE.md`, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
 
-**Checkpoint:** `.specify/memory/constitution.md` exists and contains the principles you specified.
+   e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
 
-### 2.4 Create the specification
+4. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
 
-> **What is a Specification?** The specification turns your PRD (Product Requirements Document) into detailed, actionable requirements. Your PRD says "we want a sales dashboard with KPIs and charts." The specification says exactly what those KPIs are, how the charts should behave, what the data structure looks like, and what constitutes success. The specification eliminates the ambiguity that the PRD intentionally leaves open.
+> **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $1,234,567 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
 
-Before running this command, you need to understand an important Claude Code feature.
-
-> **Key Concept: The `@` Symbol (Context Engineering).** When you type `@` followed by a file path in Claude Code, it includes that file's entire content in your message. This is called **context engineering** -- giving AI the right information to produce better results.
+> **Skill handoff cheat sheet (the chain you just experienced):**
 >
-> For example, `@prd/ecommerce-analytics.md` tells Claude: "read this entire PRD and use it as the basis for your work." Without the `@`, Claude wouldn't know your specific requirements and would have to guess or ask.
+> ```
+> [you type one prompt]
+>      |
+>      v
+> using-superpowers (auto)
+>      |
+>      v
+> brainstorming  -> asks Qs, writes design doc, gets your approval
+>      |
+>      v  (Phase 5: skipped worktree per CLAUDE.md)
+> writing-plans  -> produces plan with TDD-flagged tasks
+> ```
 >
-> The quality of AI output depends on the context you provide. Better context, better results.
-
-1. In Claude Code, run the specification command with the PRD as context:
-
-   ```
-   /speckit.specify @prd/ecommerce-analytics.md
-
-   Ask me one question at a time about the requirements. Propose numbered options I can choose from. After 3-5 questions, generate the specification.
-   ```
-
-2. Claude reads the PRD and asks you questions about how to interpret the requirements -- things like what KPIs matter most, how interactive the charts should be, and what the data model should look like. Pick the options that fit your vision for the dashboard.
-
-3. After the Q&A, Claude generates a detailed specification. This typically takes 30-60 seconds.
-
-4. Note that spec-kit may automatically create a **feature branch** (e.g., `001-sales-dashboard`).
-
-   > **Key Concept: Feature Branches.** A **branch** in Git is a separate line of development. It's like creating a draft copy of a document: you make all your changes on the draft, and only merge them into the original when you're satisfied.
-   >
-   > ```
-   > main:    A --- B --- C  (stable, untouched)
-   >                \
-   > feature:        D --- E --- F  (your work in progress)
-   > ```
-   >
-   > Your `main` branch stays clean and stable while you work on the feature branch. This is standard practice in professional development -- it protects the production version of your code from incomplete changes. Spec-kit creates the branch automatically so you don't have to think about it.
-
-5. Preview the specification in Cursor's file explorer.
-
-**Checkpoint:** `specs/[feature-name]/spec.md` exists. The exact folder name depends on what spec-kit generates (commonly something like `001-sales-dashboard`).
-
-### 2.5 Create the implementation plan
-
-> **Why Plan Before Coding?** The specification says WHAT to build; the plan says HOW to build it. It defines technology choices, architecture, file organization, and the order of operations. It's the equivalent of a methodology section in a research paper -- before you analyze data, you define your approach and choose your methods. In your capstone, planning before coding will save your team from costly mid-project pivots.
-
-1. In Claude Code, run the plan command:
-
-   ```
-   /speckit.plan
-
-   Ask me one question at a time about technology choices and architecture. Propose numbered options I can choose from. After 3-5 questions, generate the plan.
-   ```
-
-2. Claude reads the specification and constitution, then asks about your preferences -- things like which charting library to use, how to organize the code, and how to handle data loading. The options will be grounded in what makes sense for this project, so pick what appeals to you.
-
-3. After the Q&A, Claude generates a plan that respects both the requirements and the principles you established.
-
-4. Preview the plan in Cursor's file explorer.
-
-**Checkpoint:** `specs/[feature-name]/plan.md` exists with technical direction including technology choices and architecture.
-
-### 2.6 Generate tasks
-
-> **From Plan to Tasks:** Breaking work into specific, actionable tasks is a core project management skill. In agile development, each task should be:
-> - **Independent** -- completable on its own without waiting for other tasks
-> - **Verifiable** -- you can confirm it's done by testing or inspecting the output
-> - **Small enough** -- achievable in a single focused work session
+> When you start Section 4 by saying "Let's implement ECOM-1," the chain extends:
 >
-> This is the same principle behind any well-structured analytics project: break a large deliverable into manageable pieces, then execute them systematically.
+> ```
+> executing-plans -> task by task: TDD (where flagged) -> implement -> commit -> push
+>      |
+>      v  (after the final task, automatically:)
+> requesting-code-review -> reviews the diff
+> finishing-a-development-branch -> suggests merging to main
+> ```
+>
+> You'll see Claude announce each handoff. If you ever lose track of where you are in the chain, scroll up and look for the most recent `Using <skill> to...` line.
 
-1. In Claude Code, run the tasks command:
-
-   ```
-   /speckit.tasks
-
-   Ask me one question at a time about how to break this work down. Propose numbered options I can choose from. After 3-5 questions, generate the tasks.
-   ```
-
-2. Claude asks about your preferences for task granularity and ordering -- things like how to split up the dashboard components and what to tackle first. This is a lightweight version of sprint planning.
-
-3. Review the output. You should see tasks such as:
-   - Set up Python virtual environment and dependencies
-   - Create main Streamlit app structure
-   - Implement KPI scorecards
-   - Implement sales trend line chart
-   - Implement category and region bar charts
-   - Deploy to Streamlit Cloud
-
-   The exact task names may vary, but the overall scope should cover environment setup, each major dashboard component, and deployment.
-
-4. Preview the tasks file in Cursor's file explorer.
-
-**Checkpoint:** `specs/[feature-name]/tasks.md` exists with numbered implementation steps.
-
-> **Pro Tip:** Take a moment to look at the four documents you just created: constitution, specification, plan, and tasks. Notice how each one builds on the previous. The constitution set principles. The specification used those principles to detail requirements. The plan used the specification to choose an approach. The tasks used the plan to define concrete steps. This step-by-step refinement is what makes AI-assisted coding predictable instead of chaotic.
+**Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. Both are committed to your feature branch (Superpowers commits the design doc automatically; the plan commit may be combined with the first implementation task).
 
 ---
 
