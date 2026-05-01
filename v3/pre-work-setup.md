@@ -21,7 +21,6 @@ Estimated time: 60–90 minutes (complete before the workshop)
 - [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
   - [3.1 Fork the repository](#31-fork-the-repository)
   - [3.2 Clone your fork](#32-clone-your-fork)
-  - [3.3 Initialize Claude Code](#33-initialize-claude-code)
 - [Section 4: Final verification (~10 min)](#section-4-final-verification-10-min)
 - [Troubleshooting reference](#troubleshooting-reference)
 
@@ -32,7 +31,7 @@ Estimated time: 60–90 minutes (complete before the workshop)
 ```
 Accounts:  GitHub, Atlassian (Jira), Claude Pro
 Tools:     Cursor, Git, Python 3.11+, Claude Code, Superpowers plugin
-Repo:      Fork and clone the tutorial repository, initialize Claude Code
+Repo:      Fork and clone the tutorial repository
 ```
 
 **See the finished product:** Before you start, look at what you'll build during the workshop: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end of the workshop, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up -- it takes about 30 seconds.)
@@ -496,42 +495,6 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 ---
 
-### 3.3 Initialize Claude Code
-
-With the repository open in Cursor, you'll now initialize Claude Code so it understands the project structure and can assist you effectively.
-
-> **Why initialize?** Claude Code works best when it understands your project's context -- what files exist, how they're organized, what the project is about. The `/init` command tells Claude Code to scan the repository and create a `CLAUDE.md` file that captures this understanding. You're introducing Claude to the codebase so it can help effectively.
-
-**Steps:**
-
-1. **Free up terminal space** by hiding Cursor's built-in AI panel. This gives the terminal more room. Go to **View** --> **Appearance** --> **Secondary Side Bar** to toggle it off (or click the rightmost icon in the top-right corner of the Cursor window).
-
-2. Open the terminal: **Terminal** --> **New Terminal**.
-
-3. Start Claude Code:
-
-   ```bash
-   claude
-   ```
-
-4. Once the Claude Code session starts, you'll see its interactive prompt. Run the initialization command:
-
-   ```
-   /init
-   ```
-
-5. Watch as Claude Code reads files, analyzes the project structure, and generates a `CLAUDE.md` file. This takes a moment. Claude Code is examining the repository's files, directories, and configuration.
-
-6. When it finishes, find `CLAUDE.md` in the file explorer sidebar (left side of Cursor). Click on it to open it. Right-click the file tab and select **Open Preview** to see the rendered markdown.
-
-7. **Read through `CLAUDE.md`.** It describes what the project is about, the repository structure, and conventions for working with it. This file is Claude Code's "memory" of your project. Every time you start a new Claude Code session in this repository, it reads `CLAUDE.md` first to re-establish context.
-
-> **What is CLAUDE.md?** It's a markdown file that briefs Claude Code on your project. It typically contains: what the project does, how the repository is organized, key technical decisions, and any conventions Claude should follow. You can edit it to add your own notes or instructions. Claude Code reads it automatically at the start of every session.
-
-> **Checkpoint:** `CLAUDE.md` exists in your repository root, and you've read its contents.
-
----
-
 ## Section 4: Final verification (~10 min)
 
 Before calling your pre-work complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
@@ -577,7 +540,6 @@ If any command fails with "command not found," open a new terminal and try again
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
 - [ ] Repo cloned locally and open in Cursor
 - [ ] Files visible in Cursor's file explorer (you should see `data/`, `v1/`, `v2/`, `prd/`, and `README.md`)
-- [ ] `CLAUDE.md` exists in the repository root and you've read it
 
 ### Jira
 
@@ -610,7 +572,6 @@ Here's what you've just configured:
 |  Your Repository:                                              |
 |    Fork on GitHub ..... Your remote copy                       |
 |    Clone on computer .. Your local working copy                |
-|    CLAUDE.md .......... AI context file                        |
 |                                                                |
 +---------------------------------------------------------------+
 ```

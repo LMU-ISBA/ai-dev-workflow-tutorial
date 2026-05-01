@@ -635,7 +635,7 @@ Your feature branch contains all the implementation work. Now you'll bring those
    Which git branch am I on?
    ```
 
-   You should be on your feature branch (e.g., `001-sales-dashboard`).
+   You should be on your feature branch (e.g., `feature/sales-dashboard`).
 
 2. **Merge into main.** In Claude Code:
 
