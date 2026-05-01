@@ -762,7 +762,7 @@ PRD [done] -> brainstorming [done] -> writing-plans [done] -> Jira [done] -> Cod
 
 In this workshop, you practiced five professional skills:
 
-1. **Spec-driven development** -- You specified, planned, broke down tasks, then implemented. This discipline works with any technical project, not just this tutorial.
+1. **Skill-driven development** -- You brainstormed, planned, broke down tasks, then implemented. This discipline works with any technical project, not just this tutorial.
 
 2. **AI-assisted coding** -- You used Claude Code as a tool guided by clear specifications. You saw how context engineering (the `@` symbol, MCP connections, slash commands) makes AI assistance more precise.
 
@@ -772,7 +772,7 @@ In this workshop, you practiced five professional skills:
 
 5. **Deployment** -- You turned a local script into a live application with a shareable URL.
 
-> **For Your Career:** This workflow scales. Whether you're building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: specify, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it -- and that process awareness matters to hiring managers.
+> **For Your Career:** This workflow scales. Whether you're building a data pipeline, a dashboard, or a machine learning model, the pattern is the same: brainstorm, plan, track, build, deploy. You now have hands-on experience with the full cycle. In interviews, you can describe not just what you built but how you built it -- and that process awareness matters to hiring managers.
 
 ---
 
@@ -827,35 +827,22 @@ If the server is listed but authentication has expired:
 
 ---
 
-### Spec-Kit slash commands not working
+### Skill auto-invocation didn't fire
 
-**What you see:** Typing `/speckit.constitution` or `/speckit.specify` does nothing, or Claude doesn't recognize the command.
+**What you see:** You sent Claude a prompt like "Help me design and plan...", but Claude didn't announce a skill (no `Using brainstorming to...` line) and instead just started writing code or asking generic questions.
 
-**Why it happens:** Spec-kit wasn't initialized in this project, or the initialization didn't complete successfully. The slash commands are stored as files in `.claude/commands/`, and Claude Code reads them at startup.
+**Why it happens:** The Superpowers SessionStart hook didn't load the `using-superpowers` skill, or your prompt didn't match the skill's trigger words strongly enough.
 
 **How to fix it:**
 
-1. Exit Claude Code: `/exit`
-2. Run initialization in the terminal:
-   ```bash
-   specify init . --ai claude
+1. Confirm Superpowers is loaded. At the top of your Claude Code session output, look for `You have superpowers`. If it's missing, see the pre-work troubleshooting for "Superpowers plugin not loaded."
+
+2. Strengthen your prompt with explicit intent words. Instead of "let's work on the dashboard," try "Help me design and plan the dashboard." The brainstorming skill triggers on words like *design*, *plan*, *brainstorm*.
+
+3. As a last resort, force the skill manually inside Claude Code:
    ```
-3. Verify the commands directory exists:
-   ```bash
-   ls .claude/commands/
+   Use the brainstorming skill to design the e-commerce sales dashboard from @prd/ecommerce-analytics.md.
    ```
-   You should see files like `speckit.constitution.md`, `speckit.specify.md`, etc.
-4. Restart Claude Code: `claude`
-5. Try the slash command again
-
-If slash commands still don't work, you can use natural language instead. Rather than `/speckit.constitution`, tell Claude directly:
-
-```
-Create a spec-kit constitution for this e-commerce analytics project (Streamlit dashboard for sales data). Save it to .specify/memory/constitution.md.
-Ask me one question at a time about this project. Propose numbered options I can choose from. After 3-5 questions, generate the constitution.
-```
-
-Claude will produce equivalent results without the slash command.
 
 ---
 
@@ -1051,37 +1038,18 @@ Then retry: `streamlit run app.py`
 
 ---
 
-### "specify: command not found"
-
-**What you see:** Running `specify init . --ai claude` produces `command not found` or `specify is not recognized`.
-
-**Why it happens:** Spec-kit wasn't installed, or it was installed but the terminal can't find it because the PATH hasn't been updated.
-
-**How to fix it:**
-
-1. Open a **new terminal** (Terminal --> New Terminal). New tools often require a fresh terminal session to be recognized.
-
-2. If it still fails, reinstall spec-kit:
-   ```bash
-   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-   ```
-
-3. Open another new terminal and retry: `specify --help`
-
-4. If `uv` itself isn't found, return to the [pre-work setup guide](pre-work-setup.md) and install `uv` first.
-
----
-
 ## Glossary
 
 Quick-reference table of key terms used in this document.
 
 | Term | Definition |
 |------|------------|
+| **brainstorming** | A Superpowers skill that asks clarifying questions about a proposed feature and produces a design document |
 | **Branch** | A separate line of development in Git, allowing isolated work without affecting the main codebase |
 | **Commit** | A saved snapshot of your project at a specific point in time, like a version you can return to |
 | **Commit Hash** | A unique identifier (e.g., `05a9ada`) assigned to each commit, serving as its permanent fingerprint |
 | **Deploy** | Make software accessible on a server so users can reach it via a URL |
+| **executing-plans** | A Superpowers skill that implements tasks from an implementation plan one at a time, with frequent commits |
 | **Feature Branch** | A branch created specifically for developing one feature, separate from main |
 | **Fork** | Your personal copy of someone else's repository on GitHub, under your own account |
 | **Merge** | Combine changes from one branch into another, integrating completed work |
@@ -1089,14 +1057,15 @@ Quick-reference table of key terms used in this document.
 | **PRD** | Product Requirements Document -- a written description of what to build and why |
 | **Push** | Upload local commits to a remote repository (GitHub), making them visible and backed up |
 | **Staging Area** | A holding zone in Git for changes you intend to include in your next commit |
-| **spec-kit** | GitHub's toolkit for spec-driven development, converting requirements into structured plans |
 | **Streamlit** | A Python library that transforms Python scripts into interactive web applications |
+| **Superpowers** | A Claude Code plugin that gives Claude a library of skills (brainstorming, writing-plans, executing-plans, and more) |
 | **Traceability** | The ability to link code changes back to the requirements that prompted them |
 | **venv** | Virtual environment -- an isolated Python installation that keeps project dependencies separate |
+| **writing-plans** | A Superpowers skill that turns a design document into a bite-sized implementation plan |
 | **.gitignore** | A file that tells Git which files and directories to exclude from version control |
 
 ---
 
 ## What's next
 
-You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle -- specify, plan, track, build, deploy -- works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.
+You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle -- brainstorm, plan, track, build, deploy -- works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.
