@@ -776,16 +776,16 @@ When something goes wrong, follow this systematic approach:
 Your pre-work is complete. You've:
 
 - Created accounts on GitHub, Jira, and Claude (the cloud services that power professional workflows)
-- Installed six tools: Cursor, Git, Python, uv, spec-kit, and Claude Code (the local tools that make up your development environment)
+- Installed five tools: Cursor, Git, Python, Claude Code, and the Superpowers plugin (the local tools that make up your development environment)
 - Forked and cloned the tutorial repository (your working copy of the project)
 - Initialized Claude Code so it understands your project (AI context)
 
-Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, Claude Code for accelerating development, and spec-kit for turning requirements into structured plans. You'll use this same environment for your capstone and beyond.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Jira for tracking deliverables, and Claude Code with the Superpowers plugin for turning requirements into bite-sized plans you can implement. You'll use this same environment for your capstone and beyond.
 
 **Bring your completed setup to the workshop.** During the workshop, you'll put everything together:
 
 1. **Connect Claude Code to Jira** via the Atlassian MCP server, so your AI assistant can create and manage issues directly.
-2. **Plan with spec-kit** -- create a constitution, specification, plan, and tasks for your dashboard.
+2. **Plan with Superpowers** -- let the brainstorming skill produce a design document, then writing-plans turn it into a bite-sized implementation plan.
 3. **Build a Streamlit dashboard** with Claude Code's help, working from the structured plan.
 4. **Commit, push, and deploy** your dashboard so it's live and shareable on the internet.
 
