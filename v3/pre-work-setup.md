@@ -16,7 +16,6 @@ Estimated time: 60–90 minutes (complete before the workshop)
   - [2.1 Cursor](#21-cursor)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
-  - [2.4 uv](#24-uv)
   - [2.5 Superpowers plugin](#25-superpowers-plugin)
   - [2.6 Claude Code](#26-claude-code)
 - [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
@@ -364,43 +363,37 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ---
 
-### 2.4 uv
+### 2.5 Superpowers plugin
 
-> **What is uv?** If you've used `pip` to install Python packages before (e.g., `pip install pandas`), uv does the same thing, but faster and with fewer dependency conflicts. Built by Astral, uv resolves dependencies in seconds instead of minutes and manages virtual environments cleanly. It's gaining wide adoption as a pip replacement. spec-kit (which you install next) requires uv, but you'll likely want to use uv for all your Python projects going forward, including your capstone.
+> **What is Superpowers?** [Superpowers](https://github.com/obra/superpowers) is a Claude Code plugin that gives Claude a library of skills. A skill is a small piece of expertise Claude pulls in when your prompt matches it. Three skills you'll use today: `brainstorming` (asks clarifying questions and produces a design document), `writing-plans` (turns a design into a bite-sized implementation plan), and `executing-plans` (works through the plan task by task with frequent commits). The skills auto-invoke based on what you ask Claude to do, so you don't have to memorize commands.
 
-**macOS:**
+#### Skills primer
 
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+Skills are markdown files that ship with the Superpowers plugin. Each one teaches Claude how to handle a specific type of task. When you ask Claude to design something, the brainstorming skill activates. When you ask Claude to implement a plan, the executing-plans skill activates. Claude announces which skill it's using, like "Using brainstorming to..." That visibility is the whole reason this works as a teaching tool.
 
-**Windows:**
+You'll only ever type one slash command for the entire tutorial: the install command below. Everything else flows from natural-language prompts.
 
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
+#### Install the plugin
 
-After installation on either platform, open a **new terminal** (Terminal --> New Terminal) so the PATH updates take effect.
+1. Start Claude Code from any directory:
 
-> **Checkpoint:** `uv --version` shows a version number.
+   ```bash
+   claude
+   ```
 
----
+2. Inside Claude Code, run:
 
-### 2.5 spec-kit
+   ```
+   /plugin install superpowers@claude-plugins-official
+   ```
 
-> **What is spec-kit?** [spec-kit](https://github.com/github/spec-kit) is GitHub's toolkit for **spec-driven development** -- the practice of turning requirements into structured plans before writing any code. Instead of jumping straight into coding and hoping for the best, spec-kit guides you through creating a constitution (project principles), a specification (what to build), a plan (how to build it), and tasks (individual work items). This is how experienced engineers avoid building the wrong thing.
+3. Wait for the install to complete (~30 seconds). Claude Code will confirm `Superpowers installed`.
 
-**Install:**
+4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
 
-```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-```
+5. When Claude Code starts, look for the line `You have superpowers` near the top of the session output. That line confirms the plugin loaded and the `using-superpowers` skill is active.
 
-This command tells uv to install the `specify-cli` tool from spec-kit's GitHub repository. It may take a minute to download and install all dependencies.
-
-> **A preview of what's coming:** During the workshop, you'll use spec-kit to create a constitution, specification, plan, and tasks for your dashboard -- all before writing application code. This might feel like extra work at first, but it reduces wasted effort. AI amplifies both good planning and bad planning -- spec-kit ensures you amplify the good kind. In your capstone, this same discipline will save your team from the most common project failure mode: building the wrong thing and realizing it too late.
-
-> **Checkpoint:** `specify --help` displays help information and available commands.
+> **Checkpoint:** Starting Claude Code shows `You have superpowers` in the session output.
 
 ---
 
