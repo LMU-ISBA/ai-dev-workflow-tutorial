@@ -58,7 +58,7 @@ Async pre-work + a 3-hour live workshop, using the Superpowers Claude Code plugi
 
 ### Version 2 (previous)
 
-Async pre-work + a 3-hour live workshop.
+Async pre-work + a 3-hour live workshop, using GitHub spec-kit for planning.
 
 1. Start with [Pre-work: Setup](v2/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
 2. Then [Workshop: Build & Deploy](v2/workshop-build-deploy.md) -- plan, build, and deploy the dashboard (~3 hours, live)
