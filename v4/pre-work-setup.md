@@ -1,4 +1,4 @@
-# Pre-work: Setup & foundation
+# Part 1: Setup & Foundation
 
 **Get your tools set up before you start building (Part 1 of 2)**
 
@@ -63,7 +63,7 @@ You're setting up that same pipeline, end to end. When you finish, you'll have a
 
 Most analysts can build a model in a notebook. Fewer can turn that model into a live dashboard and deploy it. That gap is your opportunity -- in your capstone and in job interviews.
 
-### What you'll be able to do after this pre-work
+### What you'll be able to do after Part 1
 
 - Manage code with version control (Git and GitHub)
 - Track work in a version-controlled task file (TASKS.md) that lives alongside your code
@@ -583,7 +583,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 ## Section 4: Final verification (~10 min)
 
-Before calling your pre-work complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
+Before calling Part 1 complete, run through every item in this checklist. Each verification step confirms that a tool is correctly installed and accessible.
 
 ### Accounts
 
@@ -826,7 +826,7 @@ When something goes wrong, follow this systematic approach:
 
 ## What's next
 
-Your pre-work is complete. You've:
+Part 1 is complete. You've:
 
 - Created accounts on GitHub, Claude, and Granola (the cloud services that power professional workflows)
 - Installed the tools that make up your development environment: Cursor, Git, Python, Claude Code, the Superpowers plugin, and the Granola app

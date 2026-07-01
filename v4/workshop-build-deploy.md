@@ -1,4 +1,4 @@
-# Build & Deploy
+# Part 2: Build & Deploy
 
 **From requirements to a live dashboard using skill-driven development.**
 
@@ -50,7 +50,7 @@ By the end of this guide, you'll have taken a product requirements document thro
 
 ## Prerequisites check
 
-Before starting, verify your pre-work setup is complete. Run each command in Cursor's terminal:
+Before starting, verify your Part 1 setup is complete. Run each command in Cursor's terminal:
 
 ```bash
 git --version
@@ -67,7 +67,7 @@ claude --version
 # Expected: version number displayed
 ```
 
-If any command fails, return to the [pre-work setup guide](pre-work-setup.md) and resolve the issue before proceeding. Make sure everything's working before you continue.
+If any command fails, return to the [setup guide](pre-work-setup.md) and resolve the issue before proceeding. Make sure everything's working before you continue.
 
 > **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. This is normal -- the core steps stay the same even when the UI changes. If something doesn't match exactly, read the screen, figure out the equivalent step, and keep going. That adaptability is itself a professional skill.
 
@@ -227,7 +227,7 @@ Each skill narrows the space of possible outcomes. By the time executing-plans r
 
 ### 2.1 Create v4/CLAUDE.md
 
-> **What is CLAUDE.md?** It's a file Claude Code reads at the start of every session. It's where you put project-specific guidance: code style, workflow conventions, things you want Claude to remember without you having to repeat them every time. For this project, CLAUDE.md tells Claude three things: track work in `TASKS.md`, skip the worktree setup that brainstorming usually does, and stick to the simple, readable code style that matches the rest of the tutorial.
+> **What is CLAUDE.md?** It's a file Claude Code reads at the start of every session. It's where you put project-specific guidance: code style, workflow conventions, things you want Claude to remember without you having to repeat them every time. For this project, CLAUDE.md tells Claude a few things: track work in `TASKS.md`, skip the worktree setup that brainstorming usually does, use a `venv/` virtual environment, and stick to the simple, readable code style that matches the rest of the tutorial.
 
 > **Heads up about `/init`:** Claude Code has an `/init` slash command that auto-generates a CLAUDE.md by scanning your codebase. We're not using it. We want a small, focused file rather than a generated one. Don't run `/init` for this project. If you do run it by accident and it overwrites your CLAUDE.md, recover with `git checkout v4/CLAUDE.md`.
 
@@ -254,6 +254,8 @@ Each skill narrows the space of possible outcomes. By the time executing-plans r
    ## Workflow conventions
    - Work on a feature branch on the main checkout. Do **not** create a git worktree
      for this project, even if the brainstorming skill suggests one.
+   - Manage Python dependencies in a virtual environment named `venv/`; create it
+     during the first milestone (project setup) and keep `venv/` out of Git.
 
    ## Code style
    - Python 3.11+; idiomatic pandas; Streamlit components straight from the docs.
@@ -284,7 +286,13 @@ Your `main` branch stays clean and stable while you work on the feature branch. 
 
 This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what* -- the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
 
-1. Restart Claude Code so it loads your new `CLAUDE.md`. You've had Claude Code open since Section 1, but it reads `v4/CLAUDE.md` only at *session start* -- and you created that file afterward, in Section 2.1. Restarting makes its guidance take effect (it's what tells brainstorming to skip the worktree in a moment). Type `/exit`, then start a fresh session:
+1. Restart Claude Code so it loads your new `CLAUDE.md`. You've had Claude Code open since Section 1, but it reads `v4/CLAUDE.md` only at *session start*, and you created that file afterward (Section 2.1). Restarting makes its guidance take effect -- it's what tells brainstorming to skip the worktree in a moment.
+
+   To restart:
+
+   a. In your open Claude Code session, type `/exit` and press Enter. This closes Claude Code and drops you back to the normal terminal prompt (you'll see your shell prompt, like `%` or `$`, instead of Claude's input box).
+
+   b. From that same terminal, start a fresh session:
 
    ```bash
    claude
@@ -593,7 +601,7 @@ Take the next milestone
 Test the dashboard (streamlit run app.py)
         |
         v
-Make sure the milestone's commits carry the task ID
+Make sure the milestone's commits carry the milestone ID
         |
         v
 Push to GitHub
@@ -778,7 +786,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 
 ### Version control
 
-- [ ] Commits include task IDs (TASK-1, TASK-2, ...) in messages
+- [ ] Commits include milestone IDs (TASK-1, TASK-2, ...) in messages
 - [ ] Feature branch merged to main
 - [ ] All code pushed to GitHub on the main branch
 
@@ -877,12 +885,12 @@ Quick-reference table of key terms used in this document.
 
 | Term | Definition |
 |------|------------|
-| **Acceptance Criteria** | The specific, checkable conditions a single task must meet to count as complete |
+| **Acceptance Criteria** | The specific, checkable conditions a single milestone must meet to count as complete |
 | **brainstorming** | A Superpowers skill that asks clarifying questions about a proposed feature and produces a design document |
 | **Branch** | A separate line of development in Git, allowing isolated work without affecting the main codebase |
 | **Commit** | A saved snapshot of your project at a specific point in time, like a version you can return to |
 | **Commit Hash** | A unique identifier (e.g., `05a9ada`) assigned to each commit, serving as its permanent fingerprint |
-| **Definition of Done** | A shared quality checklist that applies to every task, on top of each task's own acceptance criteria |
+| **Definition of Done** | A shared quality checklist that applies to every milestone, on top of each milestone's own acceptance criteria |
 | **Deploy** | Make software accessible on a server so users can reach it via a URL |
 | **executing-plans** | A Superpowers skill that implements tasks from an implementation plan one at a time, with frequent commits |
 | **Feature Branch** | A branch created specifically for developing one feature, separate from main |
@@ -894,7 +902,7 @@ Quick-reference table of key terms used in this document.
 | **Push** | Upload local commits to a remote repository (GitHub), making them visible and backed up |
 | **Staging Area** | A holding zone in Git for changes you intend to include in your next commit |
 | **Streamlit** | A Python library that transforms Python scripts into interactive web applications |
-| **TASKS.md** | A Markdown file in your repository that tracks every task through To Do, In Progress, and Done |
+| **TASKS.md** | A Markdown file in your repository that tracks every milestone through To Do, In Progress, and Done |
 | **Superpowers** | A Claude Code plugin that gives Claude a library of skills (brainstorming, writing-plans, executing-plans, and more) |
 | **Traceability** | The ability to link code changes back to the requirements that prompted them |
 | **venv** | Virtual environment -- an isolated Python installation that keeps project dependencies separate |
@@ -907,4 +915,4 @@ Quick-reference table of key terms used in this document.
 
 You now have a complete professional workflow you can apply to your capstone project and beyond. The same cycle -- brainstorm, plan, track, build, deploy -- works for any technical project, whether it's a data pipeline, a machine learning model, or another dashboard. The tools and habits transfer.
 
-> **Bring your meetings into the loop.** In the pre-work you connected Claude Code to [Granola](https://www.granola.ai) (see [Section 2.6 of the pre-work](pre-work-setup.md#26-granola-app--connect-it-to-claude-code)). You didn't need it for the dashboard, but it's built for the capstone: record your stakeholder meetings in Granola, then start a Claude Code session and ask things like *"From this week's meeting notes, what did the client ask us to change?"* or *"Draft tasks in TASKS.md from the decisions in yesterday's kickoff."* The same plan-track-build workflow, now starting from what was actually said in the room.
+> **Bring your meetings into the loop.** In Part 1 you connected Claude Code to [Granola](https://www.granola.ai) (see [Section 2.6 of the setup guide](pre-work-setup.md#26-granola-app--connect-it-to-claude-code)). You didn't need it for the dashboard, but it's built for the capstone: record your stakeholder meetings in Granola, then start a Claude Code session and ask things like *"From this week's meeting notes, what did the client ask us to change?"* or *"Draft tasks in TASKS.md from the decisions in yesterday's kickoff."* The same plan-track-build workflow, now starting from what was actually said in the room.
