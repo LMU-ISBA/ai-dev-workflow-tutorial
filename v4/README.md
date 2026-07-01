@@ -81,7 +81,7 @@ Every technology company uses a variation of this workflow. You'll experience th
 
 ## Key concepts
 
-**Traceability.** Every piece of code traces back to a requirement. When you commit, you include the task ID (like TASK-1) in the message, and because `TASKS.md` is versioned in the repo, `git log` shows the whole chain from requirement to code to deployed feature.
+**Traceability.** Every piece of code traces back to a requirement. When you commit, you include the milestone ID (like TASK-1) in the message, and because `TASKS.md` is versioned in the repo, `git log` shows the whole chain from requirement to code to deployed feature.
 
 **Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task. This prevents the most common failure mode: building the wrong thing fast.
 

@@ -2,7 +2,7 @@
 
 **Get your tools set up before the workshop**
 
-Estimated time: 60–90 minutes (complete before the workshop)
+Estimated time: 70–100 minutes (complete before the workshop)
 
 ---
 
