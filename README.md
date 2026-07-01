@@ -3,10 +3,10 @@
 Learn a professional development workflow by building and deploying a real project: an e-commerce sales dashboard.
 
 ```
-┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐    ┌────────┐
-│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │  Jira   │ -> │  Code  │
+┌─────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────┐    ┌────────┐
+│   PRD   │ -> │ brainstorming│ -> │writing-plans │ -> │ TASKS.md │ -> │  Code  │
 │(written)│    │ (design doc) │    │ (impl plan)  │    │(tracking)│    │(Claude)│
-└─────────┘    └──────────────┘    └──────────────┘    └─────────┘    └────────┘
+└─────────┘    └──────────────┘    └──────────────┘    └──────────┘    └────────┘
                                                                             │
 ┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
 │  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
@@ -32,7 +32,7 @@ This isn't about becoming a software engineer. It's about being able to build so
 
 ## What you'll build
 
-A Streamlit dashboard with KPI scorecards, a sales trend chart, and breakdowns by category and region. The dashboard itself is straightforward -- the point is the workflow you use to build it: writing a spec, tracking work in Jira, building with an AI assistant, committing with Git, and deploying so anyone can access it.
+A Streamlit dashboard with KPI scorecards, a sales trend chart, and breakdowns by category and region. The dashboard itself is straightforward -- the point is the workflow you use to build it: writing a spec, tracking work in a `TASKS.md` file, building with an AI assistant, committing with Git, and deploying so anyone can access it.
 
 ## How it works
 
@@ -41,7 +41,7 @@ You'll set up the same tools that development teams use, then build a dashboard 
 | Tool | What it does |
 |------|-------------|
 | GitHub | Hosts your code and tracks versions |
-| Jira | Tracks tasks and requirements |
+| `TASKS.md` | An in-repo Markdown file that tracks tasks and requirements (current version; earlier versions used Jira) |
 | Cursor | Code editor (VS Code-based, with AI features) |
 | Claude Code | AI assistant that runs in your terminal |
 | [Superpowers](https://github.com/obra/superpowers) | A Claude Code plugin whose skills turn requirements into bite-sized plans |
@@ -49,14 +49,21 @@ You'll set up the same tools that development teams use, then build a dashboard 
 
 ## Getting started
 
-### Version 3 (current)
+### Version 4 (current)
 
-Async pre-work + a 3-hour live workshop, using the Superpowers Claude Code plugin for skill-driven planning.
+Async pre-work + a 3-hour live workshop, using the Superpowers Claude Code plugin for skill-driven planning and an in-repo `TASKS.md` file for task tracking (no Jira account needed).
+
+1. Start with [Pre-work: Setup](v4/pre-work-setup.md) -- accounts, tools, repo setup (55-85 min on your own)
+2. Then [Workshop: Build & Deploy](v4/workshop-build-deploy.md) -- design, plan, track, build, and deploy the dashboard (~3 hours, live)
+
+### Version 3 (previous)
+
+Same skill-driven workshop, but tracking work in Jira via the Atlassian MCP server instead of a `TASKS.md` file.
 
 1. Start with [Pre-work: Setup](v3/pre-work-setup.md) -- accounts, tools, repo setup (60-90 min on your own)
 2. Then [Workshop: Build & Deploy](v3/workshop-build-deploy.md) -- design, plan, build, and deploy the dashboard (~3 hours, live)
 
-### Version 2 (previous)
+### Version 2 (older)
 
 Async pre-work + a 3-hour live workshop, using GitHub spec-kit for planning.
 
@@ -88,7 +95,7 @@ Reference materials: [Troubleshooting](v1/05-troubleshooting.md) · [Capstone Se
 
 - Basic Python knowledge (pandas, simple scripts)
 - A computer running macOS or Windows
-- No prior experience with Git, Jira, or AI coding tools
+- No prior experience with Git or AI coding tools
 
 ## Getting help
 
