@@ -246,7 +246,7 @@ You'll see reminders about this throughout the installation steps. If a tool doe
    - Which role best describes you? --> **Student**
    - Share Data --> **Off**
    - Click **Continue**
-7. If asked to "Claim a free Pro trial," click **Skip for now**. You don't need Cursor Pro for this tutorial.
+7. If offered a free Pro trial (you may see something like a "7-day free Pro trial"), click **Skip for now**. You don't need Cursor Pro for this tutorial.
 8. When prompted to connect GitHub, click **Connect**, then **Authorize Cursor** in the browser that opens. Verify accounts and click **Link Account**, then **Continue**.
 9. Return to the Cursor desktop app and click **Log In** if prompted. Accept defaults on remaining screens.
 
@@ -375,12 +375,12 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 **Step 2: Authenticate**
 
 1. In the terminal, type `claude` and press Enter.
-2. You'll be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.3).
+2. You'll be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.2).
 3. Authorize Claude Code to access your account.
 4. Return to the terminal. You should see Claude Code's interactive prompt.
-5. Type `/exit` to quit for now. You'll use Claude Code extensively starting in Section 3.3.
+5. Type `/exit` to quit for now. You'll come back to Claude Code in Section 2.5 and use it throughout the workshop.
 
-> **If authentication fails:** Run `claude logout`, then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
+> **If authentication fails:** Run `claude auth logout` in the terminal (or type `/logout` inside Claude Code), then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
 
 > **Checkpoint:** Running `claude` starts an interactive session. Type `/exit` to quit.
 
@@ -437,7 +437,7 @@ This is the payoff of the Granola account you made in Section 1.3. You'll instal
 4. In **Cursor's terminal** (not inside Claude Code), register the Granola MCP server. You can run this from any directory; it only needs to be done once:
 
    ```bash
-   claude mcp add granola --transport http https://mcp.granola.ai/mcp
+   claude mcp add --transport http granola https://mcp.granola.ai/mcp
    ```
 
 5. Start Claude Code:
@@ -704,7 +704,7 @@ Python 3.8.10
 **Why it happens:** The authentication flow requires opening a browser window to log into your Claude account. Popup blockers, VPNs, or network restrictions can interfere. Occasionally, cached credentials expire.
 
 **How to fix it:**
-1. Run `claude logout` to clear any cached credentials.
+1. Run `claude auth logout` in the terminal (or `/logout` inside Claude Code) to clear any cached credentials.
 2. Run `claude` again to restart the authentication flow.
 3. When the browser opens, make sure you log in with the account that has a Pro subscription.
 4. If the browser doesn't open automatically, check for a URL in the terminal output that you can copy and paste into your browser manually.

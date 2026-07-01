@@ -437,13 +437,13 @@ Before you start building, understand how Claude Code interacts with your files.
 
 | Mode | Behavior | When to Use |
 |------|----------|-------------|
-| **Normal** | Asks permission before each edit | When learning and reviewing each change carefully |
-| **Auto-accept** | Makes edits without asking | When you trust the workflow and want momentum |
+| **Normal** (default) | Asks permission before each edit | When learning and reviewing each change carefully |
+| **Accept edits** | Makes edits without asking | When you trust the workflow and want momentum |
 | **Plan mode** | Explains what it will do, waits for approval, then executes | When you want to review the approach before execution |
 
-Press **Shift+Tab** to cycle between modes. The current mode is displayed in the Claude Code interface.
+Press **Shift+Tab** to cycle between modes. The current mode (for example, "accept edits on" or "plan mode on") shows at the bottom of the Claude Code interface.
 
-> **Recommendation for this workshop:** Switch to **Auto-accept** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Auto-accept lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
+> **Recommendation for this workshop:** Switch to **Accept edits** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Accept edits lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode -- it'll just take longer.
 
 ### 4.1 Implement the first milestone
 
