@@ -423,7 +423,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    Understanding the file structure helps you learn from the AI's work rather than treating it as a black box.
 
-3. Test the dashboard. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you.
+3. Test the dashboard. Claude set up the `venv/` virtual environment while implementing TASK-1, so it's ready to use. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you (Option B; if `venv/` isn't there for any reason, Claude will create it).
 
    **Option A -- run it yourself** in Cursor's terminal:
 
@@ -601,6 +601,8 @@ Open `http://localhost:8501` and verify that all components are present: KPI sco
 
 Your dashboard is built and working, so now is the moment to give your project a memory. You'll generate a `CLAUDE.md` -- a file Claude Code reads at the start of every session, so future sessions (and your capstone) begin with context instead of a blank slate.
 
+> **If Claude offered to merge to main after your last milestone:** hold off. After the final plan step, Superpowers may review the diff and offer to merge (the `finishing-a-development-branch` step). Let it review, but do this `/init` step first so `CLAUDE.md` is part of the merge -- then merge in Section 4.5.
+
 > **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start -- at the start there's nothing to describe; now it can capture your actual project.
 
 1. In Claude Code, run:
@@ -726,10 +728,12 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 Record the deployment on your board. In Claude Code:
 
 ```
-Add a deployment milestone to TASKS.md if one doesn't exist, record the live Streamlit URL next to it, check off its criteria, and move it to Done. Then commit TASKS.md.
+Add a deployment milestone to TASKS.md if one doesn't exist, record the live Streamlit URL next to it, check off its criteria, and move it to Done. Then commit TASKS.md and push main to GitHub.
 ```
 
-**Checkpoint:** The dashboard is live and accessible at a public URL. The deployment milestone is in the Done section of `TASKS.md` with the live URL recorded.
+You're on `main` now (the merge in Section 4.5 switched you there), so this last update commits straight to `main`. Pushing it makes your finished board visible on GitHub -- which is what your instructor checks.
+
+**Checkpoint:** The dashboard is live and accessible at a public URL. The deployment milestone is in the Done section of `TASKS.md` with the live URL recorded, and the update is pushed to GitHub.
 
 ---
 
