@@ -284,7 +284,7 @@ Your `main` branch stays clean and stable while you work on the feature branch. 
 
 This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what* -- the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
 
-1. Start Claude Code from your project directory:
+1. Restart Claude Code so it loads your new `CLAUDE.md`. You've had Claude Code open since Section 1, but it reads `v4/CLAUDE.md` only at *session start* -- and you created that file afterward, in Section 2.1. Restarting makes its guidance take effect (it's what tells brainstorming to skip the worktree in a moment). Type `/exit`, then start a fresh session:
 
    ```bash
    claude
