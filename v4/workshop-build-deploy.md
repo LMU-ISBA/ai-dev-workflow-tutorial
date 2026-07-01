@@ -17,9 +17,9 @@
   - [2.4 Brainstorm and plan with one prompt](#24-brainstorm-and-plan-with-one-prompt)
 - [Section 3: Turn your plan into tasks (~10 min)](#section-3-turn-your-plan-into-tasks-10-min)
 - [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
-  - [4.1 Implement the first task](#41-implement-the-first-task)
+  - [4.1 Implement the first milestone](#41-implement-the-first-milestone)
   - [4.2 Commit, push, and update TASKS.md](#42-commit-push-and-update-tasksmd)
-  - [4.3 Complete remaining tasks](#43-complete-remaining-tasks)
+  - [4.3 Complete remaining milestones](#43-complete-remaining-milestones)
   - [4.4 Merge to main](#44-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
@@ -292,7 +292,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
 
-   d. Brainstorming would normally create a git worktree at this point. Because of `v3/CLAUDE.md`, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
+   d. Brainstorming would normally create a git worktree at this point. Because of `v4/CLAUDE.md`, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
 
    e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
 
@@ -448,7 +448,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output -- you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
-3. In Claude Code, ask Claude to explain what it created:
+2. In Claude Code, ask Claude to explain what it created:
 
    ```
    What files did you create? Explain what each one does.
@@ -456,7 +456,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    Understanding the file structure helps you learn from the AI's work rather than treating it as a black box.
 
-4. Test the dashboard. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you.
+3. Test the dashboard. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you.
 
    **Option A -- run it yourself** in Cursor's terminal:
 
@@ -475,9 +475,9 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment** -- an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
 
-5. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which milestone you started with.
+4. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which milestone you started with.
 
-6. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
+5. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
 
 **Checkpoint:** The dashboard runs locally at `http://localhost:8501` without errors.
 
@@ -795,7 +795,7 @@ In this workshop, you practiced five professional skills:
 
 ## What to submit
 
-**Due: March 16, 2026 at 11:59 PM** -- Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
+**Due: Wednesday, July 15, 2026 at 11:59 PM** -- Submit the following to Brightspace under the **AI Dev Workflow Tutorial** assignment:
 
 1. **GitHub repository link** -- your public repo URL (e.g., `https://github.com/yourusername/ai-dev-workflow-tutorial`)
 
@@ -1049,7 +1049,7 @@ Then retry: `streamlit run app.py`
 
 ## Other Superpowers skills you'll meet later
 
-You'll encounter these in larger projects beyond this tutorial. We didn't formally use them in v3 either because they're more advanced than this workshop needs, or because we explicitly overrode them in CLAUDE.md.
+You'll encounter these in larger projects beyond this tutorial. We didn't formally use them in this workshop either because they're more advanced than it needs, or because we explicitly overrode them in CLAUDE.md.
 
 | Skill | What it does | Why we skipped it here |
 |-------|--------------|------------------------|
