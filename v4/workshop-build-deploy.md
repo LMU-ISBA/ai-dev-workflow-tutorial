@@ -11,15 +11,15 @@
 - [How to work through this guide](#how-to-work-through-this-guide)
 - [Section 1: Set up your task board from the PRD (~15 min)](#section-1-set-up-your-task-board-from-the-prd-15-min)
 - [Section 2: Brainstorm and plan (~30 min)](#section-2-brainstorm-and-plan-30-min)
-  - [2.1 Create v4/CLAUDE.md](#21-create-v4claudemd)
-  - [2.2 Create the feature branch](#22-create-the-feature-branch)
-  - [2.3 Brainstorm and plan with one prompt](#23-brainstorm-and-plan-with-one-prompt)
+  - [2.1 Create the feature branch](#21-create-the-feature-branch)
+  - [2.2 Brainstorm and plan with one prompt](#22-brainstorm-and-plan-with-one-prompt)
 - [Section 3: Confirm the plan covers your milestones (~5 min)](#section-3-confirm-the-plan-covers-your-milestones-5-min)
 - [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
   - [4.1 Implement the first milestone](#41-implement-the-first-milestone)
   - [4.2 Commit, push, and update TASKS.md](#42-commit-push-and-update-tasksmd)
   - [4.3 Complete remaining milestones](#43-complete-remaining-milestones)
-  - [4.4 Merge to main](#44-merge-to-main)
+  - [4.4 Capture project memory with /init](#44-capture-project-memory-with-init)
+  - [4.5 Merge to main](#45-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
 - [Troubleshooting](#troubleshooting)
@@ -43,6 +43,7 @@ By the end of this guide, you'll have taken a product requirements document thro
 - Generated Superpowers artifacts: a design document and an implementation plan
 - Moved each milestone from To Do to Done as you built
 - Built a working Streamlit dashboard with AI-assisted coding
+- Generated a `CLAUDE.md` with `/init` so the project carries its own context
 - Committed and pushed code to GitHub with traceability from each milestone to its commits
 - Deployed a live dashboard accessible by anyone with the URL
 
@@ -225,48 +226,7 @@ brainstorming -> writing-plans -> executing-plans
 
 Each skill narrows the space of possible outcomes. By the time executing-plans runs, Claude knows what to build, how to build it, and in what order. The result is more likely to match what you actually wanted.
 
-### 2.1 Create v4/CLAUDE.md
-
-> **What is CLAUDE.md?** It's a file Claude Code reads at the start of every session. It's where you put project-specific guidance: code style, workflow conventions, things you want Claude to remember without you having to repeat them every time. For this project, CLAUDE.md tells Claude a few things: track work in `TASKS.md`, skip the worktree setup that brainstorming usually does, use a `venv/` virtual environment, and stick to the simple, readable code style that matches the rest of the tutorial.
-
-> **Heads up about `/init`:** Claude Code has an `/init` slash command that auto-generates a CLAUDE.md by scanning your codebase. We're not using it. We want a small, focused file rather than a generated one. Don't run `/init` for this project. If you do run it by accident and it overwrites your CLAUDE.md, recover with `git checkout v4/CLAUDE.md`.
-
-1. In Cursor, create a new file at `v4/CLAUDE.md`.
-
-2. Paste in the following content:
-
-   ```markdown
-   # Project guidance for Claude
-
-   This is an educational tutorial project: an e-commerce Streamlit dashboard
-   built by MSBA students learning AI-assisted development.
-
-   ## Task tracking
-   - The implementation plan in docs/superpowers/plans/ holds the detailed build
-     steps. TASKS.md in the project root holds the coarser milestones I track
-     (TASK-1, TASK-2, ...). One milestone covers several plan steps.
-   - Before building, confirm which milestone we're on and which plan steps it
-     covers, then work through those steps.
-   - When a milestone's steps are done, move it to Done in TASKS.md, check off its
-     acceptance criteria, record the commit(s), and use the milestone ID in the
-     commit message.
-
-   ## Workflow conventions
-   - Work on a feature branch on the main checkout. Do **not** create a git worktree
-     for this project, even if the brainstorming skill suggests one.
-   - Manage Python dependencies in a virtual environment named `venv/`; create it
-     during the first milestone (project setup) and keep `venv/` out of Git.
-
-   ## Code style
-   - Python 3.11+; idiomatic pandas; Streamlit components straight from the docs.
-   - Plain readable code over clever code. Students need to understand it.
-   ```
-
-3. Save the file.
-
-**Checkpoint:** `v4/CLAUDE.md` exists and contains the task-tracking and worktree guidance.
-
-### 2.2 Create the feature branch
+### 2.1 Create the feature branch
 
 You could type the Git command yourself, but you don't have to. In Claude Code, just ask:
 
@@ -282,31 +242,17 @@ Your `main` branch stays clean and stable while you work on the feature branch. 
 
 **Checkpoint:** Ask Claude "which branch am I on?" -- it should be `feature/sales-dashboard`.
 
-### 2.3 Brainstorm and plan with one prompt
+### 2.2 Brainstorm and plan with one prompt
 
 This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what* -- the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
 
-1. Restart Claude Code so it loads your new `CLAUDE.md`. You've had Claude Code open since Section 1, but it reads `v4/CLAUDE.md` only at *session start*, and you created that file afterward (Section 2.1). Restarting makes its guidance take effect -- it's what tells brainstorming to skip the worktree in a moment.
-
-   To restart:
-
-   a. In your open Claude Code session, type `/exit` and press Enter. This closes Claude Code and drops you back to the normal terminal prompt (you'll see your shell prompt, like `%` or `$`, instead of Claude's input box).
-
-   b. From that same terminal, start a fresh session:
-
-   ```bash
-   claude
-   ```
-
-   Confirm `You have superpowers` appears in the banner. If it doesn't, see the troubleshooting section.
-
-2. Send Claude this prompt. Notice it points at both the PRD and your milestones, so the plan is built to cover them:
+1. In your Claude Code session (still open from Section 1), send this prompt. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
 
    ```
-   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking these milestones in @TASKS.md -- structure the plan so its steps cover each one.
+   Help me design and plan the e-commerce sales dashboard described in @prd/ecommerce-analytics.md. I'm tracking these milestones in @TASKS.md -- structure the plan so its steps cover each one. Ground rules: work on my current feature branch (do not create a git worktree), set up a Python virtual environment in venv/ for dependencies, and keep the code simple and readable so I can follow it.
    ```
 
-3. Watch what happens:
+2. Watch what happens:
 
    a. Claude announces `Using brainstorming to design and plan...` (or similar).
 
@@ -314,11 +260,11 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
 
-   d. Brainstorming would normally create a git worktree at this point. Because of `v4/CLAUDE.md`, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
+   d. Brainstorming would normally create a git worktree at this point. Because your prompt told it not to, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
 
    e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
 
-4. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
+3. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
 
 > **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $1,234,567 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
 
@@ -333,7 +279,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 >      v
 > brainstorming  -> asks Qs, writes design doc, gets your approval
 >      |
->      v  (Phase 5: skipped worktree per CLAUDE.md)
+>      v  (Phase 5: skipped worktree per your prompt)
 > writing-plans  -> produces plan with TDD-flagged tasks
 > ```
 >
@@ -651,7 +597,31 @@ Open `http://localhost:8501` and verify that all components are present: KPI sco
 
 **Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and commits recorded. Only a deployment milestone (if you have one) remains in To Do.
 
-### 4.4 Merge to main
+### 4.4 Capture project memory with /init
+
+Your dashboard is built and working, so now is the moment to give your project a memory. You'll generate a `CLAUDE.md` -- a file Claude Code reads at the start of every session, so future sessions (and your capstone) begin with context instead of a blank slate.
+
+> **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start -- at the start there's nothing to describe; now it can capture your actual project.
+
+1. In Claude Code, run:
+
+   ```
+   /init
+   ```
+
+2. Claude scans your project and writes `CLAUDE.md` to the repo root. Open it in Cursor and read it -- it should describe your dashboard: how to run it (`streamlit run app.py`), the main files, and where the data lives. Fix anything that's off, or ask Claude to adjust it.
+
+3. Commit it. In Claude Code:
+
+   ```
+   Commit CLAUDE.md with the message "Add project memory (CLAUDE.md)".
+   ```
+
+> **For your capstone:** run `/init` once you have a skeleton of the project, then keep `CLAUDE.md` updated as the project grows. Every new Claude Code session then starts already knowing your project.
+
+**Checkpoint:** `CLAUDE.md` exists at the repo root, describes your dashboard, and is committed.
+
+### 4.5 Merge to main
 
 Your feature branch contains all the implementation work. Now you'll bring those changes into the `main` branch, making them the official version of the code.
 
@@ -715,7 +685,7 @@ Deployment is the final stage of the professional workflow. It transforms your l
 
 Streamlit Community Cloud is a free hosting service specifically designed for Streamlit applications. It reads your code directly from GitHub and runs it on their servers.
 
-> **Prerequisite:** Your code must be merged to `main` (Section 4.4) before deploying. Streamlit Cloud deploys from the `main` branch by default.
+> **Prerequisite:** Your code must be merged to `main` (Section 4.5) before deploying. Streamlit Cloud deploys from the `main` branch by default.
 
 1. Go to [share.streamlit.io](https://share.streamlit.io) in your browser.
 
@@ -787,6 +757,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 ### Version control
 
 - [ ] Commits include milestone IDs (TASK-1, TASK-2, ...) in messages
+- [ ] `CLAUDE.md` generated with `/init` and committed
 - [ ] Feature branch merged to main
 - [ ] All code pushed to GitHub on the main branch
 
@@ -865,11 +836,11 @@ This handles the large majority of what goes wrong here -- wrong file paths, a m
 
 ## Other Superpowers skills you'll meet later
 
-You'll encounter these in larger projects beyond this tutorial. We didn't formally use them here either because they're more advanced than this project needs, or because we explicitly overrode them in CLAUDE.md.
+You'll encounter these in larger projects beyond this tutorial. We didn't formally use them here either because they're more advanced than this project needs, or because we explicitly told the skill not to (in the brainstorm prompt).
 
 | Skill | What it does | Why we skipped it here |
 |-------|--------------|------------------------|
-| `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We overrode this in CLAUDE.md to keep this project on a single working directory |
+| `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We told brainstorming to skip it (in the prompt) to keep this project on a single working directory |
 | `dispatching-parallel-agents` | Splits independent tasks across multiple agents that work in parallel | Overkill for a single-project tutorial |
 | `subagent-driven-development` | Executes plans by dispatching a fresh subagent per task, with review checkpoints between | A more advanced execution model than executing-plans; same outcome, more moving parts |
 | `writing-skills` | Helps you author your own Superpowers skills | Meta. For skill authors, not skill consumers |
