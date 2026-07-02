@@ -101,7 +101,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 | TASKS.md (task tracking) <-->  Cursor (code editor)          |
 |       ^                           ^                          |
 |       |                           |                          |
-| Claude Code (AI assistant) <--> Superpowers (planning skills) |
+| Claude Code (coding agent) <--> Superpowers (planning skills) |
 |       ^              ^                                        |
 |       |              |                                        |
 | Python + Streamlit   Granola (meeting notes, via MCP)        |
@@ -112,9 +112,9 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 - **GitHub** stores your code in the cloud so it's safe, shareable, and versioned.
 - **Git** is the version control engine that tracks every change you make.
-- **TASKS.md** is a plain-text task board that lives in your repository. It tracks what to build and what's done, and because it's just a file, Claude Code can read and update it directly -- no separate account or web app to switch to.
+- **TASKS.md** is a plain-text task board that lives in your repository. It tracks what to build and what's done, and because it's just a file, Claude Code can read and update it directly -- no separate account or web app to switch to. The board holds your milestones -- the major deliverables, with IDs like TASK-1 -- and the plan you write in Part 2 breaks each milestone into the smaller build tasks Claude Code works through.
 - **Cursor** is your code editor, where you write and organize files.
-- **Claude Code** is an AI assistant that runs in your terminal, reads your project, and helps you build.
+- **Claude Code** is an AI coding agent that runs in your terminal, reads your project, and helps you build.
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you'll build in Part 2.
 - **Granola** is an AI notepad for meetings. Connected to Claude Code through MCP, it lets Claude read your meeting notes. You set it up now but use it in your capstone, not for the dashboard.
@@ -146,7 +146,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ### 1.2 Claude Pro subscription
 
-> **Why Claude Pro?** Claude Code, the AI command-line assistant you'll use throughout this tutorial, requires an active Claude Pro (or Max) subscription. The free tier of Claude doesn't provide access to Claude Code. You need Pro to use the terminal-based AI assistant in this tutorial.
+> **Why Claude Pro?** Claude Code, the AI coding agent you'll use throughout this tutorial, requires an active Claude Pro (or Max) subscription. The free tier of Claude doesn't provide access to Claude Code. You need Pro to use the terminal-based AI assistant in this tutorial.
 
 **Steps:**
 
@@ -352,7 +352,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 ### 2.4 Claude Code
 
-> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and even update your project's task list as it works. It's an AI assistant that can see your entire project and make changes alongside you. This is different from copying code out of a chat window -- Claude Code works inside your development environment.
+> **What is Claude Code?** Unlike the Claude web interface at claude.ai where you chat in a browser, Claude Code runs *directly in your terminal*, inside your project. It can read your files, write code, run commands, execute tests, and even update your project's task list as it works. It's an AI agent that can see your entire project and make changes alongside you. This is different from copying code out of a chat window -- Claude Code works inside your development environment.
 
 **Step 1: Install Claude Code**
 
@@ -658,7 +658,7 @@ Here's what you've just configured:
 |    Cursor ............. AI-powered code editor                  |
 |    Git ................ Version control                         |
 |    Python 3.11+ ....... Programming language                   |
-|    Claude Code ........ AI terminal assistant                   |
+|    Claude Code ........ AI coding agent                         |
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |    Granola app ........ AI notepad for meetings                  |
 |    TASKS.md ........... In-repo task board (created in Part 2)  |
@@ -670,7 +670,7 @@ Here's what you've just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools are connected in a way that creates a complete workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write code, Claude Code helps you build, and the Superpowers plugin's skills help Claude plan before you build. In Part 2, you'll see all of these tools work together as you plan, build, and deploy a live dashboard.
+These tools connect into one workflow: GitHub hosts your code, Git tracks changes, a `TASKS.md` file tracks your work, Cursor is where you write it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll see them work together as you plan, build, and deploy a live dashboard.
 
 > **Before you start Part 2:** If anything above isn't working, post in the Teams General channel now. It's much easier to sort out setup problems before you start building than in the middle of it.
 
@@ -834,7 +834,7 @@ Part 1 is complete. You've:
 - Forked and cloned the tutorial repository (your working copy of the project)
 - Initialized Claude Code so it understands your project (AI context)
 
-Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, an in-repo `TASKS.md` for tracking deliverables, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for turning stakeholder meetings into notes Claude Code can read. You'll use this same environment for your capstone and beyond.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, an in-repo `TASKS.md` for tracking deliverables, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for capturing stakeholder meetings as notes Claude Code can read. You'll use this same environment for your capstone and beyond.
 
 **With setup done, you're ready for Part 2.** In the build guide, you'll put everything together:
 
