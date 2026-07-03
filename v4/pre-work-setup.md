@@ -441,9 +441,9 @@ The install command below is the only time you'll type a slash command to use Su
 
 4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
 
-5. When Claude Code starts, look for the line `You have superpowers` near the top of the session output. That line confirms the plugin loaded and the `using-superpowers` skill is active.
+5. Confirm it's installed. In the new session, ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and Claude announces `Using <skill> to...`. You can also run `/plugin` to see your installed plugins.)
 
-> **Checkpoint:** Starting Claude Code shows `You have superpowers` in the session output.
+> **Checkpoint:** In a Claude Code session, asking `Is the Superpowers plugin installed?` gets a yes.
 
 ---
 
@@ -624,7 +624,7 @@ Start a Claude Code session:
 ```bash
 claude
 ```
-Expected output: the session banner shows `You have superpowers` near the top, which means the Superpowers plugin loaded. Type `/exit` to close the session.
+Then ask Claude: `Is the Superpowers plugin installed?` Expected: Claude checks and confirms it's installed (it can run `/plugin` to verify). Type `/exit` to close the session.
 
 If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or post in the Teams General channel.
 

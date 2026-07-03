@@ -144,7 +144,7 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
    claude
    ```
 
-   Confirm `You have superpowers` appears in the banner. If it doesn't, see the troubleshooting section.
+   Superpowers loads automatically for the session (you installed and verified it in Part 1). If you're not sure it's active, ask Claude `Is the Superpowers plugin installed?`
 
 2. **Set the output style to Explanatory.** Inside Claude Code, open the settings menu:
 
