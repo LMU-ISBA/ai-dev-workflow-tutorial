@@ -23,13 +23,14 @@
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
 - [Troubleshooting](#troubleshooting)
+- [Other Superpowers skills you'll meet later](#other-superpowers-skills-youll-meet-later)
 - [Glossary](#glossary)
 
 ---
 
 ## How to work through this guide
 
-This guide is self-paced. Work through it top to bottom; each section builds on the one before it, so don't skip ahead. Most people finish in about three hours, but there's no clock: do it in one sitting or split it across a few sessions, whatever fits your schedule. You'll save your progress with Git as you go (Section 4), so you can stop and pick up later without losing anything.
+This guide is self-paced. Work through it top to bottom; each section builds on the one before it, so don't skip ahead. Most people finish in about three hours, but there's no clock: do it in one sitting or split it across a few sessions, whatever fits your schedule. (The per-section time labels add up to well under three hours because they only count the hands-on steps; the rest is reading, answering brainstorming's questions, and watching Claude build.) You'll save your progress with Git as you go (Section 4), so you can stop and pick up later without losing anything.
 
 > **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first; most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel if you get stuck.
 
@@ -51,7 +52,7 @@ By the end of this guide, you'll have taken a product requirements document thro
 
 ## Prerequisites check
 
-Before starting, verify your Part 1 setup is complete. Run each command in Cursor's terminal:
+Before starting, verify your Part 1 setup is complete. Open your cloned `ai-dev-workflow-tutorial` folder in Cursor first (File --> Open Folder); the terminal then opens at the project root, which is where these commands expect to run. Run each command in Cursor's terminal:
 
 ```bash
 git --version
@@ -62,6 +63,7 @@ python --version         # Windows
 # Expected: Python 3.11.x or higher
 
 ls data/sales-data.csv
+# Windows cmd: dir data\sales-data.csv
 # Expected: data/sales-data.csv (no error)
 
 claude --version
@@ -84,10 +86,10 @@ This is the workflow used at technology companies worldwide. You'll experience t
 │(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
 └─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
                                                                               │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────────────────────────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit) │
-│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch            │
-└─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
+┌─────────┐    ┌───────────┐    ┌─────────┐    ┌───────────────────────────────┐
+│  Live!  │ <- │  Deploy   │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│    │(GitHub) │    │ on a feature branch           │
+└─────────┘    └───────────┘    └─────────┘    └───────────────────────────────┘
 ```
 
 Each box in this diagram is a distinct stage you'll complete. The left-to-right flow on the top row moves from planning to execution. The right-to-left flow on the bottom row moves from saving your work to making it publicly available. Together, they form a closed loop: requirements become running software that stakeholders can access.
@@ -260,13 +262,13 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
 
-   d. Brainstorming would normally create a git worktree at this point. Because your prompt told it not to, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
+   d. Brainstorming would normally create a git worktree at this point (an isolated copy of your working directory; see the skills table at the end of this guide). Because your prompt told it not to, it skips that and hands off directly to writing-plans. You'll see Claude announce `Handing off to writing-plans...`.
 
    e. writing-plans produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically tasks involving data transformations like KPI calculations and date filtering.
 
 3. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
 
-> **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $1,234,567 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
+> **Why TDD on some tasks?** Test-driven development means writing a small test before writing the function the test exercises. You write a test that says "compute_total_sales should return $116,500 for this dataset," run it (it fails because the function doesn't exist yet), write the simplest version of the function that makes the test pass, then move on. The discipline matters because it forces you to think about behavior before implementation. For dashboard rendering, TDD doesn't earn its keep: Streamlit components are hard to test meaningfully. For data transformations, it does. The plan flags which tasks get the TDD treatment.
 
 > **Skill handoff cheat sheet (the chain you just experienced):**
 >
@@ -379,7 +381,7 @@ Because you pointed the planning prompt at your milestones, the plan should alre
 > ```python
 > import streamlit as st
 > st.title("Sales Dashboard")
-> st.metric("Total Sales", "$650,000")
+> st.metric("Total Sales", "$116,500")
 > ```
 > produces a web page with a title and a formatted metric card. No HTML needed.
 >
@@ -442,7 +444,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment**, an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
 
-4. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard. The exact content depends on which milestone you started with.
+4. Open `http://localhost:8501` in your browser. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
 
 5. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
 
@@ -489,7 +491,7 @@ Here is what each stage means:
 > When you include the milestone ID (like TASK-1) in your commit message, you create a traceable link that connects your code change to the milestone that prompted it:
 >
 > ```
-> TASK-1 in TASKS.md --> Commit "TASK-1: add KPI scorecards" --> GitHub --> Deployed Dashboard
+> TASK-1 in TASKS.md --> Commit "TASK-1: set up project and data loading" --> GitHub --> Deployed Dashboard
 > ```
 >
 > A milestone may span more than one commit (executing-plans commits each plan step as it builds). What matters is that its commits carry the milestone ID and the board records where the work landed. Because `TASKS.md` is versioned too, `git log -- TASKS.md` then shows the full history of how milestones moved from To Do to Done. In professional environments, this traceability is how teams maintain accountability, conduct code reviews, and audit changes.
@@ -541,7 +543,7 @@ The cycle for each milestone is:
 Take the next milestone
         |
         v
-"Let's work on TASK-N" --> executing-plans works its plan steps --> Move to In Progress
+"Let's work on TASK-N" --> Move to In Progress --> executing-plans works its plan steps
         |
         v
 Test the dashboard (streamlit run app.py)
@@ -748,7 +750,7 @@ Before submitting, walk through every item below. Each category corresponds to a
 
 ### Task board (TASKS.md)
 
-- [ ] Milestones created from the plan (4-8 of them: TASK-1, TASK-2, ...), each with acceptance criteria
+- [ ] Milestones created from the PRD (4-8 of them: TASK-1, TASK-2, ...), each with acceptance criteria
 - [ ] A Definition of Done applies to every milestone
 - [ ] All implementation milestones are in the Done section, criteria checked
 - [ ] Each done milestone records its commit hash
@@ -877,8 +879,8 @@ Quick-reference table of key terms used in this document.
 | **Push** | Upload local commits to a remote repository (GitHub), making them visible and backed up |
 | **Staging Area** | A holding zone in Git for changes you intend to include in your next commit |
 | **Streamlit** | A Python library that transforms Python scripts into interactive web applications |
-| **TASKS.md** | A Markdown file in your repository that tracks every milestone through To Do, In Progress, and Done |
 | **Superpowers** | A Claude Code plugin that gives Claude a library of skills (brainstorming, writing-plans, executing-plans, and more) |
+| **TASKS.md** | A Markdown file in your repository that tracks every milestone through To Do, In Progress, and Done |
 | **Traceability** | The ability to link code changes back to the requirements that prompted them |
 | **venv** | Virtual environment, an isolated Python installation that keeps project dependencies separate |
 | **writing-plans** | A Superpowers skill that turns a design document into a bite-sized implementation plan |

@@ -66,17 +66,17 @@ Every technology company uses a variation of this workflow. You'll experience th
 │(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
 └─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
                                                                               │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌────────────────────────────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit) │
-│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch            │
-└─────────┘    └──────────┘    └─────────┘    └────────────────────────────────┘
+┌─────────┐    ┌───────────┐    ┌─────────┐    ┌───────────────────────────────┐
+│  Live!  │ <- │  Deploy   │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│    │(GitHub) │    │ on a feature branch           │
+└─────────┘    └───────────┘    └─────────┘    └───────────────────────────────┘
 ```
 
 1. **PRD** (Product Requirements Document): Start with a written specification of what to build
 2. **TASKS.md**: Draft your milestones (the deliverables, with IDs like TASK-1) from the PRD into a Markdown board in your repo
 3. **brainstorming**: A Superpowers skill that asks clarifying questions and produces a design document
 4. **writing-plans**: A Superpowers skill that turns the design into a bite-sized implementation plan covering your milestones
-5. **executing-plans**: A Superpowers skill that builds the feature with Claude Code, implementing each task test-first
+5. **executing-plans**: A Superpowers skill that builds the feature with Claude Code, implementing each task (test-first where the plan flags it)
 6. **Commit**: Save your changes with a meaningful message linked to the milestone ID
 7. **Push**: Upload your code to GitHub
 8. **Deploy**: Make your dashboard publicly accessible
@@ -85,7 +85,7 @@ Every technology company uses a variation of this workflow. You'll experience th
 
 **Traceability.** Every piece of code traces back to a requirement. When you commit, you include the milestone ID (like TASK-1) in the message, and because `TASKS.md` is versioned in the repo, `git log` shows the whole chain from requirement to code to deployed feature.
 
-**Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task using TDD (test-driven development: write a failing test first, then the code to pass it). This prevents the most common failure mode: building the wrong thing fast.
+**Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task, using TDD on the tasks the plan flags for it (test-driven development: write a failing test first, then the code to pass it). This prevents the most common failure mode: building the wrong thing fast.
 
 **AI as a partner.** Claude Code isn't just a code generator. You set the direction and make the judgment calls; it supplies the speed and technical know-how, and explains its reasoning so you learn as you go.
 

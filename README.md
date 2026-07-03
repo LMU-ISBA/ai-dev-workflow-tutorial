@@ -8,10 +8,10 @@ Learn a professional development workflow by building and deploying a real proje
 │(written)│    │ (milestones) │    │ (design doc) │    │ (impl plan)  │    │(Claude)│
 └─────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └────────┘
                                                                             │
-┌─────────┐    ┌──────────┐    ┌─────────┐    ┌──────────────────────────────┐
-│  Live!  │ <- │  Deploy  │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
-│(public) │    │(Streamlit)│   │(GitHub) │    │ on a feature branch          │
-└─────────┘    └──────────┘    └─────────┘    └──────────────────────────────┘
+┌─────────┐    ┌───────────┐    ┌─────────┐    ┌───────────────────────────────┐
+│  Live!  │ <- │  Deploy   │ <- │  Push   │ <- │ executing-plans (TDD + commit)│
+│(public) │    │(Streamlit)│    │(GitHub) │    │ on a feature branch           │
+└─────────┘    └───────────┘    └─────────┘    └───────────────────────────────┘
 ```
 
 See the finished product: https://sales-dashboard-greg-lontok.streamlit.app/

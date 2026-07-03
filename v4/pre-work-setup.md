@@ -296,7 +296,7 @@ If you see a version number (for example, `git version 2.39.0`), Git is already 
 
 1. Download the installer from [git-scm.com/download/win](https://git-scm.com/download/win) (64-bit recommended).
 2. Run the installer. Most defaults are fine, but pay attention to these settings:
-   - Select **"Use Git from Git Bash and also from 3rd-party software"** so Git works in Cursor's terminal.
+   - Select **"Git from the command line and also from 3rd-party software"** (the recommended option) so Git works in Cursor's terminal. Don't pick "Use Git from Git Bash only," which would hide Git from Cursor.
    - Select **"Use the OpenSSL library"**
    - Select **"Checkout Windows-style, commit Unix-style line endings"** to prevent line ending issues when collaborating with macOS users.
    - Accept other defaults.
@@ -337,7 +337,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 
 **macOS install:**
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page). You may also see a "Python install manager" option; ignore it and use the standard installer.
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and download the latest Python 3 installer (the big button at the top of the page).
 2. Open the `.pkg` file and follow the installation wizard.
 3. On the final screen, click **Install Certificates** if that option appears. This installs SSL certificates Python needs to make secure web requests.
 4. Open a **new terminal** (Terminal --> New Terminal).
@@ -351,7 +351,7 @@ If you see Python 3.11 or higher (for example, `Python 3.12.5`), skip to the nex
 4. Open a **new terminal** (Terminal --> New Terminal).
 5. Verify: `python --version`
 
-> **macOS note: `python` vs. `python3`.** macOS ships with an older system Python (sometimes Python 2.x) accessible via the `python` command. The installer from python.org places the new version at `python3` to avoid conflicting with the system version. On macOS, always use `python3` unless you've specifically configured otherwise.
+> **macOS note: `python` vs. `python3`.** On current versions of macOS, the plain `python` command usually doesn't exist at all ("command not found"). The installer from python.org installs the new version as `python3`. On macOS, always use `python3` unless you've specifically configured otherwise.
 
 > **Checkpoint:** `python3 --version` (macOS) or `python --version` (Windows) shows Python 3.11 or higher.
 
@@ -422,7 +422,7 @@ You type a plain-English prompt
   (that line is your cue a skill kicked in)
 ```
 
-You'll only ever type one slash command for the entire tutorial: the install command below. Everything else flows from natural-language prompts.
+The install command below is the only time you'll type a slash command to use Superpowers. The skills themselves never need one; they activate from natural-language prompts. (You'll still type a few unrelated slash commands elsewhere in the tutorial, like `/exit` and `/init`.)
 
 #### Install the plugin
 
@@ -482,8 +482,8 @@ The top half (record -> transcribe -> sync) happens in the Granola app. The bott
 **Install the app:**
 
 1. Download the Granola desktop app from [granola.ai](https://www.granola.ai) and install it.
-2. Open Granola and sign in with the account you created in Section 1.3.
-3. *(Optional but useful)* Record one short test note (even a few minutes of a lecture or a chat with a classmate) so you have something for Claude Code to find later. Check the email your account uses under **Settings** if you're unsure which login to use.
+2. Open Granola and sign in with the account you created in Section 1.3. If you're unsure which email that account uses, check under **Settings** in Granola after signing in; you'll need the same email when you authorize Claude Code below.
+3. *(Optional but useful)* Record one short test note (even a few minutes of a lecture or a chat with a classmate) so you have something for Claude Code to find later.
 
 **Connect it to Claude Code:**
 
@@ -584,7 +584,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 
 > **If you can't see the file explorer sidebar:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
 
-> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see folders like `data/`, `v1/`, `v2/`, and `prd/`, along with a `README.md` file.
+> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see folders like `data/`, `prd/`, `docs/`, and the versioned tutorial folders `v1/` through `v4/` (you're following `v4/`), along with a `README.md` file.
 
 ---
 
@@ -644,7 +644,7 @@ Expected: Claude returns your Granola email and workspace. Type `/exit` to close
 
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
 - [ ] Repo cloned locally and open in Cursor
-- [ ] Files visible in Cursor's file explorer (you should see `data/`, `v1/`, `v2/`, `prd/`, and `README.md`)
+- [ ] Files visible in Cursor's file explorer (you should see `data/`, `prd/`, the `v1/` through `v4/` tutorial folders, and `README.md`)
 
 ---
 
@@ -734,7 +734,7 @@ bash: git: command not found
 **What you see:**
 ```
 $ python --version
-Python 2.7.18
+zsh: command not found: python
 ```
 or
 ```
@@ -743,7 +743,7 @@ Python 3.8.10
 ```
 
 **Why it happens:**
-- On macOS, the `python` command often points to an older system Python. The python.org installer places the new version at `python3` to avoid conflicting with the system version.
+- On macOS, the plain `python` command usually doesn't exist (or, on older setups, points to an outdated Python). The python.org installer places the new version at `python3` to avoid conflicting with anything on the system.
 - On Windows, if "Add Python to PATH" wasn't checked during installation, the terminal can't find the new Python installation.
 
 **How to fix it:**
@@ -841,7 +841,6 @@ Part 1 is complete. You've:
 - Installed the tools that make up your development environment: Cursor, Git, Python, Claude Code, the Superpowers plugin, the Granola app, and Wispr Flow
 - Connected Claude Code to your Granola meeting notes for your capstone
 - Forked and cloned the tutorial repository (your working copy of the project)
-- Initialized Claude Code so it understands your project (AI context)
 
 Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, an in-repo `TASKS.md` for tracking deliverables, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for capturing stakeholder meetings as notes Claude Code can read. You'll use this same environment for your capstone and beyond.
 
