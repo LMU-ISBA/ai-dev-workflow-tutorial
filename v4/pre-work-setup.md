@@ -8,10 +8,11 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
 
 ## Table of contents
 
-- [Section 1: Create accounts (~20 min)](#section-1-create-accounts-20-min)
+- [Section 1: Create accounts (~25 min)](#section-1-create-accounts-25-min)
   - [1.1 GitHub account](#11-github-account)
   - [1.2 Claude Pro subscription](#12-claude-pro-subscription)
   - [1.3 Granola account and student plan](#13-granola-account-and-student-plan)
+  - [1.4 Wispr Flow account and student plan](#14-wispr-flow-account-and-student-plan)
 - [Section 2: Install tools (~50 min)](#section-2-install-tools-50-min)
   - [2.1 Cursor](#21-cursor)
   - [2.2 Git](#22-git)
@@ -30,11 +31,12 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
 ## What you'll set up
 
 ```
-Accounts:  GitHub, Claude Pro, Granola
+Accounts:  GitHub, Claude Pro, Granola, Wispr Flow
 Tools:     Cursor, Git, Python 3.11+, Claude Code, Superpowers plugin, Granola app
 Repo:      Fork and clone the tutorial repository
 Tracking:  A TASKS.md file in your repo (no extra account needed)
 Meetings:  Granola connected to Claude Code (for your capstone)
+Dictation: Wispr Flow, speak your prompts to Claude Code instead of typing
 ```
 
 **See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up, which takes about 30 seconds.)
@@ -108,10 +110,11 @@ The following diagram shows every tool you'll install and how they connect. Refe
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you'll build in Part 2.
 - **Granola** is an AI notepad for meetings. Connected to Claude Code through MCP, it lets Claude read your meeting notes. You set it up now but use it in your capstone, not for the dashboard.
+- **Wispr Flow** lets you dictate instead of type. You speak, and it enters clean text into any app, including the terminal where you prompt Claude Code, so giving Claude a lot of context takes seconds.
 
 ---
 
-## Section 1: Create accounts (~20 min)
+## Section 1: Create accounts (~25 min)
 
 ### 1.1 GitHub account
 
@@ -130,8 +133,6 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 > **Pro Tip:** Your GitHub profile is a portfolio. The projects you build (in this tutorial, in your capstone, on your own) are all visible. A GitHub profile with well-documented projects shows employers you can build, not just analyze. Choose your username carefully. You'll use it for years.
 
-> **Where's the task-tracking account?** Earlier versions of this tutorial had you create a Jira account here. Version 4 tracks work in a `TASKS.md` file that lives in your repository instead, so there's no third account to create. You'll set that file up in Part 2. Why the change? A task file is versioned with your code, diffs cleanly in Git, works offline, and, most importantly, Claude Code can read and edit it directly without connecting to an outside service. You still get the same discipline (every task tracked from *To Do* to *Done*), with less setup and tighter integration. More on the "why" when you build it.
-
 ---
 
 ### 1.2 Claude Pro subscription
@@ -148,7 +149,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 **If the subscription cost is a concern,** message me on Teams. I don't want that to be a blocker for anyone.
 
-> **Checkpoint:** A Pro badge is visible on claude.ai when you're logged in.
+> **Checkpoint:** When you're logged in to claude.ai, a Pro badge appears next to your name in the bottom-left corner.
 
 ---
 
@@ -164,6 +165,22 @@ The following diagram shows every tool you'll install and how they connect. Refe
 > **Not eligible for the student plan?** No problem. Granola's free **Basic** plan works with everything in this tutorial; the only limit is that Claude Code can query your notes from the **last 30 days** rather than your whole history. Sign up at [granola.ai](https://www.granola.ai) without the student application.
 
 > **Checkpoint:** You can sign in to your Granola account (student application submitted or approved).
+
+---
+
+### 1.4 Wispr Flow account and student plan
+
+> **Why Wispr Flow?** Wispr Flow is a voice dictation app that turns your speech into text in any application, including Cursor's terminal where Claude Code runs. It advertises around 4x faster than typing and cleans up filler and false starts as you talk. Here's why it earns a spot in this setup: what you get out of an AI agent depends on how much context you put in. In Part 2, the Superpowers `brainstorming` skill interviews you with clarifying questions, and the richer your answers, the better the design and plan it produces. Speaking a few paragraphs of context is far easier than typing them, so dictation is the fastest way to give Claude the detailed direction it works best with.
+
+**Steps:**
+
+1. Go to [wisprflow.ai/students](https://wisprflow.ai/students) and click **Start Today for free** to create your account.
+2. Download the app for your platform (macOS or Windows) and install it.
+3. Sign in with your **school (.edu) email** to auto-activate the student offer. No .edu address? Use the form on that page to verify with a student ID, enrollment confirmation, or similar.
+
+The student offer is **3 months free**, then $6/month billed annually (50% off the standard price). You can cancel anytime.
+
+> **Checkpoint:** Wispr Flow is installed, and you can dictate a sentence into any text field and watch it appear as text. (Finish the app's onboarding first; it sets the key you hold to talk.)
 
 ---
 
@@ -580,6 +597,7 @@ Before calling Part 1 complete, run through every item in this checklist. Each v
 - [ ] Can log into [github.com](https://github.com) and see your dashboard
 - [ ] Claude Pro subscription active at [claude.ai](https://claude.ai) (Pro badge visible)
 - [ ] Can sign in to Granola (student plan applied, or the free Basic plan)
+- [ ] Wispr Flow installed and dictating (student offer activated with your school email)
 
 ### Tools
 
@@ -651,6 +669,7 @@ Here's what you've just configured:
 |    Claude Code ........ AI coding agent                         |
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |    Granola app ........ AI notepad for meetings                  |
+|    Wispr Flow ......... Voice dictation for AI prompts           |
 |    TASKS.md ........... In-repo task board (created in Part 2)  |
 |                                                                |
 |  Your Repository:                                              |
@@ -818,8 +837,8 @@ When something goes wrong, follow this systematic approach:
 
 Part 1 is complete. You've:
 
-- Created accounts on GitHub, Claude, and Granola (the cloud services that power professional workflows)
-- Installed the tools that make up your development environment: Cursor, Git, Python, Claude Code, the Superpowers plugin, and the Granola app
+- Created accounts on GitHub, Claude, Granola, and Wispr Flow
+- Installed the tools that make up your development environment: Cursor, Git, Python, Claude Code, the Superpowers plugin, the Granola app, and Wispr Flow
 - Connected Claude Code to your Granola meeting notes for your capstone
 - Forked and cloned the tutorial repository (your working copy of the project)
 - Initialized Claude Code so it understands your project (AI context)
