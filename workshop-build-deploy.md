@@ -172,6 +172,8 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
    - empty "In Progress" and "Done" sections
    ```
 
+   > **The `@` symbol: pointing Claude at a file.** This is the first time you use it. `@prd/ecommerce-analytics.md` tells Claude Code to pull that exact file into the conversation, so it works from the real contents instead of guessing or making you copy and paste them. You can point at a whole folder the same way (like `@docs/superpowers/plans/`). When you type `@`, Claude Code shows a list of files and folders and autocompletes the path as you go, so you rarely type the whole thing. Pointing the AI at the right file is a small habit with a big payoff. You get better output, because the more precisely you set the context, the more on-target the result. And you get faster, cheaper output: because Claude reads just the file you named, it doesn't burn time and tokens (the chunks of text a model processes) searching your project for the right context, which means quicker replies and more headroom before you hit your plan's usage limits. You'll use `@` throughout the rest of this guide.
+
    Claude reads the PRD and drafts the board. Open `TASKS.md` in Cursor and read it. It should look roughly like this:
 
    ```markdown
