@@ -270,7 +270,7 @@ From here on, your board lives in Git. It's saved locally for now; you'll push i
 
 This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what*: the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see each skill load in the output as it activates.
 
-1. In your Claude Code session (still open from Section 1), send this prompt. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
+1. **Send the prompt.** In your Claude Code session (still open from Section 1), send the prompt below. It points at the PRD and your milestones, and sets a few ground rules so the plan fits this project:
 
    ```
    Help me design and plan the e-commerce sales dashboard described in
@@ -288,17 +288,11 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    >
    > Giving the AI clear constraints like these is itself a skill: you get a plan shaped to *your* project instead of its defaults.
 
-2. Watch what happens:
+2. **Answer brainstorming's questions.** Claude loads the brainstorming skill (you'll see a `Skill(superpowers:brainstorming)` line with `Successfully loaded skill` under it), then asks you 3-5 clarifying questions, one at a time, on things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision, or type your own preference.
 
-   a. Claude loads the brainstorming skill. You'll see a line like `Skill(superpowers:brainstorming)` with `Successfully loaded skill` under it. That's your cue the skill has taken over.
+3. **Review the design doc (your chance to change it).** Brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`, then pauses and asks you to review it before turning it into a plan (something like *"give the spec a read and let me know if you want any changes; if it looks right, say the word and I'll draft the plan"*). This is the most important checkpoint in the process: the design is about to drive the plan and then the code, so now is the moment to catch anything wrong or missing, while it's cheap to fix. Open the file in Cursor and read it: in the file explorer on the left, expand the `docs` folder, then `superpowers`, then `specs`, and click the design doc to open it. (No sidebar? Press `Cmd+B` on macOS or `Ctrl+B` on Windows to toggle it.) It opens as raw Markdown, so to read it as a formatted document, press `Cmd+Shift+V` (macOS) or `Ctrl+Shift+V` (Windows), or click the **Open Preview** button in the editor's top-right toolbar. If anything is off (a wrong chart type, a missing KPI, an assumption you disagree with), just tell Claude what to change and it will revise the spec. When it captures what you want, tell Claude to go ahead and it moves on to the plan.
 
-   b. Brainstorming asks you 3-5 clarifying questions, one at a time. Topics include things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision. You can answer with the numbered choices or type your own preference.
-
-   c. After the Q&A, brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`. Claude shows you a preview and asks if it looks right. If it does, approve it.
-
-   d. Brainstorming hands off to writing-plans, which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering.
-
-3. Open both files in Cursor and read through them. The design doc captures what to build; the plan captures how to build it, task by task.
+4. **Review the implementation plan.** Brainstorming hands off to writing-plans, which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. Open it the same way (expand `docs`, then `superpowers`, then `plans`, then preview it). The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering. The design doc captures *what* to build; the plan captures *how* to build it, task by task.
 
 > **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
@@ -365,35 +359,21 @@ TASKS.md (your milestones)              Implementation plan (Claude's steps)
 
 ### 3.1 Check the plan lines up with your board
 
-Because you pointed the planning prompt at your milestones, the plan should already cover them. Do a quick check, and record the mapping so each milestone points back to its plan steps.
+Because you pointed the planning prompt at your milestones, the plan should already cover them. This is a quick sanity check, not a formal audit.
 
-1. In Claude Code:
+1. Skim the implementation plan you opened in Section 2.2 against your milestones in `TASKS.md`. Each milestone should have some plan steps behind it, and the plan shouldn't be building things that aren't on your board.
+
+2. If something looks missing or off, ask Claude to check for you:
 
    ```
-   Compare the implementation plan in @docs/superpowers/plans/ against the
-   milestones in @TASKS.md. For each milestone, note which plan steps cover
-   it by adding "(plan steps X-Y)" after the milestone title. Then tell me if
-   any milestone has no plan steps behind it, or if the plan does something
-   that isn't on my board.
+   Does the plan in @docs/superpowers/plans/ cover every milestone in
+   @TASKS.md? If any milestone has no plan behind it, tell me and suggest
+   how to fix it.
    ```
 
-2. Claude annotates each milestone and flags any gaps. Your To Do section should end up looking like this:
+   If Claude flags a gap, decide what to do: adjust a milestone, or ask Claude to extend the plan. It's normal for planning to surface something the PRD implied but didn't spell out.
 
-   ```markdown
-   ## To Do
-   - [ ] **TASK-1: Project setup and data loading** (plan steps 1-3)
-     - [ ] App runs with `streamlit run app.py` and shows a title
-     - [ ] Loads `data/sales-data.csv`; handles a missing file cleanly
-   - [ ] **TASK-2: KPI scorecards** (plan steps 4-6)
-     - [ ] Total Sales and Total Orders shown as formatted metrics
-   - [ ] **TASK-3: Sales trend chart** (plan steps 7-9)
-     - [ ] Line chart of sales over time renders from the data
-   ...
-   ```
-
-3. If Claude flags a gap (a milestone with no plan behind it, or plan work that maps to no milestone), decide what to do: adjust a milestone, or ask Claude to extend the plan. It's normal for planning to surface something the PRD implied but didn't spell out.
-
-**Checkpoint:** Every milestone in `TASKS.md` notes the plan steps that cover it, and there are no unexplained gaps between the board and the plan.
+**Checkpoint:** You've confirmed the plan covers your milestones, with no obvious gaps between the board and the plan.
 
 > **Pro Tip:** Notice the zoom levels. The PRD said "display Total Sales." The plan breaks that into steps ("compute total sales with a test," "render a metric component"). Your board zooms back out to one milestone: "KPI scorecards." Same work, three altitudes: requirement, engineering steps, trackable deliverable. Being able to move between them is a real skill.
 
@@ -609,6 +589,8 @@ that board update and push it too.
 ```
 
 Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
+
+> **Handy: accept Claude's next-prompt suggestions.** As you repeat this cycle, Claude Code often shows a dimmed suggestion in the input box, its guess at what you might type next (like committing, or starting the next milestone). Press the **right arrow** (or **Tab**) to drop it into your prompt, then **Enter** to send it. To write your own instead, just start typing and the suggestion disappears. It's on by default; you can turn it off in `/config` if you find it distracting.
 
 > **Skip the deployment milestone for now (if you have one).** You can't deploy until your code is merged to `main`, which happens in the next step. Leave any deployment milestone in the To Do section.
 
