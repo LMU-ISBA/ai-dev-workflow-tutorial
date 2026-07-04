@@ -232,6 +232,10 @@ Each skill narrows the space of possible outcomes. By the time executing-plans r
 
 ### 2.1 Create the feature branch
 
+Before you build anything, you'll set up a separate branch to work on. If you're new to Git, here's what that means and why it matters.
+
+> **What is a branch, and why make one?** A **branch** is a separate line of work in your project, like a parallel copy you can change freely without touching the original. Your project already has one branch, called `main`: the official, working version of the code. Instead of building directly on `main`, you'll make a new branch just for this dashboard (a **feature branch**) and do all your work there. That keeps `main` clean and stable, so if something breaks while you build, the trusted version stays safe. When the feature is finished and tested, you merge your branch back into `main` (Section 4.5). This is how professional teams work: build on a branch, then merge.
+
 You could type the Git command yourself, but you don't have to. In Claude Code, just ask:
 
 ```
@@ -240,9 +244,9 @@ Create a new git branch called feature/sales-dashboard and switch to it.
 
 Claude runs the command and confirms you're on the new branch.
 
-> **This is the whole idea.** You don't memorize Git commands in this tutorial. When you need one, describe what you want and let Claude Code run it. It'll show you the command it used (here, `git checkout -b feature/sales-dashboard`), so you pick up the vocabulary as you go instead of drilling it up front.
+The name `feature/sales-dashboard` follows a common convention: a `feature/` prefix plus a short, hyphenated description of what you're building. You'll name your own branches this way in the capstone, so a branch says at a glance what work it holds.
 
-Your `main` branch stays clean and stable while you work on the feature branch. Same pattern professional development teams use.
+> **This is the whole idea.** You don't memorize Git commands in this tutorial. When you need one, describe what you want and let Claude Code run it. It'll show you the command it used (here, `git checkout -b feature/sales-dashboard`), so you pick up the vocabulary as you go instead of drilling it up front.
 
 **Checkpoint:** Ask Claude "which branch am I on?" It should be `feature/sales-dashboard`.
 
