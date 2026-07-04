@@ -13,7 +13,7 @@
 - [Section 2: Brainstorm and plan (~30 min)](#section-2-brainstorm-and-plan-30-min)
   - [2.1 Create the feature branch](#21-create-the-feature-branch)
   - [2.2 Brainstorm and plan with one prompt](#22-brainstorm-and-plan-with-one-prompt)
-- [Section 3: Confirm the plan covers your milestones (~5 min)](#section-3-confirm-the-plan-covers-your-milestones-5-min)
+- [Section 3: Two artifacts, two altitudes (~5 min)](#section-3-two-artifacts-two-altitudes-5-min)
 - [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
   - [4.1 Implement the first milestone](#41-implement-the-first-milestone)
   - [4.2 Commit, push, and update TASKS.md](#42-commit-push-and-update-tasksmd)
@@ -300,6 +300,20 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    Claude hands off to writing-plans (you'll see a `Skill(superpowers:writing-plans)` line with `Successfully loaded skill` under it, just like the brainstorming skill earlier), which produces an implementation plan at `docs/superpowers/plans/YYYY-MM-DD-sales-dashboard.md`. Open it the same way (expand `docs`, then `superpowers`, then `plans`, then preview it) and read it. The plan contains bite-sized tasks; some are flagged for test-driven development (TDD), typically data transformations like KPI calculations and date filtering. The design doc captures *what* to build; the plan captures *how* to build it, task by task.
 
+5. **Choose how Claude will execute the plan.** After the plan is written, Claude asks one last question before any code runs: how do you want it to execute the plan? You'll usually see two options:
+
+   - **Subagent-driven**: Claude hands each task to a fresh helper agent (a *subagent*) that works on it separately, with a review between tasks. Picture delegating each task to a new contractor who starts with a clean slate: nothing from earlier tasks clutters their head, so mistakes get caught early. The tradeoff is that the work happens offstage. You see the results, not the process.
+   - **Inline execution**: Claude does every task itself, right in your session, pausing at checkpoints so you can review. Each test, file, and decision scrolls past on your screen as it happens.
+
+   For this tutorial you want **inline execution**: watching the process is the point, and it keeps everything in one conversation. Answer now, but tell Claude to wait before building, since you have a bit of reading to do first:
+
+   ```
+   Use inline execution, but wait for my go-ahead before starting the first
+   task.
+   ```
+
+   You'll give that go-ahead in Section 4.1, after a short look at how the plan relates to your task board.
+
 > **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
 > **Why TDD on some tasks?** Some plan tasks are flagged for **test-driven development (TDD)**: Claude writes a small test before the code, so the behavior is pinned down before anything is built. It's used where it pays off, on data transformations like KPI calculations and date filtering, and skipped for chart rendering, where Streamlit components are hard to test meaningfully. You'll watch a TDD task play out step by step when you build in Section 4.
@@ -325,9 +339,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 ---
 
-## Section 3: Confirm the plan covers your milestones (~5 min)
-
-### Two artifacts, two altitudes
+## Section 3: Two artifacts, two altitudes (~5 min)
 
 You now have two planning documents. Being clear on how they relate matters; this is where students most often get confused.
 
@@ -363,23 +375,7 @@ TASKS.md (your milestones)              Implementation plan (Claude's steps)
   You set these (from the PRD)            Superpowers wrote these (the how)
 ```
 
-### 3.1 Check the plan lines up with your board
-
-Because you pointed the planning prompt at your milestones, the plan should already cover them. This is a quick sanity check, not a formal audit.
-
-1. Skim the implementation plan you opened in Section 2.2 against your milestones in `TASKS.md`. Each milestone should have some plan steps behind it, and the plan shouldn't be building things that aren't on your board.
-
-2. If something looks missing or off, ask Claude to check for you:
-
-   ```
-   Does the plan in @docs/superpowers/plans/ cover every milestone in
-   @TASKS.md? If any milestone has no plan behind it, tell me and suggest
-   how to fix it.
-   ```
-
-   If Claude flags a gap, decide what to do: adjust a milestone, or ask Claude to extend the plan. It's normal for planning to surface something the PRD implied but didn't spell out.
-
-**Checkpoint:** You've confirmed the plan covers your milestones, with no obvious gaps between the board and the plan.
+**Checkpoint:** You can pick any step in the implementation plan and say which milestone on your board it belongs to.
 
 > **Pro Tip:** Notice the zoom levels. The PRD said "display Total Sales." The plan breaks that into steps ("compute total sales with a test," "render a metric component"). Your board zooms back out to one milestone: "KPI scorecards." Same work, three altitudes: requirement, engineering steps, trackable deliverable. Being able to move between them is a real skill.
 
@@ -419,13 +415,14 @@ Press **Shift+Tab** to cycle between modes. The current mode (for example, "acce
 
 Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a milestone, Claude works through the plan steps it covers, one at a time.
 
-1. In Claude Code, start the first milestone and move it to In Progress on your board:
+1. Back in Section 2.2 you told Claude to wait for your go-ahead. This is it. Start the first milestone and move it to In Progress on your board:
 
    ```
-   Let's work on TASK-1. Move it to the In Progress section of TASKS.md, then implement the plan steps it covers.
+   Let's work on TASK-1. Move it to the In Progress section of TASKS.md, then
+   implement the plan steps it covers.
    ```
 
-   Claude will recognize this as an implementation task and auto-invoke `executing-plans`. You'll see `Skill(superpowers:executing-plans)` in the output. The skill reads the plan and works through the steps under this milestone, one at a time.
+   Claude invokes `executing-plans` (you'll see `Skill(superpowers:executing-plans)` in the output). The skill reads the plan and works through the steps under this milestone, one at a time.
 
    > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
@@ -672,13 +669,19 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    You should be on your feature branch (e.g., `feature/sales-dashboard`).
 
-2. **Merge into main.** In Claude Code:
+2. **Merge into main.** If Claude is still offering to merge from the end of your last milestone (the `finishing-a-development-branch` offer you held off on in Section 4.4), just accept it:
+
+   ```
+   Yes, merge to main now.
+   ```
+
+   Otherwise, ask directly. In Claude Code:
 
    ```
    Merge my current feature branch into main
    ```
 
-   Claude switches to `main`, merges the feature branch, and reports the result.
+   Either way, Claude switches to `main`, merges the feature branch, and reports the result.
 
 3. **Push main to GitHub.** In Claude Code:
 
