@@ -250,6 +250,22 @@ The name `feature/sales-dashboard` follows a common convention: a `feature/` pre
 
 **Checkpoint:** Ask Claude "which branch am I on?" It should be `feature/sales-dashboard`.
 
+Now that you're on your feature branch, save the task board you created in Section 1 so it's under version control. In Claude Code:
+
+```
+Commit TASKS.md with the message "Add task board from the PRD".
+```
+
+From here on, your board lives in Git, and you'll commit an update to it as you finish each milestone.
+
+> **Optional Pro Tip: keep your bearings on screen.** Instead of asking which branch you're on each time, you can pin a status line to the bottom of Claude Code that shows it all the time. Ask it once:
+>
+> ```
+> /statusline show the current git branch, the folder, the model, the reasoning effort, and the context usage
+> ```
+>
+> Claude writes the setup for you (no scripting needed), and it appears in every session from then on, including your capstone. This is a nice-to-have, not part of the build, so if it doesn't render cleanly on your machine, just skip it.
+
 ### 2.2 Brainstorm and plan with one prompt
 
 This is the moment the workflow shifts from "you driving Claude" to "Claude running a process you observe." You already know the *what*: the milestones on your board. Now you give Claude one prompt; the brainstorming skill activates, asks you questions, writes a design doc, and hands off to writing-plans, which produces an implementation plan for the *how*. You'll see Claude announce each skill switch in the output.
@@ -526,20 +542,20 @@ Here is what each stage means:
 
    If this is your first push on the feature branch, Claude may need to set the upstream tracking branch. It handles this automatically.
 
-3. **Update your task board.** In Claude Code, close the loop by recording what you did:
+3. **Update your task board, then save it.** In Claude Code, close the loop by recording what you did and committing that update so it lands on GitHub with this milestone:
 
    ```
-   Update TASK-1 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it from In Progress to Done.
+   Update TASK-1 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it from In Progress to Done. Then commit TASKS.md with a message like "TASK-1: mark done on the board" and push.
    ```
 
-   Claude edits `TASKS.md`, checking the boxes, noting the commit, and moving the milestone into the Done section.
+   Claude edits `TASKS.md`, commits that change, and pushes it, so your board on GitHub shows TASK-1 done right away instead of trailing into the next milestone's commit.
 
 4. **Verify on your board.** Open `TASKS.md` in Cursor and confirm:
    - TASK-1 is now in the Done section
    - Its acceptance criteria and the Definition of Done are checked off
    - The commit hash is recorded next to it
 
-**Checkpoint:** Code is on GitHub. TASK-1 shows in the Done section of `TASKS.md` with its criteria checked and commit recorded.
+**Checkpoint:** Code and the updated board are on GitHub. TASK-1 shows in the Done section of `TASKS.md` with its criteria checked and commit recorded.
 
 ### 4.3 Complete remaining milestones
 
@@ -563,7 +579,7 @@ Make sure the milestone's commits carry the milestone ID
 Push to GitHub
         |
         v
-Update TASKS.md --> check off criteria --> Move to Done
+Update TASKS.md --> check off, move to Done --> commit + push the board
 ```
 
 Here is the pattern for each milestone. In Claude Code:
@@ -579,7 +595,7 @@ After implementation and testing, in Claude Code:
 ```
 Commit anything outstanding for TASK-2 and push to GitHub.
 
-Then update TASK-2 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it to Done.
+Then update TASK-2 in TASKS.md: check off its acceptance criteria and the Definition of Done, record the commit hash, and move it to Done. Commit that board update and push it too.
 ```
 
 Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
