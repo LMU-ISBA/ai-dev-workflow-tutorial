@@ -275,13 +275,16 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    ```
    Help me design and plan the e-commerce sales dashboard described in
    @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md.
-   Structure the plan so its steps cover each one. Ground rules: work on my
-   current feature branch (do not create a git worktree), set up a Python
-   virtual environment in venv/ for dependencies, and keep the code simple
-   and readable so I can follow it.
+   Structure the plan so its steps cover each one, except deployment: leave
+   that milestone out of the plan, because I'll deploy it myself from the
+   main branch at the end. Ground rules: work on my current feature branch
+   (do not create a git worktree), set up a Python virtual environment in
+   venv/ for dependencies, and keep the code simple and readable so I can
+   follow it.
    ```
 
-   > **What those ground rules mean.** You're setting three constraints on purpose, not parroting them:
+   > **What those ground rules mean.** You're setting these constraints on purpose, not parroting them:
+   > - **leave deployment out of the plan.** Deployment happens from the `main` branch after your work is merged, and you'll drive it yourself, step by step, in Section 5. If the plan included deployment, Claude would try to walk you through deploying early, from the wrong branch.
    > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
    > - **set up a Python virtual environment in `venv/`.** This is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1.
    > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
@@ -582,11 +585,16 @@ Definition of Done, record the commit hash, and move it to Done if it
 isn't already. Commit that board update and push it too.
 ```
 
-Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
+> **Now loop until the board is done.** The prompts above show TASK-2, but this cycle is the rest of your build: run it again for TASK-3, then TASK-4, and every remaining implementation milestone, swapping in the current milestone ID each time. You're finished with this section only when every implementation milestone sits in the Done section of `TASKS.md`. One prompt pair per milestone; don't stop after TASK-2.
 
 > **Handy: accept Claude's next-prompt suggestions.** As you repeat this cycle, Claude Code often shows a dimmed suggestion in the input box, its guess at what you might type next (like committing, or starting the next milestone). Press the **right arrow** (or **Tab**) to drop it into your prompt, then **Enter** to send it. To write your own instead, just start typing and the suggestion disappears. It's on by default; you can turn it off in `/config` if you find it distracting.
 
-> **Skip the deployment milestone for now (if you have one).** You can't deploy until your code is merged to `main`, which happens in the next step. Leave any deployment milestone in the To Do section.
+> **Leave the deployment milestone in To Do (if you have one).** This tutorial deploys from `main` after your work is merged: that's Streamlit Cloud's default branch and the professional pattern, and Section 5 walks you through it click by click. So don't start a deployment milestone here. Claude may still offer to deploy for you (it's technically possible from a feature branch); if it does, or if it has already moved the milestone to In Progress, rein it in:
+>
+> ```
+> Hold off on deployment. Move that milestone back to To Do; I'll deploy
+> myself from main after we merge.
+> ```
 
 > **Pro Tip:** Watch Claude's output as it works each milestone. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
