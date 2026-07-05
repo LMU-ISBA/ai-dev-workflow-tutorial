@@ -438,30 +438,17 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    Understanding the file structure helps you learn from the AI's work rather than treating it as a black box.
 
-3. Test the dashboard. Claude set up the `venv/` virtual environment while implementing TASK-1, so it's ready to use. You can either run these commands yourself in Cursor's terminal, or ask Claude Code to do it for you (Option B; if `venv/` isn't there for any reason, Claude will create it).
-
-   **Option A: run it yourself** in Cursor's terminal:
-
-   ```bash
-   source venv/bin/activate       # macOS
-   # or: venv\Scripts\activate    # Windows
-
-   streamlit run app.py
-   ```
-
-   **Option B: ask Claude Code:**
+3. Test the dashboard. Claude set up the `venv/` virtual environment while implementing TASK-1, so it's ready to use (if it isn't there for any reason, Claude will create it). In Claude Code:
 
    ```
    Activate my virtual environment and run the Streamlit app so I can test it.
    ```
 
-   > **Key Concept: Virtual Environments.** The `source venv/bin/activate` command activates a **virtual environment**, an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. The virtual environment ensures that your dashboard's dependencies (Streamlit, Pandas, Plotly) are contained within this project. You'll see `(venv)` at the beginning of your terminal prompt when the environment is active.
+   > **Key Concept: Virtual Environments.** A **virtual environment** (the `venv/` folder) is an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. It keeps your dashboard's dependencies (Streamlit, Pandas, Plotly) contained within this project. That's what "activate my virtual environment" asks for: use this project's Python, not the machine-wide one. If you ever run the app yourself in Cursor's terminal, activate it first with `source venv/bin/activate` (macOS) or `venv\Scripts\activate` (Windows), then `streamlit run app.py`; you'll see `(venv)` at the start of the prompt while it's active.
 
-4. When the server starts, Streamlit prints a **Local URL** in the terminal, for example `http://localhost:8501` (the port number can differ if something else on your machine is already using that one). Click whatever link it printed to open it in your browser: in Cursor's terminal, hold `Cmd` (macOS) or `Ctrl` (Windows) and click the URL. Streamlit often opens it for you automatically. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
+4. Claude starts the server and reports the **Local URL**, for example `http://localhost:8501` (the port number can differ if something else on your machine is already using that one). Open whatever URL it gives you: hold `Cmd` (macOS) or `Ctrl` (Windows) and click the link, or copy it into your browser. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
 
-5. When done reviewing, press **Ctrl+C** in the terminal to stop the Streamlit server.
-
-**Checkpoint:** The dashboard runs locally at the Local URL Streamlit printed, without errors.
+**Checkpoint:** The dashboard runs locally at the Local URL Claude reported, without errors.
 
 ### 4.2 Commit, push, and update TASKS.md
 
@@ -511,14 +498,15 @@ Here is what each stage means:
 
 #### Steps
 
-1. **Commit any outstanding changes.** As it worked through the milestone, executing-plans likely committed each plan step already. This step captures anything still uncommitted (often just your `TASKS.md` update) with the milestone ID. In Claude Code:
+1. **Verify the milestone's commits.** As it worked through the milestone, executing-plans committed each plan step along the way, so there's usually nothing left to commit by the time you get here. This step is a check, not busywork: you're confirming the work is saved, the commits carry the milestone ID, and junk like `venv/` stayed out of the repo. In Claude Code:
 
    ```
-   Commit anything outstanding for TASK-1, including the TASKS.md update,
-   with the milestone ID in the message. Make sure venv/ is in .gitignore.
+   Is everything for TASK-1 committed, with the milestone ID in the commit
+   messages? Commit anything still outstanding, and confirm venv/ is
+   covered by .gitignore.
    ```
 
-   Claude will add `venv/` to `.gitignore` (if not already there), stage the remaining changes, and create a commit with a message like "TASK-1: Set up project structure and dependencies." (If nothing's left to commit, Claude will tell you; that just means the step-by-step commits already covered it.)
+   Two outcomes, both fine: Claude reports it's all already committed (the usual case), or it commits the stragglers. Either way you end with a clean working tree and TASK-1's history in Git.
 
    > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository; they're large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
 
@@ -532,13 +520,13 @@ Here is what each stage means:
 
    If this is your first push on the feature branch, Claude may need to set the upstream tracking branch. It handles this automatically.
 
-3. **Update your task board, then save it.** In Claude Code, close the loop by recording what you did and committing that update so it lands on GitHub with this milestone:
+3. **Update your task board, then save it.** In Claude Code, close the loop by recording what you did and committing that update so it lands on GitHub with this milestone. Claude sometimes moves the milestone to Done on its own while committing; this step makes sure the rest of the record (checked criteria, commit hash) is there too:
 
    ```
    Update TASK-1 in TASKS.md: check off its acceptance criteria and the
-   Definition of Done, record the commit hash, and move it from In Progress
-   to Done. Then commit TASKS.md with a message like "TASK-1: mark done on
-   the board" and push.
+   Definition of Done, record the commit hash, and move it to Done if it
+   isn't already. Then commit TASKS.md with a message like "TASK-1: mark
+   done on the board" and push.
    ```
 
    Claude edits `TASKS.md`, commits that change, and pushes it, so your board on GitHub shows TASK-1 done right away instead of trailing into the next milestone's commit.
@@ -563,7 +551,7 @@ Take the next milestone
 "Let's work on TASK-N" --> Move to In Progress --> executing-plans works its plan steps
         |
         v
-Test the dashboard (streamlit run app.py)
+Test the dashboard (ask Claude to run it)
         |
         v
 Make sure the milestone's commits carry the milestone ID
@@ -586,11 +574,12 @@ Claude auto-invokes `executing-plans` and works through the plan steps under the
 After implementation and testing, in Claude Code:
 
 ```
-Commit anything outstanding for TASK-2 and push to GitHub.
+Verify everything for TASK-2 is committed with the milestone ID, commit
+anything still outstanding, and push to GitHub.
 
 Then update TASK-2 in TASKS.md: check off its acceptance criteria and the
-Definition of Done, record the commit hash, and move it to Done. Commit
-that board update and push it too.
+Definition of Done, record the commit hash, and move it to Done if it
+isn't already. Commit that board update and push it too.
 ```
 
 Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and so on.
@@ -601,23 +590,14 @@ Replace `TASK-2` with the current milestone ID. Repeat for TASK-3, TASK-4, and s
 
 > **Pro Tip:** Watch Claude's output as it works each milestone. You'll see files being created, imports being added, and functions being written. This is a good way to learn how professional code is structured. Pay attention to how Claude names variables, organizes functions, and handles data. You can reuse these patterns in your capstone.
 
-After working through all implementation milestones, test the complete dashboard one final time. You can run these yourself or ask Claude Code:
-
-**Option A: run it yourself** in Cursor's terminal:
-
-```bash
-source venv/bin/activate       # macOS, if not already active
-streamlit run app.py
-```
-
-**Option B: ask Claude Code:**
+After working through all implementation milestones, test the complete dashboard one final time. In Claude Code:
 
 ```
 Activate my virtual environment and run the Streamlit app so I can test
 the complete dashboard.
 ```
 
-Open whatever Local URL Streamlit prints in the terminal (for example `http://localhost:8501`) and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts. Press **Ctrl+C** to stop the server.
+Open whatever Local URL Claude reports (for example `http://localhost:8501`) and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts.
 
 **Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and commits recorded. Only a deployment milestone (if you have one) remains in To Do.
 
