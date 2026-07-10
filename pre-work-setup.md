@@ -255,6 +255,12 @@ You'll see reminders about this throughout the installation steps. If a tool doe
 8. When prompted to connect GitHub, click **Connect**, then **Authorize Cursor** in the browser that opens. Verify accounts and click **Link Account**, then **Continue**.
 9. Return to the Cursor desktop app and click **Log In** if prompted. Accept defaults on remaining screens.
 
+**Open the editor window:**
+
+10. Go to **File** --> **Open IDE** (called **Open Editor Window** in older versions; `Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows). This opens the editor window with the welcome screen, the same window you'll use to clone the repository in Section 3.
+
+> **Used Cursor before?** If Cursor skips the setup screens and drops you straight into an old project, step 10 is the fix: **File** --> **Open IDE** opens a fresh window with the welcome screen.
+
 > **Checkpoint:** You see the Cursor welcome screen with options: **Open project**, **Clone repo**, and **Connect via SSH**.
 
 ---
@@ -570,7 +576,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
 1. On your forked repository page (`github.com/[your-username]/ai-dev-workflow-tutorial`), click the green **Code** button.
 2. Make sure the **HTTPS** tab is selected (not SSH or GitHub CLI).
 3. Copy the URL. It will look like: `https://github.com/[your-username]/ai-dev-workflow-tutorial.git`
-4. In Cursor, open a fresh window: **File** --> **Open Editor Window** (`Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows).
+4. In Cursor, open a fresh window: **File** --> **Open IDE** (called **Open Editor Window** in older versions; `Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows).
 5. Click **Clone repo** on the welcome screen. (No welcome screen? Open the Command Palette, `Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows, and run **Git: Clone**.)
 6. Paste the URL you copied and press **Enter/Return**.
 7. Choose a save location. **Recommended:** Create a `GitHub` folder in your home directory to keep all repositories organized:
