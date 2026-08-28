@@ -9,6 +9,8 @@ You'll work through it in two parts:
 | [Part 1: Setup](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 70–100 min |
 | [Part 2: Build & Deploy](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers) (a skills add-on for Claude Code), track work in `TASKS.md`, build with Claude Code, deploy live | ~3 hours |
 
+**Your course sets the deadline and the submission channel.** Several courses use this tutorial, and it carries no due date of its own. Section 7 of Part 2 tells you what to have ready when you finish. Where to send it, by when, and how much of the tutorial is assigned all come from your course.
+
 ## Why this matters
 
 Building with technology in 2026 looks different than it did two years ago. AI assistants have moved from experimental to essential, and companies are looking for people who can work with them effectively.
