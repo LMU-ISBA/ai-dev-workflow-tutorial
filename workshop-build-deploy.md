@@ -342,7 +342,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 > **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
-> **Why TDD on some tasks?** Some plan tasks are flagged for **test-driven development (TDD)**: Claude writes a small test before the code, so the behavior is pinned down before anything is built. It's used where it pays off, on data transformations like KPI calculations and date filtering, and skipped for chart rendering, where Streamlit components are hard to test meaningfully. You'll watch a TDD task play out step by step when you build in Section 4.
+> **Why TDD on some tasks?** Some plan tasks are flagged for **test-driven development (TDD)**: Claude writes a small test before the code, so the behavior is pinned down before anything is built. It's used on data transformations like KPI calculations and date filtering, and skipped for chart rendering, where Streamlit components are hard to test meaningfully. Whether test-first makes an *agent's* code better is an open question. One careful experiment in August 2026 found no difference in quality and several times the cost. This tutorial keeps it anyway, for you rather than for Claude. A failing test is the one artifact in the build that's short enough to read in full, and it says exactly what "correct" means for that piece. When one appears in Section 4, read it before Claude writes the code, and say in one sentence what it checks. That sentence is what the walk-through will ask you for.
 
 > **Skill handoff cheat sheet (the chain you just experienced):**
 >
@@ -458,7 +458,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    Claude invokes `executing-plans` (you'll see `Skill(superpowers:executing-plans)` in the output). The skill reads the plan and works through the steps under this milestone, one at a time. In Manual mode it asks before its first file write, which is how you know the mode took.
 
-   > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the build.
+   > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. When the failing test appears at (a), read it before (c) happens. In Manual mode, Claude is waiting for you anyway. Say to yourself what it checks: "total sales is the sum of the total_amount column." That's the sentence the walk-through asks for. Then watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output; you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
@@ -649,7 +649,7 @@ Open whatever Local URL Claude reports (for example `http://localhost:8501`). Th
 
 Your dashboard is built and working, so now is the moment to give your project a memory. You'll generate a `CLAUDE.md`, a file Claude Code reads at the start of every session, so future sessions (and your capstone) begin with context instead of a blank slate.
 
-> **If Claude showed you a menu after your last milestone:** hold off. After the final plan step, Superpowers runs your whole test suite and then offers three choices (the `finishing-a-development-branch` step). The choices are merge to main locally, push and create a pull request, or keep the branch as it is. Don't pick yet. Do this `/init` step first so `CLAUDE.md` is part of the merge, then choose in Section 4.5.
+> **If Claude showed you a menu after your last milestone:** hold off. After the final plan step, Superpowers runs your whole test suite and then offers three choices (the `finishing-a-development-branch` step). The choices are merge to main locally, push and create a pull request, or keep the branch as it is. Don't pick yet. Do this `/init` step first so `CLAUDE.md` is part of the merge, then handle the menu in Section 4.5.
 
 > **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start: at the start there's nothing to describe; now it can capture your actual project. It also pays off on a team: because `CLAUDE.md` is committed to the repo, every teammate's Claude Code session reads the same file, so everyone (and their AI) follows the same setup, conventions, and structure. That keeps development consistent, and a new teammate gets up to speed from one file instead of asking around.
 
@@ -716,19 +716,16 @@ Your feature branch contains all the implementation work. Before it becomes the 
 
    > **Why you decide, not Claude.** A reviewer's job is to find things. Yours is to weigh them against what the project needs. Some findings are real bugs. Some are style. Some are the reviewer being thorough about something the PRD never asked for. Sorting those apart is the judgment this tutorial is trying to grow, and the walk-through will ask what the review found and what you did about it. The list is in your conversation, and your decision is in the fix commit.
 
-3. **Merge into main.** If the three-option menu from the end of your last milestone is still waiting (the one you held off on in Section 4.4), pick the first option:
+3. **Merge into main.** If the three-option menu from the end of your last milestone is still waiting (the one you held off on in Section 4.4), pick option 3, keep the branch as it is, so you can do the merge in your own words. In Claude Code:
 
    ```
-   Option 1: merge to main locally.
+   Merge feature/sales-dashboard into main with a merge commit (no
+   fast-forward), so the branch shows in the history.
    ```
 
-   Otherwise, ask directly. In Claude Code:
+   Claude switches to `main`, merges the feature branch, and reports the result.
 
-   ```
-   Merge my current feature branch into main
-   ```
-
-   Either way, Claude switches to `main`, merges the feature branch, and reports the result.
+   > **Why ask for a merge commit?** Left to itself, Git takes a shortcut when it can. If `main` hasn't changed since you branched, it moves the `main` label forward to your last commit and creates no merge commit at all. Your history then looks as if the branch never existed. Someone reading your repo, your instructor say, can't tell that apart from working on `main` the whole time. Asking for a merge commit gives you the commit D in the diagram above, with the branch visible underneath it.
 
 4. **Push main to GitHub.** In Claude Code:
 
@@ -870,7 +867,23 @@ Make sure your `TASKS.md`, `prd/`, and `docs/superpowers/` files are included in
 
 **Checkpoint:** your repo opens on GitHub, your dashboard loads at its public URL, and both links have gone wherever your course asks for them.
 
-> **If your course includes a 1:1, the walk-through comes next.** Handing in the links isn't the last step, explaining the work is. You'll walk your instructor through what you built and how, live, with follow-up questions: why the work happened on a feature branch, what the design doc changed about what you built, what a commit message with a milestone ID makes possible, what the code review found and what you did about it, why the merge came before the deploy. This isn't a quiz to cram for, and it isn't a hunt for AI use (AI was expected everywhere in this tutorial). It checks the one thing a polished repo can't show: that the reasoning behind it is yours. Your prep material is already on the record. Reread your spec, your plan, your board, and your commit history, and make sure you can tell the story of each out loud with the tool closed. If you can, you're ready, both for this meeting and for the capstone, where you'll do the same thing in front of stakeholders.
+Whatever your course's grading looks like, here is what an instructor can see from the repo alone. Each item is a step in this guide, so if you did the steps, the evidence is there.
+
+- The spec and plan committed before the first code commit
+- A TASK id on every implementation commit
+- A Commit line and a Notes line under every milestone
+- A Lessons section in `CLAUDE.md`
+- A review-fix commit before the merge
+- A merge commit with the branch visible under it
+
+> **If your course includes a 1:1, the walk-through comes next.** Handing in the links isn't the last step, explaining the work is. You'll walk your instructor through what you built and how, live. Expect these four prompts, the same for everyone:
+>
+> 1. Pick one file Claude wrote and explain a diff from it, line by line.
+> 2. Name one test in `tests/` and say what would break if it were deleted.
+> 3. Take one requirement from the PRD and trace it to a milestone on your board and to the commit that delivered it.
+> 4. Tell the story of one Notes line: what Claude got wrong, how you caught it, and what changed.
+>
+> Follow-ups will come from your own repo. Why did the work happen on a feature branch? What did the design doc change about what you built? What did the code review find, and what did you do about it? Why did the merge come before the deploy? This isn't a quiz to cram for, and it isn't a hunt for AI use (AI was expected everywhere in this tutorial). It checks the one thing a polished repo can't show: that the reasoning behind it is yours. Your prep material is already on the record. Reread your spec, your plan, your board with its Notes lines, and your commit history, and make sure you can tell the story of each out loud with the tool closed. If you can, you're ready, both for this meeting and for the capstone, where you'll do the same thing in front of stakeholders.
 
 ---
 
@@ -957,7 +970,7 @@ Quick-reference table of key terms used in this document.
 | **Deploy** | Make software accessible on a server so users can reach it via a URL |
 | **executing-plans** | A Superpowers skill that implements tasks from an implementation plan one at a time, with frequent commits |
 | **Feature Branch** | A branch created specifically for developing one feature, separate from main |
-| **Fork** | Your personal copy of someone else's repository on GitHub, under your own account |
+| **Template repository** | A GitHub repository you can copy into a new repository of your own, with a fresh history and no link back to the original |
 | **Implementation plan** | The detailed, step-by-step build list `writing-plans` produces in `docs/superpowers/plans/`; Claude builds from it |
 | **Merge** | Combine changes from one branch into another, integrating completed work |
 | **Milestone** | A coarse, human-facing deliverable on your `TASKS.md` board (TASK-1, TASK-2, ...) that groups several plan steps |
@@ -980,4 +993,4 @@ You now have a complete professional workflow you can apply to your capstone pro
 
 > **Can you explain it without Claude in the room?** Getting the dashboard to run is the easy half. The real test is whether you can walk someone through what you built and why, and defend the decisions, with the AI closed. That's what your capstone will ask of you: in advisor check-ins, stakeholder meetings, and presentations, you speak the reasoning, not just show the result. Practice it now: out loud, explain your spec, your plan, and one tradeoff you made. Any part that comes out fuzzy is the part to go back and understand, because the tools and the process here are yours to account for.
 
-> **Bring your meetings into the loop.** In Part 1 you connected Claude Code to [Granola](https://www.granola.ai) (see [Section 2.6 of the setup guide](pre-work-setup.md#26-granola-app--connect-it-to-claude-code)). You didn't need it for the dashboard, but it's built for the capstone: record your stakeholder meetings in Granola, then start a Claude Code session and ask things like *"From this week's meeting notes, what did the client ask us to change?"* or *"Draft tasks in TASKS.md from the decisions in yesterday's kickoff."* The same plan-track-build workflow, now starting from what was actually said in the room.
+> **For your capstone: meetings and dictation.** Two more tools pay off once you're working with real stakeholders. Granola is an AI notepad that records your meetings and can hand the notes to Claude Code. You can then ask *"From this week's meeting notes, what did the client ask us to change?"* Wispr Flow is dictation, for giving Claude a few paragraphs of context by voice instead of typing them. Neither is needed for this tutorial. Both are in the [capstone tools appendix](capstone-tools.md), with the student plans and setup steps.

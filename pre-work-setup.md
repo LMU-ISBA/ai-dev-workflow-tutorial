@@ -2,24 +2,21 @@
 
 **Get your tools set up before you start building (Part 1 of 2)**
 
-Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (Build & Deploy) picks up where it leaves off.
+Estimated time: 55–80 minutes, at your own pace. Do this part first; Part 2 (Build & Deploy) picks up where it leaves off.
 
 ---
 
 ## Table of contents
 
-- [Section 1: Create accounts (~25 min)](#section-1-create-accounts-25-min)
+- [Section 1: Create accounts (~15 min)](#section-1-create-accounts-15-min)
   - [1.1 GitHub account](#11-github-account)
   - [1.2 Claude Pro subscription](#12-claude-pro-subscription)
-  - [1.3 Granola account and student plan](#13-granola-account-and-student-plan)
-  - [1.4 Wispr Flow account and student plan](#14-wispr-flow-account-and-student-plan)
-- [Section 2: Install tools (~50 min)](#section-2-install-tools-50-min)
+- [Section 2: Install tools (~40 min)](#section-2-install-tools-40-min)
   - [2.1 VS Code](#21-vs-code)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
   - [2.4 Claude Code](#24-claude-code)
   - [2.5 Superpowers plugin](#25-superpowers-plugin)
-  - [2.6 Granola app + connect it to Claude Code](#26-granola-app--connect-it-to-claude-code)
 - [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
   - [3.1 Fork the repository](#31-fork-the-repository)
   - [3.2 Clone your fork](#32-clone-your-fork)
@@ -30,12 +27,10 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
 ## What you'll set up
 
 ```
-Accounts:  GitHub, Claude Pro, Granola, Wispr Flow
-Tools:     VS Code, Git, Python 3.11+, Claude Code, Superpowers plugin, Granola app
+Accounts:  GitHub, Claude Pro
+Tools:     VS Code, Git, Python 3.11+, Claude Code, Superpowers plugin
 Repo:      Fork and clone the tutorial repository
 Tracking:  A TASKS.md file you create in Part 2 (no extra account needed)
-Meetings:  Granola connected to Claude Code (for your capstone)
-Dictation: Wispr Flow, speak your prompts to Claude Code instead of typing
 ```
 
 **See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (Free Streamlit apps go to sleep after 12 hours without visitors. If you land on a sleeping page, click **Yes, get this app back up!** and wait about 30 seconds.)
@@ -70,7 +65,6 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 - Use AI to accelerate building (Claude Code)
 - Plan before you build (Superpowers' brainstorming and writing-plans skills)
 - Read and edit code in the editor most developers use (VS Code)
-- Bring meeting notes into your AI workflow (Granola connected to Claude Code) for your capstone stakeholder meetings
 
 AI-assisted development doesn't replace understanding. It accelerates it. You still need to know what you're building and why. The AI handles much of the how.
 
@@ -92,9 +86,9 @@ The following diagram shows every tool you'll install and how they connect. Refe
 |       ^                           ^                          |
 |       |                           |                          |
 | Claude Code (coding agent) <--> Superpowers (planning skills) |
-|       ^              ^                                        |
-|       |              |                                        |
-| Python + Streamlit   Granola (meeting notes, via MCP)        |
+|       ^                                                       |
+|       |                                                       |
+| Python + Streamlit                                           |
 |  (your application)                                          |
 |                                                              |
 +-------------------------------------------------------------+
@@ -107,12 +101,10 @@ The following diagram shows every tool you'll install and how they connect. Refe
 - **Claude Code** is an AI coding agent that runs in your terminal, reads your project, and helps you build.
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you'll build in Part 2.
-- **Granola** is an AI notepad for meetings. Connected to Claude Code through MCP, it lets Claude read your meeting notes. You set it up now but use it in your capstone, not for the dashboard.
-- **Wispr Flow** lets you dictate instead of type. You speak, and it enters clean text into any app, including the terminal where you prompt Claude Code, so giving Claude a lot of context takes seconds.
 
 ---
 
-## Section 1: Create accounts (~25 min)
+## Section 1: Create accounts (~15 min)
 
 ### 1.1 GitHub account
 
@@ -153,38 +145,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ---
 
-### 1.3 Granola account and student plan
-
-> **Why Granola?** Granola is an AI notepad for meetings. It listens while you talk, then turns the conversation into clean, searchable notes, so you can pay attention instead of scrambling to type. You won't need it to build the dashboard in this tutorial. You set it up now because it pays off in your **capstone**: when you meet with stakeholders, Granola captures what was said, and later (in Section 2.6) you'll connect it to Claude Code so you can pull those meeting notes straight into a build session: "what did the client ask for in Tuesday's meeting?" answered from your actual notes, not your memory.
-
-**Steps:**
-
-1. Go to [granola.ai/students](https://www.granola.ai/students) and click **Apply**. Sign up with your **school email** and follow the prompts to verify you're a current student.
-2. The student plan gives you **12 months of Granola Business free**. It's available to enrolled students at accredited universities in the **US, UK, and Canada**.
-
-> **Not eligible for the student plan?** No problem. Granola's free **Basic** plan works with everything in this tutorial; the only limit is that Claude Code can query your notes from the **last 30 days** rather than your whole history. Sign up at [granola.ai](https://www.granola.ai) without the student application.
-
-> **Checkpoint:** You can sign in to your Granola account (student application submitted or approved).
-
----
-
-### 1.4 Wispr Flow account and student plan
-
-> **Why Wispr Flow?** Wispr Flow is a voice dictation app that turns your speech into text in any application, including the VS Code terminal where Claude Code runs. It advertises around 4x faster than typing and cleans up filler and false starts as you talk. Here's why it earns a spot in this setup: what you get out of an AI agent depends on how much context you put in. In Part 2, the Superpowers `brainstorming` skill interviews you with clarifying questions, and the richer your answers, the better the design and plan it produces. Speaking a few paragraphs of context is far easier than typing them, so dictation is the fastest way to give Claude the detailed direction it works best with.
-
-**Steps:**
-
-1. Go to [wisprflow.ai/students](https://wisprflow.ai/students) and click **Start Today for free** to create your account.
-2. Download the app for your platform (macOS or Windows) and install it.
-3. Sign in with your **school (.edu) email** to auto-activate the student offer. No .edu address? Use the form on that page to verify with a student ID, enrollment confirmation, or similar.
-
-The student offer is **3 months free**, then $6/month billed annually (50% off the standard price). You can cancel anytime.
-
-> **Checkpoint:** Wispr Flow is installed, and you can dictate a sentence into any text field and watch it appear as text. (Finish the app's onboarding first; it sets the key you hold to talk.)
-
----
-
-## Section 2: Install tools (~50 min)
+## Section 2: Install tools (~40 min)
 
 ### Understanding your terminal
 
@@ -441,83 +402,6 @@ The install command below is the only time you'll type a slash command to use Su
 
 ---
 
-### 2.6 Granola app + connect it to Claude Code
-
-This is the payoff of the Granola account you made in Section 1.3. You'll install the app and then give Claude Code the ability to read your meeting notes. Again: you don't use this to build the dashboard; it's here so it's ready for your capstone.
-
-> **What is MCP?** MCP (Model Context Protocol) is how Claude Code connects to outside services. Think of it as a port you can plug tools into: once you plug in Granola, Claude Code can search and read your meeting notes without you copying and pasting anything. (Notice the contrast with how this tutorial tracks tasks: your `TASKS.md` board is just a file Claude Code already reads, so it needs no MCP. Meeting notes live in Granola's cloud, so MCP is how Claude reaches them. Use a plain file when you can; use MCP when the data lives somewhere else.)
-
-Here's how your words in a meeting end up readable by Claude Code:
-
-```
-┌──────────────┐   Granola listens,    ┌──────────────┐
-│ Your meeting │──  transcribes,    ──> │ Granola app  │
-│  (you talk)  │    cleans up           │  (desktop)   │
-└──────────────┘                        └──────┬───────┘
-                                               │ syncs your notes up
-                                               v
-                                        ┌──────────────┐
-                                        │ Granola cloud│
-                                        │ (your notes) │
-                                        └──────┬───────┘
-                                               │ MCP server
-                                               │ (you authorize once,
-                                               │  in the browser)
-                                               v
-                                        ┌──────────────┐
-                                        │  Claude Code │  <- "Summarize my
-                                        │  (terminal)  │      last meeting"
-                                        └──────────────┘
-```
-
-The top half (record -> transcribe -> sync) happens in the Granola app. The bottom half (cloud -> MCP -> Claude Code) is the connection you set up below, once.
-
-**Install the app:**
-
-1. Download the Granola desktop app from [granola.ai](https://www.granola.ai) and install it.
-2. Open Granola and sign in with the account you created in Section 1.3. If you're unsure which email that account uses, check under **Settings** in Granola after signing in; you'll need the same email when you authorize Claude Code below.
-3. *(Optional but useful)* Record one short test note (even a few minutes of a lecture or a chat with a classmate) so you have something for Claude Code to find later.
-
-**Connect it to Claude Code:**
-
-4. In **VS Code's terminal** (not inside Claude Code), register the Granola MCP server. You can run this from any directory; it only needs to be done once:
-
-   ```bash
-   claude mcp add --transport http granola https://mcp.granola.ai/mcp
-   ```
-
-5. Start Claude Code:
-
-   ```bash
-   claude
-   ```
-
-6. Inside Claude Code, open the MCP menu:
-
-   ```
-   /mcp
-   ```
-
-   You'll see `granola` listed, likely showing that authentication is required.
-
-7. Select `granola` with the **arrow keys**, press **Enter**, and choose **Authenticate**. A browser window opens; sign in to Granola with the **same email** as your account, authorize the connection, and return to the terminal.
-
-8. Test it. In Claude Code, ask:
-
-   ```
-   Which Granola account am I signed in with?
-   ```
-
-   Claude uses Granola's `get_account_info` tool and replies with your email and workspace. This works even if you have no notes yet, which makes it a clean way to confirm the connection. If you recorded a test note in step 3, try: `Summarize my most recent meeting.`
-
-> **If it can't reach your notes:** Run `/mcp`, select `granola`, and re-authenticate. If you see "Unauthorized: user has not created a Granola account yet," you signed in with a different email than your Granola account; check the account email in Granola's **Settings** and reconnect with that one.
-
-> **How you'll use this in your capstone:** After a stakeholder meeting, open a Claude Code session in your capstone repo and ask things like *"From my meeting notes this week, list what the client asked us to change,"* or *"Draft tasks in TASKS.md based on the decisions in yesterday's kickoff."* Your meeting record flows straight into the plan-and-build workflow you're learning here.
-
-> **Checkpoint:** `/mcp` shows `granola` as authenticated, and asking "Which Granola account am I signed in with?" returns your email.
-
----
-
 ## Section 3: Fork and clone the repository (~15 min)
 
 ### Understanding forks and clones
@@ -592,8 +476,6 @@ Before calling Part 1 complete, run through every item in this checklist. Each v
 
 - [ ] Can log into [github.com](https://github.com) and see your dashboard
 - [ ] Claude Pro subscription active at [claude.ai](https://claude.ai) (Pro badge visible)
-- [ ] Can sign in to Granola (student plan applied, or the free Basic plan)
-- [ ] Wispr Flow installed and dictating (student offer activated with your school email)
 
 ### Tools
 
@@ -625,17 +507,6 @@ Then ask Claude: `Is the Superpowers plugin installed?` Expected: Claude checks 
 
 If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or reach out on Teams (the General channel, or a direct message to me).
 
-### Granola (Claude Code connection)
-
-Start a Claude Code session, run `/mcp`, and confirm `granola` is listed and authenticated. Then ask:
-```
-Which Granola account am I signed in with?
-```
-Expected: Claude returns your Granola email and workspace. Type `/exit` to close the session.
-
-- [ ] `granola` shows as authenticated in `/mcp`
-- [ ] "Which Granola account am I signed in with?" returns your email
-
 ### Repository
 
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
@@ -656,7 +527,6 @@ Here's what you've just configured:
 |  Cloud Services:                                               |
 |    GitHub ............. Code hosting and collaboration          |
 |    Claude Pro ......... AI assistant subscription               |
-|    Granola ............ Meeting notes (linked to Claude Code)    |
 |                                                                |
 |  Local Tools:                                                  |
 |    VS Code ............ Code editor and terminal                |
@@ -664,8 +534,6 @@ Here's what you've just configured:
 |    Python 3.11+ ....... Programming language                   |
 |    Claude Code ........ AI coding agent                         |
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
-|    Granola app ........ AI notepad for meetings                  |
-|    Wispr Flow ......... Voice dictation for AI prompts           |
 |                                                                |
 |  Your Repository:                                              |
 |    Fork on GitHub ..... Your remote copy                       |
@@ -684,12 +552,11 @@ These tools connect into one workflow: GitHub hosts your code, Git tracks change
 
 Part 1 is complete. You've:
 
-- Created accounts on GitHub, Claude, Granola, and Wispr Flow
-- Installed the tools that make up your development environment: VS Code, Git, Python, Claude Code, the Superpowers plugin, the Granola app, and Wispr Flow
-- Connected Claude Code to your Granola meeting notes for your capstone
+- Created accounts on GitHub and Claude
+- Installed the tools that make up your development environment: VS Code, Git, Python, Claude Code, and the Superpowers plugin
 - Forked and cloned the tutorial repository (your working copy of the project)
 
-Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, Claude Code with the Superpowers plugin for turning requirements into bite-sized plans, and Granola for capturing stakeholder meetings as notes Claude Code can read. You'll use this same environment for your capstone and beyond.
+Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, and Claude Code with the Superpowers plugin for turning requirements into bite-sized plans. Two more tools for the capstone itself, Granola for meeting notes and Wispr Flow for dictation, are in the [capstone tools appendix](capstone-tools.md). Skip them for now.
 
 **With setup done, you're ready for Part 2.** In the build guide, you'll put everything together:
 

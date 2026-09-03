@@ -6,30 +6,24 @@ You'll work through it in two parts:
 
 | Part | What you do | Time |
 |------|-------------|------|
-| [Part 1: Setup](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 70–100 min |
+| [Part 1: Setup](pre-work-setup.md) | Set up accounts, install tools, get your repo ready | 55–80 min |
 | [Part 2: Build & Deploy](workshop-build-deploy.md) | Plan with [Superpowers](https://github.com/obra/superpowers) (a skills add-on for Claude Code), track work in `TASKS.md`, build with Claude Code, deploy live | ~3 hours |
 
 **Your course sets the deadline and the submission channel.** Several courses use this tutorial, and it carries no due date of its own. Section 7 of Part 2 tells you what to have ready when you finish. Where to send it, by when, and how much of the tutorial is assigned all come from your course.
 
 ## Why this matters
 
-Building with technology in 2026 looks different than it did two years ago. AI assistants have moved from experimental to essential, and companies are looking for people who can work with them effectively.
+Most working developers now build with a coding agent. In a March 2026 survey of 906 engineers by The Pragmatic Engineer, 95 percent used AI tools every week, and Claude Code was the most used. The field has settled on a name for doing this well: agentic engineering. Andrej Karpathy coined "vibe coding" for the casual version. He describes the professional one as writing a clear spec, supervising the agent's plan, reading its changes, and keeping a way to check the result. That list is this tutorial.
 
-Claude Code, the tool you'll use throughout this tutorial, is Anthropic's AI coding agent. Unlike a chatbot that only suggests code, it works in your terminal to read your project, edit files, run commands, and debug with you. Getting fluent with it now is the kind of skill companies are starting to hire for.
+Claude Code, the tool you'll use throughout, is Anthropic's coding agent. Unlike a chatbot that suggests code for you to paste, it works in your terminal: it reads your project, edits files, runs commands, and debugs with you.
 
 You're not here to become a software engineer. You're here to learn how to build things when your work calls for it: a dashboard, an automated workflow, a rough prototype. Those skills carry over whether you go into analytics, consulting, or product management.
 
-AI is an amplifier, not a shortcut. For someone with judgment, it multiplies what they can do; for someone without it, it produces confident output with no one home to check it. The workflow in this tutorial is built to grow the judgment, so the speed is worth having.
+AI is an amplifier, not a shortcut. For someone with judgment, it multiplies what they can do. For someone without it, it produces confident output with no one home to check it. The evidence is specific. In a January 2026 study, Anthropic gave 52 junior developers a new library to learn, half of them with AI help. The AI group scored 50 percent on a comprehension quiz against 67 percent for the others, and saved no time doing it. The students who kept up were the ones who asked the AI to explain, questioned its choices, and did their own debugging. The ones who fell behind handed everything over.
 
-You're learning this now, at the start of your career. That puts you ahead of many experienced professionals who are still adapting.
+This tutorial is built for the first group, and every step asks you to read what the agent did, decide something, or explain it back. The workflow rewards curiosity and initiative: asking why, reading the diff, pushing back on a plan, changing your mind on the record. Bring those, and a coding agent multiplies what you can do.
 
-| Traditional approach | AI-assisted approach |
-|---------------------|---------------------|
-| Search Google, copy from Stack Overflow | Ask Claude Code to explain and implement |
-| Hours debugging with print statements | AI analyzes errors and suggests fixes |
-| Write boilerplate code manually | AI generates scaffolding; you focus on business logic |
-| Learn frameworks by reading documentation | AI teaches you as you build |
-| Work alone, limited by your own knowledge | AI as a second perspective when you get stuck |
+Where those numbers come from: https://newsletter.pragmaticengineer.com/p/ai-tooling-2026 and https://www.anthropic.com/research/AI-assistance-coding-skills
 
 ## What you'll build
 
@@ -83,7 +77,8 @@ Every technology company uses a variation of this workflow. You'll experience th
 5. **executing-plans**: A Superpowers skill that builds the feature with Claude Code, implementing each task (test-first where the plan flags it)
 6. **Commit**: Save your changes with a meaningful message linked to the milestone ID
 7. **Push**: Upload your code to GitHub
-8. **Deploy**: Make your dashboard publicly accessible
+8. **Review and merge**: Read what the agent wrote, run Claude Code's `/code-review` on the branch, decide what to fix, then merge
+9. **Deploy**: Make your dashboard publicly accessible
 
 ## Key concepts
 
@@ -91,7 +86,7 @@ Every technology company uses a variation of this workflow. You'll experience th
 
 **Skill-driven development.** Instead of jumping straight to code, you let Claude's Superpowers skills run a structured process: brainstorming explores what to build, writing-plans turns that into a bite-sized plan, then executing-plans implements task by task, using TDD on the tasks the plan flags for it (test-driven development: write a failing test first, then the code to pass it). This prevents the most common failure mode: building the wrong thing fast.
 
-**AI as a partner.** Claude Code isn't just a code generator. You set the direction and make the judgment calls; it supplies the speed and technical know-how, and explains its reasoning so you learn as you go.
+**AI as a partner.** Claude Code isn't just a code generator. You set the direction and make the judgment calls; it supplies the speed and technical know-how, and explains its reasoning so you learn as you go. You also review what it wrote before it ships, because you own what you ship.
 
 ## What you need
 
@@ -109,6 +104,7 @@ Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then cont
 |----------|-------------|
 | [E-Commerce PRD](prd/ecommerce-analytics.md) | The product requirements document you'll build from |
 | [Sales data](data/sales-data.csv) | Sample dataset for the dashboard |
+| [Capstone tools](capstone-tools.md) | Appendix: Granola (meeting notes into Claude Code) and Wispr Flow (dictation), for the capstone, not this tutorial |
 
 ## License
 
