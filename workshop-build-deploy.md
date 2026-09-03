@@ -16,12 +16,12 @@
   - [2.1 Create the feature branch](#21-create-the-feature-branch)
   - [2.2 Brainstorm and plan with one prompt](#22-brainstorm-and-plan-with-one-prompt)
 - [Section 3: Two artifacts, two altitudes (~5 min)](#section-3-two-artifacts-two-altitudes-5-min)
-- [Section 4: Build the dashboard (~35 min)](#section-4-build-the-dashboard-35-min)
+- [Section 4: Build the dashboard (~45 min)](#section-4-build-the-dashboard-45-min)
   - [4.1 Implement the first milestone](#41-implement-the-first-milestone)
   - [4.2 Commit, push, and update TASKS.md](#42-commit-push-and-update-tasksmd)
   - [4.3 Complete remaining milestones](#43-complete-remaining-milestones)
   - [4.4 Capture project memory with /init](#44-capture-project-memory-with-init)
-  - [4.5 Merge to main](#45-merge-to-main)
+  - [4.5 Review, then merge to main](#45-review-then-merge-to-main)
 - [Section 5: Deploy (~15 min)](#section-5-deploy-15-min)
 - [Section 6: Final verification checklist](#section-6-final-verification-checklist)
 - [Section 7: Turn in your work](#section-7-turn-in-your-work)
@@ -414,7 +414,7 @@ TASKS.md (your milestones)              Implementation plan (Claude's steps)
 
 ---
 
-## Section 4: Build the dashboard (~35 min)
+## Section 4: Build the dashboard (~45 min)
 
 ### Understanding Streamlit
 
@@ -464,13 +464,14 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 
    > **How Claude moves through the milestone:** Your prompt scoped the work to TASK-1, so executing-plans works through that milestone's plan steps and then stops and reports: what it built, what the tests showed, and what comes next. Claude may mention that Superpowers runs faster with subagents. For this milestone, stay inline. Watching is the point. If it offers to roll straight into the next milestone's steps, hold it there. You drive milestone-by-milestone from your board, and you'll test the dashboard first (step 3 below).
 
-2. In Claude Code, ask Claude to explain what it created:
+2. In Claude Code, ask Claude to explain what it created, then to show you one change in full:
 
    ```
-   What files did you create? Explain what each one does.
+   What files did you create, and what does each one do? Then show me the
+   diff for app.py and walk me through it.
    ```
 
-   Understanding the file structure helps you learn from the AI's work rather than treating it as a black box.
+   Read the diff, not only the explanation. If a line doesn't make sense, ask about it. If you'd have done something differently, say so and let Claude change it. That's a code review in miniature. Reading what the agent wrote, one file per milestone, is how you stay the person who knows what's in the project. The alternative is treating the AI's work as a black box.
 
 3. Test the dashboard. Claude set up the `venv/` virtual environment while implementing TASK-1, so it's ready to use (if it isn't there for any reason, Claude will create it). In Claude Code:
 
@@ -551,8 +552,9 @@ Here is what each stage means:
    ```
    Push my changes to GitHub. Then update TASK-1 in TASKS.md: check off its
    acceptance criteria, put the hash of its last code commit on the Commit
-   line, and move it to Done. Commit TASKS.md with a message like "TASK-1:
-   mark done on the board" and push again.
+   line, add a Notes line with anything Claude got wrong or that I changed
+   (or "clean" if nothing), and move it to Done. Commit TASKS.md with a
+   message like "TASK-1: mark done on the board" and push again.
    ```
 
    If this is your first push on the feature branch, Claude may need to set the upstream tracking branch. It handles this automatically.
@@ -565,7 +567,10 @@ Here is what each stage means:
      - [x] App runs with `streamlit run app.py` and shows a title
      - [x] Loads `data/sales-data.csv`; handles a missing file cleanly
      - Commit: 05a9ada
+     - Notes: imported plotly.express and never used it, removed
    ```
+
+   The Notes line is your record of what needed a human. One line is enough: a wrong assumption, a change you asked for after reading the diff, or "clean." Those lines feed `CLAUDE.md` in Section 4.4, and they're the best material you'll have for the walk-through.
 
 4. **Check your name on GitHub.** Open your repository in the browser, switch to the `feature/sales-dashboard` branch, and open the commit list (the **Commits** link near the top of the file list). Your avatar and username should appear beside each commit. If you see a grey placeholder instead, the email you set in Part 1 with `git config` doesn't match an email on your GitHub account. Until it does, none of your work shows on your profile. Add that email under GitHub **Settings** --> **Emails**, or rerun the `git config --global user.email` command with the right address. The fix applies to every commit from then on.
 
@@ -601,7 +606,7 @@ Here is the pattern for each milestone. In Claude Code:
 Let's work on TASK-2. Move it to In Progress in TASKS.md, then implement the plan steps it covers.
 ```
 
-Claude auto-invokes `executing-plans` and works through the plan steps under the milestone.
+Claude auto-invokes `executing-plans` and works through the plan steps under the milestone. When it finishes, ask for the diff of one file and read it, as you did in 4.1. Then run the app to see the new piece on screen.
 
 After implementation and testing, in Claude Code:
 
@@ -609,8 +614,9 @@ After implementation and testing, in Claude Code:
 Verify everything for TASK-2 is committed with the milestone ID and commit
 anything still outstanding. Push to GitHub. Then update TASK-2 in
 TASKS.md: check off its acceptance criteria, put the hash of its last
-code commit on the Commit line, and move it to Done. Commit that board
-update and push it too.
+code commit on the Commit line, add a Notes line with anything Claude got
+wrong or that I changed (or "clean"), and move it to Done. Commit that
+board update and push it too.
 ```
 
 > **Now loop until the board is done.** The prompts above show TASK-2, but this cycle is the rest of your build: run it again for TASK-3, then TASK-4, and every remaining implementation milestone, swapping in the current milestone ID each time. You're finished with this section only when every implementation milestone sits in the Done section of `TASKS.md`. One prompt pair per milestone; don't stop after TASK-2.
@@ -635,9 +641,9 @@ Activate my virtual environment and run the Streamlit app so I can test
 the complete dashboard.
 ```
 
-Open whatever Local URL Claude reports (for example `http://localhost:8501`) and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts.
+Open whatever Local URL Claude reports (for example `http://localhost:8501`). Then open the PRD's **Acceptance Criteria** section beside it and check each item against what's on screen, yourself, without asking Claude. The PRD's **Expected Output** table gives you the numbers to look for: total sales near $116,500 and 482 orders. Passing tests prove the functions return what the tests asked for. They don't prove the chart is the right chart, the bars are sorted the way the PRD says, or the page would pass in an executive meeting. That's what your eyes are for. Anything that fails goes back to Claude as a plain request ("the region chart isn't sorted largest to smallest, fix it and commit under TASK-4") before you move on.
 
-**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and a commit on each Commit line, and `git log --oneline -- TASKS.md` shows one board commit per finished milestone. Only a deployment milestone (if you have one) remains in To Do.
+**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and a commit on each Commit line, `git log --oneline -- TASKS.md` shows one board commit per finished milestone, and every PRD acceptance criterion checks out on the running app. Only a deployment milestone (if you have one) remains in To Do.
 
 ### 4.4 Capture project memory with /init
 
@@ -655,11 +661,15 @@ Your dashboard is built and working, so now is the moment to give your project a
 
 2. Claude scans your project and writes `CLAUDE.md` to the repo root. Open it in VS Code and read it; it should describe your dashboard: how to run it (`streamlit run app.py`), the main files, and where the data lives. Fix anything that's off, or ask Claude to adjust it.
 
-3. Commit it. In Claude Code:
+3. Add what you learned, then commit. The Notes lines on your board are a list of things that needed a human. Turned into rules, they keep the next session from repeating them. In Claude Code:
 
    ```
-   Commit CLAUDE.md with the message "Add project memory (CLAUDE.md)".
+   Add a short "Lessons" section to CLAUDE.md built from the Notes lines in
+   TASKS.md, written as rules for future sessions. Then commit CLAUDE.md
+   with the message "Add project memory (CLAUDE.md)".
    ```
+
+   This is how experienced people use these files. Mitchell Hashimoto, who runs a large open-source project with coding agents, says each line of his instructions file "is based on a bad agent behavior." Yours starts the same way, from the mistakes you caught today.
 
 > **Claude's own notes.** Alongside `CLAUDE.md`, Claude Code keeps notes it writes for itself, called **auto memory**, in a folder under your home directory rather than in the repo. That's what "Saved 2 memories" means when you see it. The difference: `CLAUDE.md` is what you tell Claude about the project, and it ships with the repo to anyone who clones it. Auto memory is what Claude noticed on its own, and it stays on your machine. You can read or delete those notes any time with `/memory`.
 
@@ -667,9 +677,9 @@ Your dashboard is built and working, so now is the moment to give your project a
 
 **Checkpoint:** `CLAUDE.md` exists at the repo root, describes your dashboard, and is committed.
 
-### 4.5 Merge to main
+### 4.5 Review, then merge to main
 
-Your feature branch contains all the implementation work. Now you'll bring those changes into the `main` branch, making them the official version of the code.
+Your feature branch contains all the implementation work. Before it becomes the official version of the code, you'll review it, the way a teammate would review yours. Then you'll bring it into `main`.
 
 > **Key Concept: Merging.**
 >
@@ -691,7 +701,22 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    You should be on your feature branch (e.g., `feature/sales-dashboard`) with nothing uncommitted. If Claude finds stray changes (a leftover `TASKS.md` edit is the usual suspect), have it commit them now, with their own message, rather than letting them tangle into the merge. Claude tends to run this same check on its own before merging; now you know why.
 
-2. **Merge into main.** If the three-option menu from the end of your last milestone is still waiting (the one you held off on in Section 4.4), pick the first option:
+2. **Review the branch.** Every team reviews code before it lands on `main`, and an agent's code is no exception. You own what you ship, and this is the moment to find out what that is. Claude Code has a built-in review. In Claude Code:
+
+   ```
+   /code-review feature/sales-dashboard
+   ```
+
+   Claude reads every change on the branch and returns a list of findings with the most serious first: a bug, a missing check, code that does the same thing twice, a name that misleads. (If it says there's nothing to review, ask in plain English instead: *Review every change on this branch compared with main and list the problems, ranked by how much they matter.*) Read the list. For each finding, decide: fix it, or leave it and know why. Then tell Claude what you decided, for example:
+
+   ```
+   Fix the first and third findings. Leave the second one, the PRD doesn't
+   ask for that. Commit the fixes with the message "Review fixes".
+   ```
+
+   > **Why you decide, not Claude.** A reviewer's job is to find things. Yours is to weigh them against what the project needs. Some findings are real bugs. Some are style. Some are the reviewer being thorough about something the PRD never asked for. Sorting those apart is the judgment this tutorial is trying to grow, and the walk-through will ask what the review found and what you did about it. The list is in your conversation, and your decision is in the fix commit.
+
+3. **Merge into main.** If the three-option menu from the end of your last milestone is still waiting (the one you held off on in Section 4.4), pick the first option:
 
    ```
    Option 1: merge to main locally.
@@ -705,13 +730,13 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    Either way, Claude switches to `main`, merges the feature branch, and reports the result.
 
-3. **Push main to GitHub.** In Claude Code:
+4. **Push main to GitHub.** In Claude Code:
 
    ```
    Push main to GitHub
    ```
 
-4. **Verify on GitHub:** Open your repository in a browser (`github.com/[your-username]/[your-repo]`). Just above the list of files, on the left, is a button showing the current branch name with a small branch icon next to it. Click that button and choose **main** from the dropdown (it may already be selected). Then confirm all the dashboard files are in the file list: `app.py`, `requirements.txt`, the `data` directory, and so on.
+5. **Verify on GitHub:** Open your repository in a browser (`github.com/[your-username]/[your-repo]`). Just above the list of files, on the left, is a button showing the current branch name with a small branch icon next to it. Click that button and choose **main** from the dropdown (it may already be selected). Then confirm all the dashboard files are in the file list: `app.py`, `requirements.txt`, the `data` directory, and so on.
 
 **Checkpoint:** The `main` branch on GitHub contains all your dashboard code.
 
@@ -817,7 +842,8 @@ Before submitting, walk through every item below. Each category corresponds to a
 ### Version control
 
 - [ ] Commits include milestone IDs (TASK-1, TASK-2, ...) in messages
-- [ ] `CLAUDE.md` generated with `/init` and committed
+- [ ] `CLAUDE.md` generated with `/init`, with a Lessons section, and committed
+- [ ] Branch reviewed with `/code-review` before the merge, and the fixes you chose committed
 - [ ] Feature branch merged to main
 - [ ] All code pushed to GitHub on the main branch
 
@@ -844,7 +870,7 @@ Make sure your `TASKS.md`, `prd/`, and `docs/superpowers/` files are included in
 
 **Checkpoint:** your repo opens on GitHub, your dashboard loads at its public URL, and both links have gone wherever your course asks for them.
 
-> **If your course includes a 1:1, the walk-through comes next.** Handing in the links isn't the last step, explaining the work is. You'll walk your instructor through what you built and how, live, with follow-up questions: why the work happened on a feature branch, what the design doc changed about what you built, what a commit message with a milestone ID makes possible, why the merge came before the deploy. This isn't a quiz to cram for, and it isn't a hunt for AI use (AI was expected everywhere in this tutorial). It checks the one thing a polished repo can't show: that the reasoning behind it is yours. Your prep material is already on the record. Reread your spec, your plan, your board, and your commit history, and make sure you can tell the story of each out loud with the tool closed. If you can, you're ready, both for this meeting and for the capstone, where you'll do the same thing in front of stakeholders.
+> **If your course includes a 1:1, the walk-through comes next.** Handing in the links isn't the last step, explaining the work is. You'll walk your instructor through what you built and how, live, with follow-up questions: why the work happened on a feature branch, what the design doc changed about what you built, what a commit message with a milestone ID makes possible, what the code review found and what you did about it, why the merge came before the deploy. This isn't a quiz to cram for, and it isn't a hunt for AI use (AI was expected everywhere in this tutorial). It checks the one thing a polished repo can't show: that the reasoning behind it is yours. Your prep material is already on the record. Reread your spec, your plan, your board, and your commit history, and make sure you can tell the story of each out loud with the tool closed. If you can, you're ready, both for this meeting and for the capstone, where you'll do the same thing in front of stakeholders.
 
 ---
 
