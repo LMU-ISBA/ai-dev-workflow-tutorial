@@ -4,6 +4,8 @@
 
 **Format:** Self-paced, about 3 hours
 
+**Written against:** Claude Code 2.1 and Superpowers 6.3.0, September 2026. Both update themselves, so a menu or a skill's wording may differ a little from what's quoted here. The shape of each step stays the same.
+
 ---
 
 ## Table of contents
@@ -53,7 +55,7 @@ By the end of this guide, you'll have taken a product requirements document thro
 
 ## Prerequisites check
 
-Before starting, verify your Part 1 setup is complete. Open your cloned `ai-dev-workflow-tutorial` folder in Cursor first (File --> Open Folder); the terminal then opens at the project root, which is where these commands expect to run. Run each command in Cursor's terminal:
+Before starting, verify your Part 1 setup is complete. Open your cloned `ai-dev-workflow-tutorial` folder in VS Code first (File --> Open Folder); the terminal then opens at the project root, which is where these commands expect to run. Run each command in VS Code's terminal:
 
 ```bash
 git --version
@@ -127,19 +129,19 @@ Web-app tracker (e.g. Jira)          File-based tracker (TASKS.md)
 > - **No extra account or connection.** Claude Code can already read and write files in your project, so it updates your task board directly, with no web app to switch to and no login to keep alive.
 > - **Versioned with your code.** `TASKS.md` is committed to Git alongside `app.py`. At any point in history, the task board and the code are in sync. Run `git log -- TASKS.md` and you can see exactly how the work evolved: the same audit trail a tracker like Jira gives you, built into your repo.
 > - **Diffable and reviewable.** Changes to tasks show up in your commits and diffs like any other file.
-> - **It works offline and travels with the project.** The same file works in Claude Code, Cursor, or any editor.
+> - **It works offline and travels with the project.** The same file works in Claude Code, VS Code, or any editor.
 >
 > This is a real, current industry pattern, not a training-wheels version. Teams building with AI coding agents increasingly keep their task lists in the repo so the agent can read and update them directly. (The open-source tool [Backlog.md](https://github.com/MrLesk/Backlog.md) formalizes the same idea at larger scale.)
 
-### Two kinds of "to-do list" (don't mix them up)
+### Your board is the record, not Claude's notes
 
-As you work, Claude Code shows its own live checklist while it's thinking; you'll see items get checked off in real time. That's an in-session scratchpad (Claude Code calls it the todo list). **It disappears when the session ends or you run `/clear`.**
+Claude Code keeps notes of its own. While it works you may see progress checklists in its output. At the end of a session it may say something like "Saved 2 memories," which means it wrote down something it learned about your project in a private file (more on that in Section 4.4). Neither of those is your record. They're Claude's working notes, and nobody grades them.
 
-`TASKS.md` is different. It's the **durable** record you commit to Git. It survives new sessions, grading, and your own memory a month from now. When this guide says "update your task board," it always means the file, not Claude's temporary checklist.
+`TASKS.md` is different. It's the **durable** record you commit to Git. It survives new sessions, grading, and your own memory a month from now. When this guide says "update your task board," it always means the file.
 
 ### Steps
 
-1. **Start Claude Code** from your project directory in Cursor's terminal. To open one, go to **Terminal** --> **New Terminal** in the menu bar (or press `` Ctrl+` ``). Then run:
+1. **Start Claude Code** from your project directory in VS Code's terminal. To open one, go to **Terminal** --> **New Terminal** in the menu bar (or press `` Ctrl+` ``). Then run:
 
    ```bash
    claude
@@ -153,29 +155,37 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
    /config
    ```
 
-   Navigate with the **arrow keys**: highlight **Output style** and press **Enter**, then highlight **Explanatory**, press **Enter** to confirm, and press **Esc** to close the config menu. (Depending on your terminal, you may also be able to click an option with your mouse, but the arrow keys always work.) By default, Claude Code keeps its responses short; the Explanatory style tells Claude to explain what it's doing and why as it works, which helps you learn from it instead of just receiving code. The choice saves to your project's `.claude/settings.local.json` and persists across sessions, so you only set it once.
+   Navigate with the **arrow keys**: highlight **Output style** and press **Enter**, then highlight **Explanatory**, press **Enter** to confirm, and press **Esc** to close the config menu. (Depending on your terminal, you may also be able to click an option with your mouse, but the arrow keys always work.) By default, Claude Code keeps its responses short; the Explanatory style tells Claude to explain what it's doing and why as it works, which helps you learn from it instead of just receiving code. The choice saves to your project's `.claude/settings.local.json` and persists, so you only set it once.
 
-   > **Prefer editing the file?** You can set the same thing directly by adding `"outputStyle": "Explanatory"` to `.claude/settings.local.json`.
+   A style loads when a conversation starts, so it isn't active in the one you're in yet. Restart the conversation:
+
+   ```
+   /clear
+   ```
+
+   > **Prefer editing the file?** You can set the same thing directly by adding `"outputStyle": "Explanatory"` to `.claude/settings.local.json`, then run `/clear`.
+
+   > **Want to write some of the code yourself?** The **Learning** style goes a step further than Explanatory: Claude leaves small, clearly marked pieces of the code for you to fill in. If you already know some Python and want the practice, pick it instead. You can switch back to Explanatory at any time from the same menu.
 
 3. **Read the PRD first.** Your task board should reflect what the project needs to deliver, and that's spelled out in the product requirements document.
 
    > **What is a PRD?** A PRD (Product Requirements Document) is a written description of what you're building and why. It defines the problem, the users, the features, and what success looks like. It doesn't come out of thin air: someone (usually a product manager or business analyst) interviews the stakeholders, the people who will use the product or are paying for it, to learn what they actually need, then writes those needs down as requirements. In professional settings, the PRD is agreed on before any code is written. (For this tutorial, we've written the PRD for you so you can focus on the build; in your capstone, you'll gather requirements from your own stakeholders.)
 
-   Open the [PRD](prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in Cursor). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track; you're not inventing them from scratch.
+   Open the [PRD](prd/ecommerce-analytics.md) and skim it (in your browser, or open `prd/ecommerce-analytics.md` in VS Code). Look at two sections in particular: **Acceptance Criteria** and **Timeline and Milestones**. The PRD already sketches the deliverables your board will track; you're not inventing them from scratch.
 
 4. **Create your task board from the PRD.** Ask Claude Code to draft it:
 
    ```
    Read @prd/ecommerce-analytics.md. Create a TASKS.md file in the project root with:
    - a short note at the top saying this file tracks all work for the dashboard
-   - a "Definition of Done" checklist that applies to every milestone: acceptance criteria met; app runs locally with `streamlit run app.py`; changes committed with the milestone ID in the message
-   - a "To Do" section with 4-8 milestones based on the PRD's deliverables and its Milestones table, numbered TASK-1, TASK-2, and so on, each with a one-line description and 1-3 acceptance criteria as checkboxes
+   - a "Definition of Done" section: a short list, without checkboxes, of what must be true before any milestone moves to Done: acceptance criteria met, app runs locally with `streamlit run app.py`, changes committed with the milestone ID in the message
+   - a "To Do" section with 4-8 milestones based on the PRD's deliverables and its Milestones table, numbered TASK-1, TASK-2, and so on, each with a one-line description, 1-3 acceptance criteria as checkboxes, and a "Commit:" line left blank for me to fill in when it's done
    - empty "In Progress" and "Done" sections
    ```
 
    > **The `@` symbol: pointing Claude at a file.** This is the first time you use it. `@prd/ecommerce-analytics.md` tells Claude Code to pull that exact file into the conversation, so it works from the real contents instead of guessing or making you copy and paste them. You can point at a whole folder the same way (like `@docs/superpowers/plans/`). When you type `@`, Claude Code shows a list of files and folders and autocompletes the path as you go, so you rarely type the whole thing. Pointing the AI at the right file is a small habit with a big payoff. You get better output, because the more precisely you set the context, the more on-target the result. And you get faster, cheaper output: because Claude reads just the file you named, it doesn't burn time and tokens (the chunks of text a model processes) searching your project for the right context, which means quicker replies and more headroom before you hit your plan's usage limits. You'll use `@` throughout the rest of this guide.
 
-   Claude reads the PRD and drafts the board. Open `TASKS.md` in Cursor and read it. It should look roughly like this:
+   Claude reads the PRD and drafts the board. Open `TASKS.md` in VS Code and read it. It should look roughly like this:
 
    ```markdown
    # Sales Dashboard: Tasks
@@ -183,23 +193,28 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
    This file tracks all work for the e-commerce sales dashboard.
    Each milestone moves through To Do -> In Progress -> Done.
 
-   ## Definition of Done (applies to every milestone)
-   - [ ] Acceptance criteria met
-   - [ ] App runs locally with `streamlit run app.py`
-   - [ ] Changes committed with the milestone ID in the message
+   ## Definition of Done (must hold before any milestone moves to Done)
+   - Acceptance criteria met
+   - App runs locally with `streamlit run app.py`
+   - Changes committed with the milestone ID in the message
 
    ## To Do
    - [ ] **TASK-1: Project setup and data loading**
      - [ ] App runs with `streamlit run app.py` and shows a title
      - [ ] Loads `data/sales-data.csv`; handles a missing file cleanly
+     - Commit:
    - [ ] **TASK-2: KPI scorecards**
      - [ ] Total Sales and Total Orders shown as formatted metrics
+     - Commit:
    - [ ] **TASK-3: Sales trend chart**
      - [ ] Line chart of sales over time renders from the data
+     - Commit:
    - [ ] **TASK-4: Category and region breakdowns**
      - [ ] Bar charts for sales by category and by region, sorted by value
+     - Commit:
    - [ ] **TASK-5: Test and deploy**
      - [ ] Dashboard runs without errors and is deployed to a public URL
+     - Commit:
 
    ## In Progress
 
@@ -208,7 +223,7 @@ As you work, Claude Code shows its own live checklist while it's thinking; you'l
 
    Your milestones may differ a little, and that's fine. Read them against the PRD and adjust anything that doesn't match what you want to build. You're aiming for a short list you could read aloud in a status update: the *what*, not the *how*. (Superpowers works out the *how* in the next section.)
 
-   > **What is a Definition of Done?** It's a quality checklist that applies to *every* milestone, no matter what it is. Each milestone also gets its own **acceptance criteria** (the specific thing that milestone must do). The Definition of Done is the shared bar underneath all of them: "before I call anything done, these things are always true." Professional teams agree on a Definition of Done so "done" means the same thing to everyone.
+   > **What is a Definition of Done?** It's a short standard that applies to *every* milestone, no matter what it is. Each milestone also gets its own **acceptance criteria** (the specific thing that milestone must do). The Definition of Done is the shared bar underneath all of them: "before I call anything done, these things are always true." You don't tick it off; you make sure it holds each time you move a milestone to Done. Professional teams agree on a Definition of Done so "done" means the same thing to everyone. The blank **Commit:** line under each milestone is where you'll record the commit that finished it (Section 4.2).
 
 **Checkpoint:** `TASKS.md` exists in your project root with a Definition of Done and 4-8 milestones (TASK-1, TASK-2, ...) in the To Do section, drafted from the PRD.
 
@@ -276,26 +291,32 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    ```
    Help me design and plan the e-commerce sales dashboard described in
    @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md.
-   Structure the plan so its steps cover each one. Make deployment the
-   final step of the plan, marked as mine to execute: I'll deploy it
-   myself from the main branch after we merge, so the plan should stop
-   there and hand off to me. Ground rules: work on my current feature
-   branch (do not create a git worktree), set up a Python virtual
-   environment in venv/ for dependencies, and keep the code simple and
-   readable so I can follow it.
+   Structure the plan so its steps cover each one, and label every plan
+   task with the milestone it belongs to (TASK-1, TASK-2, and so on).
+   Keep the plan's own task numbering separate so the two don't get mixed
+   up. Make deployment the final step of the plan, marked as mine to
+   execute: I'll deploy it myself from the main branch after we merge, so
+   the plan should stop there and hand off to me. Ground rules: work on my
+   current feature branch (do not create a git worktree), use a plain
+   Python virtual environment in venv/ with a requirements.txt for
+   dependencies (no uv or conda), and keep the code simple and readable
+   so I can follow it.
    ```
 
    > **What those ground rules mean.** You're setting these constraints on purpose, not parroting them:
+   > - **label every plan task with its milestone.** The plan will have its own task numbers. Asking for the milestone ID on each one keeps the two from getting confused, and it's what lets a commit message say `TASK-2` and mean your board.
    > - **deployment is planned, but marked as yours.** Real plans include deployment; what a professional team controls is who executes it. Publishing needs your accounts (GitHub, Streamlit) and a go/no-go call, so the plan carries the step but stops and hands it to you: you'll run it yourself in Section 5, from `main`, after the merge. This is a prompt pattern worth reusing on any AI-planned project: mark the steps that publish work or need your credentials as human-executed.
    > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
-   > - **set up a Python virtual environment in `venv/`.** This is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1.
+   > - **use a plain virtual environment in `venv/` with a `requirements.txt`.** The virtual environment is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1. The `requirements.txt` is the list of packages, and it's the file Streamlit Cloud reads when you deploy in Section 5. Naming both keeps Claude from reaching for a different tool (there are several) and handing you something the deploy step doesn't expect.
    > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
    >
    > Giving the AI clear constraints like these is itself a skill: you get a plan shaped to *your* project instead of its defaults.
 
-2. **Answer brainstorming's questions.** Claude loads the brainstorming skill (you'll see a `Skill(superpowers:brainstorming)` line with `Successfully loaded skill` under it), then asks you 3-5 clarifying questions, one at a time, on things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision, or type your own preference.
+2. **Answer brainstorming's questions.** Claude loads the brainstorming skill (you'll see a `Skill(superpowers:brainstorming)` line with `Successfully loaded skill` under it). The first thing it tells you is how big it thinks the job is. A new dashboard counts as *architectural*, the fullest path, so expect the whole conversation described here. Then it asks clarifying questions, one at a time, on things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision, or type your own preference. After the questions it proposes two or three approaches and recommends one, then walks you through the design a section at a time and checks with you after each. A yes moves it along. A change request is welcome at any point, and it's cheaper here than anywhere later.
 
-3. **Review the design doc (your chance to change it).** Brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md`, then pauses and asks you to review it before turning it into a plan (something like *"give the spec a read and let me know if you want any changes; if it looks right, say the word and I'll draft the plan"*). This is the most important checkpoint in the process: the design is about to drive the plan and then the code, so now is the moment to catch anything wrong or missing, while it's cheap to fix. Open the file in Cursor and read it: in the file explorer on the left, expand the `docs` folder, then `superpowers`, then `specs`, and click the design doc to open it. (No sidebar? Press `Cmd+B` on macOS or `Ctrl+B` on Windows to toggle it.) It opens as raw Markdown, so to read it as a formatted document, press `Cmd+Shift+V` (macOS) or `Ctrl+Shift+V` (Windows), or click the **Open Preview** button in the editor's top-right toolbar. If anything is off (a wrong chart type, a missing KPI, an assumption you disagree with), just tell Claude what to change and it will revise the spec. Keep going until the spec captures what you want.
+   > **If it offers to "show you" in a browser:** brainstorming can open a companion page in your browser for mockups and diagrams. Say no, thanks. It spends usage you'll want for the build, and everything in this tutorial happens in the terminal.
+
+3. **Review the design doc (your chance to change it).** Brainstorming writes a design doc to `docs/superpowers/specs/YYYY-MM-DD-sales-dashboard-design.md` and commits it, then pauses and asks you to review it before turning it into a plan (something like *"give the spec a read and let me know if you want any changes; if it looks right, say the word and I'll draft the plan"*). This is the most important checkpoint in the process: the design is about to drive the plan and then the code, so now is the moment to catch anything wrong or missing, while it's cheap to fix. Open the file in VS Code and read it: in the Explorer on the left, expand the `docs` folder, then `superpowers`, then `specs`, and click the design doc to open it. (No sidebar? Press `Cmd+B` on macOS or `Ctrl+B` on Windows to toggle it.) It opens as raw Markdown, so to read it as a formatted document, press `Cmd+Shift+V` (macOS) or `Ctrl+Shift+V` (Windows), or click the **Open Preview to the Side** icon in the editor's top-right corner. If anything is off (a wrong chart type, a missing KPI, an assumption you disagree with), just tell Claude what to change and it will revise the spec. Keep going until the spec captures what you want.
 
 4. **Approve the spec, then review the plan.** When the spec captures what you want, tell Claude to proceed. In Claude Code:
 
@@ -307,10 +328,10 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
 5. **Choose how Claude will execute the plan.** After the plan is written, Claude asks one last question before any code runs: how do you want it to execute the plan? You'll usually see two options:
 
-   - **Subagent-driven**: Claude hands each task to a fresh helper agent (a *subagent*) that works on it separately, with a review between tasks. Picture delegating each task to a new contractor who starts with a clean slate: nothing from earlier tasks clutters their head, so mistakes get caught early. The tradeoff is that the work happens offstage. You see the results, not the process.
-   - **Inline execution**: Claude does every task itself, right in your session, pausing at checkpoints so you can review. Each test, file, and decision scrolls past on your screen as it happens.
+   - **Subagent-driven**: Claude hands each task to a fresh helper agent (a *subagent*) that works on it separately, reviews the result, and moves to the next task without stopping to ask you. Picture delegating each task to a new contractor who starts with a clean slate: nothing from earlier tasks clutters their head, so mistakes get caught early. The tradeoff is that the work happens offstage. You see the reports, not the process.
+   - **Inline execution**: Claude does every task itself, right in your session. Each test, file, and decision scrolls past on your screen as it happens.
 
-   For this tutorial you want **inline execution**: watching the process is the point, and it keeps everything in one conversation. Answer now, but tell Claude to wait before building, since you have a bit of reading to do first:
+   For this tutorial you want **inline execution**: watching the process is the point, and it keeps everything in one conversation. Claude may add that Superpowers works better with subagents. That's true for speed, and it's the mode you'll probably use on a capstone, once you've seen what happens inside. Answer now, but tell Claude to wait before building, since you have a bit of reading to do first:
 
    ```
    Use inline execution, but wait for my go-ahead before starting the first
@@ -332,7 +353,8 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 > using-superpowers (auto)
 >      |
 >      v
-> brainstorming  -> asks Qs, writes design doc, gets your approval
+> brainstorming  -> sizes the job, asks Qs, proposes approaches,
+>                   writes design doc, gets your approval
 >      |
 >      v  (skipped worktree per your prompt)
 > writing-plans  -> produces plan with TDD-flagged tasks
@@ -340,7 +362,13 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 >
 > In Section 4 the chain continues: `executing-plans` builds task by task, then `requesting-code-review` and `finishing-a-development-branch` wrap up. Each skill shows up as a `Skill(superpowers:<name>)` line, so if you lose track, scroll up to the most recent one.
 
-**Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. Both are committed to your feature branch (Superpowers commits the design doc automatically; the plan commit may be combined with the first implementation task).
+Superpowers committed the design doc on its own. Commit the plan now too, so both documents sit in your history before any code does. In Claude Code:
+
+```
+Commit the implementation plan with the message "Add implementation plan".
+```
+
+**Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. Ask Claude to show `git log --oneline`: the board, the design doc, and the plan are each there as a commit, and there's no code yet. That order is the point. The thinking is on the record before the building starts.
 
 ---
 
@@ -402,38 +430,39 @@ TASKS.md (your milestones)              Implementation plan (Claude's steps)
 >
 > Streamlit isn't the only option for dashboards (Tableau, Power BI, and Dash are alternatives), but it works well for capstone projects: it uses pure Python, integrates with Pandas and Plotly, and deploys for free. You can use the same data manipulation skills you learned in your coursework.
 
-### Claude Code editing modes
+### Claude Code permission modes
 
-Before you start building, understand how Claude Code interacts with your files. Claude Code has three editing modes that control how it handles file changes:
+Before you start building, understand how much Claude Code does on its own. A **permission mode** sets which actions Claude takes without asking you first:
 
-| Mode | Behavior | When to Use |
-|------|----------|-------------|
-| **Normal** (default) | Asks permission before each edit | When learning and reviewing each change carefully |
-| **Accept edits** | Makes edits without asking | When you trust the workflow and want momentum |
-| **Plan mode** | Explains what it will do, waits for approval, then executes | When you want to review the approach before execution |
+| Mode | What Claude does on its own | When to use it |
+|------|-----------------------------|----------------|
+| **Manual** | Nothing much. It asks before editing a file or running most commands | When you want to see every move, like your first milestone |
+| **Accept edits** | Edits files without asking, still asks before most commands | When you trust the edits but want to watch the commands |
+| **Plan** | Reads and proposes only. Changes nothing until you approve the plan | When you want to review an approach before anything happens |
+| **Auto** | Edits and runs commands on its own. A second, checking model watches each action and blocks the risky ones: destructive Git commands, reaching outside the project, or anything a file it read tries to make it do | When you know what it's doing and want momentum. On a Pro plan, every new session starts here |
 
-Press **Shift+Tab** to cycle between modes. The current mode (for example, "accept edits on" or "plan mode on") shows at the bottom of the Claude Code interface.
+Press **Shift+Tab** to cycle between modes. The label at the bottom of the Claude Code window changes with each press.
 
-> **Recommendation:** Switch to **Accept edits** mode for the build phase. You've already defined detailed specifications, and Claude will follow them. Accept edits lets you maintain momentum through the implementation cycle. If you prefer to review each change (a valid learning choice), stay in Normal mode; it'll just take longer.
+> **Recommendation: Manual for TASK-1, Auto after that.** For your first milestone, press Shift+Tab until you're in Manual, then build. You'll approve each file write and each command (`pytest`, `git commit`, and so on). That's a lot of Enter-pressing for one milestone, and worth doing once: you see exactly what an agent does to a project, and nothing happens that you didn't say yes to. From TASK-2 on, switch to Auto and let it run. That's how you'll work on a capstone, and by then you'll know what's happening behind the curtain. Anthropic's own numbers back this order. People who approve every action stop reading what they approve, and those sessions ran into serious mistakes about twice as often as Auto sessions did. Seeing it once teaches you something. Clicking through it forty times doesn't.
 
 ### 4.1 Implement the first milestone
 
 Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a milestone, Claude works through the plan steps it covers, one at a time.
 
-1. Back in Section 2.2 you told Claude to wait for your go-ahead. This is it. Start the first milestone and move it to In Progress on your board:
+1. Back in Section 2.2 you told Claude to wait for your go-ahead. This is it. Press **Shift+Tab** until you're in Manual mode (see the modes above), then start the first milestone and move it to In Progress on your board:
 
    ```
    Let's work on TASK-1. Move it to the In Progress section of TASKS.md, then
    implement the plan steps it covers.
    ```
 
-   Claude invokes `executing-plans` (you'll see `Skill(superpowers:executing-plans)` in the output). The skill reads the plan and works through the steps under this milestone, one at a time.
+   Claude invokes `executing-plans` (you'll see `Skill(superpowers:executing-plans)` in the output). The skill reads the plan and works through the steps under this milestone, one at a time. In Manual mode it asks before its first file write, which is how you know the mode took.
 
    > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. Watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
    > **What happens during implementation:** Claude reads the task and its acceptance criteria, consults the specification and plan, then writes the code. Watch the output; you'll see Claude creating files, writing functions, and making decisions. Pay attention to which libraries Claude imports, how it structures the code, and how it handles data loading.
 
-   > **How Claude moves to the next task:** Inline execution pauses at a checkpoint after each plan step: Claude reports what it built (and whether tests passed), then asks if it should continue. Skim the report, and if it matches what you expected, tell it to keep going. Repeat until it finishes the steps under TASK-1. If it offers to roll straight into the next milestone's steps, hold it there; you drive milestone-by-milestone from your board, and you'll test the dashboard first (step 3 below).
+   > **How Claude moves through the milestone:** Your prompt scoped the work to TASK-1, so executing-plans works through that milestone's plan steps and then stops and reports: what it built, what the tests showed, and what comes next. Claude may mention that Superpowers runs faster with subagents. For this milestone, stay inline. Watching is the point. If it offers to roll straight into the next milestone's steps, hold it there. You drive milestone-by-milestone from your board, and you'll test the dashboard first (step 3 below).
 
 2. In Claude Code, ask Claude to explain what it created:
 
@@ -449,7 +478,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
    Activate my virtual environment and run the Streamlit app so I can test it.
    ```
 
-   > **Key Concept: Virtual Environments.** A **virtual environment** (the `venv/` folder) is an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. It keeps your dashboard's dependencies (Streamlit, Pandas, Plotly) contained within this project. That's what "activate my virtual environment" asks for: use this project's Python, not the machine-wide one. If you ever run the app yourself in Cursor's terminal, activate it first with `source venv/bin/activate` (macOS) or `venv\Scripts\activate` (Windows), then `streamlit run app.py`; you'll see `(venv)` at the start of the prompt while it's active.
+   > **Key Concept: Virtual Environments.** A **virtual environment** (the `venv/` folder) is an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. It keeps your dashboard's dependencies (Streamlit, Pandas, Plotly) contained within this project. That's what "activate my virtual environment" asks for: use this project's Python, not the machine-wide one. If you ever run the app yourself in VS Code's terminal, activate it first with `source venv/bin/activate` (macOS) or `venv\Scripts\activate` (Windows), then `streamlit run app.py`; you'll see `(venv)` at the start of the prompt while it's active.
 
 4. Claude starts the server and reports the **Local URL**, for example `http://localhost:8501` (the port number can differ if something else on your machine is already using that one). Open whatever URL it gives you: hold `Cmd` (macOS) or `Ctrl` (Windows) and click the link, or copy it into your browser. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
 
@@ -515,37 +544,38 @@ Here is what each stage means:
 
    > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository; they're large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
 
-   > **What is a commit hash?** Each commit gets a unique identifier called a **commit hash**, a string like `05a9ada`. It's a fingerprint: no two commits in your repository will ever share one. A milestone may produce several commits; you'll record the last one (or the range) next to the milestone in `TASKS.md` so anyone can find the code that fulfilled it.
+   > **What is a commit hash?** Each commit gets a unique identifier called a **commit hash**, a string like `05a9ada`. It's a fingerprint: no two commits in your repository will ever share one. A milestone may produce several commits; you'll record the last code commit on the milestone's **Commit:** line in `TASKS.md` so anyone can find the code that fulfilled it.
 
-2. **Push to GitHub.** In Claude Code, upload your local commit to the remote repository:
+2. **Push, then update your board and push again.** One prompt does both. It uploads the milestone's commits, then records the result on the board and pushes that too, so the board on GitHub never trails the code. Claude sometimes moves a milestone to Done on its own while committing; this prompt makes sure the rest of the record (checked criteria, commit hash) is there too. In Claude Code:
 
    ```
-   Push my changes to GitHub.
+   Push my changes to GitHub. Then update TASK-1 in TASKS.md: check off its
+   acceptance criteria, put the hash of its last code commit on the Commit
+   line, and move it to Done. Commit TASKS.md with a message like "TASK-1:
+   mark done on the board" and push again.
    ```
 
    If this is your first push on the feature branch, Claude may need to set the upstream tracking branch. It handles this automatically.
 
-3. **Update your task board, then save it.** In Claude Code, close the loop by recording what you did and committing that update so it lands on GitHub with this milestone. Claude sometimes moves the milestone to Done on its own while committing; this step makes sure the rest of the record (checked criteria, commit hash) is there too:
+3. **Verify on your board.** Open `TASKS.md` in VS Code. TASK-1 should now sit in the Done section looking roughly like this, with the hash of its last *code* commit on the Commit line (not the hash of the board update you just made):
 
+   ```markdown
+   ## Done
+   - [x] **TASK-1: Project setup and data loading**
+     - [x] App runs with `streamlit run app.py` and shows a title
+     - [x] Loads `data/sales-data.csv`; handles a missing file cleanly
+     - Commit: 05a9ada
    ```
-   Update TASK-1 in TASKS.md: check off its acceptance criteria and the
-   Definition of Done, record the commit hash, and move it to Done if it
-   isn't already. Then commit TASKS.md with a message like "TASK-1: mark
-   done on the board" and push.
-   ```
 
-   Claude edits `TASKS.md`, commits that change, and pushes it, so your board on GitHub shows TASK-1 done right away instead of trailing into the next milestone's commit.
+4. **Check your name on GitHub.** Open your repository in the browser, switch to the `feature/sales-dashboard` branch, and open the commit list (the **Commits** link near the top of the file list). Your avatar and username should appear beside each commit. If you see a grey placeholder instead, the email you set in Part 1 with `git config` doesn't match an email on your GitHub account. Until it does, none of your work shows on your profile. Add that email under GitHub **Settings** --> **Emails**, or rerun the `git config --global user.email` command with the right address. The fix applies to every commit from then on.
 
-4. **Verify on your board.** Open `TASKS.md` in Cursor and confirm:
-   - TASK-1 is now in the Done section
-   - Its acceptance criteria and the Definition of Done are checked off
-   - The commit hash is recorded next to it
-
-**Checkpoint:** Code and the updated board are on GitHub. TASK-1 shows in the Done section of `TASKS.md` with its criteria checked and commit recorded.
+**Checkpoint:** Code and the updated board are on GitHub. TASK-1 is in the Done section of `TASKS.md` with its criteria checked and a commit on its Commit line, `git log --oneline -- TASKS.md` (ask Claude to run it) shows the board commit for TASK-1, and your avatar shows on the commits on GitHub.
 
 ### 4.3 Complete remaining milestones
 
 Now repeat the cycle for each remaining milestone on your board, in order. If one of your milestones is deployment, skip it for now; that comes in Section 5.
+
+Before you start TASK-2, press **Shift+Tab** to switch to **Auto** mode (see the modes at the top of this section). From here Claude runs without asking, and your job shifts from approving each move to reading what it reports.
 
 The cycle for each milestone is:
 
@@ -559,13 +589,10 @@ Take the next milestone
 Test the dashboard (ask Claude to run it)
         |
         v
-Make sure the milestone's commits carry the milestone ID
+Verify the milestone's commits carry the milestone ID
         |
         v
-Push to GitHub
-        |
-        v
-Update TASKS.md --> check off, move to Done --> commit + push the board
+Push --> update TASKS.md (check off, Commit line, move to Done) --> push the board
 ```
 
 Here is the pattern for each milestone. In Claude Code:
@@ -579,12 +606,11 @@ Claude auto-invokes `executing-plans` and works through the plan steps under the
 After implementation and testing, in Claude Code:
 
 ```
-Verify everything for TASK-2 is committed with the milestone ID, commit
-anything still outstanding, and push to GitHub.
-
-Then update TASK-2 in TASKS.md: check off its acceptance criteria and the
-Definition of Done, record the commit hash, and move it to Done if it
-isn't already. Commit that board update and push it too.
+Verify everything for TASK-2 is committed with the milestone ID and commit
+anything still outstanding. Push to GitHub. Then update TASK-2 in
+TASKS.md: check off its acceptance criteria, put the hash of its last
+code commit on the Commit line, and move it to Done. Commit that board
+update and push it too.
 ```
 
 > **Now loop until the board is done.** The prompts above show TASK-2, but this cycle is the rest of your build: run it again for TASK-3, then TASK-4, and every remaining implementation milestone, swapping in the current milestone ID each time. You're finished with this section only when every implementation milestone sits in the Done section of `TASKS.md`. One prompt pair per milestone; don't stop after TASK-2.
@@ -611,13 +637,13 @@ the complete dashboard.
 
 Open whatever Local URL Claude reports (for example `http://localhost:8501`) and verify that all components are present: KPI scorecards, a sales trend line chart, and category/region bar charts.
 
-**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and commits recorded. Only a deployment milestone (if you have one) remains in To Do.
+**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and a commit on each Commit line, and `git log --oneline -- TASKS.md` shows one board commit per finished milestone. Only a deployment milestone (if you have one) remains in To Do.
 
 ### 4.4 Capture project memory with /init
 
 Your dashboard is built and working, so now is the moment to give your project a memory. You'll generate a `CLAUDE.md`, a file Claude Code reads at the start of every session, so future sessions (and your capstone) begin with context instead of a blank slate.
 
-> **If Claude offered to merge to main after your last milestone:** hold off. After the final plan step, Superpowers may review the diff and offer to merge (the `finishing-a-development-branch` step). Let it review, but do this `/init` step first so `CLAUDE.md` is part of the merge; then merge in Section 4.5.
+> **If Claude showed you a menu after your last milestone:** hold off. After the final plan step, Superpowers runs your whole test suite and then offers three choices (the `finishing-a-development-branch` step). The choices are merge to main locally, push and create a pull request, or keep the branch as it is. Don't pick yet. Do this `/init` step first so `CLAUDE.md` is part of the merge, then choose in Section 4.5.
 
 > **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start: at the start there's nothing to describe; now it can capture your actual project. It also pays off on a team: because `CLAUDE.md` is committed to the repo, every teammate's Claude Code session reads the same file, so everyone (and their AI) follows the same setup, conventions, and structure. That keeps development consistent, and a new teammate gets up to speed from one file instead of asking around.
 
@@ -627,13 +653,15 @@ Your dashboard is built and working, so now is the moment to give your project a
    /init
    ```
 
-2. Claude scans your project and writes `CLAUDE.md` to the repo root. Open it in Cursor and read it; it should describe your dashboard: how to run it (`streamlit run app.py`), the main files, and where the data lives. Fix anything that's off, or ask Claude to adjust it.
+2. Claude scans your project and writes `CLAUDE.md` to the repo root. Open it in VS Code and read it; it should describe your dashboard: how to run it (`streamlit run app.py`), the main files, and where the data lives. Fix anything that's off, or ask Claude to adjust it.
 
 3. Commit it. In Claude Code:
 
    ```
    Commit CLAUDE.md with the message "Add project memory (CLAUDE.md)".
    ```
+
+> **Claude's own notes.** Alongside `CLAUDE.md`, Claude Code keeps notes it writes for itself, called **auto memory**, in a folder under your home directory rather than in the repo. That's what "Saved 2 memories" means when you see it. The difference: `CLAUDE.md` is what you tell Claude about the project, and it ships with the repo to anyone who clones it. Auto memory is what Claude noticed on its own, and it stays on your machine. You can read or delete those notes any time with `/memory`.
 
 > **For your capstone:** run `/init` once you have a skeleton of the project, then keep `CLAUDE.md` updated as the project grows. Every new Claude Code session then starts already knowing your project.
 
@@ -663,10 +691,10 @@ Your feature branch contains all the implementation work. Now you'll bring those
 
    You should be on your feature branch (e.g., `feature/sales-dashboard`) with nothing uncommitted. If Claude finds stray changes (a leftover `TASKS.md` edit is the usual suspect), have it commit them now, with their own message, rather than letting them tangle into the merge. Claude tends to run this same check on its own before merging; now you know why.
 
-2. **Merge into main.** If Claude is still offering to merge from the end of your last milestone (the `finishing-a-development-branch` offer you held off on in Section 4.4), just accept it:
+2. **Merge into main.** If the three-option menu from the end of your last milestone is still waiting (the one you held off on in Section 4.4), pick the first option:
 
    ```
-   Yes, merge to main now.
+   Option 1: merge to main locally.
    ```
 
    Otherwise, ask directly. In Claude Code:
@@ -743,7 +771,7 @@ Streamlit Community Cloud is a free hosting service specifically designed for St
 
    Open this URL and verify that your dashboard looks and functions the same as it did locally.
 
-> **If deployment fails:** The most common cause is a missing or incorrect `requirements.txt`. Check that the file exists in your repository's `main` branch on GitHub and lists all required packages (streamlit, pandas, plotly, etc.). If it's missing, ask Claude to create one, commit, push, and redeploy.
+> **If deployment fails:** The most common cause is a missing or incorrect `requirements.txt`. Check that the file exists in your repository's `main` branch on GitHub and lists all required packages (streamlit, pandas, plotly, etc.). If it's missing, ask Claude to create one, commit, push, and redeploy. A second cause: if a `uv.lock`, `Pipfile`, or `pyproject.toml` found its way into the repo, Streamlit Cloud reads those before `requirements.txt`. Ask Claude to remove them, commit, and push, then redeploy.
 
 ### 5.2 Update your task board
 
@@ -752,11 +780,11 @@ Record the deployment on your board. Give Claude the live URL and let it finish 
 ```
 The dashboard is live at [paste your URL]. Record the URL next to the
 deployment milestone in TASKS.md (add the milestone if it's missing),
-check off its criteria, and move it to Done. Then commit TASKS.md and
-push main to GitHub.
+check off its criteria, and move it to Done. Add the same URL near the
+top of README.md. Then commit both files and push main to GitHub.
 ```
 
-You can also ask Claude to add the live URL to your README, which makes it easy to find when you submit.
+The README line matters: it's the first thing your instructor, or anyone else who opens the repo, sees.
 
 You're on `main` now (the merge in Section 4.5 switched you there), so this last update commits straight to `main`. Pushing it makes your finished board visible on GitHub, which is what your instructor checks.
 
@@ -778,7 +806,8 @@ Before submitting, walk through every item below. Each category corresponds to a
 - [ ] Milestones created from the PRD (4-8 of them: TASK-1, TASK-2, ...), each with acceptance criteria
 - [ ] A Definition of Done applies to every milestone
 - [ ] All implementation milestones are in the Done section, criteria checked
-- [ ] Each done milestone records its commit hash
+- [ ] Each done milestone has a commit hash on its Commit line
+- [ ] The live URL is in `TASKS.md` and near the top of `README.md`
 
 ### Dashboard
 
@@ -806,8 +835,8 @@ Several courses use this tutorial, and each sets its own deadline and its own su
 
 3. **Your completed `TASKS.md`:** because the board lives in your repo. Just make sure the final `TASKS.md` on your `main` branch shows:
    - Every implementation milestone in the Done section, acceptance criteria checked
-   - A commit hash recorded next to each done milestone
-   - The Definition of Done checked off
+   - A commit hash on each done milestone's Commit line
+   - The deployment milestone done, with the live URL recorded
 
    Your instructor can open `TASKS.md` on GitHub and run `git log -- TASKS.md` to see how the work progressed, and that history is your evidence.
 
@@ -879,7 +908,7 @@ You'll encounter these in larger projects beyond this tutorial. We didn't formal
 |-------|--------------|------------------------|
 | `using-git-worktrees` | Creates an isolated working directory per branch so multiple branches can be checked out at the same time | We told brainstorming to skip it (in the prompt) to keep this project on a single working directory |
 | `dispatching-parallel-agents` | Splits independent tasks across multiple agents that work in parallel | Overkill for a single-project tutorial |
-| `subagent-driven-development` | Executes plans by dispatching a fresh subagent per task, with review checkpoints between | A more advanced execution model than executing-plans; same outcome, more moving parts |
+| `subagent-driven-development` | Runs a plan by handing each task to a fresh subagent and reviewing the result before the next | Superpowers' recommended way to run a plan, and the one you'll likely use on a capstone. You chose inline in 2.2 so you could watch the build |
 | `writing-skills` | Helps you author your own Superpowers skills | Meta. For skill authors, not skill consumers |
 | `systematic-debugging` | Walks through a structured debugging process when something breaks | Triggers automatically if your build hits an unexpected error |
 
@@ -898,7 +927,7 @@ Quick-reference table of key terms used in this document.
 | **Branch** | A separate line of development in Git, allowing isolated work without affecting the main codebase |
 | **Commit** | A saved snapshot of your project at a specific point in time, like a version you can return to |
 | **Commit Hash** | A unique identifier (e.g., `05a9ada`) assigned to each commit, serving as its permanent fingerprint |
-| **Definition of Done** | A shared quality checklist that applies to every milestone, on top of each milestone's own acceptance criteria |
+| **Definition of Done** | A shared standard that must hold before any milestone moves to Done, on top of each milestone's own acceptance criteria |
 | **Deploy** | Make software accessible on a server so users can reach it via a URL |
 | **executing-plans** | A Superpowers skill that implements tasks from an implementation plan one at a time, with frequent commits |
 | **Feature Branch** | A branch created specifically for developing one feature, separate from main |

@@ -14,7 +14,7 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
   - [1.3 Granola account and student plan](#13-granola-account-and-student-plan)
   - [1.4 Wispr Flow account and student plan](#14-wispr-flow-account-and-student-plan)
 - [Section 2: Install tools (~50 min)](#section-2-install-tools-50-min)
-  - [2.1 Cursor](#21-cursor)
+  - [2.1 VS Code](#21-vs-code)
   - [2.2 Git](#22-git)
   - [2.3 Python 3.11+](#23-python-311)
   - [2.4 Claude Code](#24-claude-code)
@@ -31,14 +31,14 @@ Estimated time: 70–100 minutes, at your own pace. Do this part first; Part 2 (
 
 ```
 Accounts:  GitHub, Claude Pro, Granola, Wispr Flow
-Tools:     Cursor, Git, Python 3.11+, Claude Code, Superpowers plugin, Granola app
+Tools:     VS Code, Git, Python 3.11+, Claude Code, Superpowers plugin, Granola app
 Repo:      Fork and clone the tutorial repository
 Tracking:  A TASKS.md file you create in Part 2 (no extra account needed)
 Meetings:  Granola connected to Claude Code (for your capstone)
 Dictation: Wispr Flow, speak your prompts to Claude Code instead of typing
 ```
 
-**See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (If the app shows a "Zzzz" sleeping page, click the button to wake it up, which takes about 30 seconds.)
+**See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (Free Streamlit apps go to sleep after 12 hours without visitors. If you land on a sleeping page, click **Yes, get this app back up!** and wait about 30 seconds.)
 
 > **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel, or send me a direct message on Teams, with what you were doing, the exact error, and what you already tried.
 
@@ -69,7 +69,7 @@ Most analysts can build a model in a notebook. Fewer can turn that model into a 
 - Manage code with version control (Git and GitHub)
 - Use AI to accelerate building (Claude Code)
 - Plan before you build (Superpowers' brainstorming and writing-plans skills)
-- Edit code in a modern, AI-aware editor (Cursor)
+- Read and edit code in the editor most developers use (VS Code)
 - Bring meeting notes into your AI workflow (Granola connected to Claude Code) for your capstone stakeholder meetings
 
 AI-assisted development doesn't replace understanding. It accelerates it. You still need to know what you're building and why. The AI handles much of the how.
@@ -88,7 +88,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 |  GitHub (code hosting)  <-->  Git (version control)          |
 |       ^                           ^                          |
 |       |                           |                          |
-| TASKS.md (task tracking) <-->  Cursor (code editor)          |
+| TASKS.md (task tracking) <-->  VS Code (code editor)         |
 |       ^                           ^                          |
 |       |                           |                          |
 | Claude Code (coding agent) <--> Superpowers (planning skills) |
@@ -103,7 +103,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 - **GitHub** stores your code in the cloud so it's safe, shareable, and versioned.
 - **Git** is the version control engine that tracks every change you make.
 - **TASKS.md** is a plain-text task board that lives in your repository. It tracks what to build and what's done, and because it's just a file, Claude Code can read and update it directly, with no separate account or web app to switch to. The board holds your milestones (the major deliverables, with IDs like TASK-1), and the plan you write in Part 2 breaks each milestone into the smaller build tasks Claude Code works through.
-- **Cursor** is your code editor, where you write and organize files.
+- **VS Code** is your code editor, where you read and organize files. Its built-in terminal is where Claude Code runs.
 - **Claude Code** is an AI coding agent that runs in your terminal, reads your project, and helps you build.
 - **Superpowers** is a Claude Code plugin whose skills (brainstorming, writing-plans, executing-plans) turn requirements into bite-sized implementation tasks before you start coding.
 - **Python + Streamlit** is the technology stack for the dashboard you'll build in Part 2.
@@ -147,6 +147,8 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 **If the subscription cost is a concern,** message me on Teams. I don't want that to be a blocker for anyone.
 
+> **What Pro gives you in Claude Code.** Pro includes two models. Sonnet 5 is the default and is plenty for everything in this tutorial. Opus 5 is stronger and slower, and you can switch to it inside Claude Code with `/model`, but it uses up your allowance faster. Pro has a 5-hour usage window and a weekly limit, shared between claude.ai and Claude Code. Run `/usage` inside Claude Code to see where you stand. When a limit resets, Claude Code picks up where it left off. One thing to leave alone: the **usage credits** setting on claude.ai. It's off by default, and turning it on lets fast mode and the Fable models bill you beyond your subscription. Nothing in this tutorial needs it.
+
 > **Checkpoint:** When you're logged in to claude.ai, a Pro badge appears next to your name in the bottom-left corner.
 
 ---
@@ -168,7 +170,7 @@ The following diagram shows every tool you'll install and how they connect. Refe
 
 ### 1.4 Wispr Flow account and student plan
 
-> **Why Wispr Flow?** Wispr Flow is a voice dictation app that turns your speech into text in any application, including Cursor's terminal where Claude Code runs. It advertises around 4x faster than typing and cleans up filler and false starts as you talk. Here's why it earns a spot in this setup: what you get out of an AI agent depends on how much context you put in. In Part 2, the Superpowers `brainstorming` skill interviews you with clarifying questions, and the richer your answers, the better the design and plan it produces. Speaking a few paragraphs of context is far easier than typing them, so dictation is the fastest way to give Claude the detailed direction it works best with.
+> **Why Wispr Flow?** Wispr Flow is a voice dictation app that turns your speech into text in any application, including the VS Code terminal where Claude Code runs. It advertises around 4x faster than typing and cleans up filler and false starts as you talk. Here's why it earns a spot in this setup: what you get out of an AI agent depends on how much context you put in. In Part 2, the Superpowers `brainstorming` skill interviews you with clarifying questions, and the richer your answers, the better the design and plan it produces. Speaking a few paragraphs of context is far easier than typing them, so dictation is the fastest way to give Claude the detailed direction it works best with.
 
 **Steps:**
 
@@ -190,13 +192,13 @@ Before installing any tools, you need to understand the terminal, the interface 
 
 > **What is a terminal?** A terminal (also called a command line or CLI) is a text-based interface where you type commands instead of clicking buttons. Professional developers use a terminal daily. It might feel unfamiliar at first, but by the end of this tutorial, you'll be comfortable with the essential commands. You don't need to memorize everything; Claude Code itself runs in the terminal and can help you with commands when you need it.
 
-**Opening the terminal in Cursor:**
+**Opening the terminal in VS Code:**
 
-Once Cursor is installed (Section 2.1), you'll open the terminal inside it. Go to **Terminal** --> **New Terminal** from the menu bar, or use the keyboard shortcut `` Ctrl+` `` (backtick key, usually below Escape).
+Once VS Code is installed (Section 2.1), you'll open the terminal inside it. Go to **Terminal** --> **New Terminal** from the menu bar, or use the keyboard shortcut `` Ctrl+` `` (backtick key, usually below Escape).
 
 ```
 +-----------------------------------------------------------+
-|  Cursor Window                                            |
+|  VS Code Window                                           |
 |-----------------------------------------------------------|
 |                                                           |
 |  [Your code and files appear here]                        |
@@ -227,41 +229,26 @@ You'll see reminders about this throughout the installation steps. If a tool doe
 
 ---
 
-### 2.1 Cursor
+### 2.1 VS Code
 
-> **What is Cursor?** Cursor is an AI-powered code editor built on Visual Studio Code (VS Code). If you've used VS Code before, Cursor will feel familiar. If you haven't, it's a text editor designed for writing code, with built-in AI capabilities and an integrated terminal. We use Cursor over plain VS Code because it has native Claude Code integration and AI features designed for this workflow.
+> **What is VS Code?** Visual Studio Code (VS Code) is a free code editor from Microsoft and the most widely used one. You'll use it for two things. One is reading and editing files: the PRD, your task board, the design doc, and the code Claude writes. The other is its built-in terminal, which is where Claude Code runs. If you already have VS Code installed, skip to **Turn off Copilot** below.
 
 **Download and install:**
 
-1. Go to [cursor.com](https://cursor.com).
-2. Download the installer for your platform:
-   - **macOS:** Download the `.dmg` file. Open it and drag Cursor to your Applications folder.
-   - **Windows:** Download the `.exe` file. Run it and follow the installation wizard.
-3. Launch Cursor.
+1. Go to [code.visualstudio.com](https://code.visualstudio.com) and click **Download**.
+   - **macOS:** Open the downloaded `.zip` file (Safari may unzip it for you) and drag **Visual Studio Code** into your Applications folder.
+   - **Windows:** Run the `.exe` installer and accept the defaults. The installer adds VS Code to your PATH.
+2. Launch VS Code. You'll see a Welcome page. There's no account to create and nothing to sign in to. If VS Code offers to pick a theme or walk you through the basics, choose what you like or close the tab.
 
-**Create your account:**
+**Turn off Copilot:**
 
-4. On the sign-up screen, choose **Continue with GitHub** (recommended since you just created a GitHub account), **Continue with Google**, **Continue with Apple**, or sign up with email.
-5. Complete verification if prompted.
+3. VS Code ships with GitHub Copilot, its own AI assistant, and will offer to set it up. You don't need it, and two AI assistants in one window make it hard to tell which one did what. Open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows), type **Preferences: Open User Settings**, and press **Enter/Return**. In the settings search box, type **disable AI features** and check the box for **Chat: Disable AI Features**. The chat panel and the Copilot icons disappear. Claude Code isn't affected: it runs in the terminal, not through VS Code's AI features.
 
-**Configure initial settings:**
+> **Already use Copilot?** Do step 3 anyway while you work through this tutorial, so you always know which assistant you're talking to. Uncheck the same box later to get Copilot back.
 
-6. On the "Customize Your Experience" screen:
-   - How do you plan to use Cursor? --> **With a Team**
-   - Which role best describes you? --> **Student**
-   - Share Data --> **Off**
-   - Click **Continue**
-7. If offered a free Pro trial (you may see something like a "7-day free Pro trial"), click **Skip for now**. You don't need Cursor Pro for this tutorial.
-8. When prompted to connect GitHub, click **Connect**, then **Authorize Cursor** in the browser that opens. Verify accounts and click **Link Account**, then **Continue**.
-9. Return to the Cursor desktop app and click **Log In** if prompted. Accept defaults on remaining screens.
+> **Optional: the Claude Code extension.** Anthropic also publishes a Claude Code extension for VS Code, with a chat panel and a diff view. This tutorial doesn't use it. Everything happens in the terminal, where every Claude Code command works, and one place to look keeps things simple. If you're curious, try it after you finish Part 2 and see which you prefer.
 
-**Open the editor window:**
-
-10. Go to **File** --> **Open IDE** (called **Open Editor Window** in older versions; `Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows). This opens the editor window with the welcome screen, the same window you'll use to clone the repository in Section 3.
-
-> **Used Cursor before?** If Cursor skips the setup screens and drops you straight into an old project, step 10 is the fix: **File** --> **Open IDE** opens a fresh window with the welcome screen.
-
-> **Checkpoint:** You see the Cursor welcome screen with options: **Open project**, **Clone repo**, and **Connect via SSH**.
+> **Checkpoint:** VS Code opens to its Welcome page, and the Copilot chat icon is gone from the top and bottom of the window.
 
 ---
 
@@ -283,7 +270,7 @@ With Git, you have one file. The entire history lives inside a hidden `.git` fol
 
 **Check if Git is already installed:**
 
-Open the terminal in Cursor (Terminal --> New Terminal) and run:
+Open the terminal in VS Code (Terminal --> New Terminal) and run:
 
 ```bash
 git --version
@@ -300,11 +287,11 @@ If you see a version number (for example, `git version 2.39.0`), Git is already 
 
 1. Download the installer from [git-scm.com/download/win](https://git-scm.com/download/win) (64-bit recommended).
 2. Run the installer. Most defaults are fine, but pay attention to these settings:
-   - Select **"Git from the command line and also from 3rd-party software"** (the recommended option) so Git works in Cursor's terminal. Don't pick "Use Git from Git Bash only," which would hide Git from Cursor.
+   - Select **"Git from the command line and also from 3rd-party software"** (the recommended option) so Git works in VS Code's terminal. Don't pick "Use Git from Git Bash only," which would hide Git from VS Code. This option also installs **Git Bash**, which the Superpowers plugin (Section 2.5) needs in order to load on Windows.
    - Select **"Use the OpenSSL library"**
    - Select **"Checkout Windows-style, commit Unix-style line endings"** to prevent line ending issues when collaborating with macOS users.
    - Accept other defaults.
-3. After installation, **restart Cursor** completely (close and reopen it).
+3. After installation, **restart VS Code** completely (close and reopen it).
 
 **Configure Git (both platforms):**
 
@@ -426,11 +413,13 @@ You type a plain-English prompt
   (that line is your cue a skill kicked in)
 ```
 
+This tutorial was written against Superpowers 6.3.0. The plugin updates itself, so a skill's wording may drift a little from what Part 2 quotes, but the steps stay the same.
+
 The install command below is the only time you'll type a slash command to use Superpowers. The skills themselves never need one; they activate from natural-language prompts. (You'll still type a few unrelated slash commands elsewhere in the tutorial, like `/exit` and `/init`.)
 
 #### Install the plugin
 
-1. Open your terminal in Cursor (Terminal --> New Terminal) and run `claude` from any directory:
+1. Open your terminal in VS Code (Terminal --> New Terminal) and run `claude` from any directory:
 
    ```bash
    claude
@@ -442,11 +431,11 @@ The install command below is the only time you'll type a slash command to use Su
    /plugin install superpowers@claude-plugins-official
    ```
 
-3. Wait for the install to complete (~30 seconds). Claude Code will confirm `Superpowers installed`.
+3. Wait for the install to complete (~30 seconds). Claude Code confirms the plugin is active. If it tells you to run `/reload-plugins` instead, run that. From now on Superpowers loads at the start of every session.
 
-4. Exit Claude Code (`/exit`) and start it again. The Superpowers plugin loads on each new session via a SessionStart hook.
+4. Confirm it's installed. Ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and shows up as a `Skill(superpowers:<name>)` line. You can also run `/plugin` to see your installed plugins.)
 
-5. Confirm it's installed. In the new session, ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and shows up as a `Skill(superpowers:<name>)` line. You can also run `/plugin` to see your installed plugins.)
+> **Windows:** Superpowers loads through Git Bash, which the Git installer set up in Section 2.2 when you chose the recommended option. If the plugin installs but Claude says it isn't active in a new session, check that Git Bash exists (search for it in the Start menu). If it's missing, rerun the Git installer with the recommended options.
 
 > **Checkpoint:** In a Claude Code session, asking `Is the Superpowers plugin installed?` gets a yes.
 
@@ -491,7 +480,7 @@ The top half (record -> transcribe -> sync) happens in the Granola app. The bott
 
 **Connect it to Claude Code:**
 
-4. In **Cursor's terminal** (not inside Claude Code), register the Granola MCP server. You can run this from any directory; it only needs to be done once:
+4. In **VS Code's terminal** (not inside Claude Code), register the Granola MCP server. You can run this from any directory; it only needs to be done once:
 
    ```bash
    claude mcp add --transport http granola https://mcp.granola.ai/mcp
@@ -576,13 +565,12 @@ Cloning downloads the repository to your computer so you can work on it locally.
 1. On your forked repository page (`github.com/[your-username]/ai-dev-workflow-tutorial`), click the green **Code** button.
 2. Make sure the **HTTPS** tab is selected (not SSH or GitHub CLI).
 3. Copy the URL. It will look like: `https://github.com/[your-username]/ai-dev-workflow-tutorial.git`
-4. In Cursor, open a fresh window: **File** --> **Open IDE** (called **Open Editor Window** in older versions; `Shift+Cmd+N` on macOS, `Shift+Ctrl+N` on Windows).
-5. Click **Clone repo** on the welcome screen. (No welcome screen? Open the Command Palette, `Cmd+Shift+P` on macOS or `Ctrl+Shift+P` on Windows, and run **Git: Clone**.)
-6. Paste the URL you copied and press **Enter/Return**.
-7. Choose a save location. **Recommended:** Create a `GitHub` folder in your home directory to keep all repositories organized:
+4. In VS Code, open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows), type **Git: Clone**, and press **Enter/Return**. (The Welcome page's **Clone Git Repository** link does the same thing.)
+5. Paste the URL you copied and press **Enter/Return**.
+6. Choose a save location. **Recommended:** Create a `GitHub` folder in your home directory to keep all repositories organized:
    - macOS: `~/GitHub`
    - Windows: `C:\Users\YourName\GitHub`
-8. When prompted, click **Open** to open the cloned repository in Cursor.
+7. When VS Code asks whether to open the cloned repository, click **Open**. If it then asks whether you trust the authors of the files in this folder, click **Yes, I trust the authors**. That unlocks the terminal and the other features you'll need in this folder.
 
 A full copy of your fork now lives on your computer, in the folder you chose. These local files are yours to edit; your changes stay on your machine until you push them back to GitHub (you'll do that in Part 2).
 
@@ -590,9 +578,9 @@ A full copy of your fork now lives on your computer, in the folder you chose. Th
 
 > **Organizing your repositories:** Keeping all your Git repositories in a single `GitHub` folder (rather than scattering them across Desktop, Documents, and Downloads) is a small habit that pays off as you accumulate projects. It makes finding projects easy and keeps your file system clean.
 
-> **If you can't see the file explorer sidebar in Cursor:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The sidebar shows your project's file and folder structure.
+> **If you can't see the Explorer sidebar in VS Code:** Press `Cmd+B` (macOS) or `Ctrl+B` (Windows) to toggle the sidebar. The Explorer shows your project's file and folder structure.
 
-> **Checkpoint:** Tutorial files are visible in Cursor's file explorer (left sidebar). You should see the `data/` and `prd/` folders, along with `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md`.
+> **Checkpoint:** Tutorial files are visible in VS Code's Explorer (left sidebar). You should see the `data/` and `prd/` folders, along with `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md`.
 
 ---
 
@@ -609,7 +597,7 @@ Before calling Part 1 complete, run through every item in this checklist. Each v
 
 ### Tools
 
-Open a terminal in Cursor (Terminal --> New Terminal) and run each command:
+Open a terminal in VS Code (Terminal --> New Terminal) and run each command:
 
 ```bash
 git --version
@@ -651,8 +639,8 @@ Expected: Claude returns your Granola email and workspace. Type `/exit` to close
 ### Repository
 
 - [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
-- [ ] Repo cloned locally and open in Cursor
-- [ ] Files visible in Cursor's file explorer (you should see `data/`, `prd/`, and the `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md` files)
+- [ ] Repo cloned locally and open in VS Code
+- [ ] Files visible in VS Code's Explorer (you should see `data/`, `prd/`, and the `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md` files)
 
 ---
 
@@ -671,7 +659,7 @@ Here's what you've just configured:
 |    Granola ............ Meeting notes (linked to Claude Code)    |
 |                                                                |
 |  Local Tools:                                                  |
-|    Cursor ............. AI-powered code editor                  |
+|    VS Code ............ Code editor and terminal                |
 |    Git ................ Version control                         |
 |    Python 3.11+ ....... Programming language                   |
 |    Claude Code ........ AI coding agent                         |
@@ -686,7 +674,7 @@ Here's what you've just configured:
 +---------------------------------------------------------------+
 ```
 
-These tools connect into one workflow: GitHub hosts your code, Git tracks changes, Cursor is where you write it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll add a `TASKS.md` file to track your work, then see everything work together as you plan, build, and deploy a live dashboard.
+These tools connect into one workflow: GitHub hosts your code, Git tracks changes, VS Code is where you read and edit it, the Superpowers plugin's skills help Claude plan, and Claude Code builds alongside you. In Part 2, you'll add a `TASKS.md` file to track your work, then see everything work together as you plan, build, and deploy a live dashboard.
 
 > **Before you start Part 2:** If anything above isn't working, reach out on Teams now, either in the General channel or with a direct message to me. It's much easier to sort out setup problems before you start building than in the middle of it.
 
@@ -697,7 +685,7 @@ These tools connect into one workflow: GitHub hosts your code, Git tracks change
 Part 1 is complete. You've:
 
 - Created accounts on GitHub, Claude, Granola, and Wispr Flow
-- Installed the tools that make up your development environment: Cursor, Git, Python, Claude Code, the Superpowers plugin, the Granola app, and Wispr Flow
+- Installed the tools that make up your development environment: VS Code, Git, Python, Claude Code, the Superpowers plugin, the Granola app, and Wispr Flow
 - Connected Claude Code to your Granola meeting notes for your capstone
 - Forked and cloned the tutorial repository (your working copy of the project)
 
