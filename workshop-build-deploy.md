@@ -35,6 +35,8 @@
 
 This guide is self-paced. Work through it top to bottom; each section builds on the one before it, so don't skip ahead. Most people finish in about three hours, but there's no clock: do it in one sitting or split it across a few sessions, whatever fits your schedule. (The per-section time labels add up to well under three hours because they only count the hands-on steps; the rest is reading, answering brainstorming's questions, and watching Claude build.) You'll save your progress with Git as you go (Section 4), so you can stop and pick up later without losing anything.
 
+> **Using Codex instead of Claude Code?** Every prompt in this guide works the same way in Codex, because the Superpowers skills run on both. The places that differ (starting a session, permission modes, the output style, `/init`, the code review command) are marked **Codex:** in the [Codex companion](codex-companion.md). Keep it open in a second tab.
+
 > **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first; most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel, or send me a direct message on Teams, if you get stuck.
 
 ---

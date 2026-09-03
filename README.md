@@ -93,6 +93,7 @@ Every technology company uses a variation of this workflow. You'll experience th
 - Basic Python knowledge (if you've used pandas or written a few scripts, you're fine)
 - A computer running macOS or Windows
 - No prior experience with Git or AI coding tools
+- A Claude Pro subscription, or a ChatGPT subscription if you already have one. The tutorial is written for Claude Code. If you already pay for ChatGPT, which includes OpenAI's Codex, follow the [Codex companion](codex-companion.md) at the marked points instead of buying a second subscription. The workflow is the same on both.
 
 ## Where to start
 
@@ -104,6 +105,7 @@ Open [pre-work-setup.md](pre-work-setup.md) and work through it first, then cont
 |----------|-------------|
 | [E-Commerce PRD](prd/ecommerce-analytics.md) | The product requirements document you'll build from |
 | [Sales data](data/sales-data.csv) | Sample dataset for the dashboard |
+| [Codex companion](codex-companion.md) | For students on a ChatGPT subscription: what to do differently with OpenAI's Codex at each marked point |
 | [Capstone tools](capstone-tools.md) | Appendix: Granola (meeting notes into Claude Code) and Wispr Flow (dictation), for the capstone, not this tutorial |
 
 ## License
