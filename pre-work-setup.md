@@ -358,9 +358,9 @@ Then open a terminal and run `claude --version` to confirm.
 **Step 3: Authenticate**
 
 1. In the terminal, type `claude` and press Enter.
-2. You'll be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.2).
-3. Authorize Claude Code to access your account.
-4. Return to the terminal. You should see Claude Code's interactive prompt.
+2. The first run asks you to pick a text style. Press Enter to keep the default, then press Enter again on **Claude account with subscription**.
+3. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.2) and authorize Claude Code to access your account.
+4. Return to the terminal. Press Enter through the "Login successful" and "Security notes" screens and the terminal-setup question (either answer is fine). You should see Claude Code's interactive prompt.
 5. Type `/exit` to quit for now. You'll come back to Claude Code in Section 2.5 and use it throughout Part 2.
 
 > **If authentication fails:** Run `claude auth logout` in the terminal (or type `/logout` inside Claude Code), then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
@@ -410,13 +410,15 @@ The install command below is the only time you'll type a slash command to use Su
    claude
    ```
 
+   The first time you start Claude Code in a folder, it asks whether you trust the folder. The highlighted answer is **No, exit**, so press the down arrow to **Yes, I trust this folder** and press Enter.
+
 2. Inside Claude Code, run:
 
    ```
    /plugin install superpowers@claude-plugins-official
    ```
 
-3. Wait for the install to complete (~30 seconds). Claude Code confirms the plugin is active. If it tells you to run `/reload-plugins` instead, run that. From now on Superpowers loads at the start of every session.
+3. Claude Code shows the plugin's details and asks where to install it. Press Enter on **Install for you (user scope)**. The install takes about 30 seconds, and Claude Code confirms the plugin is active. If it tells you to run `/reload-plugins` instead, run that. From now on Superpowers loads at the start of every session.
 
 4. Confirm it's installed. Ask Claude: `Is the Superpowers plugin installed?` Claude will check and confirm. (There's no startup banner to look for; Superpowers shows itself later, whenever a skill activates and shows up as a `Skill(superpowers:<name>)` line. You can also run `/plugin` to see your installed plugins.)
 

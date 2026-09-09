@@ -37,6 +37,8 @@ This guide is self-paced. Work through it top to bottom; each section builds on 
 
 > **Using Codex instead of Claude Code?** Every prompt in this guide works the same way in Codex, because the Superpowers skills run on both. The places that differ (starting a session, permission modes, the output style, `/init`, the code review command) are marked **Codex:** in the [Codex companion](codex-companion.md). Keep it open in a second tab.
 
+> **Small things Claude Code shows that this guide doesn't cover.** A pasted prompt collapses to "[Pasted text #1 +5 lines]" in the input box; it's all there. A one-line "How is Claude doing this session?" rating appears now and then; press 0 or just keep typing. Tips about /ultrareview, approving from your phone, remote control, or a fullscreen renderer are offers, not steps, so ignore them or say no. None of these change what you do next.
+
 > **Didn't finish the setup yet?** Work through the [setup guide](pre-work-setup.md) first; most people finish it in under an hour. Then come back and complete the build here. Ask in the Teams General channel, or send me a direct message on Teams, if you get stuck.
 
 ---
@@ -149,7 +151,7 @@ Claude Code keeps notes of its own. While it works you may see progress checklis
    claude
    ```
 
-   Superpowers loads automatically for the session (you installed and verified it in Part 1). If you're not sure it's active, ask Claude `Is the Superpowers plugin installed?`
+   The first time you start Claude Code in this folder, it asks whether you trust the folder. The highlighted answer is **No, exit**, so press the down arrow to **Yes, I trust this folder** and press Enter. Superpowers loads automatically for the session (you installed and verified it in Part 1). If you're not sure it's active, ask Claude `Is the Superpowers plugin installed?`
 
 2. **Set the output style to Explanatory.** Inside Claude Code, open the settings menu:
 
@@ -157,7 +159,7 @@ Claude Code keeps notes of its own. While it works you may see progress checklis
    /config
    ```
 
-   Navigate with the **arrow keys**: highlight **Output style** and press **Enter**, then highlight **Explanatory**, press **Enter** to confirm, and press **Esc** to close the config menu. (Depending on your terminal, you may also be able to click an option with your mouse, but the arrow keys always work.) By default, Claude Code keeps its responses short; the Explanatory style tells Claude to explain what it's doing and why as it works, which helps you learn from it instead of just receiving code. The choice saves to your project's `.claude/settings.local.json` and persists, so you only set it once.
+   The settings list is long, so type **output** in its search box to narrow it, then press **Enter**. Use the **arrow keys** to highlight **Output style** and press **Enter** again. Highlight **Explanatory**, press **Enter** to confirm, and press **Esc** to close the config menu. (Depending on your terminal, you may also be able to click an option with your mouse, but the arrow keys always work.) By default, Claude Code keeps its responses short; the Explanatory style tells Claude to explain what it's doing and why as it works, which helps you learn from it instead of just receiving code. The choice saves to your project's `.claude/settings.local.json` and persists, so you only set it once.
 
    A style loads when a conversation starts, so it isn't active in the one you're in yet. Restart the conversation:
 
@@ -319,7 +321,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    >
    > Giving the AI clear constraints like these is itself a skill: you get a plan shaped to *your* project instead of its defaults.
 
-2. **Answer brainstorming's questions.** Claude loads the brainstorming skill (you'll see a `Skill(superpowers:brainstorming)` line with `Successfully loaded skill` under it). The first thing it tells you is how big it thinks the job is. A new dashboard counts as *architectural*, the fullest path, so expect the whole conversation described here. Then it asks clarifying questions, one at a time, on things like which KPIs matter most, how interactive the charts should be, and what edge cases to handle. Pick the options that fit your vision, or type your own preference. After the questions it proposes two or three approaches and recommends one, then walks you through the design a section at a time and checks with you after each. A yes moves it along. A change request is welcome at any point, and it's cheaper here than anywhere later.
+2. **Answer brainstorming's questions.** Claude loads the brainstorming skill (you'll see a `Skill(superpowers:brainstorming)` line with `Successfully loaded skill` under it). The first thing it tells you is how big it thinks the job is. A new dashboard counts as *architectural*, the fullest path, so expect the whole conversation described here. Then it asks clarifying questions, one at a time, on things like the trend chart's granularity, what to do if the data file is missing, and how to organize the files. Each comes as a short menu with a recommended option; pick the one that fits your vision, or type your own preference. After the questions it lays out the design in sections and asks whether it looks right. Some runs take it more slowly, proposing two or three approaches first and checking after each section. A yes moves it along. A change request is welcome at any point, and it's cheaper here than anywhere later.
 
    > **If it offers to "show you" in a browser:** brainstorming can open a companion page in your browser for mockups and diagrams. Say no, thanks. It spends usage you'll want for the build, and everything in this tutorial happens in the terminal.
 
@@ -345,7 +347,7 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    task.
    ```
 
-   You'll give that go-ahead in Section 4.1, after a short look at how the plan relates to your task board.
+   Claude loads `executing-plans` as soon as you answer (the `Skill(superpowers:executing-plans)` line appears now), reads the plan, and waits. You'll give that go-ahead in Section 4.1, after a short look at how the plan relates to your task board.
 
 > **Why write this down before any code runs?** The hard part of any project is the thinking: framing the problem, choosing an approach, weighing tradeoffs. That's exactly the part it's tempting to hand to the AI, and exactly the part you learn the most from keeping. Writing the spec and plan first forces your reasoning onto the record, where you and a reviewer can see it, instead of letting it disappear into the tool. The two files you just read are that record.
 
@@ -464,7 +466,7 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
    implement the plan steps it covers.
    ```
 
-   Claude invokes `executing-plans` (you'll see `Skill(superpowers:executing-plans)` in the output). The skill reads the plan and works through the steps under this milestone, one at a time. In Manual mode it asks before its first file write, which is how you know the mode took.
+   `executing-plans`, loaded back in Section 2.2 step 5, reads the plan and works through the steps under this milestone, one at a time. In Manual mode it asks before its first file write, which is how you know the mode took.
 
    > **What you'll see during a TDD step:** For plan steps flagged as test-driven (typically data-transformation steps like `compute_total_sales`), executing-plans will: (a) write a failing test in a `tests/` file, (b) run pytest (Python's test runner) and show you the failure, (c) implement the function, (d) run pytest again and show you the pass, (e) commit. For non-TDD steps (chart rendering, page layout), it'll skip straight to implementation and commit. A single milestone may contain several such steps. When the failing test appears at (a), read it before (c) happens. In Manual mode, Claude is waiting for you anyway. Say to yourself what it checks: "total sales is the sum of the total_amount column." That's the sentence the walk-through asks for. Then watch the test output: seeing red turn green is one of the more satisfying parts of the build.
 
@@ -552,7 +554,7 @@ Here is what each stage means:
    covered by .gitignore.
    ```
 
-   Two outcomes, both fine: Claude reports it's all already committed (the usual case), or it commits the stragglers. Either way you end with a clean working tree and TASK-1's history in Git.
+   Two outcomes, both fine: Claude reports it's all already committed (the usual case), or it commits the stragglers. Either way you end with a clean working tree and TASK-1's history in Git. You'll also notice two lines at the bottom of every commit message, `Co-Authored-By: Claude ...` and `Claude-Session: ...`. Claude Code adds them on its own. They're the agent signing its work, and they're fine to leave.
 
    > **Key Concept: .gitignore.** The `.gitignore` file tells Git which files and directories to ignore. Virtual environments (`venv/`), compiled files, and operating system files should never be committed to a repository; they're large, machine-specific, and can be regenerated. The `.gitignore` file prevents accidental commits of these files.
 
@@ -596,7 +598,7 @@ Before you start TASK-2, press **Shift+Tab** to switch to **Auto** mode (see the
 The cycle for each milestone is:
 
 ```
-Take the next milestone
+Take the next milestone, in a fresh conversation (/clear)
         |
         v
 "Let's work on TASK-N" --> Move to In Progress --> executing-plans works its plan steps
@@ -611,15 +613,25 @@ Verify the milestone's commits carry the milestone ID
 Push --> update TASKS.md (check off, Commit line, move to Done) --> push the board
 ```
 
-Here is the pattern for each milestone. In Claude Code:
+Here is the pattern for each milestone. Start it in a fresh conversation. In Claude Code:
 
 ```
-Let's work on TASK-2. Move it to In Progress in TASKS.md, then implement the plan steps it covers.
+/clear
 ```
+
+Then send the milestone prompt, with your own plan's file name after the `@` (type `@docs/` and let the autocomplete finish it):
+
+```
+Let's work on TASK-2. Move it to In Progress in TASKS.md, then implement
+the plan steps it covers, inline in this session (no subagents). The
+plan is in @docs/superpowers/plans/2026-09-08-sales-dashboard.md.
+```
+
+> **Why a fresh conversation for each milestone?** Claude re-reads the whole conversation on every step it takes. By the third milestone that's well over a hundred thousand words, most of them about work that's already finished. Every step then costs more of your usage allowance than it did in a short session. Claude Code will tell you so itself, with a "/clear to save ..." note in the status bar. Nothing is lost by clearing: the plan, the board, and the code are files on disk, and the prompt points Claude at the plan. The same prompt is how you pick up tomorrow in a new terminal. Two parts of it exist only because the conversation is new. "Inline in this session" keeps Claude from handing each task to a subagent, which Superpowers does by default when nobody has said otherwise. The plan's path tells it where to look.
 
 Claude auto-invokes `executing-plans` and works through the plan steps under the milestone. When it finishes, ask for the diff of one file and read it, as you did in 4.1. Then run the app with the same prompt as 4.1 step 3 to see the new piece on screen.
 
-After implementation and testing, in Claude Code:
+After implementation and testing, run the same check-and-push as in 4.2. Claude usually updates the board on its own as it finishes a milestone, so this comes back as a confirmation more often than a change. In Claude Code:
 
 ```
 Verify everything for TASK-2 is committed with the milestone ID and commit
@@ -660,7 +672,7 @@ Open whatever Local URL Claude reports (for example `http://localhost:8501`). Th
 
 Your dashboard is built and working, so now is the moment to give your project a memory. You'll generate a `CLAUDE.md`, a file Claude Code reads at the start of every session, so future sessions (and your capstone) begin with context instead of a blank slate.
 
-> **If Claude showed you a menu after your last milestone:** hold off. After the final plan step, Superpowers runs your whole test suite and then offers three choices (the `finishing-a-development-branch` step). The choices are merge to main locally, push and create a pull request, or keep the branch as it is. Don't pick yet. Do this `/init` step first so `CLAUDE.md` is part of the merge, then handle the menu in Section 4.5.
+> **If Claude showed you a menu after your last milestone:** hold off. After the final plan step, Superpowers sometimes runs your whole test suite and offers three choices (the `finishing-a-development-branch` step). They are merge to main locally, push and create a pull request, or keep the branch as it is. The menu doesn't always appear. If it does, don't pick yet. Do this `/init` step first so `CLAUDE.md` is part of the merge, then handle the menu in Section 4.5.
 
 > **What is CLAUDE.md, and why now?** `CLAUDE.md` documents your project for the AI: how to run it, where the key files live, the conventions you follow. Claude Code's `/init` command writes one for you by scanning your code. That's why you do it *now* and not at the start: at the start there's nothing to describe; now it can capture your actual project. It also pays off on a team: because `CLAUDE.md` is committed to the repo, every teammate's Claude Code session reads the same file, so everyone (and their AI) follows the same setup, conventions, and structure. That keeps development consistent, and a new teammate gets up to speed from one file instead of asking around.
 
