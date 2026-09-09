@@ -483,12 +483,15 @@ Milestones are in plan order, so you'll work top-down: TASK-1 first. Within a mi
 3. Test the dashboard. Claude set up the `venv/` virtual environment while implementing TASK-1, so it's ready to use (if it isn't there for any reason, Claude will create it). In Claude Code:
 
    ```
-   Activate my virtual environment and run the Streamlit app so I can test it.
+   Stop any running Streamlit server, then activate my virtual environment
+   and run the Streamlit app so I can test it.
    ```
 
    > **Key Concept: Virtual Environments.** A **virtual environment** (the `venv/` folder) is an isolated Python installation specific to this project. Without it, packages you install might conflict with other Python projects on your machine. It keeps your dashboard's dependencies (Streamlit, Pandas, Plotly) contained within this project. That's what "activate my virtual environment" asks for: use this project's Python, not the machine-wide one. If you ever run the app yourself in VS Code's terminal, activate it first with `source venv/bin/activate` (macOS) or `venv\Scripts\activate` (Windows), then `streamlit run app.py`; you'll see `(venv)` at the start of the prompt while it's active.
 
 4. Claude starts the server and reports the **Local URL**, for example `http://localhost:8501` (the port number can differ if something else on your machine is already using that one). Open whatever URL it gives you: hold `Cmd` (macOS) or `Ctrl` (Windows) and click the link, or copy it into your browser. You should see the beginnings of your dashboard: likely a title and confirmation that the data loaded.
+
+   The prompt starts with "stop any running Streamlit server" for a reason. Claude leaves the server running in the background after you test. A server that's already running doesn't pick up everything Claude adds in later milestones. Stopping it first means every test shows the code as it is now, so you can reuse this exact prompt after each milestone.
 
 **Checkpoint:** The dashboard runs locally at the Local URL Claude reported, without errors.
 
@@ -613,7 +616,7 @@ Here is the pattern for each milestone. In Claude Code:
 Let's work on TASK-2. Move it to In Progress in TASKS.md, then implement the plan steps it covers.
 ```
 
-Claude auto-invokes `executing-plans` and works through the plan steps under the milestone. When it finishes, ask for the diff of one file and read it, as you did in 4.1. Then run the app to see the new piece on screen.
+Claude auto-invokes `executing-plans` and works through the plan steps under the milestone. When it finishes, ask for the diff of one file and read it, as you did in 4.1. Then run the app with the same prompt as 4.1 step 3 to see the new piece on screen.
 
 After implementation and testing, in Claude Code:
 
@@ -644,8 +647,8 @@ board update and push it too.
 After working through all implementation milestones, test the complete dashboard one final time. In Claude Code:
 
 ```
-Activate my virtual environment and run the Streamlit app so I can test
-the complete dashboard.
+Stop any running Streamlit server, then activate my virtual environment
+and run the Streamlit app so I can test the complete dashboard.
 ```
 
 Open whatever Local URL Claude reports (for example `http://localhost:8501`). Then open the PRD's **Acceptance Criteria** section beside it and check each item against what's on screen, yourself, without asking Claude. The PRD's **Expected Output** table gives you the numbers to look for: total sales near $116,500 and 482 orders. Passing tests prove the functions return what the tests asked for. They don't prove the chart is the right chart, the bars are sorted the way the PRD says, or the page would pass in an executive meeting. That's what your eyes are for. Anything that fails goes back to Claude as a plain request ("the region chart isn't sorted largest to smallest, fix it and commit under TASK-4") before you move on.
