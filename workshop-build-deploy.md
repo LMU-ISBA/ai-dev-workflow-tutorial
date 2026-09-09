@@ -292,7 +292,9 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 
    ```
    Help me design and plan the e-commerce sales dashboard described in
-   @prd/ecommerce-analytics.md. I'm tracking the milestones in @TASKS.md.
+   @prd/ecommerce-analytics.md. Start by brainstorming the design with me:
+   ask me your clarifying questions one at a time, and write a design doc
+   for my review before any plan. I'm tracking the milestones in @TASKS.md.
    Structure the plan so its steps cover each one, and label every plan
    task with the milestone it belongs to (TASK-1, TASK-2, and so on).
    Keep the plan's own task numbering separate so the two don't get mixed
@@ -301,15 +303,18 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
    the plan should stop there and hand off to me. Ground rules: work on my
    current feature branch (do not create a git worktree), use a plain
    Python virtual environment in venv/ with a requirements.txt for
-   dependencies (no uv or conda), and keep the code simple and readable
-   so I can follow it.
+   dependencies (no uv or conda), keep the data calculations in their own
+   module with pytest tests, and keep the code simple and readable so I
+   can follow it.
    ```
 
    > **What those ground rules mean.** You're setting these constraints on purpose, not parroting them:
+   > - **start by brainstorming the design with me.** Superpowers has a brainstorming skill for exactly this, but Sonnet 5 skips it when the PRD looks complete enough to plan from, and goes straight to writing the plan. Asking for the brainstorm in plain words is what gets you the interview in step 2.
    > - **label every plan task with its milestone.** The plan will have its own task numbers. Asking for the milestone ID on each one keeps the two from getting confused, and it's what lets a commit message say `TASK-2` and mean your board.
    > - **deployment is planned, but marked as yours.** Real plans include deployment; what a professional team controls is who executes it. Publishing needs your accounts (GitHub, Streamlit) and a go/no-go call, so the plan carries the step but stops and hands it to you: you'll run it yourself in Section 5, from `main`, after the merge. This is a prompt pattern worth reusing on any AI-planned project: mark the steps that publish work or need your credentials as human-executed.
    > - **do not create a git worktree.** A *worktree* is a separate working copy of your project. Superpowers would normally make one, but you keep things simple by staying on the single feature branch you created (more in the skills table at the end).
    > - **use a plain virtual environment in `venv/` with a `requirements.txt`.** The virtual environment is a private space for this project's Python packages, so they don't clash with anything else on your machine. Claude sets it up while building, and it's explained where you use it in Section 4.1. The `requirements.txt` is the list of packages, and it's the file Streamlit Cloud reads when you deploy in Section 5. Naming both keeps Claude from reaching for a different tool (there are several) and handing you something the deploy step doesn't expect.
+   > - **keep the data calculations in their own module with pytest tests.** Left to its defaults, brainstorming recommends one big `app.py` and no automated tests, and the test-first steps in Section 4 need both. Calculations in their own file are also what makes them testable without starting the dashboard.
    > - **keep the code simple and readable,** so you can follow what gets built, which is the whole point.
    >
    > Giving the AI clear constraints like these is itself a skill: you get a plan shaped to *your* project instead of its defaults.
