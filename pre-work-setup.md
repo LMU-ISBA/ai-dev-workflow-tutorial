@@ -17,9 +17,9 @@ Estimated time: 55–80 minutes, at your own pace. Do this part first; Part 2 (B
   - [2.3 Python 3.11+](#23-python-311)
   - [2.4 Claude Code](#24-claude-code)
   - [2.5 Superpowers plugin](#25-superpowers-plugin)
-- [Section 3: Fork and clone the repository (~15 min)](#section-3-fork-and-clone-the-repository-15-min)
-  - [3.1 Fork the repository](#31-fork-the-repository)
-  - [3.2 Clone your fork](#32-clone-your-fork)
+- [Section 3: Create your repository and clone it (~15 min)](#section-3-create-your-repository-and-clone-it-15-min)
+  - [3.1 Create your repository](#31-create-your-repository)
+  - [3.2 Clone your repository](#32-clone-your-repository)
 - [Section 4: Final verification (~10 min)](#section-4-final-verification-10-min)
 
 ---
@@ -29,13 +29,15 @@ Estimated time: 55–80 minutes, at your own pace. Do this part first; Part 2 (B
 ```
 Accounts:  GitHub, Claude Pro
 Tools:     VS Code, Git, Python 3.11+, Claude Code, Superpowers plugin
-Repo:      Fork and clone the tutorial repository
+Repo:      Your own copy of the tutorial repository, created from the template and cloned
 Tracking:  A TASKS.md file you create in Part 2 (no extra account needed)
 ```
 
 **See the finished product:** Before you start, look at what you'll build in Part 2: [E-Commerce Sales Dashboard](https://sales-dashboard-greg-lontok.streamlit.app/). This is a live, deployed dashboard built using the workflow you're about to learn. By the end, you'll have built and deployed your own version. (Free Streamlit apps go to sleep after 12 hours without visitors. If you land on a sleeping page, click **Yes, get this app back up!** and wait about 30 seconds.)
 
-> **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel, or send me a direct message on Teams, with what you were doing, the exact error, and what you already tried.
+> **Already paying for ChatGPT?** It includes OpenAI's Codex, a coding agent that does the same job as Claude Code, and this tutorial's workflow runs on either. Don't buy a second subscription. Skip Section 1.2, and at the points marked in the [Codex companion](codex-companion.md) (installing the agent, the plugin, and a few commands in Part 2) follow the companion instead. Everything else here applies to you as written.
+
+> **If you get stuck:** Try to work the problem yourself first, that's the skill you're building. Two fixes solve most setup issues: read the error message (it usually names the problem), and open a new terminal (that alone clears most "command not found" errors right after you install a tool). The one exception is `claude`: if that's the missing command, follow the installer's setup notes in Section 2.4, Step 2. If those don't do it, search the exact error, or once Claude Code is set up, paste the error and ask it to diagnose. Still stuck? Post in the Teams General channel, or send me a direct message on Teams, with what you were doing, the exact error, and what you already tried.
 
 > **Heads up:** Websites and software update their interfaces regularly. A button label, sign-up flow, or menu option described here may look slightly different by the time you go through it. That's normal. Focus on the goal of each step rather than the exact clicks: once you know what a step is trying to accomplish, you can usually find the equivalent option even when the UI has moved. Read the screen, work it out, and keep going. Figuring things out on your own like this is itself a professional skill.
 
@@ -188,6 +190,8 @@ You can resize the terminal by dragging the divider between it and the editor ar
 
 You'll see reminders about this throughout the installation steps. If a tool doesn't seem to work after installing it, your first step should always be to open a new terminal.
 
+One installer, Claude Code's, sometimes can't update the PATH for you. When that happens it prints the fix in its **Setup notes** at the end of the install, and you have to run or follow that note before a new terminal will help. Section 2.4 walks through it for macOS and Windows.
+
 ---
 
 ### 2.1 VS Code
@@ -248,7 +252,7 @@ If you see a version number (for example, `git version 2.39.0`), Git is already 
 
 1. Download the installer from [git-scm.com/download/win](https://git-scm.com/download/win) (64-bit recommended).
 2. Run the installer. Most defaults are fine, but pay attention to these settings:
-   - Select **"Git from the command line and also from 3rd-party software"** (the recommended option) so Git works in VS Code's terminal. Don't pick "Use Git from Git Bash only," which would hide Git from VS Code. This option also installs **Git Bash**, which the Superpowers plugin (Section 2.5) needs in order to load on Windows.
+   - Select **"Git from the command line and also from 3rd-party software"** (the recommended option) so Git works in VS Code's terminal. Don't pick "Use Git from Git Bash only," which would hide Git from VS Code. This option also installs **Git Bash**, which the Superpowers plugin (Section 2.5) needs to load on Windows.
    - Select **"Use the OpenSSL library"**
    - Select **"Checkout Windows-style, commit Unix-style line endings"** to prevent line ending issues when collaborating with macOS users.
    - Accept other defaults.
@@ -329,9 +333,29 @@ curl -fsSL https://claude.ai/install.sh | bash
 irm https://claude.ai/install.ps1 | iex
 ```
 
-After installation, open a **new terminal** (Terminal --> New Terminal) so the PATH updates take effect.
+**Step 2: Read the installer's setup notes**
 
-**Step 2: Authenticate**
+The installer ends with **Claude Code successfully installed!** and, under that, a **Setup notes** section. Read those notes before you do anything else. Look for one that says `~/.local/bin` (macOS) or your `.local\bin` folder (Windows) **is not in your PATH**. That means Claude Code is on your computer but your terminal doesn't know where to look for it. Opening a new terminal won't fix that on its own, and typing `claude` will get you "command not found" until you follow the note. If there are no setup notes, skip to Step 3.
+
+**macOS:** The note gives you one command to run. Copy it from your own terminal, since it names your shell's startup file (usually `~/.zshrc`). It looks like this:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
+
+The first half adds a line to your shell's startup file so every future terminal knows about `~/.local/bin`. The second half loads it into the terminal you're in now. Open a new terminal (Terminal --> New Terminal) and run `claude --version` to confirm.
+
+**Windows:** The note names the folder (usually `C:\Users\YourName\.local\bin`) and tells you to add it yourself:
+
+1. Copy the folder path from the note.
+2. Press the Windows key, type **environment variables**, and open **Edit environment variables for your account**.
+3. Under **User variables**, select **Path** and click **Edit**.
+4. Click **New**, paste the folder path, and click **OK** on each window to close them.
+5. Close VS Code completely and reopen it. A new terminal tab inside VS Code isn't enough on Windows: VS Code reads the PATH once when it starts, so it has to restart to see the change.
+
+Then open a terminal and run `claude --version` to confirm.
+
+**Step 3: Authenticate**
 
 1. In the terminal, type `claude` and press Enter.
 2. You'll be prompted to log in. A browser window opens. Log in with your Claude account (the one with the Pro subscription from Section 1.2).
@@ -341,7 +365,7 @@ After installation, open a **new terminal** (Terminal --> New Terminal) so the P
 
 > **If authentication fails:** Run `claude auth logout` in the terminal (or type `/logout` inside Claude Code), then run `claude` again. Make sure your browser allows popup windows. The authentication flow opens a new browser tab. If you're using a browser with aggressive popup blocking, temporarily allow popups for the authentication URL.
 
-> **Checkpoint:** Running `claude` starts an interactive session. Type `/exit` to quit.
+> **Checkpoint:** `claude --version` prints a version number, and running `claude` starts an interactive session. Type `/exit` to quit.
 
 ---
 
@@ -402,51 +426,54 @@ The install command below is the only time you'll type a slash command to use Su
 
 ---
 
-## Section 3: Fork and clone the repository (~15 min)
+## Section 3: Create your repository and clone it (~15 min)
 
-### Understanding forks and clones
+### Understanding templates and clones
 
 Before you do anything, it helps to understand the two-step process you're about to follow and why it works this way.
 
 ```
-+------------------+     Fork      +------------------+
-|  Original        |  ---------->  |   Your Fork      |
-|  Repo (GitHub)   |               |   (GitHub)       |
-+------------------+               +--------+---------+
-                                            | Clone
-                                            v
-                                   +------------------+
-                                   |  Your Computer   |
-                                   |  (Local Copy)    |
-                                   +------------------+
++------------------+  Use this    +------------------+
+|  Tutorial repo   |  template    |   Your repo      |
+|  (LMU-ISBA)      |  ---------->  |   (GitHub)       |
++------------------+              +--------+---------+
+                                           | Clone
+                                           v
+                                  +------------------+
+                                  |  Your Computer   |
+                                  |  (Local Copy)    |
+                                  +------------------+
 ```
 
-- **Fork** = your personal copy of the repository, hosted on GitHub under your account. You have full control over your fork. Changes you make to your fork don't affect the original repository.
-- **Clone** = downloading your fork from GitHub to your computer so you can work on files locally. This is where you actually edit code.
+- **Template** = the tutorial repo is marked as a template on GitHub, so you can stamp out a brand-new repository of your own from it: the same files, a clean history, your name on it. Changes you make to your repo don't affect the tutorial, and nothing links back.
+- **Clone** = downloading your repo from GitHub to your computer so you can work on files locally. This is where you actually edit code.
 
-The flow is: you edit files on your computer (local), then **push** changes up to your fork on GitHub. Your fork is your own space. You can't accidentally break the original repository.
+The flow is: you edit files on your computer (local), then **push** changes up to your repo on GitHub. Your repo is your own space. You can't accidentally break the tutorial.
 
-> **Why not just clone the original repository directly?** If you cloned the original without forking first, you wouldn't have permission to push your changes back to GitHub. Forking gives you your own copy with full write access.
+> **Why a template and not a fork?** GitHub also offers **Fork**, which makes a linked copy that keeps pointing back at the original. That's the right tool when you plan to send changes back to someone else's project. Here you don't. The dashboard is your project, and a linked copy would show "forked from LMU-ISBA" on your profile and try to send any pull request you open to the tutorial repo instead of your own. A template gives you a repo that reads as your work, with a commit history that starts with you.
 
 ---
 
-### 3.1 Fork the repository
+### 3.1 Create your repository
 
 1. Go to [github.com/LMU-ISBA/ai-dev-workflow-tutorial](https://github.com/LMU-ISBA/ai-dev-workflow-tutorial).
-2. Click the **Fork** button in the upper-right corner of the page.
-3. On the "Create a new fork" page, select your GitHub account as the owner.
-4. Leave the repository name as `ai-dev-workflow-tutorial`.
-5. Click **Create fork** and wait for GitHub to finish.
+2. Click the green **Use this template** button in the upper-right corner of the page, then **Create a new repository**.
+3. On the "Create a new repository" page:
+   - **Owner:** your GitHub account.
+   - **Repository name:** `ai-dev-workflow-tutorial`. Keep this name; Part 2's instructions use it.
+   - Leave **Include all branches** unchecked.
+   - Choose **Public**. Streamlit Community Cloud deploys public repos for free, and this is portfolio work.
+4. Click **Create repository** and wait for GitHub to finish.
 
-> **Checkpoint:** The repository is visible at `github.com/[your-username]/ai-dev-workflow-tutorial`. Notice the page now says "forked from LMU-ISBA/ai-dev-workflow-tutorial" near the top.
+> **Checkpoint:** The repository is visible at `github.com/[your-username]/ai-dev-workflow-tutorial`, with the tutorial's files and one commit, "Initial commit," from you. (GitHub adds a small "generated from LMU-ISBA/ai-dev-workflow-tutorial" note under the name. That's a label, not a link: the repo is fully yours.)
 
 ---
 
-### 3.2 Clone your fork
+### 3.2 Clone your repository
 
 Cloning downloads the repository to your computer so you can work on it locally.
 
-1. On your forked repository page (`github.com/[your-username]/ai-dev-workflow-tutorial`), click the green **Code** button.
+1. On your new repository page (`github.com/[your-username]/ai-dev-workflow-tutorial`), click the green **Code** button.
 2. Make sure the **HTTPS** tab is selected (not SSH or GitHub CLI).
 3. Copy the URL. It will look like: `https://github.com/[your-username]/ai-dev-workflow-tutorial.git`
 4. In VS Code, open the Command Palette (`Cmd+Shift+P` on macOS, `Ctrl+Shift+P` on Windows), type **Git: Clone**, and press **Enter/Return**. (The Welcome page's **Clone Git Repository** link does the same thing.)
@@ -456,7 +483,7 @@ Cloning downloads the repository to your computer so you can work on it locally.
    - Windows: `C:\Users\YourName\GitHub`
 7. When VS Code asks whether to open the cloned repository, click **Open**. If it then asks whether you trust the authors of the files in this folder, click **Yes, I trust the authors**. That unlocks the terminal and the other features you'll need in this folder.
 
-A full copy of your fork now lives on your computer, in the folder you chose. These local files are yours to edit; your changes stay on your machine until you push them back to GitHub (you'll do that in Part 2).
+A full copy of your repository now lives on your computer, in the folder you chose. These local files are yours to edit; your changes stay on your machine until you push them back to GitHub (you'll do that in Part 2).
 
 > **Back up your work:** Once you push to GitHub (Part 2), your committed code is safe in the cloud. To protect everything else, including changes you haven't committed yet, put your `GitHub` folder somewhere your computer already syncs to cloud storage. Common options: iCloud Drive (macOS), OneDrive (Windows), Google Drive, or Dropbox. Then if your laptop is lost, stolen, or dies, your work is waiting for you on the next machine.
 
@@ -505,11 +532,11 @@ claude
 ```
 Then ask Claude: `Is the Superpowers plugin installed?` Expected: Claude checks and confirms it's installed (it can run `/plugin` to verify). Type `/exit` to close the session.
 
-If any command fails with "command not found," open a new terminal and try again. If it still fails, read the error, ask Claude Code to help, or reach out on Teams (the General channel, or a direct message to me).
+If any command fails with "command not found," open a new terminal and try again. If `claude` is the one that fails, go back to Section 2.4, Step 2, and check the installer's setup notes: the PATH fix there is the usual cause. If it still fails, read the error, ask Claude Code to help, or reach out on Teams (the General channel, or a direct message to me).
 
 ### Repository
 
-- [ ] Tutorial repo forked to your GitHub account (`github.com/[your-username]/ai-dev-workflow-tutorial`)
+- [ ] Your own repository created from the template (`github.com/[your-username]/ai-dev-workflow-tutorial`)
 - [ ] Repo cloned locally and open in VS Code
 - [ ] Files visible in VS Code's Explorer (you should see `data/`, `prd/`, and the `README.md`, `pre-work-setup.md`, and `workshop-build-deploy.md` files)
 
@@ -536,7 +563,7 @@ Here's what you've just configured:
 |    Superpowers ........ Skill-driven planning (Claude plugin)   |
 |                                                                |
 |  Your Repository:                                              |
-|    Fork on GitHub ..... Your remote copy                       |
+|    Repo on GitHub ..... Your remote copy                       |
 |    Clone on computer .. Your local working copy                |
 |                                                                |
 +---------------------------------------------------------------+
@@ -554,7 +581,7 @@ Part 1 is complete. You've:
 
 - Created accounts on GitHub and Claude
 - Installed the tools that make up your development environment: VS Code, Git, Python, Claude Code, and the Superpowers plugin
-- Forked and cloned the tutorial repository (your working copy of the project)
+- Created your own repository from the tutorial template and cloned it (your working copy of the project)
 
 Every tool you just set up transfers directly to your capstone project: Git and GitHub for team collaboration, and Claude Code with the Superpowers plugin for turning requirements into bite-sized plans. Two more tools for the capstone itself, Granola for meeting notes and Wispr Flow for dictation, are in the [capstone tools appendix](capstone-tools.md). Skip them for now.
 
