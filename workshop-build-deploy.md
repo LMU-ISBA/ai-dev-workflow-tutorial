@@ -369,13 +369,14 @@ This is the moment the workflow shifts from "you driving Claude" to "Claude runn
 >
 > In Section 4 the chain continues: `executing-plans` builds task by task, then `requesting-code-review` and `finishing-a-development-branch` wrap up. Each skill shows up as a `Skill(superpowers:<name>)` line, so if you lose track, scroll up to the most recent one.
 
-Superpowers committed the design doc on its own. Commit the plan now too, so both documents sit in your history before any code does. In Claude Code:
+Superpowers commits the design doc and the plan as it writes them, so there's usually nothing left to commit here. Check anyway, so you know both documents sit in your history before any code does. In Claude Code:
 
 ```
-Commit the implementation plan with the message "Add implementation plan".
+Make sure the design doc and the implementation plan are both committed,
+then show me the commit history.
 ```
 
-**Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. Ask Claude to show `git log --oneline`: the board, the design doc, and the plan are each there as a commit, and there's no code yet. That order is the point. The thinking is on the record before the building starts.
+**Checkpoint:** You have two new files: a design doc in `docs/superpowers/specs/` and an implementation plan in `docs/superpowers/plans/`. The history Claude shows has the board, the design doc, and the plan each as a commit, and no code yet. That order is the point. The thinking is on the record before the building starts.
 
 ---
 
@@ -584,7 +585,7 @@ Here is what each stage means:
 
 4. **Check your name on GitHub.** Open your repository in the browser, switch to the `feature/sales-dashboard` branch, and open the commit list (the **Commits** link near the top of the file list). Your avatar and username should appear beside each commit. If you see a grey placeholder instead, the email you set in Part 1 with `git config` doesn't match an email on your GitHub account. Until it does, none of your work shows on your profile. Add that email under GitHub **Settings** --> **Emails**, or rerun the `git config --global user.email` command with the right address. The fix applies to every commit from then on.
 
-**Checkpoint:** Code and the updated board are on GitHub. TASK-1 is in the Done section of `TASKS.md` with its criteria checked and a commit on its Commit line, `git log --oneline -- TASKS.md` (ask Claude to run it) shows the board commit for TASK-1, and your avatar shows on the commits on GitHub.
+**Checkpoint:** Code and the updated board are on GitHub. TASK-1 is in the Done section of `TASKS.md` with its criteria checked and a commit on its Commit line, the history of `TASKS.md` (ask Claude to show it) includes the board commit for TASK-1, and your avatar shows on the commits on GitHub.
 
 ### 4.3 Complete remaining milestones
 
@@ -653,7 +654,7 @@ and run the Streamlit app so I can test the complete dashboard.
 
 Open whatever Local URL Claude reports (for example `http://localhost:8501`). Then open the PRD's **Acceptance Criteria** section beside it and check each item against what's on screen, yourself, without asking Claude. The PRD's **Expected Output** table gives you the numbers to look for: total sales near $116,500 and 482 orders. Passing tests prove the functions return what the tests asked for. They don't prove the chart is the right chart, the bars are sorted the way the PRD says, or the page would pass in an executive meeting. That's what your eyes are for. Anything that fails goes back to Claude as a plain request ("the region chart isn't sorted largest to smallest, fix it and commit under TASK-4") before you move on.
 
-**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and a commit on each Commit line, `git log --oneline -- TASKS.md` shows one board commit per finished milestone, and every PRD acceptance criterion checks out on the running app. Only a deployment milestone (if you have one) remains in To Do.
+**Checkpoint:** All implementation milestones are in the Done section of `TASKS.md` with their criteria checked and a commit on each Commit line, the history of `TASKS.md` (ask Claude to show it) has at least one board commit per finished milestone, and every PRD acceptance criterion checks out on the running app. Only a deployment milestone (if you have one) remains in To Do.
 
 ### 4.4 Capture project memory with /init
 
